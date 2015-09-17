@@ -7,14 +7,20 @@
  */
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Parent_Admin_Controller extends MX_Controller {
+class Base_Install_Controller extends MX_Controller {
+
     function __construct(){
-        //if i remove this parent::__construct(); the error is gone
         parent::__construct();
         $this->template->set_theme('admin_theme');
         $this->template->set_layout('one_col');
         $this->template->set_partial('header','header');
         $this->template->set_partial('footer','footer');
         $this->lang->load(ADMIN_LANGUAGE, ADMIN_LANGUAGE);
+        $this->load->helper('url');
     }
+
+    public function create_input_params($inputs) {
+        return $inputs->get_input_params();
+    }
+
 }

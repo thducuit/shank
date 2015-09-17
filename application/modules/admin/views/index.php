@@ -5,4 +5,4 @@
  * Date: 8/12/15
  * Time: 7:22 AM
  */
-echo 'aaaa';
+echo $this->lang->line('fullname')." : Robert Downey";

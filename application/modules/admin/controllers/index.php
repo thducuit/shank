@@ -7,7 +7,7 @@
  */
 require_once APPPATH . 'modules/admin/controllers/parent.php';
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Index extends Parent_Controller {
+class Index extends Parent_Admin_Controller {
     function __construct(){
         //if i remove this parent::__construct(); the error is gone
         parent::__construct();

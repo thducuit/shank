@@ -47,6 +47,16 @@ if (defined('ENVIRONMENT'))
 }
 
 /*
+ * --------------------------------------------------------------------
+ * LOAD THE define FILE
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ *
+ */
+require_once 'define.php';
+
+/*
  *---------------------------------------------------------------
  * SYSTEM FOLDER NAME
  *---------------------------------------------------------------
@@ -174,7 +184,6 @@ if (defined('ENVIRONMENT'))
 
 	// Name of the "system folder"
 	define('SYSDIR', trim(strrchr(trim(BASEPATH, '/'), '/'), '/'));
-
 
 	// The path to the "application" folder
 	if (is_dir($application_folder))

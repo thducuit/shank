@@ -1,0 +1,1162 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"parent",
+				"parent_id"
+			],
+			[
+				"id",
+				"id_key"
+			],
+			[
+				"module",
+				"module_id"
+			],
+			[
+				"chi",
+				"child_array"
+			],
+			[
+				"pare",
+				"parent_id"
+			],
+			[
+				"module_",
+				"module_parent"
+			],
+			[
+				"pa",
+				"parent"
+			],
+			[
+				"se",
+				"select"
+			],
+			[
+				"bor",
+				"border"
+			],
+			[
+				"mar",
+				"margin-bottom"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"langu",
+				"language"
+			],
+			[
+				"langua",
+				"language_id"
+			],
+			[
+				"lan",
+				"language_id"
+			],
+			[
+				"fo",
+				"form	Tag"
+			],
+			[
+				"ma",
+				"margin"
+			],
+			[
+				"la",
+				"language"
+			],
+			[
+				"for",
+				"foreach	foreach …"
+			],
+			[
+				"h",
+				"h1	Tag"
+			],
+			[
+				"text",
+				"text-transform"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"data",
+				"data-form"
+			],
+			[
+				"unse",
+				"unset"
+			],
+			[
+				"_",
+				"_SESSION"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"en",
+				"encode"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"im",
+				"images"
+			],
+			[
+				"end",
+				"endwhile"
+			],
+			[
+				"worlde",
+				"Worldwide"
+			],
+			[
+				"stru",
+				"strtoupper"
+			],
+			[
+				"class",
+				"classes"
+			],
+			[
+				"u",
+				"uniqid"
+			],
+			[
+				"ty",
+				"typeof"
+			],
+			[
+				"ca",
+				"categories"
+			],
+			[
+				"pro",
+				"products"
+			],
+			[
+				"pr",
+				"printf"
+			],
+			[
+				"vali",
+				"validator"
+			],
+			[
+				"con",
+				"contact"
+			],
+			[
+				"post",
+				"posts"
+			],
+			[
+				"tbl",
+				"tblPost"
+			],
+			[
+				"str",
+				"strtoupper"
+			],
+			[
+				"per",
+				"period"
+			],
+			[
+				"cont",
+				"controller"
+			],
+			[
+				"edu",
+				"Education"
+			],
+			[
+				"ex",
+				"export"
+			],
+			[
+				"feature",
+				"feature_id"
+			],
+			[
+				"fon",
+				"font-size"
+			],
+			[
+				"preg",
+				"preg_replace"
+			],
+			[
+				"str_re",
+				"str_replace"
+			],
+			[
+				"cate",
+				"category_menu"
+			],
+			[
+				"tr",
+				"translate"
+			],
+			[
+				"json",
+				"json_decode"
+			],
+			[
+				"ce",
+				"center_lat"
+			],
+			[
+				"re",
+				"result"
+			],
+			[
+				"radi",
+				"radius"
+			],
+			[
+				"s",
+				"style	Tag"
+			],
+			[
+				"jso",
+				"json_decode"
+			],
+			[
+				"add",
+				"address"
+			],
+			[
+				"dis",
+				"district"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"dealer",
+				"dealer_search"
+			],
+			[
+				"key",
+				"keyword"
+			],
+			[
+				"getBy",
+				"getByID"
+			],
+			[
+				"pars",
+				"parse_url"
+			],
+			[
+				"al",
+				"alias_name"
+			],
+			[
+				"comm",
+				"community"
+			],
+			[
+				"sele",
+				"selected"
+			],
+			[
+				"me",
+				"menuActive"
+			],
+			[
+				"cat",
+				"catchild"
+			],
+			[
+				"arr",
+				"array"
+			],
+			[
+				"b",
+				"breadcrumb_list"
+			],
+			[
+				"br",
+				"breadcrumb"
+			],
+			[
+				"alias",
+				"alias_list"
+			],
+			[
+				"catego",
+				"category_id"
+			],
+			[
+				"produ",
+				"product"
+			],
+			[
+				"trade",
+				"trade_detail"
+			],
+			[
+				"par",
+				"parseInt"
+			],
+			[
+				"str_",
+				"str_replace"
+			],
+			[
+				"met",
+				"meta_feature"
+			],
+			[
+				"ali",
+				"alias"
+			],
+			[
+				"t",
+				"textarea"
+			],
+			[
+				"array_",
+				"array_push"
+			],
+			[
+				"meta",
+				"meta_pos1"
+			],
+			[
+				"em",
+				"empty"
+			],
+			[
+				"el",
+				"else"
+			],
+			[
+				"num",
+				"number_of_post"
+			],
+			[
+				"nu",
+				"number_of_post"
+			],
+			[
+				"item",
+				"itemIndex"
+			],
+			[
+				"ch",
+				"child"
+			],
+			[
+				"js",
+				"JSON"
+			],
+			[
+				"te",
+				"text"
+			],
+			[
+				"ti",
+				"title"
+			],
+			[
+				"bo",
+				"border"
+			],
+			[
+				"array_un",
+				"array_unshift"
+			],
+			[
+				"array_s",
+				"array_shift"
+			],
+			[
+				"post_",
+				"post_id"
+			],
+			[
+				"html",
+				"htmlentities"
+			],
+			[
+				"htm",
+				"html_entity_decode"
+			],
+			[
+				"check",
+				"checked"
+			],
+			[
+				"fi",
+				"find"
+			],
+			[
+				"cl",
+				"click"
+			],
+			[
+				"ele",
+				"element"
+			],
+			[
+				"meta-",
+				"meta-feature-load-image"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"if",
+				"iframe"
+			],
+			[
+				"hea",
+				"headerClass"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"prin",
+				"print_r"
+			],
+			[
+				"strto",
+				"strtotime"
+			],
+			[
+				"mk",
+				"mktime"
+			],
+			[
+				"exp",
+				"explode"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"is",
+				"isset"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"is_a",
+				"is_array"
+			],
+			[
+				"tra",
+				"trade_item"
+			],
+			[
+				"po",
+				"post_option"
+			],
+			[
+				"len",
+				"length"
+			],
+			[
+				"val",
+				"value"
+			],
+			[
+				"op",
+				"option	Tag"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "application/modules/install/controllers/module.php",
+			"settings":
+			{
+				"buffer_size": 3510,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/modules/install/views/module/add.php",
+			"settings":
+			{
+				"buffer_size": 6326,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/models/module_model.php",
+			"settings":
+			{
+				"buffer_size": 1375,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/models/language_model.php",
+			"settings":
+			{
+				"buffer_size": 1078,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/helpers/select_helper.php",
+			"settings":
+			{
+				"buffer_size": 1977,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "application/modules/install/models/module_install_model.php",
+			"settings":
+			{
+				"buffer_size": 824,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/web/stihl/library/MyZend/View/Helper/GetMenu.php",
+			"settings":
+			{
+				"buffer_size": 1889,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 127.0,
+		"selected_items":
+		[
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/web/shank/shank/config.sublime-project",
+		"/C/Users/Hoa Huong/Desktop/Blisk/Blisk/product.html",
+		"/C/web/blisk/wp-content/themes/blisk/pages/products.php",
+		"/C/web/stihl/application/modules/default/views/scripts/practical/practical-cat-layout-3.phtml",
+		"/C/web/stihl/application/modules/default/views/scripts/news/news-cat-layout-4.phtml",
+		"/C/web/stihl/public/css/mystyle/style.css",
+		"/C/Users/Hoa Huong/Desktop/Blisk/Blisk/index.html",
+		"/C/web/shank/shank/application/modules/install/views/module/add.php",
+		"/C/web/shank/shank/application/modules/install/views/module/index.php",
+		"/C/web/shank/shank/application/modules/install/models/module_install_model.php",
+		"/C/web/shank/shank/application/modules/install/controllers/module.php",
+		"/C/web/shank/shank/application/modules/install/views/language/index.php",
+		"/C/Users/Hoa Huong/Desktop/html/html/add.html",
+		"/C/web/hungthinh/application/modules/install/views/scripts/module/edit.phtml",
+		"/C/web/hungthinh/application/modules/install/views/scripts/index/index.phtml",
+		"/C/web/hungthinh/application/modules/admin/controllers/PartnerController.php",
+		"/C/web/shank/shank/application/modules/install/controllers/inputs/inputs.php",
+		"/C/web/shank/shank/application/modules/install/controllers/base_install_controller.php",
+		"/C/web/shank/shank/application/modules/install/controllers/inputs/module_inputs.php",
+		"/C/web/shank/shank/application/config/autoload.php",
+		"/C/web/shank/shank/application/config/config.php",
+		"/C/web/shank/shank/system/core/Model.php",
+		"/C/web/shank/shank/application/core/MY_Router.php",
+		"/C/web/shank/shank/application/modules/install/controllers/index.php",
+		"/C/web/shank/shank/application/modules/install/controllers/language.php",
+		"/C/web/shank/shank/application/core/MY_Base_Install_Controller.php",
+		"/C/web/html/index.html",
+		"/C/web/html/css/style.css",
+		"/C/web/stihl/public/css/reset.css",
+		"/C/web/shank/shank/application/helpers/custom_url_helper.php",
+		"/C/web/shank/shank/system/helpers/array_helper.php",
+		"/C/web/shank/shank/application/modules/install/controllers/parent.php",
+		"/C/web/hungthinh/application/modules/admin/views/scripts/category/index.phtml",
+		"/C/web/hungthinh/application/modules/admin/controllers/PostController.php",
+		"/C/web/hungthinh/library/MyZend/View/Helper/CreateList.php",
+		"/C/web/blisk/wp-content/themes/blisk/css/style-content-home.css",
+		"/C/web/blisk/wp-content/themes/blisk/css/style-footer.css",
+		"/C/web/blisk/wp-content/themes/blisk/css/style-header.css",
+		"/C/Users/Hoa Huong/Desktop/html/html/index.html",
+		"/C/web/shank/shank/define.php",
+		"/C/web/shank/shank/application/models/module_model.php",
+		"/C/web/shank/shank/application/modules/install/models/language_install_model.php",
+		"/C/web/shank/shank/application/models/language_model.php",
+		"/C/web/blisk/wp-content/themes/blisk/footer.php",
+		"/C/web/shank/shank/application/modules/install/controllers/module",
+		"/C/web/hungthinh/application/modules/default/views/scripts/gallery/index.phtml",
+		"/C/Users/Hoa Huong/Desktop/Blisk/Blisk2/product.html",
+		"/C/web/blisk/wp-content/themes/blisk/index.php",
+		"/C/Users/Hoa Huong/Desktop/Blisk/Blisk2/index.html",
+		"/C/web/blisk/wp-content/themes/blisk/style.css",
+		"/C/web/blisk/wp-content/themes/blisk/pages/care.php",
+		"/C/web/hungthinh/application/modules/default/views/scripts/contact/index.phtml",
+		"/C/web/hungthinh/application/layouts/default/html/footer.php",
+		"/C/web/hungthinh/public/js/myscript/contact.js",
+		"/C/web/hungthinh/public/js/myscript/functions.js",
+		"/C/web/hungthinh/library/MyZend/View/Helper/UploadFileHungThinh.php",
+		"/C/web/shank/shank/application/modules/install/views/language/add.php",
+		"/C/web/shank/shank/lang.json",
+		"/C/web/shank/shank/assets/admin/css/custom.css",
+		"/C/web/blisk/wp-content/themes/blisk/search.php",
+		"/C/Users/Hoa Huong/Desktop/Blisk/Blisk/worldwide.html",
+		"/C/web/shank/shank/application/modules/install/views/header.php",
+		"/C/Users/Hoa Huong/Desktop/Blisk/Blisk/care.html",
+		"/C/web/blisk/wp-content/themes/blisk/pages/download.php",
+		"/C/web/blisk/wp-content/themes/blisk/pages/about.php",
+		"/C/web/blisk/wp-content/themes/blisk/pages/worldwide.php",
+		"/C/web/blisk/wp-content/themes/blisk/pages/contact.php",
+		"/C/web/blisk/wp-content/themes/blisk/header.php",
+		"/C/web/blisk/wp-content/plugins/duk_contact/inc/frontend.php",
+		"/C/web/shank/shank/assets/admin/css/style.css",
+		"/C/web/shank/shank/assets/admin/css/styles/custom.css",
+		"/C/web/hungthinh/application/modules/admin/controllers/EducationController.php",
+		"/C/web/hungthinh/application/modules/admin/controllers/RecruitmentController.php",
+		"/C/web/hungthinh/application/modules/admin/views/scripts/education/edit.phtml",
+		"/C/web/hungthinh/application/modules/admin/views/scripts/education/add.phtml",
+		"/C/web/hungthinh/application/modules/admin/views/scripts/recruitment/add.phtml",
+		"/C/web/hungthinh/application/modules/default/controllers/RecruitmentController.php",
+		"/C/web/hungthinh/application/modules/default/views/scripts/education/index.phtml",
+		"/C/web/hungthinh/application/modules/default/views/scripts/recruitment/index.phtml",
+		"/C/web/hungthinh/application/configs/application.ini",
+		"/C/web/hungthinh/application/modules/admin/views/scripts/recruitment/edit.phtml",
+		"/C/web/hungthinh/application/modules/admin/languages/en_US.php",
+		"/C/web/shank/shank/application/modules/install/views/language/edit.php",
+		"/C/web/shank/shank/application/modules/admin/controllers/parent.php",
+		"/C/web/shank/shank/application/config/database.php",
+		"/C/web/shank/shank/application/modules/install/models/language.php",
+		"/C/web/shank/shank/application/modules/install/views/index.php",
+		"/C/Users/Hoa Huong/Desktop/html/html/setting.html",
+		"/C/web/shank/shank/application/modules/install/views/footer.php",
+		"/C/web/shank/shank/assets/admin/js/ddsmoothmenu.js",
+		"/C/Users/Hoa Huong/Desktop/html/html/dashboard.html",
+		"/C/web/shank/shank/index.php",
+		"/C/web/shank/shank/application/modules/admin/controllers/index.php",
+		"/C/web/shank/shank/application/language/vietnamese/vi_lang.php",
+		"/C/web/shank/shank/application/modules/admin/views/index.php",
+		"/C/web/shank/shank/application/language/english/en_lang.php",
+		"/C/web/hungthinh/index.php",
+		"/C/web/shank/shank/application/language/english/index.html",
+		"/C/web/hungthinh/application/models/DbTable/Post.php",
+		"/C/web/hungthinh/public/js/myscript/recruitment.js",
+		"/C/web/hungthinh/application/modules/default/controllers/ContactController.php",
+		"/C/web/hungthinh/application/layouts/default/html/header.php",
+		"/C/web/hungthinh/application/modules/admin/controllers/ContactlistController.php",
+		"/C/web/hungthinh/application/modules/admin/views/scripts/contactlist/index.phtml",
+		"/C/web/hungthinh/define.php",
+		"/C/web/blisk/wp-content/themes/blisk_1108/pages/worldwide.php",
+		"/C/web/blisk/wp-content/themes/blisk/functions.php",
+		"/C/web/blisk/wp-content/plugins/duk_contact/duk_contact.php",
+		"/C/web/blisk/wp-content/plugins/duk_feature/duk_feature.php",
+		"/C/web/blisk/wp-content/plugins/duk_feature/uninstall.php",
+		"/C/web/blisk/wp-content/plugins/contact-form-7/wp-contact-form-7.php",
+		"/C/web/blisk/wp-content/themes/ganador/header-page.php",
+		"/C/web/blisk/wp-content/themes/ganador/js/sss.js",
+		"/C/web/blisk/wp-content/themes/ganador/js/script.js",
+		"/C/web/blisk/wp-content/themes/ganador/js/TweenMax.min.js",
+		"/C/web/blisk/wp-content/plugins/contact-form-7/settings.php",
+		"/C/web/blisk/wp-content/themes/contact-form-7/wp-contact-form-7.php",
+		"/C/web/blisk/wp-content/themes/contact-form-7/settings.php",
+		"/C/web/blisk/wp-content/themes/contact-form-7/includes/js/scripts.js",
+		"/C/web/stihl/public/css/admin.css",
+		"/C/web/stihl/public/css/admin_custom.css",
+		"/C/web/hungthinh/public/css/admin_custom.css",
+		"/C/web/hungthinh/public/css/admin.css",
+		"/C/web/hungthinh/application/layouts/admin/layout.phtml",
+		"/C/web/hungthinh/application/modules/default/views/scripts/index/index.phtml",
+		"/C/web/stihl/application/layouts/admin/layout.phtml",
+		"/C/Users/Hoa Huong/Desktop/Blisk/Blisk/products.html",
+		"/C/web/stihl/application/modules/admin/languages/vi_VN.php"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			" --',",
+			"'%\\'';\n",
+			"/>\n",
+			"content-bo",
+			"products",
+			"style-hea",
+			"();\n",
+			"$_SESSION['files']",
+			"$_SESSION['input']",
+			"unins",
+			"duk_feature_uninstall",
+			"unins",
+			"saveMetaOption",
+			"js-sortable",
+			"noa",
+			"''",
+			"http://blisk.com",
+			"menu-image-title",
+			"icon-pro",
+			"alias_name_",
+			"move",
+			"showInfo",
+			"close",
+			"upload",
+			"uploa",
+			"file_uploads",
+			"post_represent_photo",
+			"die",
+			"alias",
+			"dealer_search",
+			"alias_name",
+			"list",
+			"career",
+			"/ed",
+			"/pa",
+			"/part",
+			"/pa",
+			"pa",
+			"/par",
+			"edu",
+			"trade",
+			"/lis",
+			"lis",
+			"meta-feature-content",
+			"txt_active",
+			"txt_deactive",
+			"meta-feature-area",
+			"route",
+			"dealer_product_line",
+			"attribute2",
+			"attribute2Q",
+			"attribute2S",
+			"allAttributes2Sortiment",
+			"attribute2Classes",
+			"attribute2Ids",
+			"attribute2",
+			"json",
+			"gif",
+			"gmap_icon",
+			"txt_facebook_link",
+			"reset",
+			"dealer_map",
+			"showInfo",
+			"setMarker",
+			"sortDistance",
+			"getpositionAction",
+			"aja",
+			"post",
+			"PostController",
+			"getSortItems",
+			"search-option-btn",
+			"active",
+			"trade_de",
+			"trade_detail",
+			"txt_search_result_product",
+			"txt_rpp",
+			"subject",
+			"frmContact",
+			"meta-remove",
+			"updateFeatureOption",
+			"saveMeta",
+			"metaLoadImageCallback",
+			"post_browse_gallery",
+			"post_browse_banner",
+			"typeDir",
+			"CKEdi",
+			"watermark",
+			"fancybox",
+			"category_cation",
+			"txt_category_link",
+			"updatePos",
+			"cat_option",
+			"savePos",
+			"$pathImg = $this->baseUrl(IMG_URL);\n$footer = $footer['data'][0];\n$pos1 = json_decode($footer['meta_pos1'], true);\n$pos2 = json_decode($footer['meta_pos2'], true);\n$pos3 = json_decode($footer['meta_pos3'], true);",
+			"die",
+			"homefooter",
+			"'homefooter'",
+			"515",
+			"<a",
+			"post_browse_gallery_re",
+			"openKCFinderPhoto",
+			"elemet",
+			"contactin",
+			"contac",
+			"updateMetaOption",
+			"sear",
+			"metaFeatureLoadImageCallback",
+			"meta-image",
+			"html",
+			"/dis",
+			"/ca",
+			"/dis",
+			"/ca",
+			"/dis",
+			"/ca",
+			"/post",
+			"meta-option-list",
+			"/post",
+			"post",
+			"/post",
+			"post",
+			"stihl",
+			"loadCKEditor",
+			"editor",
+			"link",
+			"images",
+			"openKCFinder",
+			"meta-option-area"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"http://blisk.tqdesign.vn"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 1,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "application/modules/install/controllers/module.php",
+					"settings":
+					{
+						"buffer_size": 3510,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3358,
+								3358
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1080.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "application/modules/install/views/module/add.php",
+					"settings":
+					{
+						"buffer_size": 6326,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3647,
+								3647
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 675.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "application/models/module_model.php",
+					"settings":
+					{
+						"buffer_size": 1375,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								317,
+								317
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "application/models/language_model.php",
+					"settings":
+					{
+						"buffer_size": 1078,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								721,
+								721
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "application/helpers/select_helper.php",
+					"settings":
+					{
+						"buffer_size": 1977,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1977,
+								1977
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 463.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "application/modules/install/models/module_install_model.php",
+					"settings":
+					{
+						"buffer_size": 824,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								357,
+								423
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/C/web/stihl/library/MyZend/View/Helper/GetMenu.php",
+					"settings":
+					{
+						"buffer_size": 1889,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1807,
+								1814
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 225.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		},
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				2,
+				1
+			],
+			[
+				0,
+				1,
+				1,
+				2
+			],
+			[
+				1,
+				1,
+				2,
+				2
+			]
+		],
+		"cols":
+		[
+			0.0,
+			0.5,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			0.7,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.xdebug":
+	{
+		"height": 0.0
+	},
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": false,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 309.0,
+	"status_bar_visible": true
+}

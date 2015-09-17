@@ -1,0 +1,18 @@
+.d-block {
+	float: left;
+	display: block
+}
+.d-content {
+	margin: 0!important;
+	height: auto;
+    float: left;
+    width: 100%;
+}
+
+.d-content .form {
+	padding: 10px;
+}
+
+.d-block-left {
+	padding: 10px
+}
