@@ -1,4 +1,4 @@
-<?php 
+<?php
 $url = url_add_params($params, $url);
 ?>
 <div id="page-wrapper">
