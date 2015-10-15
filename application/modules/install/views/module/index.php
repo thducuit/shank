@@ -17,34 +17,31 @@ $url = url_add_params($params, $url);
                 <?php 
                     echo my_select(
                         $list_parent, 
-                        $option = array('title' => 'module_name', 'value' => 'module_id', 'level' => 'module_level'),
+                        $keywords = array('title' => 'module_name', 'value' => 'module_id', 'parent'=> 'module_parent', 'level' => 'module_level'),
                         $selected = array($params['pid']),
-                        $key = array('id' => 'module_id', 'parent' => 'module_parent'),
                         $no_choice = array('title' => '-- None --', 'value' => 0),
-                        $name = 'pid',
-                        $id = 'ddlInCate' , $class = 'combobox ddlFilter');
+                        $attributes = array('name' => 'pid', 'id' => 'ddlInCate' , 'class' => 'combobox ddlFilter')
+                        );
                 ?>
 
                 <?php 
                     echo my_select(
-                        array( array('title'=>'Show', 'value'=>1), array('title'=>'Hide', 'value'=>0) ), 
-                        $option = array('title' => 'title', 'value' => 'value'),
+                        array( array('title' => 'Show', 'value'=> 1), array('title' => 'Hide', 'value' => 0) ), 
+                        $keywords = array('title' => 'title', 'value' => 'value'),
                         $selected = array($params['show']),
-                        $key = array(),
                         $no_choice = array('title' => '-- All --', 'value' => -1),
-                        $name = 'show',
-                        $id = 'ddlstatus' , $class = 'combobox ddlFilter');
+                        $attributes = array('name' => 'show', 'id' => 'ddlstatus' , 'class' => 'combobox ddlFilter')
+                        );
                 ?>
 
                 <?php 
                     echo my_select(
-                        array( array('title'=>'Hot', 'value'=>1), array('title'=>'Normal', 'value'=>0) ), 
-                        $option = array('title' => 'title', 'value' => 'value'),
+                        array( array('title' => 'Hot', 'value' => 1), array('title' => 'Normal', 'value' => 0) ), 
+                        $keywords = array('title' => 'title', 'value' => 'value'),
                         $selected = array($params['highlight']),
-                        $key = array(),
                         $no_choice = array('title' => '-- All --', 'value' => -1),
-                        $name = 'highlight',
-                        $id = 'ddlIsHot' , $class = 'combobox ddlFilter');
+                        $attributes = array('name' => 'highlight', 'id' => 'ddlIsHot' , 'class' => 'combobox ddlFilter')
+                        );
                 ?>
 
                 <input type="submit" name="search" value="Tìm kiếm" onclick="javascript:return RequiredEmptyField('.txtSearch','Chưa nhập chuỗi tìm kiếm!');"
@@ -71,9 +68,10 @@ $url = url_add_params($params, $url);
                 </div>
                  <div class="block-right control">
                     <a href="/index.php/install/module/add" class='button'>Thêm</a>
+                    <input type="submit" name="cmdUpdate" value="Cập nhật" id="cmdUpdate" class="button buttonUpdate" />
                     <input type="submit" name="cmdDel" value="Xóa" id="cmdDel" class="button buttonDel" />
-                    <input type="submit" name="cmdPublish" value="Hiện" id="cmdPublish" class="button buttonUnPublish" />
-                    <input type="submit" name="cmdUnPublish" value="Ẩn" id="cmdUnPublish" class="button buttonPublish" />
+                    <!--<input type="submit" name="cmdPublish" value="Hiện" id="cmdPublish" class="button buttonUnPublish" />
+                    <input type="submit" name="cmdUnPublish" value="Ẩn" id="cmdUnPublish" class="button buttonPublish" />-->
                  </div>
                     <div class="clearfix">
                     </div>
@@ -105,7 +103,7 @@ $url = url_add_params($params, $url);
                             </th>
                             <th class="colum_sort">
                                 Thứ tự
-                                <input type="image" name="ImgSaveSort" id="ImgSaveSort" src="<?php echo ADMIN_IMAGE_PATH ?>/icons/save.png">
+                                <!--<input type="image" name="ImgSaveSort" id="ImgSaveSort" src="<?php echo ADMIN_IMAGE_PATH ?>/icons/save.png">-->
                             </th>
                             <th>
                                 ID
@@ -138,10 +136,11 @@ $url = url_add_params($params, $url);
                                 <a id="lblCategory">Không có danh mục</a>
                             </td>
                             <td class="cellwidth7">
-                                <input type="button" name="ImgRowHot" id="ImgRowHot" class="tooltip btgrid unpublish" title="Nổi bật" />
+                                <!--<input type="button" name="ImgRowHot" id="ImgRowHot" class="tooltip btgrid unpublish" title="Nổi bật" />-->
+                                <?php echo my_toggle_button($l['module_status'], $l['module_id'], '/index.php/install/module/status', array('name'=>'ImgRowHot', 'id'=>'ImgRowHot'));?>
                             </td>
                             <td class="">
-                                <input name="txtSort" type="text" value="<?php echo $l['module_order']?>" id="txtSort" class="textbox txtSort" />
+                                <input name="sort[]" type="text" value="<?php echo $l['module_order']?>" id="txtSort" class="textbox txtSort" />
                             </td>
                             <td class="cellwidth1">
                                 <span id="lblID"><?php echo $l['module_id']?></span>

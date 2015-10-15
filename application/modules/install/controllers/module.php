@@ -25,13 +25,16 @@ class Module extends Base_Install_Controller {
 
     public function index() {
         $this->load->helper('select');
+        $this->load->helper('button');
 
         $this->params = $this->create_input_params( new Module_inputs );
-        $data['params'] = $this->params;/*print_r($params);die();*/
-        $select = array('module_id', 'module_name', 'module_code', 'module_link', 'module_order');
+        $data['params'] = $this->params;
+        $select = array('module_id', 'module_name', 'module_code', 'module_link', 'module_order', 'module_status');
 
-        $filters = array('module_parent' => (int)$this->params['pid'], 'module_status' => (int)$this->params['show']);
-
+        $filters = array('module_parent' => (int)$this->params['pid']);
+        if((int)$this->params['show'] != -1) {
+            $filters['module_status'] = (int)$this->params['show'];
+        }
         $orders = array('module_order' => 'asc');
 
         $page = (int)$this->params['page'];
@@ -40,7 +43,9 @@ class Module extends Base_Install_Controller {
         
     	$this->load->Model("module_install_model");
         $data['list'] = $this->module_install_model->list_all_by_paging($select, $filters, $orders, $from, $to, $keyword = '');
+        //_last_query(true);
         $data['list_parent'] = $this->module_install_model->list_all(array('module_id', 'module_name', 'module_level', 'module_parent'));
+        
         
         /*$params = array();
         if ( isset($_GET['delete']) ) { 
@@ -50,6 +55,7 @@ class Module extends Base_Install_Controller {
             $params = $this->input->get();
             $this->update($params);
         }*/
+        
         $data['url'] = $this->url;
         
         $this->template->title('Module');
@@ -104,6 +110,10 @@ class Module extends Base_Install_Controller {
     }
 
     public function update($params) {
+        
+    }
+    
+    public function status($params) {
         
     }
 }
