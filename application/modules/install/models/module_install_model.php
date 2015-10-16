@@ -31,6 +31,14 @@ class Module_Install_Model extends Module_Model {
 
         return $query->result_array();
     }
+    
+    public function upsert_with_custom_data($data) {
+        if($data['module_parent'] > 0 )  {
+            $parent = $this->get_by_id($data['module_parent']);
+            $data['module_level'] = $parent->module_level . '--';
+        }
+        $this->upsert($data);
+    }
 
 
     

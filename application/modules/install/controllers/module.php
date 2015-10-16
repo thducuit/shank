@@ -24,11 +24,14 @@ class Module extends Base_Install_Controller {
     }
 
     public function index() {
+        $this->load->Model("module_install_model");
         $this->load->helper('select');
         $this->load->helper('button');
+        $this->load->helper('sort_input');
 
+        //GET PARAMS
         $this->params = $this->create_input_params( new Module_inputs );
-        $data['params'] = $this->params;
+        
         $select = array('module_id', 'module_name', 'module_code', 'module_link', 'module_order', 'module_status');
 
         $filters = array('module_parent' => (int)$this->params['pid']);
@@ -41,22 +44,18 @@ class Module extends Base_Install_Controller {
         $from = ($page - 1) * 20;
         $to = 20;
         
-    	$this->load->Model("module_install_model");
+    	//DATA TO VIEW
+    	$data['params'] = $this->params;
         $data['list'] = $this->module_install_model->list_all_by_paging($select, $filters, $orders, $from, $to, $keyword = '');
-        //_last_query(true);
         $data['list_parent'] = $this->module_install_model->list_all(array('module_id', 'module_name', 'module_level', 'module_parent'));
-        
-        
-        /*$params = array();
-        if ( isset($_GET['delete']) ) { 
-            $params = $this->input->get();
-            $this->delete($params);
-        }else if( isset($_GET['update']) ) {
-            $params = $this->input->get();
-            $this->update($params);
-        }*/
-        
         $data['url'] = $this->url;
+        
+        //ACTION FROM TABLE
+        if ( isset($_POST['type']) && $_POST['type'] == 'delete' ) { 
+            $this->delete();
+        }else if ( isset($_POST['type']) && $_POST['type'] == 'update' ) {
+            $this->update();
+        }
         
         $this->template->title('Module');
         $this->template->build('module/index', $data);
@@ -74,11 +73,7 @@ class Module extends Base_Install_Controller {
             $module_status  = (int)$this->input->post('module_status');
             $module_order  = (int)$this->input->post('module_order'); 
             $module_level = '';
-
-            if($module_parent > 0 )  {
-                $parent = $this->module_install_model->get_by_id($module_parent);
-                $module_level = $parent->module_level . '--';
-            }
+            
             $data = array(
                 'module_code' => $module_code,
                 'module_name' => $module_name,
@@ -89,7 +84,7 @@ class Module extends Base_Install_Controller {
                 'module_order' => $module_order,
                 'module_level' => $module_level
             );
-            $result = $this->module_install_model->upsert($data);
+            $result = $this->module_install_model->upsert_with_custom_data($data);
             redirect('/install/module');
         }else {
             $this->load->helper('select');
@@ -101,19 +96,35 @@ class Module extends Base_Install_Controller {
     }
 
     public function edit() {
-
-    }
-
-    public function delete($params) {
-        if(empty($params)) return;
         
     }
 
-    public function update($params) {
+    public function delete() {
+        $this->load->Model("module_install_model");
+
+        $ids = array();
+        $sort = array();
         
+        $ids = $this->input->post('ids');
+        $sort = $this->input->post('sort');
+        
+        _pr($ids);
+        _pr($sort, true);
+    }
+
+    public function update() {
+        $this->load->Model("module_install_model");
+        $sort = array();
+        $sort = $this->input->post('sort');
+        $data = array();
+        foreach ($sort as $id => $value) {
+            array_push($data, array('module_id' => $id, 'module_order' => $value));
+        } 
+        $this->module_install_model->update_rows($data);
+        redirect('/install/module');
     }
     
-    public function status($params) {
+    public function status() {
         
     }
 }

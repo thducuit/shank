@@ -14,8 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://shank.net/';
-
+/*$config['base_url']	= 'http://shank.net/';*/
+$config['base_url']	= 'https://shank-thducuit-2.c9.io/';
 /*
 |--------------------------------------------------------------------------
 | Index File

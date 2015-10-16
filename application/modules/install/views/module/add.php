@@ -53,12 +53,11 @@
                         <?php 
                             echo my_select(
                                 $list_parent, 
-                                $option = array('title' => 'module_name', 'value' => 'module_id', 'level' => 'module_level'),
+                                $option = array('title' => 'module_name', 'value' => 'module_id', 'parent' => 'module_parent', 'level' => 'module_level'),
+                                $attributes = array('name' => 'module_parent', 'id' => 'lstCate', 'class' => 'listbox lstCate', 'size' => 4),
                                 $selected = array(), 
-                                $key = array('id' => 'module_id', 'parent' => 'module_parent'),
-                                $no_choice = array('title' => '-- None --', 'value' => 0),
-                                $name = 'module_parent',
-                                $id = 'lstCate', $class = 'listbox lstCate', $size = 4);
+                                $no_choice = array('title' => '-- None --', 'value' => 0)
+                            );
                         ?>
                     </div>
                 </div>
@@ -74,10 +73,13 @@
                                     Status
                                 </label>
                                 <div>
-                                    <select name='module_status'>
-                                        <option>Show</option>
-                                        <option>Hide</option>
-                                    </select>
+                                    <?php 
+                                        echo my_select(
+                                            array(array('title' => 'Show', 'value' => 1), array('title' => 'Hide', 'value' => 0)), 
+                                            $option = array('title' => 'title', 'value' => 'value'),
+                                            $attributes = array('name' => 'module_status', 'id' => 'lstStatus', 'class' => 'listbox lstStatus')
+                                        );
+                                    ?>
                                 </div>
                             </li>
                             <li>

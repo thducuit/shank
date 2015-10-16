@@ -19,9 +19,9 @@ if (!function_exists('my_select')) {
 
     function my_select($data = array(), 
                         $keywords = array(), 
+                        $attributes = array(),
                         $selected = array(),
-    					$no_choice = array('title'=>'----', 'value'=>0),
-    					$attributes = array()
+    					$no_choice = array()
     					) 
     {
         $html = '<select ';
@@ -29,7 +29,9 @@ if (!function_exists('my_select')) {
             $html .= "$a='$v' "; 
         }
         $html .=' >';
-        $html .= '<option value=\'' . $no_choice['value'] . '\'>' . $no_choice['title'] . '</option>';
+        
+        if(!empty($no_choice) && is_array($no_choice))
+            $html .= '<option value=\'' . $no_choice['value'] . '\'>' . $no_choice['title'] . '</option>';
 
         foreach ($data as $k => $d) {
             if( (!empty($keywords['parent']) && (int)$d[$keywords['parent']] == 0) || empty($keywords['parent']) )

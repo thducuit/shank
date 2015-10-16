@@ -23,14 +23,17 @@ $(document).ready(function() {
 		});
 	});
 	
-	//BUTTON ADD
-	$('input[data-href]').click(function(e) {
-		e.preventDefault();
-	   var $this = $(this);
-	   var url = $this.attr('data-href');
-	   if(url) {
-	   	window.location = url;
-	   }
+	//BUTTON SUBMIT
+	$('.table-form .buttonSubmit').click(function(e) {
+		$('.table-form').submit();
+	});
+	
+	//BUTTON HREF
+	$('button[data-href]').click(function(e) {
+	    e.preventDefault();
+	    var url = $(this).attr('data-href');
+	    if(url)
+	    	window.location.href = url;
 	});
 	
 });

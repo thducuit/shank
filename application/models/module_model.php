@@ -43,6 +43,10 @@ class Module_Model extends CI_Model {
             return $this->insert($data);
         }
     }
+    
+    public function update_rows($data, $key = 'module_id') {
+        return $this->db->update_batch($this->table, $data, $key);
+    }
 
     public function delete() {
     	

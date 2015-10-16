@@ -18,9 +18,9 @@ $url = url_add_params($params, $url);
                     echo my_select(
                         $list_parent, 
                         $keywords = array('title' => 'module_name', 'value' => 'module_id', 'parent'=> 'module_parent', 'level' => 'module_level'),
+                        $attributes = array('name' => 'pid', 'id' => 'ddlInCate' , 'class' => 'combobox ddlFilter'),
                         $selected = array($params['pid']),
-                        $no_choice = array('title' => '-- None --', 'value' => 0),
-                        $attributes = array('name' => 'pid', 'id' => 'ddlInCate' , 'class' => 'combobox ddlFilter')
+                        $no_choice = array('title' => '-- None --', 'value' => 0)
                         );
                 ?>
 
@@ -28,9 +28,9 @@ $url = url_add_params($params, $url);
                     echo my_select(
                         array( array('title' => 'Show', 'value'=> 1), array('title' => 'Hide', 'value' => 0) ), 
                         $keywords = array('title' => 'title', 'value' => 'value'),
+                        $attributes = array('name' => 'show', 'id' => 'ddlstatus' , 'class' => 'combobox ddlFilter'),
                         $selected = array($params['show']),
-                        $no_choice = array('title' => '-- All --', 'value' => -1),
-                        $attributes = array('name' => 'show', 'id' => 'ddlstatus' , 'class' => 'combobox ddlFilter')
+                        $no_choice = array('title' => '-- All --', 'value' => -1) 
                         );
                 ?>
 
@@ -38,9 +38,9 @@ $url = url_add_params($params, $url);
                     echo my_select(
                         array( array('title' => 'Hot', 'value' => 1), array('title' => 'Normal', 'value' => 0) ), 
                         $keywords = array('title' => 'title', 'value' => 'value'),
+                        $attributes = array('name' => 'highlight', 'id' => 'ddlIsHot' , 'class' => 'combobox ddlFilter'),
                         $selected = array($params['highlight']),
-                        $no_choice = array('title' => '-- All --', 'value' => -1),
-                        $attributes = array('name' => 'highlight', 'id' => 'ddlIsHot' , 'class' => 'combobox ddlFilter')
+                        $no_choice = array('title' => '-- All --', 'value' => -1)
                         );
                 ?>
 
@@ -67,10 +67,12 @@ $url = url_add_params($params, $url);
                     </select>
                  entries
                 </div>
-                 <div class="block-right control">
-                    <input type="submit" name='cmdAdd' data-href="/index.php/install/module/add" class='button buttonAdd'  value='Thêm' />
-                    <input type="submit" name="cmdUpdate" value="Cập nhật" id="cmdUpdate" class="button buttonUpdate" />
-                    <input type="submit" name="cmdDel" value="Xóa" id="cmdDel" class="button buttonDel" />
+                 <div class="block-right control block-right-control-button">
+                    <!--<input type="submit" name='cmdAdd' data-href="/index.php/install/module/add" class='button buttonAdd'  value='Thêm' />-->
+                    <button name='cmdAdd' data-href="/index.php/install/module/add" class='button buttonAdd buttonMedia'>Thêm</button>
+                    <button type="submit" name="type" value='update' id="cmdUpdate" class="button buttonUpdate buttonSubmit" >Cập nhật</button>
+                    <button type="submit" name="type" value='delete' id="cmdDel" class="button buttonSubmit" >Xóa</button>
+                    
                     <!--<input type="submit" name="cmdPublish" value="Hiện" id="cmdPublish" class="button buttonUnPublish" />
                     <input type="submit" name="cmdUnPublish" value="Ẩn" id="cmdUnPublish" class="button buttonPublish" />-->
                  </div>
@@ -123,7 +125,8 @@ $url = url_add_params($params, $url);
                                 <input type="button" class="tooltip btgrid edit" title="Sửa" />
                             </td>
                             <td class="cellwidth1">
-                                <input type="button" name="ImgRowStatus"  class="tooltip btgrid publish" title="Đăng" id="ImgRowStatus" />
+                                <!--<input type="button" name="ImgRowStatus"  class="tooltip btgrid publish" title="Đăng" id="ImgRowStatus" />-->
+                                <?php echo my_toggle_button($l['module_status'], $l['module_id'], '/index.php/install/module/status', array('name'=>'ImgRowStatus'));?>
                             </td>
                             <td class="textleft">
                                 <a href="add.html" id="lblName" class="lblname"><?php echo $l['module_name']?></a>
@@ -138,10 +141,11 @@ $url = url_add_params($params, $url);
                             </td>
                             <td class="cellwidth7">
                                 <!--<input type="button" name="ImgRowHot" id="ImgRowHot" class="tooltip btgrid unpublish" title="Nổi bật" />-->
-                                <?php echo my_toggle_button($l['module_status'], $l['module_id'], '/index.php/install/module/status', array('name'=>'ImgRowHot', 'id'=>'ImgRowHot'));?>
+                                <?php echo my_toggle_button($l['module_status'], $l['module_id'], '/index.php/install/module/status', array('name'=>'ImgRowHot'));?>
                             </td>
                             <td class="">
-                                <input name="sort[]" type="text" value="<?php echo $l['module_order']?>" id="txtSort" class="textbox txtSort" />
+                                <!--<input name="sort[<?php echo $l['module_id'];?>]" type="text" value="<?php echo $l['module_order']?>" id="txtSort" class="textbox txtSort" />-->
+                                <?php echo my_sort_input('sort', $l['module_order'], array('class' => 'txtSort'), true, $l['module_id']);?>
                             </td>
                             <td class="cellwidth1">
                                 <span id="lblID"><?php echo $l['module_id']?></span>
