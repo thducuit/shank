@@ -23,4 +23,14 @@ $(document).ready(function() {
 		});
 	});
 	
+	//BUTTON ADD
+	$('input[data-href]').click(function(e) {
+		e.preventDefault();
+	   var $this = $(this);
+	   var url = $this.attr('data-href');
+	   if(url) {
+	   	window.location = url;
+	   }
+	});
+	
 });

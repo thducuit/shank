@@ -47,11 +47,12 @@ $url = url_add_params($params, $url);
                 <input type="submit" name="search" value="Tìm kiếm" onclick="javascript:return RequiredEmptyField('.txtSearch','Chưa nhập chuỗi tìm kiếm!');"
                     id="cmdSearch" class="cmdSearch button">
 
-                <a href="#" id="cmdReset" class="button">Reset</a>
+                <input type="submit" id="cmdReset" class="button" value='Reset' />
                 </form>
             </div>
         </div>
-        <div id="main-content">
+        <form class='table-form' method='post'><!--Content form-->
+            <div id="main-content">
             <div class="widget">
                 <div class="whead">
                  <div class="block-left control">
@@ -67,7 +68,7 @@ $url = url_add_params($params, $url);
                  entries
                 </div>
                  <div class="block-right control">
-                    <a href="/index.php/install/module/add" class='button'>Thêm</a>
+                    <input type="submit" name='cmdAdd' data-href="/index.php/install/module/add" class='button buttonAdd'  value='Thêm' />
                     <input type="submit" name="cmdUpdate" value="Cập nhật" id="cmdUpdate" class="button buttonUpdate" />
                     <input type="submit" name="cmdDel" value="Xóa" id="cmdDel" class="button buttonDel" />
                     <!--<input type="submit" name="cmdPublish" value="Hiện" id="cmdPublish" class="button buttonUnPublish" />
@@ -175,6 +176,7 @@ $url = url_add_params($params, $url);
                 </div>
             </div>
         </div>
+        </form><!--//Content form-->
         <div class="clearfix">
         </div>
     </div>
