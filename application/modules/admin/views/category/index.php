@@ -14,6 +14,16 @@
         </div>
         <form class='table-form' action='<?php echo url_add_params($params, '/index.php/admin/category/update'); ?>' method='post'><!--Content form-->
             <div id="main-content">
+            
+            <!--notice-->
+            <?php
+            $notice = $this->session->flashdata('notice');
+            if( isset( $notice ) && $notice ) {
+                notice( $notice ); 
+            }
+            ?>
+            <!--//notice-->
+
             <div class="widget">
                 <div class="whead">
                     <div class="block-left control">

@@ -17,5 +17,13 @@ class Group_Model extends CI_Model {
         $this->db->insert( $this->table, $data );
         return $this->db->insert_id();
     }
+
+    public function list_all($select = array()) {
+        if(count($select) > 0) {
+             $this->db->select($select);
+        }
+        $query = $this->db->get($this->table);
+        return $query->result_array();
+    }
     
 }

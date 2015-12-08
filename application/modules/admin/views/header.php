@@ -34,17 +34,20 @@
 
     <script type="text/javascript">
 		var WEBROOT = '';
-		var CONFIRM_DELETE = 'Ban co muon xoa';
+		var CONFIRM_DELETE_MSG = 'Ban co muon xoa';
+        var CONFIRM_TITLE_DIALOG = 'Xác nhận';
 		/*CONFIRM_EXTEND = '';
 		CONFIRM_MAILINFO = '';
 		CONFIRM_MAILEXTEND = '';*/
 		var CONFIRM_DELETE_ALL = '';
-		var DIALOG_TITLE = '';
+		var DIALOG_TITLE = 'Thông báo';
 		var DIALOG_TITLE_CLOSE = 'Dong lai';
 		var BTN_DIALOG_OK = 'Tiep tuc';
 		var BTN_DIALOG_CANCEL = 'thoi';
 		var TTL_GOTOTOP = '';
 		var MENUNAME = '';
+
+        var VALIDATE_REQUIRED = '';
 	</script>
 </head>
 <div id="header">

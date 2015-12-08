@@ -122,6 +122,8 @@ class Category extends Base_Admin_Controller {
                 $this->alias_admin_model->insert($category_id, $category);
             }
             
+            //NOTICE
+            $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Insert success') );
             //BACK TO INDEX
             redirect( url_add_params($this->params, '/admin/category') );
         } else {

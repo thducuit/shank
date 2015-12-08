@@ -1,5 +1,5 @@
 <div id="page-wrapper">
-    <form action='' method='post'>
+    <form action='' method='post' id="formuser">
     <div id="main-wrapper">
         <div id="main-header">
             <div class="block-left">
@@ -14,6 +14,16 @@
             </div>
         </div>
         <div id="main-content">
+
+            <!--notice-->
+            <?php
+            $notice = $this->session->flashdata('notice');
+            if( isset( $notice ) && $notice ) {
+                notice( $notice ); 
+            }
+            ?>
+            <!--//notice-->
+            
             <div id="content-outer">
                 <div class="content-wrapper">
                     <div class="content">
@@ -90,29 +100,17 @@
             <div class="block-left sidebar">
                 <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
                     <div class="portlet-header ui-widget-header">
-                        <span class="ui-icon ui-icon-circle-arrow-s"></span><?php echo $this->lang->line('txt_category');?></div>
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span>Nhóm</div>
                     <div class="portlet-content">
-                        <select size="4" name="lstCate"  id="lstCate" class="listbox lstCate">
-                            <option value="0">Top</option>
-                            <option value="102">Đá quý &amp; Bán quý ép vỉ</option>
-                            <option value="95">TS đá cz</option>
-                            <option value="142">.....Nhẫn</option>
-                            <option value="143">.....Bông tai</option>
-                            <option value="144">.....Mặt dây</option>
-                            <option value="94">TS nam</option>
-                            <option value="149">.....Nhẫn đá màu</option>
-                            <option value="145">.....Nhẫn kim cương</option>
-                            <option value="50">TS cưới</option>
-                            <option value="51">.....Nhẫn cặp</option>
-                            <option value="5">TS đá màu</option>
-                            <option value="31">.....Mặt dây</option>
-                            <option value="32">.....Bông tai</option>
-                            <option value="30">.....Nhẫn</option>
-                            <option value="4">TS kim cương</option>
-                            <option selected="selected" value="27">.....Bông tai</option>
-                            <option value="26">.....Mặt dây</option>
-                            <option value="25">.....Nhẫn nữ</option>
-                        </select>
+                        <?php 
+                            my_select(
+                                $list_group, 
+                                $option = array('title' => 'group_name', 'value' => 'group_id'),
+                                $attributes = array('name' => "group_id", 'id' => 'lstCate', 'class' => 'listbox lstCate', 'size' => 4),
+                                $selected = array(), 
+                                $no_choice = array('title' => $this->lang->line('txt_all'), 'value' => 0)
+                            );
+                        ?>
                     </div>
                 </div>
                 
@@ -142,3 +140,36 @@
     </div>
     </form>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('#formuser').validate({
+            rules: {
+                username: {
+                    required: true,
+                    minlength: 6
+                },
+                fullname: {
+                    required: true
+                },
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                username: {
+                    required: "nhap deee",
+                    minlength:"nhap du 6 ki tu dum di"
+                },
+                fullname: {
+                    required: "nhap dum cai"
+                },
+                email: {
+                    required: "nhap dung email di",
+                    email: "chua dung kieu email"
+                }
+            }
+        });
+    });
+</script>

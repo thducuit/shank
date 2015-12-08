@@ -18,6 +18,16 @@
                 </div>
             </div>
             <div id="main-content">
+
+                <!--notice-->
+                <?php
+                $notice = $this->session->flashdata('notice');
+                if( isset( $notice ) && $notice ) {
+                    notice( $notice ); 
+                }
+                ?>
+                <!--//notice-->
+            
                 <div class="widget">
                     <div class="whead">
                      <div class="block-left control">

@@ -14,6 +14,16 @@
             </div>
         </div>
         <div id="main-content">
+            
+            <!--notice-->
+            <?php
+            $notice = $this->session->flashdata('notice');
+            if( isset( $notice ) && $notice ) {
+                notice( $notice ); 
+            }
+            ?>
+            <!--//notice-->
+
             <div id="content-outer">
                 <div class="content-wrapper">
                     <div class="content">

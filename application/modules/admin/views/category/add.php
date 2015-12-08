@@ -14,6 +14,16 @@
             </div>
         </div>
         <div id="main-content">
+
+            <!--notice-->
+            <?php
+            $notice = $this->session->flashdata('notice');
+            if( isset( $notice ) && $notice ) {
+                notice( $notice ); 
+            }
+            ?>
+            <!--//notice-->
+            
             <div id="content-outer">
                 <div class="content-wrapper">
                     <div class="content">
@@ -25,19 +35,22 @@
                                 </li>
                                 <?php } ?>
                             </ul><!--//TABS-HEADING-->
-                            <?php foreach($languages as $lang) { ?>
+                            <?php foreach($languages as $lang) { 
+                                $l = $lang['language_id'];
+                            ?>
                             <div id="tabs-<?php echo $lang['language_id']?>">
                                 <div class="form">
                                     <div class="block-left">
                                         
                                         <div class='form-field'>
                                             <label class="desc"> <?php echo $this->lang->line('txt_title');?></label>
-                                            <input name="category[<?php echo $lang['language_id']?>][title]" type="text" value="" class="field text full"/>
+                                            <input id='<?php echo sprintf("category_%s_title", $l); ?>' name="category[<?php echo $lang['language_id']?>][title]" type="text" value="" class="field text full"/>
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc">Alias</label>
-                                            <input name="category[<?php echo $lang['language_id']?>][alias]" data-area='category[<?php echo $lang['language_id']?>][title]' type="text" value="" class="field text full">
+                                            <input placeholder='click here to get alias' name="category[<?php echo $lang['language_id']?>][alias]" data-area='<?php echo sprintf("category_%s_title", $l); ?>' type="text" value="" class="field text full">
+                                            
                                         </div>
                                         
                                         <div class="form-field">

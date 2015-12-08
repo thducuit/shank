@@ -1,6 +1,15 @@
 $(document).ready(function() {
-    $('*[data-delete-confirm]').easyconfirm();
+    $('*[data-delete-confirm]').easyconfirm(
+    		{
+    			locale: { 
+    				title: CONFIRM_TITLE_DIALOG, 
+    				text: CONFIRM_DELETE_MSG,
+    				button: [BTN_DIALOG_CANCEL, BTN_DIALOG_OK]
+    			}
+    		}
+    	);
     
+
     // UDATE STATUS
 	$('input[data-status]').click(function() {
 		var $this = $(this);
@@ -108,5 +117,7 @@ $(document).ready(function() {
 		}
 	});*/
 	
-	
+	setTimeout(function() {
+		$('.flash').fadeOut();
+	}, 1000);
 });

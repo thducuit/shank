@@ -73,6 +73,9 @@ class Group extends Base_Admin_Controller {
                 'group_permission'  => json_encode($permission)
             );
             $this->group_admin_model->insert($data);
+            
+            //RUN VIEW
+            redirect ('/admin/group');
         }
         $this->data['list_module'] = $this->module_admin_model->get_list();
         //RUN VIEW

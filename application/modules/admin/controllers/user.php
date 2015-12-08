@@ -47,7 +47,8 @@ class User extends Base_Admin_Controller {
      */
      
      public function add() {
-          $this->load->Model("user_admin_model");    
+          $this->load->Model("user_admin_model");   
+          $this->load->Model("group_admin_model");  
           if(isset($_POST['cmdAdd'])){
               $data = array();
               $data['username'] = $this->input->post('username');
@@ -62,6 +63,7 @@ class User extends Base_Admin_Controller {
               
                redirect( '/admin/user' );
           }else {
+              $this->data['list_group'] = $this->group_admin_model->list_all( array('group_id', 'group_name' ) );
               $this->template->build('user/add', $this->data);
               
           }
@@ -75,6 +77,7 @@ class User extends Base_Admin_Controller {
      public function edit() {
         $user_id = $this->input->get('userid');
         $this->load->Model("user_admin_model");
+        $this->load->Model("group_admin_model");
         
         if (isset($_POST['cmdEdit'])) {
           $data = array();
@@ -91,6 +94,7 @@ class User extends Base_Admin_Controller {
           redirect('/admin/user');
         }else {
          $this->data['list'] = (array)$this->user_admin_model->get_by_id($user_id);
+         $this->data['list_group'] = $this->group_admin_model->list_all( array('group_id', 'group_name' ) );
          $this->template->build('user/edit', $this->data);
         }
      }

@@ -33,7 +33,20 @@ if (!function_exists('url_add_params')) {
         }
         return substr($url, 0, -1);
     }
+}
 
+
+if (!function_exists('notice')) {
+    function notice($obj) {
+        $ci =& get_instance();
+        $k = 'alert_' . $obj['status'];
+        $title = $ci->lang->line($k);
+        $n =  "<div class=\"response-msg " . $obj['status'] . " ui-corner-all flash\">
+                  <span>" . $title . "</span>
+                  " . $obj['message'] . "
+              </div>";
+        echo $n;  
+    }
 }
 
 ?>
