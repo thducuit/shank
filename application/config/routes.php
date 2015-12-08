@@ -38,9 +38,42 @@
 |
 */
 
-$route['default_controller'] = "welcome";
+$route['default_controller'] = "default/index";
 $route['404_override'] = '';
 
+$route['index.html']                 = "default/index";
+
+//ENGLISH
+$route['about-us.html']               = "default/about/index";
+$route['(:any)/about-us/(:any).html'] = "default/about/detail/$1/$2";
+
+$route['news.html']                  = "default/news/index";
+$route['(:any)/news/(:any).html']    = "default/news/detail/$1/$2";
+
+$route['contact.html']               = "default/contact/index";
+
+$route['career.html']                = "default/career/index";
+$route['sitemap.html']               = "default/sitemap/index";
+
+$route['products.html']              = "default/products/index"; // trang san pham
+$route['(:any)/product/(:any).html'] = "default/products/product/$1/$2"; // trang san pham chi tiet 
+$route['(:any)/category/(:any).html']= "default/products/category/$1/$2"; // trang san pham theo danh muc
+
+//JAPAN
+$route['gioi-thieu.html']               = "default/about/index";
+$route['(:any)/gioi-thieu/(:any).html'] = "default/about/detail/$1/$2";
+
+$route['tin-tuc.html']                  = "default/news/index";
+$route['(:any)/tin-tuc/(:any).html']    = "default/news/detail/$1/$2";
+
+$route['lien-he.html']                  = "default/contact/index";
+
+$route['tuyen-dung.html']               = "default/career/index";
+$route['so-do-web.html']                = "default/sitemap/index";
+
+$route['san-pham.html']                 = "default/products/index"; // trang san pham
+$route['(:any)/san-pham/(:any).html']   = "default/products/product/$1/$2";  //trang san pham chi tiet
+$route['(:any)/loai-san-pham/(:any).html'] = "default/products/category/$1/$2"; //trang san pham theo danh muc
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

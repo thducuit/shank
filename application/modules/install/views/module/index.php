@@ -1,5 +1,5 @@
 <?php
-$url = url_add_params($params, $url);
+//$url = url_add_params($params, $url);
 ?>
 <div id="page-wrapper">
     <div id="main-wrapper">
@@ -95,9 +95,6 @@ $url = url_add_params($params, $url);
                             <th scope="col">
                                 Tên bài viết
                             </th>
-                            <th>
-                                Hình ảnh
-                            </th>
                             <th scope="col">
                                 Danh mục
                             </th>
@@ -130,11 +127,6 @@ $url = url_add_params($params, $url);
                             </td>
                             <td class="textleft">
                                 <a href="add.html" id="lblName" class="lblname"><?php echo $l['module_name']?></a>
-                            </td>
-                            <td>
-                                <a href="#" id="aPost" class="cbox cboxElement">
-                                    <img src="images/about_us.jpg" id="imgPost" class="imgPost" />
-                                </a>
                             </td>
                             <td class="textleft">
                                 <a id="lblCategory">Không có danh mục</a>

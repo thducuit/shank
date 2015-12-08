@@ -21,7 +21,8 @@ if (!function_exists('my_select')) {
                         $keywords = array(), 
                         $attributes = array(),
                         $selected = array(),
-    					$no_choice = array()
+    					$no_choice = array(),
+    					$exception = array()
     					) 
     {
         $html = '<select ';
@@ -30,31 +31,35 @@ if (!function_exists('my_select')) {
         }
         $html .=' >';
         
-        if(!empty($no_choice) && is_array($no_choice))
-            $html .= '<option value=\'' . $no_choice['value'] . '\'>' . $no_choice['title'] . '</option>';
-
+        if(!empty($no_choice) && is_array($no_choice)) {
+            $a = ( empty($selected) || in_array($no_choice['value'], $selected) ) ? 'selected' : '';
+            $html .= '<option ' . $a . ' value=\'' . $no_choice['value'] . '\'>' . $no_choice['title'] . '</option>';
+        }
+        
         foreach ($data as $k => $d) {
             if( (!empty($keywords['parent']) && (int)$d[$keywords['parent']] == 0) || empty($keywords['parent']) )
             {
                 $level = ( !empty($keywords['level']) ) ? $d[$keywords['level']] : '';
                 $selectedAttr = (in_array($d[$keywords['value']], $selected)) ? 'selected' : '';
-
-            	$html .= '<option ' . $selectedAttr . ' value=\'' . $d[$keywords['value']] . '\'>' ;
+                $disableAttr = (in_array($d[$keywords['value']], $exception)) ? 'disabled' : '';
+                
+            	$html .= '<option ' . $selectedAttr . ' ' . $disableAttr .  ' value=\'' . $d[$keywords['value']] . '\'>' ;
             	$html .= $level . $d[$keywords['title']] ;
             	$html .= '</option>';
             
-                if(!empty($keywords['parent'])){
-                    $html .= create_options($data, $keywords, $selected, (int)$d[$keywords['value']]);
+                if( !empty($keywords['parent']) ){
+                    $html .= create_options($data, $keywords, $selected, (int)$d[$keywords['value']], '', $exception);
                 }
             }
         }
         $html .= '</select>';
-        return $html;
+        echo $html;
     }
 
 
-    function create_options($data, $keywords, $selected, $parent_id) {
+    function create_options($data, $keywords, $selected, $parent_id, $l, $exception) {
         $html = '';
+        $l .= '&nbsp;&nbsp;&nbsp;'; 
         $child_array = array();
         foreach ($data as $k => $c) {
             if( $c[$keywords['parent']] == $parent_id ) {
@@ -67,13 +72,14 @@ if (!function_exists('my_select')) {
         foreach ($child_array as $k => $child) {
             $level = ( !empty($keywords['level']) ) ? $child[$keywords['level']] : '';
             $selectedAttr = (in_array($child[$keywords['value']], $selected)) ? 'selected' : '';
+            $disableAttr = (in_array($child[$keywords['value']], $exception)) ? 'disabled' : '';
 
-            $html .= '<option ' . $selectedAttr . ' value=\'' . $child[$keywords['value']] . '\'>';
-            $html .=    $child[$keywords['level']] . $child[$keywords['title']];
+            $html .= '<option ' . $selectedAttr . ' ' . $disableAttr . ' value=\'' . $child[$keywords['value']] . '\'>';
+            $html .=  $l  . '|' . $child[$keywords['level']] . '&nbsp;' . $child[$keywords['title']];
             $html .= '</option>'; 
 
             if( !empty($keywords['parent']) ){
-                $html .= create_options($data, $keywords, $selected, (int)$child[$keywords['value']]);
+                $html .= create_options($data, $keywords, $selected, (int)$child[$keywords['value']], $l, $exception);
             }
         }
         return $html;

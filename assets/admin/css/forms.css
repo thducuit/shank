@@ -16,7 +16,7 @@ form ul{
 	list-style-type:none;
 	width:100%;
 }
-form li{
+/*form li{
 	display:block;
 	margin:0;
 	padding:6px 0 9px;
@@ -28,7 +28,7 @@ form li:after, form li div:after{
 	height:0; 
 	clear:both; 
 	visibility:hidden;
-}
+}*/
 * html form li{height: 1%;}
 * html form li div{display:inline-block;}
 *+html form li div{display:inline-block;}
@@ -50,10 +50,11 @@ input.text, input.file, textarea.textarea, select.select{
 	padding:4px 1px;
 }
 input.text, textarea.textarea{
-	border-top:1px solid #7c7c7c;
-	border-left:1px solid #c3c3c3;
-	border-right:1px solid #c3c3c3;
-	border-bottom:1px solid #ddd;
+	/*border-top:1px solid #7c7c7c;*/
+	/*border-left:1px solid #c3c3c3;
+	border-right:1px solid #c3c3c3;*/
+	/*border-bottom:1px solid #ddd;*/
+	border:1px solid #ddd;
 }
 select.select{
 	padding:1px 5px 0 0;

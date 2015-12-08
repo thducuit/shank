@@ -4,12 +4,10 @@
  * ADMIN LANGUAGE
  * --------------------------------------------------------------------
  *
- * And away we go...
+ * Language in Administrator 
  *
  */
-define('ADMIN_LANGUAGE', 'en');
-
-/*define('ADMIN_LANGUAGE_PREFIX', 'en');*/
+define('ADMIN_LANGUAGE', 'en');//vn
 
 /*
  * --------------------------------------------------------------------
@@ -30,12 +28,10 @@ define('ADMIN_IMAGE_PATH', '/assets/admin/images');
  * DEFAULT LANGUAGE
  * --------------------------------------------------------------------
  *
- * And away we go...
+ * Language in Website 
  *
  */
-define('DEFAULT_LANGUAGE', 'vn');
-
-// define('DEFAULT_LANGUAGE_PREFIX', 'vn');
+define('DEFAULT_LANGUAGE', 'en');
 
 /*
  * --------------------------------------------------------------------
@@ -51,16 +47,16 @@ define('DEFAULT_CSS_PATH', '/assets/default/css');
 
 define('DEFAULT_IMAGE_PATH', '/assets/default/images');
 
-
 /*
  * --------------------------------------------------------------------
  * FLAGS PATH
  * --------------------------------------------------------------------
  *
- * And away we go...
+ * Flag image of some country on the world
  *
  */
 define('FLAGS_PATH', '/assets/flags');
+
 /*
  * --------------------------------------------------------------------
  * DEFAULT PAGING
@@ -70,3 +66,31 @@ define('FLAGS_PATH', '/assets/flags');
  *
  */
 define('DEFAULT_PAGING', 20);
+
+/*
+ * --------------------------------------------------------------------
+ * PERMISSION
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ *
+ */
+define('VIEW', 1);
+
+define('ADD', 2);
+
+define('EDIT', 4);
+
+define('DELETE', 8);
+
+define('FULL_PERMISSION', 16);
+
+/*
+ * --------------------------------------------------------------------
+ * ENCODE STRING
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ *
+ */
+ define('ENCRYPTION_KEY', 'tuananh1907');
