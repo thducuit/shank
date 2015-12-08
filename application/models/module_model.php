@@ -7,6 +7,10 @@ class Module_Model extends CI_Model {
         parent::__construct();
         $this->load->database();  
     }
+    
+    public function get_table() {
+        return $this->table;
+    }
 
     public function list_all($select = array()) {
         if(count($select) > 0) {
@@ -21,14 +25,22 @@ class Module_Model extends CI_Model {
         $query = $this->db->get($this->table);
         return $query->row();
     }
+    
+    public function get_by_code($code) {
+        if( strlen($code) == 0 ) return array();
+        $this->db->where('module_code', $code);
+        $query = $this->db->get($this->table);
+        return $query->row();
+    }
 
     public function insert($data) {
-        if( empty($data) ) return;
-        return $this->db->insert($this->table, $data);
+        if( empty($data) ) return 0;
+        $this->db->insert($this->table, $data);
+        return $this->db->insert_id();
     }
 
     public function update($data) {
-        if( empty($data) || empty($data['module_id']) ) return;
+        if( empty($data) || empty($data['module_id']) ) return 0;
         $this->db->where('module_id', $data['module_id']); 
         return $this->db->update($this->table, $data);
     }
@@ -40,7 +52,8 @@ class Module_Model extends CI_Model {
         if( count($result) > 0 ) {
             return $this->update($data);
         }else {
-            return $this->insert($data);
+            $this->insert($data);
+            return $this->db->insert_id();
         }
     }
     

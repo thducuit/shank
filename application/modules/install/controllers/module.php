@@ -17,7 +17,7 @@ class Module extends Base_Install_Controller {
      
     function __construct(){
         parent::__construct();
-        $this->load->helper('custom_url');
+        $this->load->helper('utility');
         
         $this->module = 'module';
         $this->url = '/install/module';
@@ -90,6 +90,12 @@ class Module extends Base_Install_Controller {
             $this->load->helper('select');
 
             $data['list_parent'] = $this->module_install_model->list_all(array('module_id', 'module_name', 'module_level', 'module_parent'));
+            $data['list_children'] = array();
+            foreach($data['list_parent'] as $c) {
+                if( $c['module_parent'] != 0 ) {
+                    array_push($data['list_children'], $c['module_id']);
+                }
+            }
             $this->template->title('Module');
             $this->template->build('module/add', $data);
         }

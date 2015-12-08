@@ -56,7 +56,8 @@
                                 $option = array('title' => 'module_name', 'value' => 'module_id', 'parent' => 'module_parent', 'level' => 'module_level'),
                                 $attributes = array('name' => 'module_parent', 'id' => 'lstCate', 'class' => 'listbox lstCate', 'size' => 4),
                                 $selected = array(), 
-                                $no_choice = array('title' => '-- None --', 'value' => 0)
+                                $no_choice = array('title' => '-- None --', 'value' => 0),
+                                $exception = $list_children
                             );
                         ?>
                     </div>

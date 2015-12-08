@@ -29,7 +29,7 @@ if (!function_exists('my_toggle_button')) {
          $html = sprintf($html, $option['publish'], 'unpublish', $class, $attrs, $data_status, $data_row);  
        }
        
-       return $html;
+       echo $html;
    }
 }
 

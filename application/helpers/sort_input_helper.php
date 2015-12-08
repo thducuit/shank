@@ -29,7 +29,7 @@ if (!function_exists('my_sort_input')) {
        $class = ( isset($attributes['class']) && !empty($attributes['class']) ) ? $attributes['class'] : '';
        
        $html = sprintf($html, $name, $value, $attrs, $class);
-       return $html;
+       echo $html;
    }
 }
 
