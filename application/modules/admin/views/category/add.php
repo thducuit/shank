@@ -44,12 +44,12 @@
                                         
                                         <div class='form-field'>
                                             <label class="desc"> <?php echo $this->lang->line('txt_title');?></label>
-                                            <input id='<?php echo sprintf("category_%s_title", $l); ?>' name="category[<?php echo $lang['language_id']?>][title]" type="text" value="" class="field text full"/>
+                                            <input data-for='<?php echo sprintf("#category_%s_alias", $l); ?>' name="category[<?php echo $lang['language_id']?>][title]" type="text" value="" class="field text full"/>
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc">Alias</label>
-                                            <input placeholder='click here to get alias' name="category[<?php echo $lang['language_id']?>][alias]" data-area='<?php echo sprintf("category_%s_title", $l); ?>' type="text" value="" class="field text full">
+                                            <input id='<?php echo sprintf("category_%s_alias", $l); ?>' placeholder='click here to get alias' name="category[<?php echo $lang['language_id']?>][alias]" type="text" value="" class="field text full">
                                             
                                         </div>
                                         

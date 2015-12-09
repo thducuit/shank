@@ -63,6 +63,7 @@ $lang['alert_error'] = 'Error message';
 $lang['alert_inf'] = 'Information message message';
 $lang['alert_notice'] = 'Notice message';
 
+
 /**
  * VALIDATE
  */
