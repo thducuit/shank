@@ -17,6 +17,12 @@ class Group_Model extends CI_Model {
         $this->db->insert( $this->table, $data );
         return $this->db->insert_id();
     }
+    
+    public function update($id, $data) {
+        if( empty($id)) return false;
+        $this->db->where('group_id', $id);
+        $this->db->update($this->table,$data);
+    }
 
     public function list_all($select = array()) {
         if(count($select) > 0) {
@@ -26,4 +32,10 @@ class Group_Model extends CI_Model {
         return $query->result_array();
     }
     
+    public function get_by_id($id) {
+        if( empty($id) ) return array();
+        $this->db->where('group_id', $id);
+        $query = $this->db->get($this->table);
+        return $query->row();
+    }
 }

@@ -100,22 +100,21 @@ $(document).ready(function() {
 	    $('form').submit();
 	});
 	
-	
-	/*$(':text[data-for^="alias"]').blur(function() {
-		$this = $(this);
-		$alias = $(':text[data-alias="' + $this.attr('data-for') + '"]');
-		
-		if ($alias.val().blank()) {
+	//ALIAS
+	$(':text[data-for]').blur(function() {
+		var $this = $(this);
+		var $alias = $( $this.attr('data-for') );
+		if ( !$alias.val() ) {
 			$alias.attr('disabled', 'disabled');
 			$.ajax({
-				url: MyUtil.baseUrl('/admin/ajax/getalias'),
+				url: '/index.php/admin/ajax/alias',
 				data: { 'title': $this.val() },
 				success: function(data) {
 					$alias.val(data).removeAttr('disabled');
 				}
 			});
 		}
-	});*/
+	});
 	
 	setTimeout(function() {
 		$('.flash').fadeOut();

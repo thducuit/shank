@@ -8,8 +8,8 @@
                 </h1>
             </div>
             <div class="block-right">
-                <input name="keyword" data-href='<?php echo url_add_params($params, '/index.php/admin/group'); ?>' value='<?php echo $params['keyword'];?>' data-cha type="text" id="txtSearch" class="txtSearch textbox" placeholder='<?php echo $this->lang->line('txt_keyword');?>'>
-                <input type="submit" name="search" value="<?php echo $this->lang->line('txt_search');?>" id="cmdSearch" class="cmdSearch button">
+                <input name="keyword" href='<?php echo url_add_params($params, '/index.php/admin/group'); ?>' value='<?php echo $params['keyword'];?>' data-cha type="text" id="txtSearch" class="txtSearch textbox" placeholder='<?php echo $this->lang->line('txt_keyword');?>'>
+                <input type="submit" data-search='#txtSearch' name="search" value="<?php echo $this->lang->line('txt_search');?>" id="cmdSearch" class="cmdSearch button">
             </div>
         </div>
         <form class='table-form' action='<?php echo url_add_params($params, '/index.php/admin/group/update'); ?>' method='post'><!--Content form-->
@@ -67,8 +67,8 @@
                         </tr>
                         <?php 
                         foreach ($list as $key => $l) {
-                            //$expand_params = $params;
-                            //$expand_params['id'] = $l['category_id'];
+                            $expand_params = $params;
+                            $expand_params['id'] = $l['group_id'];
                         ?>
                         <tr class="">
                             <td class="cellwidth1">
@@ -79,7 +79,7 @@
                                 <input type="button"  class="tooltip btgrid edit" title="Sửa" />
                             </td>
                             <td class="cellwidth1">
-                                <?php echo $l['group_name']?>
+                                <a href="<?php echo url_add_params($expand_params, '/index.php/admin/group/edit')?>"><?php echo $l['group_name']?></a>
                             </td>
                             <td class="textleft">
                                 <?php echo $l['group_description']?>

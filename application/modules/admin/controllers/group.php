@@ -74,6 +74,8 @@ class Group extends Base_Admin_Controller {
             );
             $this->group_admin_model->insert($data);
             
+            //NOTICE
+            $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Insert success') );
             //RUN VIEW
             redirect ('/admin/group');
         }
@@ -89,6 +91,30 @@ class Group extends Base_Admin_Controller {
      * 
      */
     public function edit () {
+        $id = $this->input->get('id');
+        if( isset( $_POST['update'] ) ) {
+            $name = $this->input->post('name');
+            $description = $this->input->post('description');
+            $permission = $this->input->post('permission');
+            $permission = ( is_array($permission) ) ? $permission : array();
+            $data = array(
+                'group_name' => $name,      
+                'group_description' => $description,
+                'group_builtin'     => 0,
+                'group_datecreated' => date( 'Y-m-d H:i:s' ),
+                'group_level'       => 1,
+                'group_permission'  => json_encode($permission)
+            );
+            $this->group_admin_model->update($id, $data);
+            
+            //NOTICE
+            $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );
+            //RUN VIEW
+            redirect ('/admin/group');
+        }
+        $group = array();
+        $this->data['list'] = (array)$this->group_admin_model->get_by_id($id);
+        $this->data['list_module'] = $this->module_admin_model->get_list();
         //RUN VIEW
         $this->template->build( $this->class_view, $this->data);    
     }
