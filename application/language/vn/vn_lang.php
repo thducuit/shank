@@ -62,3 +62,12 @@ $lang['alert_success'] = 'Success message';
 $lang['alert_error'] = 'Error message';
 $lang['alert_inf'] = 'Information message message';
 $lang['alert_notice'] = 'Notice message';
+
+/**
+ * VALIDATE
+ */
+
+$lang['error_required'] = 'Bạn không được để trống chỗ này !';
+$lang['error_minlength'] = 'Vui lòng nhập nhiều hơn 6 kí tự !';
+$lang['error_email'] = 'Email không đúng !';
+$lang['error_equalto'] = 'Password không đúng !';

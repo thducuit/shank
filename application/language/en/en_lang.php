@@ -66,6 +66,16 @@ $lang['alert_inf'] = 'Information message message';
 $lang['alert_notice'] = 'Notice message';
 
 
+/**
+ * VALIDATE
+ */
+
+$lang['error_required'] = 'You cannot leave this empty !';
+$lang['error_minlength'] = 'Please enter more than 6 characters !';
+$lang['error_email'] = 'Email is invalid !';
+$lang['error_equalto'] = 'Password is not correct !';
+
+
 
 
 

@@ -169,23 +169,23 @@
             messages: {
                 username: {
                     required: VALIDATE_REQUIRED,
-                    minlength:"nhap du 6 ki tu dum di"
+                    minlength: VALIDATE_MINLENGTH
                 },
                 fullname: {
-                    required: "nhap dum cai"
+                    required: VALIDATE_REQUIRED
                 },
                 email: {
-                    required: "nhap dung email di",
-                    email: "chua dung kieu email"
+                    required: VALIDATE_REQUIRED,
+                    email: VALIDATE_EMAIL
                 },
                 password: {
-                    required: "nhap pass vao di",
-                    minlength: "nhap du 6 ki tu dum di"
+                    required: VALIDATE_REQUIRED,
+                    minlength: VALIDATE_MINLENGTH
                 },
                 confirm_password: {
-                    required: "nhap lai pass di",
-                    equalTo: "ko giong password roi",
-                    minlength: "nhap du 6 ki tu dum di"
+                    required: VALIDATE_REQUIRED,
+                    equalTo: VALIDATE_EQUALTO,
+                    minlength: VALIDATE_MINLENGTH
                 }
             }
         });

@@ -159,15 +159,15 @@
             },
             messages: {
                 username: {
-                    required: "nhap deee",
-                    minlength:"nhap du 6 ki tu dum di"
+                    required: VALIDATE_REQUIRED,
+                    minlength:VALIDATE_MINLENGTH
                 },
                 fullname: {
-                    required: "nhap dum cai"
+                    required: VALIDATE_REQUIRED
                 },
                 email: {
-                    required: "nhap dung email di",
-                    email: "chua dung kieu email"
+                    required: VALIDATE_REQUIRED,
+                    email: VALIDATE_EMAIL   
                 }
             }
         });

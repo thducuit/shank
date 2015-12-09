@@ -48,6 +48,10 @@
 		var MENUNAME = '';
 
         var VALIDATE_REQUIRED = '<?php echo $this->lang->line('error_required');?>';
+        var VALIDATE_MINLENGTH = '<?php echo $this->lang->line('error_minlength');?>';
+        var VALIDATE_EMAIL = '<?php echo $this->lang->line('error_email');?>';
+        var VALIDATE_EQUALTO = '<?php echo $this->lang->line('error_equalto');?>';
+
 	</script>
 </head>
 <div id="header">
