@@ -7,7 +7,9 @@ if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class User extends Base_Admin_Controller {
     
     private $data;
-     
+    private $class_view;
+    private $params;
+    
     /**
      * CONSTRUCT 
      * 
@@ -15,6 +17,18 @@ class User extends Base_Admin_Controller {
      function __construct() {
          parent::__construct();
          $this->data = $this->get_data();
+         $this->params = array();
+         
+         //GET VIEW
+         $this->class_view = $this->router->fetch_class() . "/" . $this->router->fetch_method();
+         
+         
+         //GET PARAMS
+         $this->params = $this->request_params( new User_inputs );
+         
+         
+         //ADD PARAMS TO VIEW
+         $this->data['params'] = $this->params;
      }
      
      
@@ -59,13 +73,13 @@ class User extends Base_Admin_Controller {
               $data['gender'] = $this->input->post('gender');
               $data['phone'] = $this->input->post('phone');
               $data['address'] = $this->input->post('address');
+              $data['group_id'] = (int)$this->input->post('group_id');
               $this->user_admin_model->insert($data);
               
                redirect( '/admin/user' );
           }else {
               $this->data['list_group'] = $this->group_admin_model->list_all( array('group_id', 'group_name' ) );
               $this->template->build('user/add', $this->data);
-              
           }
      }
      
@@ -89,6 +103,7 @@ class User extends Base_Admin_Controller {
           $data['gender'] = $this->input->post('gender');
           $data['phone'] = $this->input->post('phone');
           $data['address'] = $this->input->post('address');
+          $data['group_id'] = (int)$this->input->post('group_id');
           //_pr($data, true);
           $this->user_admin_model->update($user_id,$data);
           redirect('/admin/user');

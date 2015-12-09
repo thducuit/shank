@@ -7,6 +7,7 @@ class User_Inputs extends Inputs {
 	public function __construct () {
 		parent::__construct();
 		$this->params = array(
+		    "pid" => 0,
             "page" => 1,
             "keyword" => '',
             "range" => 10
@@ -15,10 +16,12 @@ class User_Inputs extends Inputs {
 		$page = $this->input->get('page');
         $keyword = $this->input->get('keyword');
         $range = $this->input->get('range');
+        $pid = $this->input->get('pid');
 
         return 	$this->set_param('page', $page)
                         ->set_param('keyword', $keyword)
                         ->set_param('range', $range)
+                        ->set_param('pid', $pid)
                         ->get_params();
 	}
 	

@@ -12,7 +12,7 @@ if (!defined('BASEPATH'))
 
 if (!function_exists('my_select_range')) {
     function my_select_range($attributes = array(), $val = 0) {
-        $html = '<select ';
+        $html = 'show<select ';
         foreach ($attributes as $a => $v) {
             $html .= "$a='$v' "; 
         }
@@ -23,7 +23,7 @@ if (!function_exists('my_select_range')) {
             $html.="<option $selected value=\"$i\">$i</option>";
         }
         
-       $html.="</select>";
+       $html.="</select>entries";
        
        echo $html;
    }

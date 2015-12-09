@@ -11,27 +11,27 @@ class Base_Admin_Controller extends MX_Controller {
     function __construct(){
         //if i remove this parent::__construct(); the error is gone
         parent::__construct();
-        $this->template->set_theme('admin_theme');
-        $this->template->set_layout('one_col');
-        $this->template->set_partial('header','header');
-        $this->template->set_partial('footer','footer');
-        
-        $this->lang->load(ADMIN_LANGUAGE, ADMIN_LANGUAGE); //$this->lang->load('custom', ADMIN_LANGUAGE);
-        $this->load->library('session');
         
         $this->module_list = array();
+        
         $this->data = array();
         
-        $this->load->helper('url');
-        $this->load->helper('select');
-        $this->load->helper('button');
-        $this->load->helper('sort_input');
-        $this->load->helper('pagination');
-        $this->load->helper('utility');
-        $this->load->helper('alias');
+        //LOAD THEME
+        $this->load_theme();
         
+        //LOAD LANGUAGE
+        $this->lang->load(ADMIN_LANGUAGE, ADMIN_LANGUAGE); //$this->lang->load('custom', ADMIN_LANGUAGE);
+        
+        //LOAD LIBRARY
+        $this->load_library();
+        
+        //LOAD HELPER
+        $this->load_helper();
+        
+        //GET ALL LANGUAGES
         $this->get_languages();
         
+        //GET CURRENT MODULE
         $this->get_module_by_code( $this->module_code() );
         
         $this->data['module_list'] = $this->get_module_list();
@@ -83,6 +83,42 @@ class Base_Admin_Controller extends MX_Controller {
             $this->module_url .= "?mod=" . $this->module->module_code; 
         }
         return $this->module_url;
+    }
+    
+    /**
+     *  LOAD THEME 
+     * 
+     */
+    private function load_theme() {
+        $this->template->set_theme('admin_theme');
+        $this->template->set_layout('one_col');
+        $this->template->set_partial('header','header');
+        $this->template->set_partial('footer','footer');
+    }
+    
+    
+    /**
+     *  LOAD HELPER 
+     * 
+     */
+    private function load_helper() {
+        $this->load->helper('url');
+        $this->load->helper('select');
+        $this->load->helper('button');
+        $this->load->helper('sort_input');
+        $this->load->helper('pagination');
+        $this->load->helper('utility');
+        $this->load->helper('alias');
+    }
+    
+    
+    /**
+     *  LOAD LIBRARY 
+     * 
+     *
+     */
+    private function load_library() {
+        $this->load->library('session');
     }
     
 }

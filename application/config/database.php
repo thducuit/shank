@@ -47,10 +47,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
+$db['default']['hostname'] = '0.0.0.0';
+$db['default']['username'] = 'thducuit';
 $db['default']['password'] = '';
-$db['default']['database'] = 'shank';
+$db['default']['database'] = 'c9';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

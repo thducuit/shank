@@ -67,7 +67,7 @@ class Group extends Base_Admin_Controller {
             $data = array(
                 'group_name' => $name,      
                 'group_description' => $description,
-                'group_builtin'     => 0,
+                'group_builtin'     => 1,
                 'group_datecreated' => date( 'Y-m-d H:i:s' ),
                 'group_level'       => 1,
                 'group_permission'  => json_encode($permission)
@@ -100,7 +100,7 @@ class Group extends Base_Admin_Controller {
             $data = array(
                 'group_name' => $name,      
                 'group_description' => $description,
-                'group_builtin'     => 0,
+                'group_builtin'     => 1,
                 'group_datecreated' => date( 'Y-m-d H:i:s' ),
                 'group_level'       => 1,
                 'group_permission'  => json_encode($permission)

@@ -31,16 +31,12 @@
                 <div class="widget">
                     <div class="whead">
                      <div class="block-left control">
-                     show
-                        <select name="ddlshowitem" id="ddlshowitem" class="combobox">
-                        <option value="10">10</option>
-                         <option selected="selected" value="20">20</option>
-                        <option value="30">30</option>
-                        <option value="40">40</option>
-                        <option value="50">50</option>
-                        <option value="100">100</option>
-                        </select>
-                     entries
+                        <?php
+                            my_select_range(
+                                array('name' => 'range', 'id' => 'ddlshowitem' , 'class' => 'combobox ddlFilter', 'data-filter' => url_add_params($params, '/index.php/admin/user')),
+                                $params['range']
+                            );
+                        ?>
                     </div>
                      <div class="block-right control">
                     <input data-href="/index.php/admin/user/add" type="submit" name="cmdAdd" value=<?php echo $this->lang->line('txt_add');?> id="cmdAdd" class="button buttonAdd" />

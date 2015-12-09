@@ -12,4 +12,7 @@ class User_Admin_Model extends User_Model {
         return $query->result_array();
     }
     
+    public function login($username, $password) {
+        return false;
+    }
 }

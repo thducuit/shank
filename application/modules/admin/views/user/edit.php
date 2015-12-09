@@ -107,7 +107,7 @@
                                 $list_group, 
                                 $option = array('title' => 'group_name', 'value' => 'group_id'),
                                 $attributes = array('name' => "group_id", 'id' => 'lstCate', 'class' => 'listbox lstCate', 'size' => 4),
-                                $selected = array(), 
+                                $selected = array($list['group_id']), 
                                 $no_choice = array('title' => $this->lang->line('txt_all'), 'value' => 0)
                             );
                         ?>
