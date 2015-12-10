@@ -4,6 +4,6 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>TQCMS | Powerful backend admin user interface</title>
-    <link href="<?= ADMIN_JS_PATH ?>/login.css" rel="stylesheet" media="all" />
+    <link href="<?= ADMIN_CSS_PATH ?>/login.css" rel="stylesheet" media="all" />
    
 </head>

@@ -1,7 +1,7 @@
 <body class="loginpage">
 	    <div class="login">
 			<div class="widget_header">
-				<img src="images/logo.png" alt="logo" />
+				<img src="<?php echo ADMIN_IMAGE_PATH ?>/logo.png" alt="logo" />
 			</div>
 			<div class="widget_contents lgNoPadding">
 			    
