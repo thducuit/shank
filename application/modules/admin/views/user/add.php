@@ -5,12 +5,12 @@
             <div class="block-left">
                 <img src="<?php echo ADMIN_IMAGE_PATH ?>/icons/icon_list.png" alt="" />
                 <h1 class='title'>
-                    <?php echo $this->lang->line('txt_add');?>
+                    User :: <?php echo $this->lang->line('txt_add');?>
                 </h1>
             </div>
             <div class="block-right">
-                <input type="submit" name="Trạng thái" value=<?php echo $this->lang->line('txt_save');?> id="cmdAdd" class="button " />
-                <input data-href="/index.php/admin/user" type="submit" name="cmdDel" value=<?php echo $this->lang->line('txt_cancel');?> id="cmdDel" class="button " />
+                <input type="submit" name="add" value=<?php echo $this->lang->line('txt_save');?> id="cmdAdd" class="button " />
+                <input data-href="/index.php/admin/user" type="submit" name="cmdCancel" value=<?php echo $this->lang->line('txt_cancel');?> id="cmdCancel" class="button " />
             </div>
         </div>
         <div id="main-content">
@@ -87,8 +87,8 @@
                                     </div><!--//block-left -->
                                     <div class='clearfix'></div>
                                     <div class="form-control">
-                                        <input type="submit" name="cmdAdd" value=<?php echo $this->lang->line('txt_save');?> id="cmdAdd" class="button " />
-                                        <input type="submit" name="cmdDel" value=<?php echo $this->lang->line('txt_cancel');?> id="cmdDel" class="button " />
+                                        <input type="submit" name="add" value=<?php echo $this->lang->line('txt_save');?> id="cmdAdd" class="button " />
+                                        <input type="submit" name="cmdCancel" value=<?php echo $this->lang->line('txt_cancel');?> id="cmdCancel" class="button " />
                                     </div>
                                 </div>
                             </div><!--//tab -->
@@ -114,21 +114,6 @@
                     </div>
                 </div>
                 
-            </div>
-            <div class="widget none">
-                <div class="whead">
-                    <div class="block-left control">
-                    </div>
-                    <div class="block-right control">
-                    </div>
-                    <div class="clearfix">
-                    </div>
-                </div>
-                abcd
-                <div class="fg-toolbar tableFooter">
-                    <input type="submit" name="cmdAdd" value="Lưu" id="cmdAdd" class="button " />
-                    <input type="submit" name="cmdDel" value="Hủy" id="cmdDel" class="button " />
-                </div>
             </div>
             <div class="clearfix">
             </div>

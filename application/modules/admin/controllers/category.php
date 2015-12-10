@@ -113,7 +113,7 @@ class Category extends Base_Admin_Controller {
                 $category['language_id'] = $lang['language_id'];
                 $category['langmap_id'] = $langmap_id;
                 $category['module'] = $this->module_code();
-                $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : alias( $category['title'] );
+                $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : ( ( !empty( $category['title'] ) ) ? alias( $category['title'] ) : 'cat-' . uniqid('shank_') );
                 
                 //INSERT CATEGORY
                 $category_id = $this->category_admin_model->insert( $category );
@@ -132,13 +132,6 @@ class Category extends Base_Admin_Controller {
             
             //GET LIST
             $this->get_list_parent_category();
-            /*$rs = $this->category_admin_model->list_all( $select = array( 'category_id', 'category_title', 'catparent_id', 'category_level', 'language_id'),
-                                                         $filters = array( 'category_status' => 1,  'category_module' => $this->module_code() ),
-                                                         $orders = array() 
-                                                       );
-            foreach($this->languages as $l) {
-                $this->data['list'][$l['language_id']] = get_list_by_language_id($l['language_id'], $rs);
-            }*/
             
             //RUN VIEW
             $this->template->build( $this->class_view, $this->data);
@@ -167,7 +160,7 @@ class Category extends Base_Admin_Controller {
                 $category = $categories[$lang['language_id']];
                 $category['status'] = $status;
                 $category['order'] = $order;
-                $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : alias( $category['title'] );
+                $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : ( ( !empty( $category['title'] ) ) ? alias( $category['title'] ) : 'cat-' . uniqid('shank_') );
                 
                 //UPDATE CATEGORY
                 $this->category_admin_model->update( $category );
@@ -190,14 +183,6 @@ class Category extends Base_Admin_Controller {
             
             //GET LIST
             $this->get_list_parent_category();
-            /*$rs = $this->category_admin_model->list_all( 
-                                                        $select = array( 'category_id', 'category_title', 'catparent_id', 'category_level', 'language_id'),
-                                                        $filters = array( 'category_status' => 1,  'category_module' => $this->module_code() ),
-                                                        $orders = array() 
-                                                        );
-            foreach($this->languages as $l) {
-                $this->data['list'][$l['language_id']] = get_list_by_language_id($l['language_id'], $rs);
-            }*/
             
             //RUN VIEW
             $this->template->build( $this->class_view, $this->data);
@@ -254,20 +239,6 @@ class Category extends Base_Admin_Controller {
             $ids = $this->input->post('ids');
             if( count($ids) > 0 ) {
                 foreach($ids as $id) {
-                    //GET LANGMAP ID
-                    /*$category = $this->category_admin_model->get_by_id($id);
-                    $langmap_id = $category->langmap_id;
-                    
-                    $categories = $this->category_admin_model->get_by_langmap_id($langmap_id);
-                    
-                    //DELETE DATA
-                    $this->category_admin_model->delete_by_langmap_id( $langmap_id );
-                    
-                    //DELETE ALIAS
-                    foreach($categories as $cat) {
-                        $alias_id = $cat['alias_id'];
-                        $this->alias_admin_model->delete($alias_id);
-                    }*/
                     $this->remove($id);
                 }
             }

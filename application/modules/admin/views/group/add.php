@@ -9,7 +9,7 @@
                 </h1>
             </div>
             <div class="block-right">
-                <button type="submit" name="add" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_add');?></button>
+                <button type="submit" name="add" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_save');?></button>
                 <button type="submit" data-href='<?php echo url_add_params($params, '/index.php/admin/group')?>' name="cancel"  id="cmdCancel" class="button "><?php echo $this->lang->line('txt_cancel');?></button>
             </div>
         </div>

@@ -63,7 +63,7 @@ class User extends Base_Admin_Controller {
      public function add() {
           $this->load->Model("user_admin_model");   
           $this->load->Model("group_admin_model");  
-          if(isset($_POST['cmdAdd'])){
+          if(isset($_POST['add'])){
               $data = array();
               $data['username'] = $this->input->post('username');
               $data['password'] = $this->input->post('password');
@@ -74,6 +74,8 @@ class User extends Base_Admin_Controller {
               $data['phone'] = $this->input->post('phone');
               $data['address'] = $this->input->post('address');
               $data['group_id'] = (int)$this->input->post('group_id');
+              $data['user_builtin'] = 0;
+              $data['active'] = 0;
               $this->user_admin_model->insert($data);
               
                redirect( '/admin/user' );
@@ -93,7 +95,7 @@ class User extends Base_Admin_Controller {
         $this->load->Model("user_admin_model");
         $this->load->Model("group_admin_model");
         
-        if (isset($_POST['cmdEdit'])) {
+        if (isset($_POST['update'])) {
           $data = array();
           $data['username'] = $this->input->post('username');
           /*$data['password'] = $this->input->post('password');
@@ -104,7 +106,8 @@ class User extends Base_Admin_Controller {
           $data['phone'] = $this->input->post('phone');
           $data['address'] = $this->input->post('address');
           $data['group_id'] = (int)$this->input->post('group_id');
-          //_pr($data, true);
+          $data['user_builtin'] = 0;
+          $data['active'] = (int)$this->input->post('active');
           $this->user_admin_model->update($user_id,$data);
           redirect('/admin/user');
         }else {
@@ -115,11 +118,25 @@ class User extends Base_Admin_Controller {
      }
      
      
+     
      public function delete() {
       $user_id = $this->input->get('userid');
       $this->load->Model("user_admin_model");
       $this->user_admin_model->delete($user_id);
       redirect ('/admin/user');
+     }
+     
+     
+     /**
+      * CHANGE PASSWORD 
+      * 
+      * kiểm tra người dùng nhập password cũ có đúng ko : ( kiểm tra = cách select với userid tương ưng + old_password nếu có trả ra kết quả nếu không có trả về null )  
+      *  + đúng->update password mới vào db
+      *  + sai-> trở về trang password , bật lỗi lên ( thông báo password cũ nhập chưa đúng)
+      * 
+      */
+     public function password() {
+       $this->template->build('user/password', $this->data);
      }
     
 }
