@@ -115,8 +115,60 @@ $(document).ready(function() {
 			});
 		}
 	});
+
+	//CK EDITOR
+	$('*[data-editor]').each(function() {
+		var id = $(this).attr('data-editor');
+		CKEDITOR.replace( id );
+	});
+
+	$('.gallery_list').each(function() {
+		var id = $(this).attr('id');
+		$('#'+id).sortable();
+	});
+
+	//GALLERY
+	function openKCFinder(lang) {
+		window.KCFinder = {
+	        callBackMultiple: function(files) {
+	            window.KCFinder = null;
+	            for(var i = 0; i < files.length; i++) {
+	            	var li = liHTML(files[i]);
+	            	$('#gallery_' + lang + '_list').append(li);
+	            	var elInput = $('#gallery_' + lang);
+	            }
+	        }
+	    };
+	   	window.open('/assets/admin/js/kcfinder/browse.php?type=files&dir=files/public',
+	        'kcfinder_multiple', 'status=0, toolbar=0, location=0, menubar=0, ' +
+	        'directories=0, resizable=1, scrollbars=0, width=800, height=600'
+	    );
+	} 
+
+	function liHTML(fileName) {
+		var HTML = '<li>';
+		HTML += '<div class=\'image\'>' + '<img src=\'' + fileName + '\'></div>';
+		HTML += '<div class=\'config\'>' + '<input placeholder=\'w\' class=\'width\'/><input placeholder=\'h\' class=\'height\'/></div>';
+		HTML += '</li>';
+		return HTML;
+	}
+
+	function store() {
+
+	}
+
+	$('.gallery_submit').click(function() {
+		
+	});
 	
+	$('.upload-gallery').click(function(e) {
+		e.preventDefault();
+		var lang = $(this).attr('rel');
+		openKCFinder(lang);
+	});
+	
+	//CLOSE FLASH
 	setTimeout(function() {
 		$('.flash').fadeOut();
-	}, 1000);
+	}, 3000);
 });

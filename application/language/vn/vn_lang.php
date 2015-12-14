@@ -71,4 +71,13 @@ $lang['alert_notice'] = 'Notice message';
 $lang['error_required'] = 'Bạn không được để trống chỗ này !';
 $lang['error_minlength'] = 'Vui lòng nhập nhiều hơn 6 kí tự !';
 $lang['error_email'] = 'Email không đúng !';
-$lang['error_equalto'] = 'Password không đúng !';
+$lang['error_equalto'] = 'Mật khẩu không đúng !';
+
+/**
+ * NOTICE
+ */
+
+$lang['txt_invalidoldpass'] = 'Nhập mật khẩu cũ sai !';
+$lang['txt_updatepasssucces'] = 'Cập nhật mật khẩu thành công!';
+$lang['txt_insertsuccess'] = 'Thêm vào thành công !';
+$lang['txt_updateinfor'] = 'Cập nhật thông tin thành công !';

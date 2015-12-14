@@ -75,9 +75,14 @@ $lang['error_minlength'] = 'Please enter more than 6 characters !';
 $lang['error_email'] = 'Email is invalid !';
 $lang['error_equalto'] = 'Password is not correct !';
 
+/**
+ * NOTICE
+ */
 
-
-
+$lang['txt_invalidoldpass'] = 'Invalid old password !';
+$lang['txt_updatepasssucces'] = 'Update password successfully !';
+$lang['txt_insertsuccess'] = 'Insert Successfully !';
+$lang['txt_updateinfor'] = 'Update information successfully !';
 
 
 

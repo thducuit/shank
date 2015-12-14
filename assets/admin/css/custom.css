@@ -53,3 +53,25 @@ button {
 .form-field label.error{
 	border: none;
 }
+
+.content-wrapper .content.full {
+	margin:0!important;
+}
+
+.tabs .ui-tabs-nav {
+	padding: 0!important
+}
+
+.gallery_list li{
+	width: 100%;
+	border: 1px solid #ccc;
+	float: left;
+	margin: 3px;
+}
+.gallery_list li .image {
+	float: left
+}
+.gallery_list li .config {
+	margin-top: 10px;
+	float: left
+}

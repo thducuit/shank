@@ -58,7 +58,7 @@ class Category extends Base_Admin_Controller {
      * INDEX ACTION 
      * 
      */
-    public function index () { $this->session->set_userdata('duc', 'vip');   $this->session->set_userdata('duc2', 'heu');
+    public function index () { 
         //SELECT
         $select = array('category_id', 'category_title', 'category_order', 'category_status', 'language_id', 'catparent_id', 'category_level');
         //FILTER
