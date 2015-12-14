@@ -55,7 +55,7 @@
                                         
                                         <div class="form-field">
                                             <label class="desc"> <?php echo $this->lang->line('txt_content');?></label>
-                                            <textarea name="category[<?php echo $lang['language_id']?>][content]" class="textarea small full"></textarea>  
+                                            <textarea id='<?php echo sprintf("category_%s_content", $l); ?>' data-editor='<?php echo sprintf("category_%s_content", $l); ?>' name="category[<?php echo $lang['language_id']?>][content]" class="textarea small full"></textarea>  
                                         </div>
                                         
                                         <!--SEO-->

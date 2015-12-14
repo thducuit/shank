@@ -38,10 +38,6 @@ class User extends Base_Admin_Controller {
      */
      public function index() {
          $this->load->Model("user_admin_model");
-        // $this->data['list'] = $this->user_admin_model->list_all(); 
-         //RUN VIEW
-        //$this->template->build('user/index', $this->data);
-         
          if( isset($_GET['cmdDel']) ) {
           $ids = $this->input->get('ids');
           foreach ($ids as $id) {
@@ -59,7 +55,6 @@ class User extends Base_Admin_Controller {
      * ADD ACTION 
      * 
      */
-     
      public function add() {
           $this->load->Model("user_admin_model");   
           $this->load->Model("group_admin_model");  
@@ -77,7 +72,8 @@ class User extends Base_Admin_Controller {
               $data['user_builtin'] = 0;
               $data['active'] = 0;
               $this->user_admin_model->insert($data);
-              
+                //NOTICE
+                $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>$this->lang->line('txt_insertsuccess')) ); 
                redirect( '/admin/user' );
           }else {
               $this->data['list_group'] = $this->group_admin_model->list_all( array('group_id', 'group_name' ) );
@@ -98,8 +94,6 @@ class User extends Base_Admin_Controller {
         if (isset($_POST['update'])) {
           $data = array();
           $data['username'] = $this->input->post('username');
-          /*$data['password'] = $this->input->post('password');
-          $data['password'] = md5( $data['password'] . ENCODE_STRING );*/
           $data['fullname'] = $this->input->post('fullname');
           $data['email'] = $this->input->post('email');
           $data['gender'] = $this->input->post('gender');
@@ -109,6 +103,8 @@ class User extends Base_Admin_Controller {
           $data['user_builtin'] = 0;
           $data['active'] = (int)$this->input->post('active');
           $this->user_admin_model->update($user_id,$data);
+          //NOTICE
+          $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>$this->lang->line('txt_updateinfor')) );
           redirect('/admin/user');
         }else {
          $this->data['list'] = (array)$this->user_admin_model->get_by_id($user_id);
@@ -135,8 +131,32 @@ class User extends Base_Admin_Controller {
       *  + sai-> trở về trang password , bật lỗi lên ( thông báo password cũ nhập chưa đúng)
       * 
       */
-     public function password() {
-       $this->template->build('user/password', $this->data);
+     public function password() {      
+       $this->load->Model("user_admin_model");
+       $user_id = $this->input->get('userid');
+       if ( isset($_POST['change']) ) {
+          $old_password = $this->input->post('old_password');
+          $old_password = md5($old_password.ENCRYPTION_KEY);
+          $new_password = $this->input->post('new_password');
+          $new_password = md5($new_password.ENCRYPTION_KEY);
+          $rs = $this->user_admin_model-> validate($old_password, $user_id);
+          
+          if (empty($rs)) {
+            //NOTICE
+            $this->session->set_flashdata( 'notice', array('status'=>'error', 'message'=>$this->lang->line('txt_invalidoldpass')) );
+            redirect ('/admin/user/password?userid='.$user_id);
+          }
+          else {
+            $data = array();
+            $data['password'] = $new_password;
+            $this->user_admin_model->update($user_id,$data);
+            //NOTICE
+            $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>$this->lang->line('txt_updatepasssucces')) );
+            redirect ('/admin/user');
+
+          } 
+       } else {
+         $this->template->build('user/password', $this->data);
+       }
      }
-    
 }

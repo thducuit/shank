@@ -24,7 +24,7 @@
             <!--//notice-->
             <div id="content-outer">
                 <div class="content-wrapper">
-                    <div class="content">
+                    <div class="content full">
                             <div class='content-form-field'>
                                 
                                 <div class='form-field'>

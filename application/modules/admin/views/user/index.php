@@ -65,6 +65,9 @@
                                 <th scope="col">
                                     Email
                                 </th>
+                                 <th scope="col">
+                                    Change Password
+                                </th>
                                 <th>
                                     <?php echo $this->lang->line('txt_gender');?>
                                 </th>
@@ -92,8 +95,11 @@
                                 <td class="textleft">
                                     <a href="#" id="lblCategory"><?php echo $l['email']?></a>
                                 </td>
+                                <td class="changepassword">
+                                    <a href="/index.php/admin/user/password?userid=<?php echo $l['user_id']?>">Change Password</a>
+                                </td>
                                 <td class="cellwidth7">
-                                   <?php echo ($l['gender'] == 0) ? 'Nam' : 'Nu' ?>
+                                   <?php echo ($l['gender'] == 0) ? $this->lang->line('txt_male') : $this->lang->line('txt_female') ?>
                                 </td>
                                 <td class="cellwidth1">
                                     <span id="lblID"><?php echo $l['user_id']?></span>
