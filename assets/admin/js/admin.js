@@ -135,7 +135,6 @@ $(document).ready(function() {
 	            for(var i = 0; i < files.length; i++) {
 	            	var li = liHTML(files[i]);
 	            	$('#gallery_' + lang + '_list').append(li);
-	            	var elInput = $('#gallery_' + lang);
 	            }
 	        }
 	    };
@@ -144,21 +143,46 @@ $(document).ready(function() {
 	        'directories=0, resizable=1, scrollbars=0, width=800, height=600'
 	    );
 	} 
+	
+	$(document).on('click', '.gallery_list li .remove', function() {
+	    var li = $(this).parent();
+	    li.remove();
+	});
 
 	function liHTML(fileName) {
 		var HTML = '<li>';
 		HTML += '<div class=\'image\'>' + '<img src=\'' + fileName + '\'></div>';
 		HTML += '<div class=\'config\'>' + '<input placeholder=\'w\' class=\'width\'/><input placeholder=\'h\' class=\'height\'/></div>';
+		HTML += '<a class=\'remove\'>X</a>';
 		HTML += '</li>';
 		return HTML;
 	}
 
-	function store() {
-
+	function store(el) {
+		var lang = el.attr('lang');
+		var id = el.attr('id');
+		var list = [];
+		$('#' + id + ' li').each(function() {
+			var img = $(this).find('img').attr('src');
+			var w = $(this).find('.width').val();
+			var h = $(this).find('.height').val();
+			var obj = {
+				img:img,
+				w:w,
+				h:h
+			};
+			list.push(obj);
+		});
+		$('#gallery_' + lang).val( JSON.stringify(list) );
 	}
 
-	$('.gallery_submit').click(function() {
-		
+	$('.gallery_submit').click(function(e) {
+		e.preventDefault();
+		$('.gallery_list').each(function() {
+			var el = $(this);
+			store(el)
+		});
+		$('form').submit();
 	});
 	
 	$('.upload-gallery').click(function(e) {

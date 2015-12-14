@@ -1,17 +1,17 @@
-<?php
-class Category_Model extends CI_Model {
-    
-    private $table = 'category';
-    
-    public function __construct(){
+<?php 
+class Media_Model extends CI_Model {
+
+	private $table = 'media';
+
+    public function __construct() {
         parent::__construct();
-        $this->load->database();
+        $this->load->database();  
     }
     
     public function get_table() {
         return $this->table;
     }
-    
+
     public function insert($data) {
         if( empty($data) ) return 0;
         $this->db->insert( $this->table, $data );
@@ -20,19 +20,18 @@ class Category_Model extends CI_Model {
     
     public function get_by_id($id) {
         if( empty($id) ) return array();
-        $this->db->where('category_id', $id);
+        $this->db->where('media_id', $id);
         $query = $this->db->get($this->table);
         return $query->row();
     }
-    
-    
+
     public function list_all( $select = array(), $filters = array(), $orders = array(), $keyword = '' ) {
         if(count($select) > 0) {
     		 $this->db->select($select);
     	}
     	
     	if(!empty($keyword)) {
-    		 $this->db->like('category_title', $keyword);
+    		 $this->db->like('media_title', $keyword);
     	}
 
     	foreach ($filters as $f => $fvalue) {
@@ -47,5 +46,4 @@ class Category_Model extends CI_Model {
 
         return $query->result_array();
     }
-    
 }

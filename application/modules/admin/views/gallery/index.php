@@ -39,10 +39,10 @@
                                     ?>
                                     <div id="tabs-<?php echo $lang['language_id']?>">
                                         <p><a class='upload-gallery' href="#" rel='<?php echo $l; ?>'>Upload</a></p>
-                                        <ul class='gallery_list' id='<?php echo sprintf("gallery_%s_list", $l); ?>' >
+                                        <ul lang='<?php echo $l; ?>' class='gallery_list' id='<?php echo sprintf("gallery_%s_list", $l); ?>' >
                                             
                                         </ul>
-                                        <input id='<?php echo sprintf("gallery_%s", $l); ?>' name='gallery[<?php echo $l; ?>][photos]' />
+                                        <input id='<?php echo sprintf("gallery_%s", $l); ?>' name='galleries[<?php echo $l; ?>][photos]' />
                                     </div><!--//tab -->
                                     <?php 
                                     }
