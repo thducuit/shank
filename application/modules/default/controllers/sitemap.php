@@ -3,7 +3,7 @@
 require_once APPPATH . 'modules/default/controllers/parent.php';
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Index extends Parent_Controller {
+class Sitemap extends Parent_Controller {
 
 	 function __construct() {
         //if i remove this parent::__construct(); the error is gone
@@ -12,7 +12,7 @@ class Index extends Parent_Controller {
 	
 	public function index() {
 	    //RUN VIEW
-        $this->template->build( 'index/index' );
+        $this->template->build( 'sitemap/index' );
 	}
 	
 	public function test($lang) {

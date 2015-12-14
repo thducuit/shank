@@ -5,9 +5,11 @@ class Parent_Controller extends MX_Controller {
 	 function __construct() {
         //if i remove this parent::__construct(); the error is gone
         parent::__construct();
-        $this->template->set_theme('admin_theme');
-        $this->template->set_layout('one_col');
+        $this->lang->load('default',DEFAULT_LANGUAGE );
+        $this->template->set_theme('default_theme');
+        $this->template->set_layout('two_col');
         $this->template->set_partial('header','header');
+        $this->template->set_partial('sidebar','sidebar');
         $this->template->set_partial('footer','footer');
 	}
 }

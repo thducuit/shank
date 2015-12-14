@@ -169,6 +169,8 @@ class Category extends Base_Admin_Controller {
                 $this->alias_admin_model->update( $category );
             }
             
+            //NOTICE
+            $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );
             //BACK TO INDEX
             redirect( url_add_params($this->params, '/admin/category') );
         }else{
@@ -244,6 +246,8 @@ class Category extends Base_Admin_Controller {
             }
         }
         
+        //NOTICE
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );
         //BACK TO INDEX
         redirect( url_add_params($this->params, '/admin/category') );
     }
@@ -255,8 +259,11 @@ class Category extends Base_Admin_Controller {
      * 
      */
     public function delete() {
-        $id = $this->input->get('id');
+        $id = (int)$this->input->get('id');
         $this->remove($id);
+
+        //NOTICE
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Delete success') );
         //BACK TO INDEX
         redirect( url_add_params($this->params, '/admin/category') );
     }
