@@ -1,3 +1,6 @@
+<?php
+$class = $this->router->fetch_class();
+?>
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="ja" xml:lang="ja">
@@ -21,12 +24,22 @@
 <script charset="UTF-8" src="<?php echo DEFAULT_JS_PATH; ?>/biggerlink.js" type="text/javascript"></script>
 <script charset="UTF-8" src="<?php echo DEFAULT_JS_PATH; ?>/scripts.js" type="text/javascript"></script>
 <!-- js common END -->
+
+<?php
+if($class == 'index') {
+?>
+<!-- js just for top page BEGIN -->
+<script charset="UTF-8" src="<?php echo DEFAULT_JS_PATH; ?>/slides.min.jquery.js" type="text/javascript"></script>
+<script charset="UTF-8" src="<?php echo DEFAULT_JS_PATH; ?>/tscripts.js" type="text/javascript"></script>
+<!-- js just for top page END -->
+<?php }?>
+
 <script type="text/javascript">
     var VALIDATE_REQUIRED = '<?php echo $this->lang->line('error_required');?>';
     var VALIDATE_EMAIL = '<?php echo $this->lang->line('error_email');?>';
 </script>
 </head>
-<body>
+<body <?php echo ($class == 'index') ? "id='index'" : '';  ?>>
 <div id="wrapper">
     <div id="header" class="clearfix">
         <div id="headerInner">
@@ -42,8 +55,41 @@
                 </div>
             </div>
         </div>
-        <p class="header-bg"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/hspace.gif" alt="SANKO MOLD VIETNAM" class="img-responsive" /></p>
+        
+        
         <p class="g-menu hide-pc"> <a href="javascript:;"> <span class="bar"><span class="bar1"></span><span class="bar2"></span><span class="bar3"></span></span> </a> </p>
+        
+        <!--SLIDER + IMAGES-->
+        <?php 
+        if($class == 'index') {
+        ?>
+        <div id="slides" class="hide-sp">
+            <ul class="slides_container">
+                <?php 
+                foreach($slider as $s) {
+                ?>
+                <li><img src="<?php echo $s['img'];?>" alt="SANKO MOLD VIETNAM" /></li>
+                
+                <?php 
+                }
+                ?>
+            </ul>
+            <h2 class="slidesText">SANKO MOLD VIETNAM</h2>
+        </div>
+        <!-- <div id="slides_sp" class="hide-pc">
+            <p class="mainImg"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_main_01_sp.jpg" alt="SANKO MOLD VIETNAM" class="img-responsive" /> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_main_02_sp.jpg" alt="SANKO MOLD VIETNAM" class="img-responsive" /> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_main_03_sp.jpg" alt="SANKO MOLD VIETNAM" class="img-responsive" /> </p>
+            <h2 class="slides_sp_text"><span>SANKO MOLD VIETNAM</span></h2>
+        </div> -->
+        <?php 
+        }
+        else 
+        {
+        ?>
+        <p class="header-bg"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/hspace.gif" alt="SANKO MOLD VIETNAM" class="img-responsive" /></p>
+        <?php 
+        }   
+        ?>
+        <!--//SLIDER + IMAGES-->
     </div>
     <div id="g-nav" class="hide-pc">
         <ul class="gNav clearfix">

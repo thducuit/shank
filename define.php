@@ -7,7 +7,7 @@
  * Language in Administrator 
  *
  */
-define('ADMIN_LANGUAGE', 'jp');//vn
+define('ADMIN_LANGUAGE', 'vn');//vn
 
 /*
  * --------------------------------------------------------------------
@@ -31,7 +31,7 @@ define('ADMIN_IMAGE_PATH', '/assets/admin/images');
  * Language in Website 
  *
  */
-define('DEFAULT_LANGUAGE', 'en');
+define('DEFAULT_LANGUAGE', 'jp');//jp,en
 
 /*
  * --------------------------------------------------------------------

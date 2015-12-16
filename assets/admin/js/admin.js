@@ -1,13 +1,13 @@
 $(document).ready(function() {
     $('*[data-delete-confirm]').easyconfirm(
-    		{
-    			locale: { 
-    				title: CONFIRM_TITLE_DIALOG, 
-    				text: CONFIRM_DELETE_MSG,
-    				button: [BTN_DIALOG_CANCEL, BTN_DIALOG_OK]
-    			}
-    		}
-    	);
+		{
+			locale: { 
+				title: CONFIRM_TITLE_DIALOG, 
+				text: CONFIRM_DELETE_MSG,
+				button: [BTN_DIALOG_CANCEL, BTN_DIALOG_OK]
+			}
+		}
+	);
     
 
     // UDATE STATUS
@@ -152,8 +152,11 @@ $(document).ready(function() {
 	function liHTML(fileName) {
 		var HTML = '<li>';
 		HTML += '<div class=\'image\'>' + '<img src=\'' + fileName + '\'></div>';
-		HTML += '<div class=\'config\'>' + '<input placeholder=\'w\' class=\'width\'/><input placeholder=\'h\' class=\'height\'/></div>';
-		HTML += '<a class=\'remove\'>X</a>';
+		HTML += '<div class=\'config\'>';
+		HTML +=	'<input placeholder=\'w\' class=\'width\'/>';
+		HTML += '<input placeholder=\'h\' class=\'height\'/>';
+		HTML += '<input placeholder=\'http://\' class=\'anchor\'/></div>';
+		HTML += '<a href=\'#\' class=\'remove\'>X</a>';
 		HTML += '</li>';
 		return HTML;
 	}
@@ -166,10 +169,12 @@ $(document).ready(function() {
 			var img = $(this).find('img').attr('src');
 			var w = $(this).find('.width').val();
 			var h = $(this).find('.height').val();
+			var a = $(this).find('.anchor').val();
 			var obj = {
 				img:img,
 				w:w,
-				h:h
+				h:h,
+				a:a
 			};
 			list.push(obj);
 		});

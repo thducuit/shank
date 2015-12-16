@@ -35,8 +35,13 @@
                 Fax: (+84)61 393 6637<br />
                 E-mail: <a href="mailto:sale@sankomold.com">sale@sankomold.com</a></p>
             <ul class="nav02">
-                <li><a href="#"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_bnr_01.jpg" alt="SMJ" /></a></li>
-                <li><a href="#"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_bnr_02.jpg" alt="SMJ" /></a></li>
+                <?php
+                foreach($ads as $r) {
+                ?>
+                <li><a href="<?php echo ($r['a']) ? $r['a'] :'#' ; ?>"><img src="<?php echo $r['img']; ?>" alt="SMJ" /></a></li>
+                <?php
+                }
+                ?>
             </ul>
         </div>
         <!-- navi end -->

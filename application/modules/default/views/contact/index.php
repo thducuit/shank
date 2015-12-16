@@ -36,7 +36,7 @@
             <h4>お問い合わせフォーム</h4>
             <div class="section">
                 <p class="red pl10">下記項目のご記入をお願いいたします。(*)印の項目は、必須入力項目です。 </p>
-                <form action='' id="submitform">
+                <form action='' id="submitform" method="post">
                     <dl class="dl_form">
                         <dt>
                             <label for="txtFullname">氏名</label>
@@ -69,7 +69,7 @@
                             <textarea rows="3" cols="35" id="txtContent" name="txtContent"></textarea>
                             <span class="must">*</span></dd>
                             <dt>&nbsp;</dt>
-                            <dd class="center"><input type="submit" value="Send" class="btnSubmit" /></dd>
+                            <dd class="center"><input type="submit" value="Send" class="btnSubmit" name="send" /></dd>
                     </dl>
                     <p class="buttonC">
                         
