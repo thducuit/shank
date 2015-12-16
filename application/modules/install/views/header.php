@@ -31,7 +31,27 @@
 	<link href="css/ie7.css" rel="stylesheet" media="all" />
 	<![endif]-->
 
-    
+    <script type="text/javascript">
+        var WEBROOT = '';
+        var CONFIRM_DELETE_MSG = 'Ban co muon xoa';
+        var CONFIRM_TITLE_DIALOG= 'Xác nhận';
+        /*CONFIRM_EXTEND = '';
+        CONFIRM_MAILINFO = '';
+        CONFIRM_MAILEXTEND = '';*/
+        var CONFIRM_DELETE_ALL = '';
+        var DIALOG_TITLE = 'Thông báo';
+        var DIALOG_TITLE_CLOSE = 'Dong lai';
+        var BTN_DIALOG_OK = 'Tiep tuc';
+        var BTN_DIALOG_CANCEL = 'thoi';
+        var TTL_GOTOTOP = '';
+        var MENUNAME = '';
+
+        var VALIDATE_REQUIRED = '<?php echo $this->lang->line('error_required');?>';
+        var VALIDATE_MINLENGTH = '<?php echo $this->lang->line('error_minlength');?>';
+        var VALIDATE_EMAIL = '<?php echo $this->lang->line('error_email');?>';
+        var VALIDATE_EQUALTO = '<?php echo $this->lang->line('error_equalto');?>';
+
+    </script>
 </head>
 <div id="header">
        <div id="top-menu">

@@ -36,11 +36,31 @@
                                     </ul>
                                     <?php foreach($languages as $lang) { 
                                         $l = $lang['language_id'];
+                                        if( count($list[$l]) > 0 ){
+                                            $g = $list[$l][0];
+                                            $g = json_decode(stripslashes($g['media_file']), true);
+                                        }else{
+                                            $g = array();
+                                        } 
                                     ?>
                                     <div id="tabs-<?php echo $lang['language_id']?>">
                                         <p><a class='upload-gallery' href="#" rel='<?php echo $l; ?>'>Upload</a></p>
                                         <ul lang='<?php echo $l; ?>' class='gallery_list' id='<?php echo sprintf("gallery_%s_list", $l); ?>' >
-                                            
+                                            <?php 
+                                            foreach ($g as $v) {
+                                            ?>
+                                            <li>
+                                                <div class='image'><img src="<?php echo $v['img']?>"></div>
+                                                <div class='config'>
+                                                    <input placeholder='w' class='width'/>
+                                                    <input placeholder='h' class='height'/>
+                                                    <input placeholder='hppt://' class='anchor'/>
+                                                </div>
+                                                <a href="#" class='remove'>X</a>
+                                            </li>
+                                            <?php
+                                            }
+                                            ?>
                                         </ul>
                                         <input id='<?php echo sprintf("gallery_%s", $l); ?>' name='galleries[<?php echo $l; ?>][photos]' />
                                     </div><!--//tab -->

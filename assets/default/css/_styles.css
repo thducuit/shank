@@ -1,0 +1,191 @@
+@charset "UTF-8";
+@import "base.css";
+@import "fonts.css";
+
+/*==========================================================================*/
+/*//////////////////////////////////////////////////////////////////////////*/
+/*//////                                                              //////*/
+/*//////  Copyright (C) 2009 株式会社フリーセル All Rights Reserved.  //////*/
+/*//////                                                              //////*/
+/*//////////////////////////////////////////////////////////////////////////*/
+/*                                                                          */
+/*    base.css  --> スタイルの初期設定を行うため、変更しないで下さい。      */
+/*    fonts.css --> フォントの初期設定を行うため、変更しないで下さい。      */
+/*                                                                          */
+/*==========================================================================*/
+
+/*==========================================================================*/
+/*                           Common-Setting                                 */
+/*==========================================================================*/
+
+/* 基本タグのフォントサイズを指定（12px -> 120% or 1.2em ） */
+h1,h2,h3,h4,h5,h6,input,button,textarea,select,p,blockquote,th,td,pre,address,li,dt,dd {
+	font-size: 140%;
+}
+	
+h1 {} /* Header内で設定 */
+h2 {}
+h3 {}
+h4 {}
+
+a { color: #f41; }
+a:hover,
+a:active { color: #f96; text-decoration: none; }
+a:visited {
+}
+
+ul {
+}
+li {
+}
+
+dl {
+}
+dt {
+}
+dd {
+}
+
+table {
+}
+
+th,
+td {
+}
+th {
+}
+td {
+}
+
+p { margin: 0 0 1em; }
+
+.section { padding: .5em 1em 1em; }
+.section .section { padding: .5em .5em 1em; }
+
+.image_l { float: left; margin: 0 16px 8px 0; }
+.image_r { float: right; margin: 0 0 8px 16px; }
+
+.case {
+	margin: 10px 20px;
+	background: url(../images/arrow_h.jpg) center center no-repeat;
+}
+
+ul.totop,
+ul.totop li {
+	clear: both;
+	padding-bottom: 20px;
+	float: right;
+	list-style: none;
+}
+
+
+/* add
+------------------------------------------------------------------------*/
+
+.mb05 { margin-bottom : 5px; }
+.mb10 { margin-bottom : 10px; }
+.mb15 { margin-bottom : 15px; }
+.mb20 { margin-bottom : 20px; }
+
+
+/*==========================================================================*/
+/*                            Container                                     */
+/*==========================================================================*/
+
+html {
+	background: none;
+}
+
+body {
+    background: url(../images/body_bg.jpg) top repeat-x;
+	color: #333;
+	text-align: center;
+}
+#wrapper {
+	width: 940px;
+	margin: 0 auto;
+    background: url(../images/wrapper_bg.jpg) 940px top no-repeat;
+}
+#main {
+	width: 940px;
+	margin: 0 auto;
+	text-align: left;
+	background: url(../images/main_bg.jpg) 0 0 no-repeat;
+}
+#content {
+	width: 710px;
+	text-align: left;
+	float: right;
+}
+
+
+/*==========================================================================*/
+/*                               Header                                     */
+/*==========================================================================*/
+
+#header {
+	width: 940px;
+	margin: 0 auto;
+	text-align: left;
+	background: url(../images/header_bg.jpg) 0 0 no-repeat;
+}
+
+#header h1 { float: left; }
+
+
+/*==========================================================================*/
+/*                              Footer                                      */
+/*==========================================================================*/
+
+#footer {
+	clear: both;
+	text-align: center;
+	background: url(../images/footer_bg.jpg) 0 repeat-x;
+}
+#footer address {
+	width: 940px;
+	margin: 0 auto;
+}
+
+
+/*==========================================================================*/
+/*                             Contents                                     */
+/*==========================================================================*/
+
+/* index
+------------------------------------------------------------------------*/
+
+
+
+
+/*==========================================================================*/
+/*                            navigation                                    */
+/*==========================================================================*/
+
+#navi {
+	float: left;
+	width: 230;
+	text-align: center;
+}
+
+#navi dl,
+#navi ul {
+	margin: 0 0 10px;
+	text-align: left;
+}
+
+#navi dl dt,
+#navi dl dd,
+#navi ul li {
+	list-style: none;
+	margin: 0;
+}
+
+#navi dl dt { text-indent: -9999em; }
+
+#navi #navi_banner {
+	margin: 20px 0 0;
+}
+#navi #navi_banner li {
+	margin-bottom: 10px;
+}

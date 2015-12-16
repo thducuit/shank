@@ -37,7 +37,7 @@
     <script type="text/javascript">
 		var WEBROOT = '';
 		var CONFIRM_DELETE_MSG = 'Ban co muon xoa';
-        var CONFIRM_TITLE_DIALOG = 'Xác nhận';
+        var CONFIRM_TITLE_DIALOG= 'Xác nhận';
 		/*CONFIRM_EXTEND = '';
 		CONFIRM_MAILINFO = '';
 		CONFIRM_MAILEXTEND = '';*/
