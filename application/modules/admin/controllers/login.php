@@ -38,7 +38,7 @@ class Login extends Base_Admin_Controller {
                 //RUN VIEW
                 redirect ('/admin/login');
             }else {
-                
+                _pr($user);
             }
         }
         $this->template->build('login/index');

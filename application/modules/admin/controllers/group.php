@@ -49,7 +49,7 @@ class Group extends Base_Admin_Controller {
          $this->data['list'] = $this->group_admin_model->list_all();
          
         //RUN VIEW
-        $this->template->build( $this->class_view, $this->data);
+        $this->template->build( $this->class_view, $this->data );
     }
     
     

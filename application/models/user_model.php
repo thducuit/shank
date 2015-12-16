@@ -28,12 +28,12 @@ class User_Model extends CI_Model {
     public function update($id, $data) {
         if( empty($id)) return false;
         $this->db->where('user_id', $id);
-        $this->db->update($this->table,$data);
+        return $this->db->update($this->table, $data);
     }
     
     public function delete($id) {
         if ( empty($id)) return false; 
-        $this->db->delete($this->table, array('user_id' => $id)); 
+        return $this->db->delete($this->table, array('user_id' => $id)); 
     } 
     
 }

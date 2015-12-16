@@ -24,11 +24,25 @@ class Group_Model extends CI_Model {
         $this->db->update($this->table,$data);
     }
 
-    public function list_all($select = array()) {
+    public function list_all( $select = array(), $filters = array(), $orders = array(), $keyword = '' ) {
         if(count($select) > 0) {
-             $this->db->select($select);
-        }
-        $query = $this->db->get($this->table);
+    		 $this->db->select($select);
+    	}
+    	
+    	if(!empty($keyword)) {
+    		 $this->db->like('group_name', $keyword);
+    	}
+
+    	foreach ($filters as $f => $fvalue) {
+    		$this->db->where($f, $fvalue);
+    	}
+
+    	foreach ($orders as $key => $value) {
+    		$this->db->order_by($key, $value);
+    	}
+    	
+    	$query = $this->db->get( $this->get_table() );
+
         return $query->result_array();
     }
     

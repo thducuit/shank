@@ -65,8 +65,11 @@
                                 <th scope="col">
                                     Email
                                 </th>
-                                 <th scope="col">
+                                <th scope="col">
                                     Change Password
+                                </th>
+                                <th scope="col">
+                                    Kích hoạt
                                 </th>
                                 <th>
                                     <?php echo $this->lang->line('txt_gender');?>
@@ -97,6 +100,9 @@
                                 </td>
                                 <td class="changepassword">
                                     <a href="/index.php/admin/user/password?userid=<?php echo $l['user_id']?>">Change Password</a>
+                                </td>
+                                <td>
+                                    <?php my_toggle_button($l['active'], $l['user_id'], url_add_params($params, '/index.php/admin/user/active'), array('name'=>'ImgRowStatus'));?>
                                 </td>
                                 <td class="cellwidth7">
                                    <?php echo ($l['gender'] == 0) ? $this->lang->line('txt_male') : $this->lang->line('txt_female') ?>

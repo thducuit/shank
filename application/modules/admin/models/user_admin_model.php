@@ -12,7 +12,9 @@ class User_Admin_Model extends User_Model {
     }
     
     public function login($username, $password) {
-        return false;
+        $query = $this->db->get_where($this->get_table(), array('username' => $username, 'password' => $password, 'active'=> 1, 'user_builtin'=>1));
+        $rs = $query->result_array();
+        return ( empty($rs) ) ? false : $rs;
     }
 
     public function validate ($old_password, $user_id) {

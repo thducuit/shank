@@ -69,7 +69,7 @@ class User extends Base_Admin_Controller {
               $data['phone'] = $this->input->post('phone');
               $data['address'] = $this->input->post('address');
               $data['group_id'] = (int)$this->input->post('group_id');
-              $data['user_builtin'] = 0;
+              $data['user_builtin'] = 1;
               $data['active'] = 0;
               $this->user_admin_model->insert($data);
                 //NOTICE
@@ -100,7 +100,7 @@ class User extends Base_Admin_Controller {
           $data['phone'] = $this->input->post('phone');
           $data['address'] = $this->input->post('address');
           $data['group_id'] = (int)$this->input->post('group_id');
-          $data['user_builtin'] = 0;
+          $data['user_builtin'] = 1;
           $data['active'] = (int)$this->input->post('active');
           $this->user_admin_model->update($user_id,$data);
           //NOTICE
@@ -159,4 +159,24 @@ class User extends Base_Admin_Controller {
          $this->template->build('user/password', $this->data);
        }
      }
+     
+     
+     
+     /**
+     * UPDATE ACTIVE
+     * 
+     */
+    public function active() {
+        $this->load->Model("user_admin_model");
+        //GET DATA
+        $status = (int)$this->input->get('status');
+        $id = (int)$this->input->get('id');
+        
+        //UPDATE DATA
+        $args = array('active' => $status);
+        $result = $this->user_admin_model->update( $id, $args );
+        
+        //RESPONSE
+        echo json_encode( array('STATUS' => $result) );
+    }
 }
