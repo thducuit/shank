@@ -21,7 +21,7 @@ class Group_Model extends CI_Model {
     public function update($id, $data) {
         if( empty($id)) return false;
         $this->db->where('group_id', $id);
-        $this->db->update($this->table,$data);
+        return $this->db->update($this->table,$data);
     }
 
     public function list_all( $select = array(), $filters = array(), $orders = array(), $keyword = '' ) {

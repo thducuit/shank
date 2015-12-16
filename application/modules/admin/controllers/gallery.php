@@ -61,11 +61,9 @@ class Gallery extends Base_Admin_Controller {
             if( empty($g) ) {
                 $this->insert();
             }else {
-                //$this->update();
+                $this->update();
             }
         } 
-        
-        
         foreach($this->languages as $l) {
             $this->data['list'][$l['language_id']] = get_list_by_language_id($l['language_id'], $g);
         }
@@ -80,7 +78,6 @@ class Gallery extends Base_Admin_Controller {
         
         //GET DATA FROM POST
         $galleries = $this->input->post('galleries');
-        //_pr($this->languages, true);
         foreach($this->languages as $lang) {
             $gallery = $galleries[$lang['language_id']];
             $data['media_module'] = $this->module_code();
@@ -113,6 +110,7 @@ class Gallery extends Base_Admin_Controller {
         //BACK TO INDEX
         redirect( '/admin/gallery?mod=' . $this->module_code() );
     }
+    
     
     /** 
      * LOAD ALL MODEL

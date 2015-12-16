@@ -25,29 +25,31 @@
                                 </li>
                                 <?php } ?>
                             </ul><!--//TABS-HEADING-->
-                            <?php foreach($languages as $lang) { ?>
+                            <?php foreach($languages as $lang) { 
+                                $l = $lang['language_id'];
+                            ?>
                             <div id="tabs-<?php echo $lang['language_id']?>">
                                 <div class="form">
                                     <div class="block-left">
                                         
                                         <div class='form-field'>
                                             <label class="desc"><?php echo $this->lang->line('txt_title');?></label>
-                                            <input name="post[<?php echo $lang['language_id']?>][title]" type="text" value="" class="field text full">
+                                            <input data-for='<?php echo sprintf("#post_%s_alias", $l); ?>' name="post[<?php echo $lang['language_id']?>][title]" type="text" value="" class="field text full">
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc">Alias</label>
-                                            <input name="post[<?php echo $lang['language_id']?>][alias]" data-area='category[<?php echo $lang['language_id']?>][title]' type="text" value="" class="field text full">
+                                            <input id='<?php echo sprintf("post_%s_alias", $l); ?>' name="post[<?php echo $lang['language_id']?>][alias]" type="text" value="" class="field text full">
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc"><?php echo $this->lang->line('txt_description');?></label>
-                                            <textarea name="post[<?php echo $lang['language_id']?>][description]" class="textarea small full"></textarea>  
+                                            <textarea id='<?php echo sprintf("post_%s_description", $l); ?>' data-editor='<?php echo sprintf("post_%s_description", $l); ?>' name="post[<?php echo $lang['language_id']?>][description]" class="textarea small full"></textarea>  
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc"><?php echo $this->lang->line('txt_content');?></label>
-                                            <textarea name="post[<?php echo $lang['language_id']?>][content]" class="textarea small full"></textarea>  
+                                            <textarea id='<?php echo sprintf("post_%s_content", $l); ?>' data-editor='<?php echo sprintf("post_%s_content", $l); ?>' name="post[<?php echo $lang['language_id']?>][content]" class="textarea small full"></textarea>  
                                         </div>
                                         
                                         <!--SEO-->
@@ -63,12 +65,12 @@
                                                 
                                                 <div class="form-field">
                                                     <label class="desc">SEO <?php echo $this->lang->line('txt_description');?></label>
-                                                    <textarea name="post[<?php echo $lang['language_id']?>][seo_description]" class="textarea small full"></textarea>  
+                                                    <textarea  name="post[<?php echo $lang['language_id']?>][seo_description]" class="textarea small full"></textarea>  
                                                 </div>
                                                 
                                                 <div class="form-field">
                                                     <label class="desc">SEO <?php echo $this->lang->line('txt_keyword');?></label>
-                                                    <textarea name="post[<?php echo $lang['language_id']?>][seo_keywords]" class="textarea small full"></textarea>  
+                                                    <textarea  name="post[<?php echo $lang['language_id']?>][seo_keywords]" class="textarea small full"></textarea>  
                                                 </div>
                                             </div>
                                         </div><!--//SEO-->
@@ -136,7 +138,7 @@
                                         my_select(
                                             array(array('title' =>  $this->lang->line('txt_yes'), 'value' => 1), array('title' =>  $this->lang->line('txt_no'), 'value' => 0)), 
                                             $option = array('title' => 'title', 'value' => 'value'),
-                                            $attributes = array('name' => 'status', 'id' => 'lstHighlight', 'class' => 'listbox lstHighlight')
+                                            $attributes = array('name' => 'highlight', 'id' => 'lstHighlight', 'class' => 'listbox lstHighlight')
                                         );
                                     ?>
                                 </div>
@@ -158,9 +160,9 @@
                     <div class="portlet-content">
                         <div class='featured_photo'></div>
                         <div>
-                            <a href='#'><?php echo $this->lang->line('txt_upload');?></a>
+                            <a href='#' class='upload-gallery'><?php echo $this->lang->line('txt_upload');?></a>
                             <a href='#'><?php echo $this->lang->line('txt_remove');?></a>
-                            <input type="hidden" name=""/>
+                            <input type="hidden" id='featured_photo' name="featured_image"/>
                         </div>
                     </div>
                 </div>

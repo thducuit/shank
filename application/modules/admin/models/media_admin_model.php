@@ -6,4 +6,15 @@ class Media_Admin_Model extends Media_Model {
         parent::__construct();
     }
     
+    
+    /**
+     * UPDATE BY WHERE
+     * 
+     */
+    public function update($where, $data) {
+        foreach ($where as $f => $fvalue) {
+    		$this->db->where($f, $fvalue);
+    	}
+        return $this->db->update($this->get_table(), $data); 
+    }
 }

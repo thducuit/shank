@@ -132,9 +132,15 @@ $(document).ready(function() {
 		window.KCFinder = {
 	        callBackMultiple: function(files) {
 	            window.KCFinder = null;
-	            for(var i = 0; i < files.length; i++) {
-	            	var li = liHTML(files[i]);
-	            	$('#gallery_' + lang + '_list').append(li);
+	            if(lang) {
+	            	for(var i = 0; i < files.length; i++) {
+		            	var li = liHTML(files[i]);
+		            	$('#gallery_' + lang + '_list').append(li);
+		            }
+	            }else{
+	            	var img = "<img src='" + files[0] + "' />";
+	            	$('.featured_photo').html(img);
+	            	$('#featured_photo').val(files[0]);
 	            }
 	        }
 	    };

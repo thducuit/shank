@@ -12,7 +12,7 @@ class Post extends Base_Admin_Controller {
     private $url;
     private $params;
     private $data;
-    
+    private $category;
     
     
     /**
@@ -45,10 +45,16 @@ class Post extends Base_Admin_Controller {
         //GET MODULE
         $this->module = $this->module();
         
+        $this->get_category();
+        
         //SET TITLE FOR VIEW
         $this->template->title( ( !empty($this->module->module_name) ) ? $this->module->module_name : 'Post' );
     }
     
+    
+    private function get_category() {
+        $this->category = $this->module_code() . 'cat';
+    }
     
     
     /**
@@ -56,7 +62,7 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function index () {
-        $this->load->Model("category_admin_model");
+        $this->load->Model("post_admin_model");
         $this->load->helper('select');
         $this->load->helper('button');
         $this->load->helper('sort_input');
@@ -110,14 +116,47 @@ class Post extends Base_Admin_Controller {
         
         //IF SUBMITED
         if ( isset($_POST['add']) ) {
+            //ADD NEW LANG MAP
+            $langmap_id = (int)$this->langmap_admin_model->insert( array('langmap_module' => $this->module_code() ) );
+        
+            //GET DATA FROM POST
+            $posts = $this->input->post('post');
+            $status = $this->input->post('status');
+            $order = $this->input->post('order');
+            $highlight = $this->input->post('highlight');
+            $featured_image = $this->input->post('featured_image');
             
+            foreach($this->languages as $lang) {
+                $post = $posts[$lang['language_id']];
+                $post['status'] = $status;
+                $post['order'] = $order;
+                $post['highlight'] = $highlight;
+                $post['featured_image'] = $featured_image;
+                $post['language_id'] = $lang['language_id'];
+                $post['langmap_id'] = $langmap_id;
+                $post['module'] = $this->module_code();
+                $post['alias'] = ( !empty( $post['alias'] ) ) ? $post['alias'] : ( ( !empty( $post['title'] ) ) ? alias( $post['title'] ) : 'cat-' . uniqid('shank_') );
+                $post['type'] = 'post';
+                
+                
+                //INSERT POST
+                $post_id = $this->post_admin_model->insert( $post );
+                
+                //INSERT ALIAS
+                $this->alias_admin_model->insert($post_id, $post);
+            }
+            
+            //NOTICE
+            $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Insert success') );
+            //BACK TO INDEX
+            redirect( url_add_params($this->params, '/admin/post') );
         } else {
             $this->data['languages'] = $this->languages;
             $this->data['list'] = array();
             
             //GET LIST
             $rs = $this->category_admin_model->list_all( $select = array( 'category_id', 'category_title', 'catparent_id', 'category_level', 'language_id'),
-                                                         $filters = array( 'category_status' => 1,  'category_module' => $this->module_code() ),
+                                                         $filters = array( 'category_status' => 1,  'category_module' =>  $this->category),
                                                          $orders = array() 
                                                       );
             foreach($this->languages as $l) {

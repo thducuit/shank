@@ -52,9 +52,9 @@
                                             <li>
                                                 <div class='image'><img src="<?php echo $v['img']?>"></div>
                                                 <div class='config'>
-                                                    <input placeholder='w' class='width'/>
-                                                    <input placeholder='h' class='height'/>
-                                                    <input placeholder='hppt://' class='anchor'/>
+                                                    <input value='<?php echo $v['w']?>' placeholder='w' class='width'/>
+                                                    <input value='<?php echo $v['h']?>' placeholder='h' class='height'/>
+                                                    <input value='<?php echo $v['a']?>' placeholder='http://' class='anchor'/>
                                                 </div>
                                                 <a href="#" class='remove'>X</a>
                                             </li>
@@ -62,7 +62,7 @@
                                             }
                                             ?>
                                         </ul>
-                                        <input id='<?php echo sprintf("gallery_%s", $l); ?>' name='galleries[<?php echo $l; ?>][photos]' />
+                                        <input type='hidden' id='<?php echo sprintf("gallery_%s", $l); ?>' name='galleries[<?php echo $l; ?>][photos]' />
                                     </div><!--//tab -->
                                     <?php 
                                     }
