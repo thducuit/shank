@@ -11,11 +11,8 @@ class Career extends Parent_Controller {
 	}
 	
 	public function index() {
-	    //RUN VIEW
+	    	//RUN VIEW
         $this->template->build( 'career/index' );
 	}
 	
-	public function test($lang) {
-	    _pr($lang, true);
-	}
 }

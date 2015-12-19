@@ -12,10 +12,7 @@ class News extends Parent_Controller {
 	
 	public function index() {
 	    //RUN VIEW
-        $this->template->build( 'news/index' );
+      	$this->template->build( 'news/index' );
 	}
 	
-	public function test($lang) {
-	    _pr($lang, true);
-	}
 }

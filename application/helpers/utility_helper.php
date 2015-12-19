@@ -49,4 +49,15 @@ if (!function_exists('notice')) {
     }
 }
 
+
+if (!function_exists('short_url')) {
+    function short_url($key = '', $params = array()) {
+        global $route_params;
+        if( empty($key) ) echo '#';
+        array_unshift($params, LANGUAGE);
+        $pattern = $route_params[LANGUAGE][$key];
+        echo vsprintf($pattern, $params);
+    }
+}
+
 ?>
