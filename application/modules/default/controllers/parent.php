@@ -25,6 +25,7 @@ class Parent_Controller extends MX_Controller {
                 $this->load->Model("media_default_model");
                 $this->data['ads'] = $this->media_default_model->get_gallery('ads', DEFAULT_LANGUAGE);
                 
+                
         }
 
         protected function get_data() {

@@ -4,44 +4,34 @@
         <div id="content" class="con">
             <h3>ニュース</h3>
             <div class="section">
+                <?php
+                foreach($news as $n) {
+                    $src = $n['post_featured_image'];
+                    $img = ( !empty($src) ) ? '<img src="' . $src .  '" alt="" class="pt05" />' : ''; 
+                    
+                ?>
                 <div class="news">
-                    <p class="newsDate">2015年05月05日 <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/dummy.jpg" alt="" class="pt05" /> </p>
+                    <p class="newsDate">2015年05月05日  <?php echo $img; ?> </p>
+                    
                     <div class="newsRight">
                         <div class="newsInner">
-                            <p class="title">日越対抗フットサルゲーム</p>
-                            <p>炎天下の試合は暑さに強い越軍の勝ちでした。</p>
-                            <p>炎天下の試合は暑さに強い越軍の勝ちでした。<br />
-                                炎天下の試合は暑さに強い越軍の勝ちでした。</p>
                             
-                            <p class="newsbtn prevContent"><a class="btnRutgon imgover" href="javascript:;">Close</a> <a class="btnChitiet imgover" href="javascript:;">...more</a></p>
+                            <p class="title"><?php echo $n['post_seo_title']?></p>
+                            <p><?php echo $n['post_description']?></p>
+                            
+                             
+                            <p class="newsbtn prevContent"><a class="btnRutgon imgover" href="javascript:;"><?php echo $this->lang->line('txt_close');?></a> <a class="btnChitiet imgover" href="javascript:;">...<?php echo $this->lang->line('txt_more');?></a></p>
                         </div>
                         <div class="newsContent clear">
-                            <p><span class="bold">ニュース詳細表示</span><br />
-                                <p>テキストテキストテキストテキストテキストテキストテキスト<br/>
-                            <p>テキストテキストテキストテキストテキストテキスト</p>
+                            <!-- <p><span class="bold">ニュース詳細表示</span> -->
+                            <br />
+                            <div><?php echo $n['post_content']?></div>
                         </div>
                     </div>
-                    <!-- /.news -->
                 </div>
-                <div class="news">
-                    <p class="newsDate">2015年05月05日 <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/dummy.jpg" alt="" class="pt05" /> </p>
-                    <div class="newsRight">
-                        <div class="newsInner">
-                            <p class="title">記念植樹</p>
-                            <p>ガジュマルの木とゴールデンシャワーの木を植えました。</p>
-                            <p>ガジュマルの木とゴールデンシャワーの木を植えました。<br />
-                                ガジュマルの木とゴールデンシャワーの木を植えました。</p>
-                            
-                            <p class="newsbtn prevContent"><a class="btnRutgon imgover" href="javascript:;">Close</a> <a class="btnChitiet imgover" href="javascript:;">...more</a></p>
-                        </div>
-                        <div class="newsContent clear">
-                                <p><span class="bold">ニュース詳細表示</span><br />
-                                    <p>テキストテキストテキストテキストテキストテキストテキストテキスト<br/>
-                                <p>テキストテキストテキストテキストテキストテキストテキストテキスト</p>
-                            </div>
-                    </div>
-                    <!-- /.news -->
-                </div>
+                <?php
+                    }
+                   ?>
             </div>
         </div>
         <!-- content end -->

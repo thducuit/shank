@@ -15,9 +15,12 @@ class About extends Parent_Controller {
 	    $data['a'] = 10;
 	    $data['b'] = 'duc';
 	    $data['c'] = [10,4,5];
-	    
-	    $this->template->build('about/index', $data);
+	    //RUN VIEW
+	    $this->template->build('about/index');
 	}
+	// public function test($lang) {
+	//     _pr($lang, true);
+	// }
 	
 	public function detail($lang, $alias) {
 	    echo 'trang about';

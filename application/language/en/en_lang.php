@@ -84,6 +84,15 @@ $lang['txt_updatepasssucces'] = 'Update password successfully !';
 $lang['txt_insertsuccess'] = 'Insert Successfully !';
 $lang['txt_updateinfor'] = 'Update information successfully !';
 
+$lang['txt_change_password'] = 'Change Password';
+$lang['txt_old_password'] = 'Old Password';
+$lang['txt_new_password'] = 'New Password';
+
+
+$lang['txt_gallery'] = 'Gallery';
+
+
+
 
 
 
