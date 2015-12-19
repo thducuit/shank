@@ -35,8 +35,8 @@ if($class == 'index') {
 <?php }?>
 
 <script type="text/javascript">
-    var VALIDATE_REQUIRED = '<?php echo $this->lang->line('error_required');?>';
-    var VALIDATE_EMAIL = '<?php echo $this->lang->line('error_email');?>';
+    var VALIDATE_REQUIRED = '<?php echo $this->lang->line("error_required");?>';
+    var VALIDATE_EMAIL = '<?php echo $this->lang->line("error_email");?>';
 </script>
 </head>
 <body <?php echo ($class == 'index') ? "id='index'" : '';  ?>>
@@ -47,8 +47,8 @@ if($class == 'index') {
                 <h1 id="logo"><a href="#"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/logo.png" alt="SANKO MOLD VIETNAM" class="hide-sp" /><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/logo_sp.png" alt="SANKO MOLD VIETNAM" class="hide-pc" /></a></h1>
                 <div class="headerR">
                     <ul class="langList">
-                        <li class="jp"><a href="#"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/flag_jp.jpg" alt="Japanese" /></a></li>
-                        <li class="en"><a href="#"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/flag_en.jpg" alt="English" /></a></li>
+                        <li class="jp"><a href="?l=jp"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/flag_jp.jpg" alt="Japanese" /></a></li>
+                        <li class="en"><a href="?l=en"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/flag_en.jpg" alt="English" /></a></li>
                     </ul>
                     <p class="hTel hide-sp"><span>(+84)</span>61-393-6635</p>
                     <p class="hTel-sp hide-pc"><a href="tel:+84613936635" class="sweetlink"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/icon_tel_sp.png" alt="tel:+84613936635" /></a></p>
@@ -76,16 +76,18 @@ if($class == 'index') {
             </ul>
             <h2 class="slidesText">SANKO MOLD VIETNAM</h2>
         </div>
+        
         <!-- <div id="slides_sp" class="hide-pc">
             <p class="mainImg"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_main_01_sp.jpg" alt="SANKO MOLD VIETNAM" class="img-responsive" /> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_main_02_sp.jpg" alt="SANKO MOLD VIETNAM" class="img-responsive" /> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_main_03_sp.jpg" alt="SANKO MOLD VIETNAM" class="img-responsive" /> </p>
             <h2 class="slides_sp_text"><span>SANKO MOLD VIETNAM</span></h2>
         </div> -->
+        
         <?php 
         }
         else 
         {
         ?>
-        <p class="header-bg"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/hspace.gif" alt="SANKO MOLD VIETNAM" class="img-responsive" /></p>
+            <p class="header-bg"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/hspace.gif" alt="SANKO MOLD VIETNAM" class="img-responsive" /></p>
         <?php 
         }   
         ?>

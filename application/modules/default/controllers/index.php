@@ -16,13 +16,11 @@ class Index extends Parent_Controller {
 	
 	public function index() {
         $this->load->Model("media_default_model");
-        $this->data['slider'] = $this->media_default_model->get_gallery('slider', DEFAULT_LANGUAGE);
+        $this->data['slider'] = $this->media_default_model->get_gallery('slider', LANGUAGE);
         
         //RUN VIEW
         $this->template->build( 'index/index', $this->data );
 	}
 	
-	public function test($lang) {
-	    _pr($lang, true);
-	}
+	
 }

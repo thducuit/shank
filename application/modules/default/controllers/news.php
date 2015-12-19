@@ -20,7 +20,4 @@ class News extends Parent_Controller {
         $this->template->build( 'news/index', $this->data );
 	}
 	
-	public function test($lang) {
-	    _pr($lang, true);
-	}
 }

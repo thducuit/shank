@@ -17,6 +17,13 @@ class Language_Model extends CI_Model {
         $query = $this->db->get($this->table);
         return $query->result_array();
     }
+    
+    public function get_by_id($id) {
+        if( empty($id) ) return array();
+        $this->db->where('language_id', $id);
+        $query = $this->db->get($this->table);
+        return $query->row();
+    }
 
     public function insert($data) {
         if( empty($data) ) return 0;

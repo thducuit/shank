@@ -19,7 +19,4 @@ class Career extends Parent_Controller {
         $this->template->build( 'career/index', $this->data );
 	}
 	
-	public function test($lang) {
-	    _pr($lang, true);
-	}
 }
