@@ -1,8 +1,7 @@
 <?php
 $route_params = array(
   'jp' => array(
-      'about' => '/%s/about-us.html',
-      'about-item' => '/%s/about-us/%s.html', //
+      'about' => '/%s/about-us/%s.html', //
       'news' => '/%s/news.html',
       'contact' => '/%s/contact.html',
       'career' => '/%s/career.html',
@@ -12,8 +11,7 @@ $route_params = array(
       'productcat' => '/%s/category/%s.html'
    ),
   'en' => array(
-      'about' => '/%s/about-us.html',
-      'about-item' => '/%s/about-us/%s.html',
+      'about' => '/%s/about-us/%s.html',
       'news' => '/%s/news.html',
       'contact' => '/%s/contact.html',
       'career' => '/%s/career.html',

@@ -50,8 +50,9 @@ $route['index.html']                 = "default/index";
 | 
 */
 $route['(:any)/index.html']          = "default/index/index/$1";
-$route['(:any)/about-us.html']       = "default/about/index/$1";
-$route['(:any)/about-us/(:any).html']= "default/about/detail/$1/$2";
+
+//$route['(:any)/about-us.html']       = "default/about/index/$1";
+$route['(:any)/about-us/(:any).html']= "default/about/index/$1/$2";
 
 $route['(:any)/news.html']           = "default/news/index/$1";
 //$route['(:any)/news/(:any).html']    = "default/news/detail/$1/$2";

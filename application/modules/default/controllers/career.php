@@ -14,7 +14,7 @@ class Career extends Parent_Controller {
 	
 	public function index() {
 		$this->load->Model("post_default_model");
-		$this->data['career']= $this->post_default_model->get_post('career', DEFAULT_LANGUAGE);
+		$this->data['career']= $this->post_default_model->get_post('career', LANGUAGE);
 	    //RUN VIEW
         $this->template->build( 'career/index', $this->data );
 	}

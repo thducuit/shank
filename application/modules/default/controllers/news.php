@@ -14,7 +14,7 @@ class News extends Parent_Controller {
 	
 	public function index() {
 		$this->load->Model("post_default_model");
-		$this->data['news']= $this->post_default_model->get_post('news', DEFAULT_LANGUAGE);
+		$this->data['news'] = $this->post_default_model->get_post('news', LANGUAGE);
 		
 	    //RUN VIEW
         $this->template->build( 'news/index', $this->data );

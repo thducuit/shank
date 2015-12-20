@@ -4,7 +4,7 @@ class Parent_Controller extends MX_Controller {
 	
         private $data;
 
-		function __construct() {
+	function __construct() {
                 //if i remove this parent::__construct(); the error is gone
                 parent::__construct();
                 
@@ -13,12 +13,19 @@ class Parent_Controller extends MX_Controller {
                 $this->load_helper();
                 
                 $this->get_ads();
+                $this->get_about_list();
+                //_pr($this->data,true);
 	}
 
 
         private function get_ads() {
                 $this->load->Model("media_default_model");
                 $this->data['ads'] = $this->media_default_model->get_gallery('ads', LANGUAGE);
+        }
+
+        private function get_about_list() {
+                $this->load->Model("post_default_model");
+                $this->data['about_list'] = $this->post_default_model->get_post('about', LANGUAGE); 
         }
         
         private function load_theme() {
@@ -31,14 +38,9 @@ class Parent_Controller extends MX_Controller {
         
         private function load_helper() {
                 $this->load->helper('url');
-				$this->load->helper('utility');	
-		}
-		
-		
-        private function get_ads() {
-                $this->load->Model("media_default_model");
-                $this->data['ads'] = $this->media_default_model->get_gallery('ads', DEFAULT_LANGUAGE);
-        }
+		$this->load->helper('utility');	
+	}
+
         
         protected function get_data() {
                 return $this->data;
@@ -56,8 +58,7 @@ class Parent_Controller extends MX_Controller {
                                 define('LANGUAGE', $l);
                         }else {
                                 define('LANGUAGE', DEFAULT_LANGUAGE);
-                        }
-                        
+                        }     
                 }
                 $this->lang->load( 'default', LANGUAGE );
         }

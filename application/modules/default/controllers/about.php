@@ -5,24 +5,30 @@ require_once APPPATH . 'modules/default/controllers/parent.php';
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class About extends Parent_Controller {
 
+	 private $data;
+	 
 	 function __construct() {
         //if i remove this parent::__construct(); the error is gone
         parent::__construct();
+        $this->data = $this->get_data();
 	}
 	
-	public function index() {
-	    echo 'trang about index controller';
-	    $data['a'] = 10;
-	    $data['b'] = 'duc';
-	    $data['c'] = [10,4,5];
+	public function index($lang, $alias_name) {
+	    
+		$this->data['about'] = $this->find_post_by_alias_name($this->data['about_list'], $alias_name);
+		
 	    //RUN VIEW
-	    $this->template->build('about/index');
+	    $this->template->build('about/index', $this->data);
 	}
-	// public function test($lang) {
-	//     _pr($lang, true);
-	// }
+
+	private function find_post_by_alias_name($about_list, $alias_name) {
+		for ($i = 0; $i < count($about_list); $i++) {
+			$a = $about_list[$i]['alias_name'];
+			if(	strcmp($a, $alias_name) == 0 ){
+				return $about_list[$i];
+			}
+		}
+		return array();
+	}
 	
-	public function detail($lang, $alias) {
-	    echo 'trang about';
-	}
 }

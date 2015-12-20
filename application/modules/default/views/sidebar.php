@@ -4,10 +4,13 @@
                 <li><a href="index.html">ホームページ<span>Home</span></a></li>
                 <li class="sub atv"><a href="javascript:;">会社概要<span>About Us</span></a>
                     <ul class="sublink">
-                        <li><a href="vision_mission.html">ミッション・ビジョン</a></li>
-                        <li><a href="message_from_ceo.html">CEOからのメッセージ</a></li>
-                        <li><a href="company_information.html">会社紹介</a></li>
-                        <li><a href="company_history.html">沿革</a></li>
+                        <?php
+                        foreach($about_list as $al) {
+                        ?>
+                            <li><a href="<?php short_url('about', array($al['alias_name'])); ?>"><?php echo $al['post_title']?></a></li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </li>
                 <li class="sub"><a href="javascript:;">製品<span>Product</span></a>
