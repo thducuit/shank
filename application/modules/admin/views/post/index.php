@@ -44,18 +44,19 @@
                             );
                         ?>
                         <?php 
-                            my_select(
+                        
+                            /*my_select(
                                 $list_sort, 
                                 $keywords = array('title' => 'category_title', 'value' => 'category_id', 'parent'=> 'catparent_id', 'level' => 'category_level'),
                                 $attributes = array('name' => 'pid', 'id' => 'ddlInCate' , 'class' => 'combobox ddlFilter', 'data-href' => url_add_params($params, '/index.php/admin/category') ),
                                 $selected = array($params['pid']),
                                 $no_choice = array('title' => $this->lang->line('txt_category'), 'value' => 0)
-                            );
+                            );*/
                         ?>
                         
                         <button type="submit" name="type" value='update' id="cmdUpdate" class="button buttonUpdate buttonSubmit" ><?php echo $this->lang->line('txt_update');?></button>
                         <button type="submit" name="type" value='delete' id="cmdDel" class="button buttonDelete deleteSelected" ><?php echo $this->lang->line('txt_del');?></button>
-                        <button name='cmdAdd' data-href="<?php echo url_add_params($params, '/index.php/admin/category/add')?>" class='button buttonAdd buttonMedia'><?php echo $this->lang->line('txt_add');?></button>
+                        <button name='cmdAdd' data-href="<?php echo url_add_params($params, '/index.php/admin/post/add')?>" class='button buttonAdd buttonMedia'><?php echo $this->lang->line('txt_add');?></button>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -92,7 +93,7 @@
                         <?php 
                         foreach ($list as $key => $l) {
                             $expand_params = $params;
-                            $expand_params['id'] = $l['category_id'];
+                            $expand_params['id'] = $l['post_id'];
                         ?>
                         <tr class="">
                             <td class="cellwidth1">
@@ -109,10 +110,10 @@
                                 Category
                             </td>
                             <td class="cellwidth1">
-                                <?php my_toggle_button($l['category_status'], $l['category_id'], url_add_params($params, '/index.php/admin/post/status'), array('name'=>'ImgRowStatus'));?>
+                                <?php my_toggle_button($l['post_status'], $l['post_id'], url_add_params($params, '/index.php/admin/post/status'), array('name'=>'ImgRowStatus'));?>
                             </td>
                             <td class="textleft">
-                                <a href="<?php echo url_add_params($expand_params, '/index.php/admin/post/edit')?>" id="lblName" class="lblname"><?php echo $l['category_title']?></a>
+                                <a href="<?php echo url_add_params($expand_params, '/index.php/admin/post/edit')?>" id="lblName" class="lblname"><?php echo $l['category_post']?></a>
                             </td>
                             <td class="">
                                 <?php my_sort_input('sorts', $l['post_order'], array('class' => 'txtSort'), true, $l['post_id']);?>
