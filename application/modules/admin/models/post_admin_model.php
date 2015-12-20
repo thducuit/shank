@@ -47,4 +47,34 @@ class Post_Admin_Model extends Post_Model {
         $this->db->insert( $this->get_table(), $agrs );
         return $this->db->insert_id();
     }
+    
+    
+    /**
+     * GET ALL CATEGORY BY PAGINATION
+     * 
+     */
+    public function list_all_by_paging($select = array(), $filters = array(), $orders = array(), $from = 0, $to = 20, $keyword = '') {
+    	if(count($select) > 0) {
+    		 $this->db->select($select);
+    	}
+
+    	if(!empty($keyword)) {
+    		 $this->db->like('post_title', $keyword);
+    	}
+
+    	$this->db->limit($to, $from);
+
+    	foreach ($filters as $f => $fvalue) {
+    		$this->db->where($f, $fvalue);
+    	}
+
+    	foreach ($orders as $key => $value) {
+    		$this->db->order_by($key, $value);
+    	}
+
+    	$query = $this->db->get( $this->get_table() );
+
+        return $query->result_array();
+    }
+    
 }

@@ -63,6 +63,7 @@ class Post extends Base_Admin_Controller {
      */
     public function index () {
         $this->load->Model("post_admin_model");
+        $this->load->Model("category_admin_model");
         $this->load->helper('select');
         $this->load->helper('button');
         $this->load->helper('sort_input');
@@ -70,16 +71,17 @@ class Post extends Base_Admin_Controller {
         $this->load->helper('utility');
         
         //SELECT
-        $select = array('category_id', 'category_title', 'category_order', 'category_status', 'language_id', 'catparent_id', 'category_level');
+        $select = array('post_id', 'post_title', 'post_order', 'post_status', 'language_id', );
+        
         //FILTER
-        $filters = array('catparent_id' => (int)$this->params['pid']);
-        $filters['language_id'] =  ADMIN_LANGUAGE;
+        $filters = array('category_id' => (int)$this->params['pid']);
+        $filters['language_id'] =  DEFAULT_LANGUAGE;
         if( (int)$this->params['show'] != -1 ) {
-            $filters['category_status'] = (int)$this->params['show'];
+            $filters['post_status'] = (int)$this->params['show'];
         }
-        $filters['category_module'] = $this->module_code();
+        $filters['post_module'] = $this->module_code();
         //ORDER
-        $orders = array('category_order' => 'asc');
+        $orders = array('post_order' => 'asc');
         
         //PAGINATION
         $page = (int)$this->params['page'];
@@ -87,9 +89,10 @@ class Post extends Base_Admin_Controller {
         $from = ($page - 1) * $range;
         
         //DATA TO VIEW
-        $this->data['list'] = $this->category_admin_model->list_all_by_paging( $select, $filters, $orders, $from, $range, $keyword = $this->params['keyword'] );
+        $this->data['list'] = $this->post_admin_model->list_all_by_paging( $select, $filters, $orders, $from, $range, $keyword = $this->params['keyword'] );
         
         //GET LIST SORT
+        $select = array('category_id', 'category_title', 'category_level');
         $filters = array( 'category_status' => 1,  'category_module' => $this->module_code() );
         $rs = $this->category_admin_model->list_all( $select, $filters, $orders );
         $this->data['list_sort'] = get_list_by_language_id(ADMIN_LANGUAGE, $rs);
