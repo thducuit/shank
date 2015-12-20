@@ -5,7 +5,7 @@
             <div class="block-left">
                 <img src="<?php echo ADMIN_IMAGE_PATH ?>/icons/icon_list.png" alt="" />
                 <h1 class='title'>
-                     Gallery :: Add
+                     <?php echo $this->lang->line('txt_gallery');?> :: <?php echo $this->lang->line('txt_add');?>
                 </h1>
             </div>
             <div class="block-right">
@@ -44,7 +44,7 @@
                                         } 
                                     ?>
                                     <div id="tabs-<?php echo $lang['language_id']?>">
-                                        <p><a class='upload-gallery' href="#" rel='<?php echo $l; ?>'>Upload</a></p>
+                                        <p><a class='upload-gallery' href="#" rel='<?php echo $l; ?>'><?php echo $this->lang->line('txt_upload');?></a></p>
                                         <ul lang='<?php echo $l; ?>' class='gallery_list' id='<?php echo sprintf("gallery_%s_list", $l); ?>' >
                                             <?php 
                                             foreach ($g as $v) {

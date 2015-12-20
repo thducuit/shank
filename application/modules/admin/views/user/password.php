@@ -5,7 +5,7 @@
             <div class="block-left">
                 <img src="<?php echo ADMIN_IMAGE_PATH ?>/icons/icon_list.png" alt="" />
                 <h1 class='title'>
-                     User :: Change password
+                     <?php echo $this->lang->line('txt_user');?> :: <?php echo $this->lang->line('txt_change_password');?>
                 </h1>
             </div>
             <div class="block-right">
@@ -28,17 +28,17 @@
                             <div class='content-form-field'>
                                 
                                 <div class='form-field'>
-                                    <label class="desc">Password cũ</label>
+                                    <label class="desc"><?php echo $this->lang->line('txt_old_password');?></label>
                                     <input name="old_password" type="password" value="" class="field text full">
                                 </div>
                                 
                                 <div class='form-field'>
-                                    <label class="desc">Password mới</label>
+                                    <label class="desc"><?php echo $this->lang->line('txt_new_password');?></label>
                                     <input id="new_password" name="new_password" type="password" value="" class="field text full">
                                 </div>
                                 
                                 <div class='form-field'>
-                                    <label class="desc">Xác nhận lại password</label>
+                                    <label class="desc"><?php echo $this->lang->line('txt_confirm_password');?></label>
                                     <input name="new_password_confirm" type="password" value="" class="field text full">
                                 </div>
                             </div>

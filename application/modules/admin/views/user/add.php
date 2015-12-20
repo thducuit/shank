@@ -5,7 +5,7 @@
             <div class="block-left">
                 <img src="<?php echo ADMIN_IMAGE_PATH ?>/icons/icon_list.png" alt="" />
                 <h1 class='title'>
-                    User :: <?php echo $this->lang->line('txt_add');?>
+                    <?php echo $this->lang->line('txt_user');?> :: <?php echo $this->lang->line('txt_add');?>
                 </h1>
             </div>
             <div class="block-right">

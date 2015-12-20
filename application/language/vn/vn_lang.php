@@ -81,3 +81,10 @@ $lang['txt_invalidoldpass'] = 'Nhập mật khẩu cũ sai !';
 $lang['txt_updatepasssucces'] = 'Cập nhật mật khẩu thành công!';
 $lang['txt_insertsuccess'] = 'Thêm vào thành công !';
 $lang['txt_updateinfor'] = 'Cập nhật thông tin thành công !';
+
+
+$lang['txt_change_password'] = 'Đổi mật khẩu';
+$lang['txt_old_password'] = 'Mật khẩu cũ';
+$lang['txt_new_password'] = 'Mật khẩu mới';
+
+$lang['txt_gallery'] = 'Bộ ảnh';

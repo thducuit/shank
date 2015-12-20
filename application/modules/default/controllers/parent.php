@@ -4,7 +4,7 @@ class Parent_Controller extends MX_Controller {
 	
         private $data;
 
-	function __construct() {
+		function __construct() {
                 //if i remove this parent::__construct(); the error is gone
                 parent::__construct();
                 
@@ -31,7 +31,13 @@ class Parent_Controller extends MX_Controller {
         
         private function load_helper() {
                 $this->load->helper('url');
-                $this->load->helper('utility');
+				$this->load->helper('utility');	
+		}
+		
+		
+        private function get_ads() {
+                $this->load->Model("media_default_model");
+                $this->data['ads'] = $this->media_default_model->get_gallery('ads', DEFAULT_LANGUAGE);
         }
         
         protected function get_data() {

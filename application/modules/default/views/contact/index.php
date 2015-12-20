@@ -39,7 +39,7 @@
                 <form action='' id="submitform" method="post">
                     <dl class="dl_form">
                         <dt>
-                            <label for="txtFullname">氏名</label>
+                            <label for="txtFullname"><?php echo $this->lang->line('txt_name');?></label>
                         </dt>
                         <dd>
                             <input type="text" class="sizeTxt" size="150" value="" id="txtFullname" name="txtFullname" />
@@ -51,25 +51,25 @@
                             <input type="text" class="sizeTxt" size="150" value="" id="txtEmail" name="txtEmail" />
                             <span class="must">*</span> </dd>
                         <dt>
-                            <label for="txtTel">電話番号</label>
+                            <label for="txtTel"><?php echo $this->lang->line('txt_tel');?></label>
                         </dt>
                         <dd>
                             <input type="text" class="sizeTxt" size="150" value="" id="txtTel" name="txtTel" />
                         </dd>
                         <dt>
-                            <label for="txtCompany">会社名</label>
+                            <label for="txtCompany"><?php echo $this->lang->line('txt_company');?></label>
                         </dt>
                         <dd>
                             <input type="text" class="sizeTxt" size="150" value="" id="txtCompany" name="txtCompany" />
                         </dd>
                         <dt>
-                            <label for="txtContent">お問い合わせ内容</label>
+                            <label for="txtContent"><?php echo $this->lang->line('txt_content');?></label>
                         </dt>
                         <dd>
                             <textarea rows="3" cols="35" id="txtContent" name="txtContent"></textarea>
                             <span class="must">*</span></dd>
                             <dt>&nbsp;</dt>
-                            <dd class="center"><input type="submit" value="Send" class="btnSubmit" name="send" /></dd>
+                            <dd class="center"><input type="submit" value=<?php echo $this->lang->line('txt_send');?> class="btnSubmit" name="send" /></dd>
                     </dl>
                     <p class="buttonC">
                         
