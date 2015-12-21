@@ -15,10 +15,11 @@
                 </li>
                 <li class="sub"><a href="javascript:;">製品<span>Product</span></a>
                     <ul class="sublink">
-                        <li><a href="mold.html">金型の設計・制作</a></li>
-                        <li><a href="plastic.html">プラスチック部品の製造・組立</a></li>
-                        <li><a href="battery.html">電池式携帯電話充電器の組立</a></li>
-                    </ul>
+                        <?php
+                        foreach($products_list as $pl)
+                        ?>
+                        <li><a href="<?php short_url('productcat', array($pl['alias_name'])); ?>"><?php echo $pl['category_title']?></a></li>
+                     </ul>
                 </li>
                 <li><a href="main_equipment.html">主な設備、機械<span>The main equipment, machinery</span></a></li>
                 <li><a href="<?php short_url('news'); ?>">ニュース<span>News</span></a></li>

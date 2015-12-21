@@ -14,6 +14,7 @@ class Parent_Controller extends MX_Controller {
                 
                 $this->get_ads();
                 $this->get_about_list();
+                $this->get_products_list();
                 //_pr($this->data,true);
 	}
 
@@ -21,6 +22,11 @@ class Parent_Controller extends MX_Controller {
         private function get_ads() {
                 $this->load->Model("media_default_model");
                 $this->data['ads'] = $this->media_default_model->get_gallery('ads', LANGUAGE);
+        }
+
+        private function get_products_list() {
+                $this->load->Model("category_default_model");
+                $this->data['products_list'] = $this->category_default_model->get_category('productcat', LANGUAGE); 
         }
 
         private function get_about_list() {
