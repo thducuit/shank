@@ -113,7 +113,7 @@
                                 <?php my_toggle_button($l['post_status'], $l['post_id'], url_add_params($params, '/index.php/admin/post/status'), array('name'=>'ImgRowStatus'));?>
                             </td>
                             <td class="textleft">
-                                <a href="<?php echo url_add_params($expand_params, '/index.php/admin/post/edit')?>" id="lblName" class="lblname"><?php echo $l['category_post']?></a>
+                                <a href="<?php echo url_add_params($expand_params, '/index.php/admin/post/edit')?>" id="lblName" class="lblname"><?php echo $l['post_title']?></a>
                             </td>
                             <td class="">
                                 <?php my_sort_input('sorts', $l['post_order'], array('class' => 'txtSort'), true, $l['post_id']);?>
