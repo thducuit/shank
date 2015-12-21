@@ -74,7 +74,7 @@ class Post extends Base_Admin_Controller {
         $select = array('post_id', 'post_title', 'post_order', 'post_status', 'language_id', );
         
         //FILTER
-        $filters = array('category_id' => (int)$this->params['pid']);
+        $filters = array('category_id' => (int)$this->params['pid'], 'post_type'=>'post');
         $filters['language_id'] =  DEFAULT_LANGUAGE;
         if( (int)$this->params['show'] != -1 ) {
             $filters['post_status'] = (int)$this->params['show'];

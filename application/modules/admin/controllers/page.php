@@ -74,7 +74,7 @@ class Page extends Base_Admin_Controller {
         $select = array('post_id', 'post_title', 'post_order', 'post_status', 'language_id', );
         
         //FILTER
-        $filters = array('category_id' => (int)$this->params['pid']);
+        $filters = array('category_id' => (int)$this->params['pid'], 'post_type'=>'page');
         $filters['language_id'] =  DEFAULT_LANGUAGE;
         if( (int)$this->params['show'] != -1 ) {
             $filters['post_status'] = (int)$this->params['show'];
@@ -92,11 +92,11 @@ class Page extends Base_Admin_Controller {
         $this->data['list'] = $this->post_admin_model->list_all_by_paging( $select, $filters, $orders, $from, $range, $keyword = $this->params['keyword'] );
         
         //GET LIST SORT
-        $select = array('category_id', 'category_title', 'category_level');
+        /*$select = array('category_id', 'category_title', 'category_level');
         $filters = array( 'category_status' => 1,  'category_module' => $this->category );
         $orders = array('category_order' => 'asc');
         $rs = $this->category_admin_model->list_all( $select, $filters, $orders );
-        $this->data['list_sort'] = get_list_by_language_id(DEFAULT_LANGUAGE, $rs);
+        $this->data['list_sort'] = get_list_by_language_id(DEFAULT_LANGUAGE, $rs);*/
         
         //RUN VIEW
         $this->template->build( $this->class_view, $this->data);
@@ -159,7 +159,7 @@ class Page extends Base_Admin_Controller {
             $this->data['list'] = array();
             
             //GET LIST
-            $rs = $this->category_admin_model->list_all( $select = array( 'category_id', 'category_title', 'catparent_id', 'category_level', 'language_id'),
+            $rs = $this->module_admin_model->list_all( $select = array( 'category_id', 'category_title', 'catparent_id', 'category_level', 'language_id'),
                                                          $filters = array( 'category_status' => 1,  'category_module' =>  $this->category),
                                                          $orders = array() 
                                                       );
