@@ -77,4 +77,19 @@ class Post_Admin_Model extends Post_Model {
         return $query->result_array();
     }
     
+    
+    
+    /**
+     * GET CATEGORY BY LANGMAP ID
+     * 
+     */
+    public function get_by_langmap_id( $langmap_id ) {
+        if( empty($langmap_id) ) return array();
+        $table  = $this->get_table();
+        $this->db->join('alias', "alias.fid = $table.post_id");
+        $this->db->where('langmap_id', $langmap_id);
+        $query = $this->db->get($table);
+        return $query->result_array();
+    }
+    
 }

@@ -139,7 +139,7 @@ class Post extends Base_Admin_Controller {
                 $post['language_id'] = $lang['language_id'];
                 $post['langmap_id'] = $langmap_id;
                 $post['module'] = $this->module_code();
-                $post['alias'] = ( !empty( $post['alias'] ) ) ? $post['alias'] : ( ( !empty( $post['title'] ) ) ? alias( $post['title'] ) : 'cat-' . uniqid('shank_') );
+                $post['alias'] = ( !empty( $post['alias'] ) ) ? $post['alias'] : ( ( !empty( $post['title'] ) ) ? alias( $post['title'] ) : 'post-' . uniqid('shank_') );
                 $post['type'] = 'post';
                 
                 
@@ -179,6 +179,7 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function edit() {
+        $this->load->Model("post_admin_model");
         $this->load->Model("category_admin_model");
         $this->load->Model("langmap_admin_model");
         $this->load->Model("alias_admin_model");
@@ -193,19 +194,19 @@ class Post extends Base_Admin_Controller {
         if ( isset($_POST['update']) ) {
             
         }else{
-            //GET CATEGORIES TO SHOW
-            /*$id = $this->input->get('id');
-            $category   = $this->category_admin_model->get_by_id($id);
-            $langmap_id = $category->langmap_id;
-            $rs = $this->category_admin_model->get_by_langmap_id($langmap_id);
+            //GET POSTS TO SHOW
+            $id = $this->input->get('id');
+            $post   = $this->post_admin_model->get_by_id($id);
+            $langmap_id = $post->langmap_id;
+            $rs = $this->post_admin_model->get_by_langmap_id($langmap_id);
             foreach($this->languages as $l) {
-                $this->data['categories'][$l['language_id']] = get_list_by_language_id($l['language_id'], $rs, true);
-            }*/
+                $this->data['posts'][$l['language_id']] = get_list_by_language_id($l['language_id'], $rs, true);
+            }
             
             //GET LIST
             $rs = $this->category_admin_model->list_all( 
                                                         $select = array( 'category_id', 'category_title', 'catparent_id', 'category_level', 'language_id'),
-                                                        $filters = array( 'category_status' => 1,  'category_module' => $this->module_code() ),
+                                                        $filters = array( 'category_status' => 1,  'category_module' => $this->category ),
                                                         $orders = array() 
                                                         );
             foreach($this->languages as $l) {
