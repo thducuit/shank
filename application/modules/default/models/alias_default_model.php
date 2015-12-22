@@ -8,14 +8,21 @@ class Alias_Default_Model extends Alias_Model {
 
     public function get_alias_by_language_and_name($lang, $alias_name) {
         $alias = $this->get_by_name($alias_name);
-        _pr($alias, true);
+        if( count($alias) > 0 ) {
+            $this->db->from($this->get_table());
+            $this->db->where( array('langmap_id' => $alias['langmap_id'], 'language_id'=> $lang) );
+            $query = $this->db->get();
+            return (array)$query->row();
+        }else {
+            return array();
+        }
     }  
 
     public function get_by_name($alias_name) {
         $this->db->from($this->get_table());
         $this->db->where( array('alias_name' => $alias_name) );
         $query = $this->db->get();
-        return $query->result_array();
+        return (array)$query->row();
     }
     
 }

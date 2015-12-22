@@ -85,6 +85,20 @@
                             </li>
                             <li>
                                 <label class="desc">
+                                    Status
+                                </label>
+                                <div>
+                                    <?php 
+                                        echo my_select(
+                                            array(array('title' => 'Show', 'value' => 1), array('title' => 'Hide', 'value' => 0)), 
+                                            $option = array('title' => 'title', 'value' => 'value'),
+                                            $attributes = array('name' => 'module_menu', 'id' => 'lstStatus', 'class' => 'listbox lstStatus')
+                                        );
+                                    ?>
+                                </div>
+                            </li>
+                            <li>
+                                <label class="desc">
                                     Order
                                 </label>
                                 <input name="module_order" type="text" value="1" class="field text small">

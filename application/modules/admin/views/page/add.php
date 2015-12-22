@@ -1,0 +1,139 @@
+<div id="page-wrapper">
+    <form action='' method='post'>
+    <div id="main-wrapper">
+        <div id="main-header">
+            <div class="block-left">
+                <img src="<?php echo ADMIN_IMAGE_PATH ?>/icons/icon_list.png" alt="" />
+                <h1 class='title'>
+                    <?php echo $this->lang->line('txt_post');?> :: <?php echo $this->lang->line('txt_add');?>
+                </h1>
+            </div>
+            <div class="block-right">
+                <button type="submit" name="add" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_add');?></button>
+                <button type="submit" data-href='<?php echo url_add_params($params, '/index.php/admin/page')?>' name="cancel"  id="cmdCancel" class="button "><?php echo $this->lang->line('txt_cancel');?></button>
+            </div>
+        </div>
+        <div id="main-content">
+            <div id="content-outer">
+                <div class="content-wrapper">
+                    <div class="content">
+                        <div id="tabs" class="tabs">
+                            <ul class='tabs-heading'>
+                                <?php foreach($languages as $lang) { ?>
+                                <li>
+                                    <a href="#tabs-<?php echo $lang['language_id']?>"><img src="<?php echo FLAGS_PATH ?>/<?php echo $lang['language_id'] . '.png'; ?>" /></a>
+                                </li>
+                                <?php } ?>
+                            </ul><!--//TABS-HEADING-->
+                            <?php foreach($languages as $lang) { 
+                                $l = $lang['language_id'];
+                            ?>
+                            <div id="tabs-<?php echo $lang['language_id']?>">
+                                <div class="form">
+                                    <div class="block-left">
+                                        
+                                        <div class='form-field'>
+                                            <label class="desc"><?php echo $this->lang->line('txt_title');?></label>
+                                            <input data-for='<?php echo sprintf("#post_%s_alias", $l); ?>' name="post[<?php echo $lang['language_id']?>][title]" type="text" value="" class="field text full">
+                                        </div>
+                                        
+                                        <div class="form-field">
+                                            <label class="desc"><?php echo $this->lang->line('txt_description');?></label>
+                                            <textarea id='<?php echo sprintf("post_%s_description", $l); ?>' data-editor='<?php echo sprintf("post_%s_description", $l); ?>' name="post[<?php echo $lang['language_id']?>][description]" class="textarea small full"></textarea>  
+                                        </div>
+                                        
+                                        <div class="form-field">
+                                            <label class="desc"><?php echo $this->lang->line('txt_content');?></label>
+                                            <textarea id='<?php echo sprintf("post_%s_content", $l); ?>' data-editor='<?php echo sprintf("post_%s_content", $l); ?>' name="post[<?php echo $lang['language_id']?>][content]" class="textarea small full"></textarea>  
+                                        </div>
+                                        
+                                        <!--SEO-->
+                                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+                                            <div class="portlet-header ui-widget-header">
+                                                <span class="ui-icon ui-icon-circle-arrow-s"></span>SEO
+                                            </div>
+                                            <div class="portlet-content">
+                                                <div class="form-field">
+                                                    <label class="desc">SEO <?php echo $this->lang->line('txt_title');?></label>
+                                                    <input name="post[<?php echo $lang['language_id']?>][seo_title]" type="text" value="" class="field text full">
+                                                </div>
+                                                
+                                                <div class="form-field">
+                                                    <label class="desc">SEO <?php echo $this->lang->line('txt_description');?></label>
+                                                    <textarea  name="post[<?php echo $lang['language_id']?>][seo_description]" class="textarea small full"></textarea>  
+                                                </div>
+                                                
+                                                <div class="form-field">
+                                                    <label class="desc">SEO <?php echo $this->lang->line('txt_keyword');?></label>
+                                                    <textarea  name="post[<?php echo $lang['language_id']?>][seo_keywords]" class="textarea small full"></textarea>  
+                                                </div>
+                                            </div>
+                                        </div><!--//SEO-->
+                                        
+                                    </div><!--//Block left-->
+                                    
+                                    <div class="block-right">
+                                    </div><!--//Block right-->
+                                    <div class="clearfix"></div>
+                                </div><!--//form-->
+                                
+                                <div class="form-control">
+                                    <button type="submit" name="add" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_add');?></button>
+                                    <button type="submit" name="cancel"  id="cmdCancel" class="button "><?php echo $this->lang->line('txt_cancel');?></button>
+                                </div>
+                        
+                            </div><!--//TABS-CONTENT-->
+                            <?php } ?>
+                        </div><!--//TABS-->
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="block-left sidebar">
+                
+                <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+                    <div class="portlet-header ui-widget-header">
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span><?php echo $this->lang->line('txt_configuration');?>
+                    </div>
+                    <div class="portlet-content">
+                        <ul>
+                            <li>
+                                <label class="desc">Trang</label>
+                                <?php 
+                                    my_select(
+                                        $list, 
+                                        $option = array('title' => 'module_name', 'value' => 'module_code'),
+                                        $attributes = array('name' => "module", 'id' => 'lstCate', 'class' => 'listbox lstCate', 'size' => 4)
+                                    );
+                                ?>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+                    <div class="portlet-header ui-widget-header">
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span><?php echo $this->lang->line('txt_featured_photo');?>
+                    </div>
+                    <div class="portlet-content">
+                        <div class='featured_photo'></div>
+                        <div>
+                            <a href='#' class='upload-gallery'><?php echo $this->lang->line('txt_upload');?></a>
+                            <a href='#'><?php echo $this->lang->line('txt_remove');?></a>
+                            <input type="hidden" id='featured_photo' name="featured_image"/>
+                        </div>
+                    </div>
+                </div>
+
+            </div><!--//SIDEBAR-->
+            
+            <div class="clearfix"></div>
+            
+        </div>
+        <div class="clearfix">
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    </form>
+</div>

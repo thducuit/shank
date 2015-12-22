@@ -72,6 +72,7 @@ class Module extends Base_Install_Controller {
             $module_option  = json_encode($this->input->post('module_option')); 
             $module_status  = (int)$this->input->post('module_status');
             $module_order  = (int)$this->input->post('module_order'); 
+            $module_menu  = (int)$this->input->post('module_menu'); 
             $module_level = '';
             
             $data = array(

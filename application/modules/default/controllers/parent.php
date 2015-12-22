@@ -1,6 +1,9 @@
 <?php 
+//REQUIRE
+require_once APPPATH . 'modules/default/controllers/core.php';
+
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Parent_Controller extends MX_Controller {
+class Parent_Controller extends Core_Controller {
 	
         private $data;
 
@@ -8,14 +11,14 @@ class Parent_Controller extends MX_Controller {
                 //if i remove this parent::__construct(); the error is gone
                 parent::__construct();
                 
-                $this->load_lang();
+                
                 $this->load_theme();
                 $this->load_helper();
+                $this->load_lang();
                 
                 $this->get_ads();
                 $this->get_about_list();
                 $this->get_products_list();
-                //_pr($this->data,true);
 	}
 
 
@@ -52,31 +55,5 @@ class Parent_Controller extends MX_Controller {
                 return $this->data;
         }
         
-        protected function load_lang() {
-                $lang = strip_tags( $this->input->get('l') );
-                if($lang) {
-                        define('LANGUAGE', $lang);
-                        $uri = $this->uri->segment_array();
-                        $subjects = array_pop($uri);
-                        $partern = '/^[a-z0-9\-]+/';
-                        preg_match($partern, $subjects, $matches);
-                        $alias_name = array_pop($matches);
-                        $alias = $this->get_alias($lang, $alias_name);
-                }else {
-                        $l =  $this->uri->segment(1);
-                        $this->load->Model('language_default_model');
-                        $rs = (array)$this->language_default_model->get_by_id($l);
-                        if( count($rs) ) {
-                                define('LANGUAGE', $l);
-                        }else {
-                                define('LANGUAGE', DEFAULT_LANGUAGE);
-                        }     
-                }
-                $this->lang->load( 'default', LANGUAGE );
-        }
-
-        protected function get_alias($lang, $alias_name) {
-                $this->load->Model("alias_default_model");
-                return $this->alias_default_model->get_alias_by_language_and_name($lang, $alias_name);
-        }
+        
 }

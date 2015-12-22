@@ -135,7 +135,7 @@
                                             array(array('title' => $this->lang->line('txt_show') ,'value' => 1), array('title' => $this->lang->line('txt_hide'), 'value' => 0)), 
                                             $option = array('title' => 'title', 'value' => 'value'),
                                             $attributes = array('name' => 'status', 'id' => 'lstStatus', 'class' => 'listbox lstStatus'),
-                                            $selected = array( $categories[ADMIN_LANGUAGE]['category_status'] )
+                                            $selected = array( $categories[DEFAULT_LANGUAGE]['category_status'] )
                                         );
                                     ?>
                                 </div>
@@ -144,7 +144,7 @@
                                 <label class="desc">
                                     <?php echo $this->lang->line('txt_oders');?>
                                 </label>
-                                <input name="order" type="text" value="<?php echo $categories[ADMIN_LANGUAGE]['category_order']?>" class="field text small">
+                                <input name="order" type="text" value="<?php echo $categories[DEFAULT_LANGUAGE]['category_order']?>" class="field text small">
                             </li>
                         </ul>
                     </div>

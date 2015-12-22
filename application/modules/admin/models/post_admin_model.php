@@ -86,8 +86,9 @@ class Post_Admin_Model extends Post_Model {
     public function get_by_langmap_id( $langmap_id ) {
         if( empty($langmap_id) ) return array();
         $table  = $this->get_table();
-        $this->db->join('alias', "alias.fid = $table.post_id");
-        $this->db->where('langmap_id', $langmap_id);
+        $this->db->select('post.*, alias.alias_id, alias.alias_name, alias.alias_module, alias.fid');
+        $this->db->join('alias', "alias.fid = $table.post_id", 'left');
+        $this->db->where('post.langmap_id', $langmap_id);
         $query = $this->db->get($table);
         return $query->result_array();
     }

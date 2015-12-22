@@ -11,7 +11,8 @@ class Alias_Admin_Model extends Alias_Model {
             'alias_name' => ( !empty($data['alias']) ) ? $data['alias'] : $data['module'] . $fid,
             'alias_module' => $data['module'],
             'fid' => $fid,
-            'language_id' => $data['language_id'] 
+            'language_id' => $data['language_id'],
+            'langmap_id' => $data['langmap_id'] 
         );
         $this->db->insert( $this->get_table(), $agrs );
         return $this->db->insert_id();
