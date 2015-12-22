@@ -74,6 +74,11 @@ class Post extends Base_Admin_Controller {
         $select = array('post_id', 'post_title', 'post_order', 'post_status', 'language_id', );
         
         //FILTER
+
+        $filters = array();
+        if( (int)$this->params['pid'] != 0 ) {
+            $filters['category_id'] = (int)$this->params['pid'];
+        }
         $filters = array('category_id' => (int)$this->params['pid'], 'post_type'=>'post');
         $filters['language_id'] =  DEFAULT_LANGUAGE;
         if( (int)$this->params['show'] != -1 ) {
@@ -91,12 +96,14 @@ class Post extends Base_Admin_Controller {
         //DATA TO VIEW
         $this->data['list'] = $this->post_admin_model->list_all_by_paging( $select, $filters, $orders, $from, $range, $keyword = $this->params['keyword'] );
         
+        //_pr($this->data, true);
+        
         //GET LIST SORT
-        $select = array('category_id', 'category_title', 'category_level');
+        /*$select = array('category_id', 'category_title', 'category_level');
         $filters = array( 'category_status' => 1,  'category_module' => $this->category );
         $orders = array('category_order' => 'asc');
         $rs = $this->category_admin_model->list_all( $select, $filters, $orders );
-        $this->data['list_sort'] = get_list_by_language_id(DEFAULT_LANGUAGE, $rs);
+        $this->data['list_sort'] = get_list_by_language_id(DEFAULT_LANGUAGE, $rs);*/
         
         //RUN VIEW
         $this->template->build( $this->class_view, $this->data);

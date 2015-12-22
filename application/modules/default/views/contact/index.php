@@ -2,7 +2,7 @@
     <div id="main" class="clearfix">
         <!-- content start -->
         <div id="content" class="con">
-            <h3>お問い合わせ</h3>
+            <h3><?php echo $this->lang->line('txt_contact');?></h3>
             <div class="section">
             <table summary="お問い合わせ" class="th_left">
 <tr>
@@ -33,9 +33,9 @@
                     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3917.3532310267246!2d106.88847!3d10.9366675!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174de6cbff5bf79%3A0x21c412885fbc1a4b!2sC%C3%B4ng+Ty+TNHH+Sanko+Mold+Vi%E1%BB%87t+Nam!5e0!3m2!1svi!2s!4v1449462005687" width="100%" height="400" frameborder="0" style="border:0"></iframe>
                 </div>
             </div>
-            <h4>お問い合わせフォーム</h4>
+            <h4><?php echo $this->lang->line('txt_note');?></h4>
             <div class="section">
-                <p class="red pl10">下記項目のご記入をお願いいたします。(*)印の項目は、必須入力項目です。 </p>
+                <p class="red pl10"><?php echo $this->lang->line('txt_required');?> </p>
                 <form action='' id="submitform" method="post">
                     <dl class="dl_form">
                         <dt>

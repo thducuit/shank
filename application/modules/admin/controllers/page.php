@@ -159,13 +159,7 @@ class Page extends Base_Admin_Controller {
             $this->data['list'] = array();
             
             //GET LIST
-            $rs = $this->module_admin_model->list_all( $select = array( 'category_id', 'category_title', 'catparent_id', 'category_level', 'language_id'),
-                                                         $filters = array( 'category_status' => 1,  'category_module' =>  $this->category),
-                                                         $orders = array() 
-                                                      );
-            foreach($this->languages as $l) {
-                $this->data['list'][$l['language_id']] = get_list_by_language_id($l['language_id'], $rs);
-            }
+            $this->data['list'] = $this->module_admin_model->list_all();
             
             //RUN VIEW
             $this->template->build( $this->class_view, $this->data);

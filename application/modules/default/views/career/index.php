@@ -3,7 +3,7 @@
     <div id="main" class="clearfix">
         <!-- content start -->
         <div id="content" class="con">
-            <h3>採用情報</h3>
+            <h3><?php echo $this->lang->line('txt_career');?></h3>
             <div class="section">
                 <?php
                 foreach($career as $c) {

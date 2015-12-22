@@ -2,7 +2,7 @@
     <div id="main" class="clearfix">
 <!-- content start -->
         <div id="content" class="con">
-            <h3>ニュース</h3>
+            <h3><?php echo $this->lang->line('txt_news');?></h3>
             <div class="section">
                 <?php
                 foreach($news as $n) {

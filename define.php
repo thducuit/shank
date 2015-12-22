@@ -7,7 +7,7 @@
  * Language in Administrator 
  *
  */
-define('ADMIN_LANGUAGE', 'en');//vn,en
+define('ADMIN_LANGUAGE', 'vn');//vn,en
 
 /*
  * --------------------------------------------------------------------
@@ -94,3 +94,13 @@ define('FULL_PERMISSION', 16);
  *
  */
  define('ENCRYPTION_KEY', 'tuananh1907');
+
+ /*
+ * --------------------------------------------------------------------
+ * PAGINATION
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ *
+ */
+ define('PAGINATION', 16);

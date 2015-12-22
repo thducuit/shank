@@ -5,7 +5,7 @@
     <div id="main" class="clearfix">
         <!-- content start -->
         <div id="content" class="con">
-            <h3>沿革</h3>
+            <h3><?php echo $about['post_title']?></h3>
             <div class="section">
             	<?php
             	//foreach($about as $ab) {

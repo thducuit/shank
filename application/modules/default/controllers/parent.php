@@ -14,6 +14,7 @@ class Parent_Controller extends MX_Controller {
                 
                 $this->get_ads();
                 $this->get_about_list();
+                $this->get_products_list();
                 //_pr($this->data,true);
 	}
 
@@ -21,6 +22,11 @@ class Parent_Controller extends MX_Controller {
         private function get_ads() {
                 $this->load->Model("media_default_model");
                 $this->data['ads'] = $this->media_default_model->get_gallery('ads', LANGUAGE);
+        }
+
+        private function get_products_list() {
+                $this->load->Model("category_default_model");
+                $this->data['products_list'] = $this->category_default_model->get_category('productcat', LANGUAGE); 
         }
 
         private function get_about_list() {
@@ -50,6 +56,12 @@ class Parent_Controller extends MX_Controller {
                 $lang = strip_tags( $this->input->get('l') );
                 if($lang) {
                         define('LANGUAGE', $lang);
+                        $uri = $this->uri->segment_array();
+                        $subjects = array_pop($uri);
+                        $partern = '/^[a-z0-9\-]+/';
+                        preg_match($partern, $subjects, $matches);
+                        $alias_name = array_pop($matches);
+                        $alias = $this->get_alias($lang, $alias_name);
                 }else {
                         $l =  $this->uri->segment(1);
                         $this->load->Model('language_default_model');
@@ -61,5 +73,10 @@ class Parent_Controller extends MX_Controller {
                         }     
                 }
                 $this->lang->load( 'default', LANGUAGE );
+        }
+
+        protected function get_alias($lang, $alias_name) {
+                $this->load->Model("alias_default_model");
+                return $this->alias_default_model->get_alias_by_language_and_name($lang, $alias_name);
         }
 }
