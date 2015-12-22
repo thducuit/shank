@@ -63,7 +63,7 @@ class Category extends Base_Admin_Controller {
         $select = array('category_id', 'category_title', 'category_order', 'category_status', 'language_id', 'catparent_id', 'category_level');
         //FILTER
         $filters = array('catparent_id' => (int)$this->params['pid']);
-        $filters['language_id'] =  ADMIN_LANGUAGE;
+        $filters['language_id'] =  DEFAULT_LANGUAGE;
         if( (int)$this->params['show'] != -1 ) {
             $filters['category_status'] = (int)$this->params['show'];
         }
@@ -82,7 +82,7 @@ class Category extends Base_Admin_Controller {
         //GET LIST SORT
         $filters = array( 'category_status' => 1,  'category_module' => $this->module_code() );
         $rs = $this->category_admin_model->list_all( $select, $filters, $orders );
-        $this->data['list_sort'] = get_list_by_language_id(ADMIN_LANGUAGE, $rs);
+        $this->data['list_sort'] = get_list_by_language_id(DEFAULT_LANGUAGE, $rs);
         
         //RUN VIEW
         $this->template->build( $this->class_view, $this->data);
