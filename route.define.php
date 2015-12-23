@@ -6,8 +6,7 @@ $route_params = array(
       'contact' => '/%s/contact.html',
       'career' => '/%s/career.html',
       'sitemap' => '/%s/sitemap.html',
-      'product' => '/%s/products.html',
-      'product-item' => '/%s/product/%s.html',
+      'product' => '/%s/product/%s.html',
       'productcat' => '/%s/category/%s.html'
    ),
   'en' => array(
@@ -16,8 +15,7 @@ $route_params = array(
       'contact' => '/%s/contact.html',
       'career' => '/%s/career.html',
       'sitemap' => '/%s/sitemap.html',
-      'product' => '/%s/products.html',
-      'product-item' => '/%s/product/%s.html',
+      'product' => '/%s/product/%s.html',
       'productcat' => '/%s/category/%s.html'
     )
 );

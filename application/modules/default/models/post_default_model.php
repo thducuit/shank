@@ -10,8 +10,20 @@ class Post_Default_Model extends Post_Model {
     	$this->db->select('*');
    		$this->db->from($this->get_table());
    		$this->db->join('alias', 'alias.fid = post.post_id');
-   		$this->db->where(array('alias.alias_module' => $post_module,'post_module' => $post_module, 'post.language_id' => $language_id, 'post_status' => 1)); 
+   		$this->db->where(array('alias.alias_module' => $post_module, 'post_module' => $post_module, 'post.language_id' => $language_id, 'post_status' => 1, 'post_type'=> 'post', 'post_lock'=>0)); 
    		$query = $this->db->get();
    		return $query->result_array();
+    }
+
+
+    public function get_page($language_id = '') {
+      $this->db->select('*');
+      $this->db->from($this->get_table());
+      $this->db->where(array('post_type' => 'page', 'post_lock' => 0));
+      if( !empty($language_id) )  {
+        $this->db->where('language_id', $language_id);
+      }
+      $query = $this->db->get();
+      return $query->result_array();
     }
 }

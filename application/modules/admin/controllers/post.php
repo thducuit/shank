@@ -70,7 +70,7 @@ class Post extends Base_Admin_Controller {
      */
     public function index () {
         //SELECT
-        $select = array('post_id', 'post_title', 'post_order', 'post_status', 'language_id', );
+        $select = array( 'post_id', 'post_title', 'post_order', 'post_status', 'language_id' );
         
         //FILTER
 
@@ -96,7 +96,7 @@ class Post extends Base_Admin_Controller {
         $this->data['list'] = $this->post_admin_model->list_all_by_paging( $select, $filters, $orders, $from, $range, $keyword = $this->params['keyword'] );
         
         //GET LIST SORT
-        $select = array('category_id', 'category_title', 'category_level');
+        $select = array('category_id', 'category_title', 'category_level', 'language_id');
         $filters = array( 'category_status' => 1,  'category_module' => $this->category );
         $orders = array('category_order' => 'asc');
         $rs = $this->category_admin_model->list_all( $select, $filters, $orders );
