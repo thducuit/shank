@@ -60,8 +60,6 @@ class Core_Controller extends MX_Controller {
                         $url = substr($url, 1, strlen($url));
                         $url = base_url() . $url;
                         redirect( $url );
-                }else {
-                        redirect( base_url() );
                 }
         }
 }

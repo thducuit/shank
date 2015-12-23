@@ -85,7 +85,7 @@
                             </li>
                             <li>
                                 <label class="desc">
-                                    Status
+                                    Menu
                                 </label>
                                 <div>
                                     <?php 
