@@ -34,8 +34,8 @@ button {
 .block-right-control-button{
 	margin-top: 5px;
 }
-#ddlInCate,
-#ddlstatus{
+/*#ddlInCate,*/
+.ddlFilter{
 	float: left;
 	margin-left: 5px;
 }

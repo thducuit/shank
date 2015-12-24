@@ -9,7 +9,7 @@
                 </h1>
             </div>
             <div class="block-right">
-                <button type="submit" name="add" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_update');?></button>
+                <button type="submit" name="update" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_update');?></button>
                 <button type="submit" data-href='<?php echo url_add_params($params, '/index.php/admin/post')?>' name="cancel"  id="cmdCancel" class="button "><?php echo $this->lang->line('txt_cancel');?></button>
             </div>
         </div>
@@ -39,12 +39,12 @@
                                         
                                         <div class='form-field'>
                                             <label class="desc"><?php echo $this->lang->line('txt_title');?></label>
-                                            <input name="post[<?php echo $lang['language_id']?>][title]" type="text" value="<?php echo $posts[$lang['language_id']]['post_title'];?>" class="field text full">
+                                            <input data-for='<?php echo sprintf("#post_%s_alias", $l); ?>' name="post[<?php echo $lang['language_id']?>][title]" type="text" value="<?php echo $posts[$lang['language_id']]['post_title'];?>" class="field text full">
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc">Alias</label>
-                                            <input id='<?php echo sprintf("post_%s_alias", $l); ?>' name="post[<?php echo $lang['language_id']?>][alias]" data-area='category[<?php echo $lang['language_id']?>][title]' type="text" value="<?php echo $posts[$lang['language_id']]['alias_name'];?>" class="field text full">
+                                            <input id='<?php echo sprintf("post_%s_alias", $l); ?>' name="post[<?php echo $lang['language_id']?>][alias]" type="text" value="<?php echo $posts[$lang['language_id']]['alias_name'];?>" class="field text full">
                                         </div>
                                         
                                         <div class="form-field">
@@ -165,11 +165,17 @@
                         <span class="ui-icon ui-icon-circle-arrow-s"></span><?php echo $this->lang->line('txt_featured_photo');?>
                     </div>
                     <div class="portlet-content">
-                        <div class='featured_photo'></div>
+                        <div class='featured_photo'>
+                            <?php
+                            if(!empty($posts[DEFAULT_LANGUAGE]['post_featured_image'])) {
+                            ?>
+                                <img src="<?php echo $posts[DEFAULT_LANGUAGE]['post_featured_image'];?>" />
+                            <?php }?>
+                        </div>
                         <div>
                             <a href='#'><?php echo $this->lang->line('txt_upload');?></a>
                             <a href='#'><?php echo $this->lang->line('txt_remove');?></a>
-                            <input type="hidden" name=""/>
+                            <input type="hidden" name="featured_image" value = '<?php echo $posts[DEFAULT_LANGUAGE]['post_featured_image'];?>'/>
                         </div>
                     </div>
                 </div>

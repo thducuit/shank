@@ -14,12 +14,22 @@
         </div>
         <form class='table-form' action='<?php echo url_add_params($params, '/index.php/admin/post/update'); ?>' method='post'><!--Content form-->
             <div id="main-content">
+                
+            <!--notice-->
+            <?php
+            $notice = $this->session->flashdata('notice');
+            if( isset( $notice ) && $notice ) {
+                notice( $notice ); 
+            }
+            ?>
+            <!--//notice-->
+            
             <div class="widget">
                 <div class="whead">
                     <div class="block-left control">
                         <?php
                             my_select_range(
-                                array('name' => 'range', 'id' => 'ddlshowitem' , 'class' => 'combobox ddlFilter', 'data-href' => url_add_params($params, '/index.php/admin/post')),
+                                array('name' => 'range', 'id' => 'ddlshowitem' , 'class' => 'combobox ddlFilter', 'data-filter' => url_add_params($params, '/index.php/admin/post')),
                                 $params['range']
                             );
                         ?>
@@ -29,8 +39,8 @@
                             my_select(
                                 array( array('title' =>  $this->lang->line('txt_yes'), 'value'=> 1), array('title' =>  $this->lang->line('txt_no'), 'value' => 0) ), 
                                 $keywords = array('title' => 'title', 'value' => 'value'),
-                                $attributes = array('name' => 'show', 'id' => 'ddlstatus' , 'class' => 'combobox ddlFilter', 'data-href' => url_add_params($params, '/index.php/admin/category')),
-                                $selected = array($params['show']),
+                                $attributes = array('name' => 'highlight', 'id' => 'ddlhighlight' , 'class' => 'combobox ddlFilter', 'data-filter' => url_add_params($params, '/index.php/admin/post')),
+                                $selected = array($params['highlight']),
                                 $no_choice = array('title' => $this->lang->line('txt_highlight'), 'value' => -1) 
                             );
                         ?>
@@ -38,20 +48,19 @@
                             my_select(
                                 array( array('title' =>  $this->lang->line('txt_show'), 'value'=> 1), array('title' =>  $this->lang->line('txt_hide'), 'value' => 0) ), 
                                 $keywords = array('title' => 'title', 'value' => 'value'),
-                                $attributes = array('name' => 'show', 'id' => 'ddlstatus' , 'class' => 'combobox ddlFilter', 'data-href' => url_add_params($params, '/index.php/admin/category')),
+                                $attributes = array('name' => 'show', 'id' => 'ddlstatus' , 'class' => 'combobox ddlFilter', 'data-filter' => url_add_params($params, '/index.php/admin/post')),
                                 $selected = array($params['show']),
                                 $no_choice = array('title' => $this->lang->line('txt_show_hide'), 'value' => -1) 
                             );
                         ?>
                         <?php 
-                        
-                            /*my_select(
+                            my_select(
                                 $list_sort, 
                                 $keywords = array('title' => 'category_title', 'value' => 'category_id', 'parent'=> 'catparent_id', 'level' => 'category_level'),
-                                $attributes = array('name' => 'pid', 'id' => 'ddlInCate' , 'class' => 'combobox ddlFilter', 'data-href' => url_add_params($params, '/index.php/admin/category') ),
+                                $attributes = array('name' => 'pid', 'id' => 'ddlInCate' , 'class' => 'combobox ddlFilter', 'data-filter' => url_add_params($params, '/index.php/admin/post') ),
                                 $selected = array($params['pid']),
                                 $no_choice = array('title' => $this->lang->line('txt_category'), 'value' => 0)
-                            );*/
+                            );
                         ?>
                         
                         <button type="submit" name="type" value='update' id="cmdUpdate" class="button buttonUpdate buttonSubmit" ><?php echo $this->lang->line('txt_update');?></button>
@@ -71,6 +80,9 @@
                             <th>
                                 <?php echo $this->lang->line('txt_delete_edit');?>
                             </th>
+                            <th scope="col">
+                                <?php echo $this->lang->line('txt_name');?>
+                            </th>
                             <th>
                                 Ảnh đại diện
                             </th>
@@ -80,8 +92,8 @@
                             <th>
                                 <?php echo $this->lang->line('txt_show_hide');?>
                             </th>
-                            <th scope="col">
-                                <?php echo $this->lang->line('txt_name');?>
+                            <th>
+                                <?php echo $this->lang->line('txt_highlight');?>
                             </th>
                             <th class="colum_sort">
                                 <?php echo $this->lang->line('txt_oders');?>
@@ -103,18 +115,24 @@
                                 <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/post/delete')?>' class="tooltip btgrid delete" title="Xóa"  />
                                 <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/post/edit')?>' class="tooltip btgrid edit" title="Sửa" />
                             </td>
-                            <td>
-                                No image
+                            <td class="textleft">
+                                <a href="<?php echo url_add_params($expand_params, '/index.php/admin/post/edit')?>" id="lblName" class="lblname"><?php echo $l['post_title']?></a>
                             </td>
                             <td>
-                                Category
+                                <?php if( strlen($l['post_featured_image']) ) {?>
+                                    <img src="<?php echo $l['post_featured_image']; ?>" />
+                                <?php }?>
+                            </td>
+                            <td>
+                                <?php echo $l['category_title']; ?>
                             </td>
                             <td class="cellwidth1">
                                 <?php my_toggle_button($l['post_status'], $l['post_id'], url_add_params($params, '/index.php/admin/post/status'), array('name'=>'ImgRowStatus'));?>
                             </td>
-                            <td class="textleft">
-                                <a href="<?php echo url_add_params($expand_params, '/index.php/admin/post/edit')?>" id="lblName" class="lblname"><?php echo $l['post_title']?></a>
+                            <td class="cellwidth1">
+                                <?php my_toggle_button($l['post_highlight'], $l['post_id'], url_add_params($params, '/index.php/admin/post/highlight'), array('name'=>'ImgRowHighLight'));?>
                             </td>
+                            
                             <td class="">
                                 <?php my_sort_input('sorts', $l['post_order'], array('class' => 'txtSort'), true, $l['post_id']);?>
                             </td>

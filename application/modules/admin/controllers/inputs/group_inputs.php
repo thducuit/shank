@@ -7,7 +7,7 @@ class Group_Inputs extends Inputs {
 	public function __construct () {
 		parent::__construct();
 		$this->params = array(
-		    "pid" => 0,
+		        "pid" => 0,
             "page" => 1,
             "keyword" => '',
             "range" => 10

@@ -58,6 +58,8 @@ class Post_Admin_Model extends Post_Model {
     		 $this->db->select($select);
     	}
 
+        $this->db->join('category', 'category.category_id = post.category_id', 'left');
+        
     	if(!empty($keyword)) {
     		 $this->db->like('post_title', $keyword);
     	}
@@ -78,7 +80,6 @@ class Post_Admin_Model extends Post_Model {
     }
     
     
-    
     /**
      * GET CATEGORY BY LANGMAP ID
      * 
@@ -91,6 +92,64 @@ class Post_Admin_Model extends Post_Model {
         $this->db->where('post.langmap_id', $langmap_id);
         $query = $this->db->get($table);
         return $query->result_array();
+    }
+    
+    
+    /**
+     * UPDATE ALL ROWS WITH A SAME LANGMAP ID
+     * 
+     */
+    public function update_by_langmap_id( $data, $langmap_id ) {
+        if( empty($data) || empty($langmap_id) ) return 0;
+        $this->db->where('langmap_id', $langmap_id ); 
+        return $this->db->update( $this->get_table(), $data );
+    }
+    
+    
+    /**
+     * DELETE BY LANGMAP_ID
+     * 
+     */
+    public function delete_by_langmap_id( $langmap_id ) {
+        if( empty($langmap_id) ) return 0;
+        $this->db->where('langmap_id', $langmap_id ); 
+        return $this->db->delete( $this->get_table() );
+    }
+    
+    
+    /**
+     * UPDATE POST
+     * 
+     */
+    public function update( $data ) {
+        
+        //GET DATA
+        $title = stripslashes(strip_tags( $data['title'] ));
+        $content = stripslashes( $data['content'] );
+        $description = stripslashes( $data['description'] );
+        $seo_title = stripslashes(strip_tags( $data['seo_title'] ));
+        $seo_keywords = stripslashes(strip_tags( $data['seo_keywords'] ));
+        $seo_description = stripslashes(strip_tags( $data['seo_description'] ));
+        $link = '/' . $data['alias'];
+        
+        //PREPARE DATA
+        $agrs = array(
+            'post_title' => $title,         
+            'post_description' => $description,    
+            'post_content' => $content, 
+            'post_order'  => intval( $data['order'] ), 
+            'post_status' => intval( $data['status'] ), 
+            'post_highlight' => intval( $data['highlight'] ), 
+            'post_seo_title' => ( empty($seo_title) ) ? $title : $seo_title,
+            'post_seo_keywords' => $seo_keywords,
+            'post_seo_description' => $seo_description,
+            'category_id' => intval( $data['category_id'] ),     
+            'post_featured_image' => $data['featured_image'],       
+            'post_lock'  => (empty( $title )) ? 1 : 0,
+            'post_link'  => $link
+        );
+        
+        return $this->db->update( $this->get_table(), $agrs,  array('post_id' => $data['id']) );
     }
     
 }

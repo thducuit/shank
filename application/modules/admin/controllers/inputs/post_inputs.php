@@ -8,7 +8,10 @@ class Post_Inputs extends Inputs {
 
 	public function get_request_params() {
         $module = $this->input->get('mod');
-        return 	$this->set_param('mod', $module)
-                     ->get_params();
+        $highlight = $this->input->get('highlight');
+        $highlight = ( !empty($highlight) ) ? $highlight : -1;
+        return 	$this->set_param('highlight', $highlight)
+        							->set_param('mod', $module)
+        						 	->get_params();
 	}
 }
