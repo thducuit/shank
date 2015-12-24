@@ -59,7 +59,10 @@ $route['(:any)/news.html']           = "default/news/index/$1";
 
 $route['(:any)/contact.html']        = "default/contact/index/$1";
 
+$route['(:any)/equipment.html']      = "default/equipment/index/$1";
+
 $route['(:any)/career.html']         = "default/career/index/$1";
+
 $route['(:any)/sitemap.html']        = "default/sitemap/index/$1";
 
 $route['(:any)/products.html']       = "default/products/index/$1"; // trang san pham

@@ -1,7 +1,7 @@
 <!-- navi start -->
         <div id="navi" class="clearfix">
             <ul class="nav01">
-                <li class="sub atv"><a href="index.html">ホームページ<span>Home</span></a></li>
+                <!-- <li class="sub atv"><a href="index.html">ホームページ<span>Home</span></a></li> -->
                 <?php
                 foreach ($menu_list['current'] as $key => $m) { 
                     if($m['post_module']!='about' && $m['post_module'] !='product')  {                 

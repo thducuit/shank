@@ -14,8 +14,18 @@ class Products extends Parent_Controller {
 	}
 	
 	public function category($lang, $alias_name) {
+		$this->load->Model("alias_default_model");
+		$rs = $this->alias_default_model->get_by_name($alias_name);
+		$category_id = $rs['fid'];
+		$this->load->Model("category_default_model");
+		$rs = (array)$this->category_default_model->get_by_id($category_id);
+		$this->data['seo_title'] = $rs['category_seo_title'];
+		$this->data['seo_keywords'] = $rs['category_seo_keywords'];
+		$this->data['seo_description'] = $rs['category_seo_description'];
+
 		//RUN VIEW
 	    $this->template->build('products/category', $this->data);
+
 	}
 	
 }

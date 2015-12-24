@@ -25,7 +25,7 @@ class Parent_Controller extends Core_Controller {
         private function get_menu() {
                 $this->load->Model("post_default_model");
                 $this->load->Model("language_default_model");
-                $rs = $this->post_default_model->get_page();
+                $rs = $this->post_default_model->get_pages();
                 $languages = $this->language_default_model->list_all();
                 foreach($languages as $l) {
                         if($l['language_id'] == LANGUAGE) {

@@ -1,5 +1,6 @@
 <?php
 $class = $this->router->fetch_class();
+//_pr($seo_title,true);
 ?>
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -8,9 +9,13 @@ $class = $this->router->fetch_class();
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title></title>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
+
+<!--SEO-->
+<title><?php echo $seo_title?></title>
+<meta name="keywords" content="<?php echo $seo_keywords?>" />
+<meta name="description" content="<?php echo $seo_description?>" />
+<!--//SEO-->
+
 <meta http-equiv="Content-Style-Type" content="text/css" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <link  href="<?php echo DEFAULT_CSS_PATH; ?>/styles.css" rel="stylesheet" type="text/css" />
