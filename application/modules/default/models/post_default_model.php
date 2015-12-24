@@ -16,7 +16,7 @@ class Post_Default_Model extends Post_Model {
     }
 
 
-    public function get_page($language_id = '') {
+    public function get_pages($language_id = '') {
       $this->db->select('*');
       $this->db->from($this->get_table());
       $this->db->where(array('post_type' => 'page', 'post_lock' => 0));
@@ -24,6 +24,15 @@ class Post_Default_Model extends Post_Model {
         $this->db->where('language_id', $language_id);
       }
       $query = $this->db->get();
-      return $query->result_array();
+      return $query->result_array();//$query->row()
+    }
+
+    public function get_page($post_module, $language_id) {
+      $this->db->select('*');
+      $this->db->from($this->get_table());
+      $this->db->where(array('post_module' => $post_module, 'language_id' => $language_id, 'post_lock' => 0, 'post_type' => 'page'));
+      $query = $this->db->get();
+      return (array)$query->row();
+
     }
 }

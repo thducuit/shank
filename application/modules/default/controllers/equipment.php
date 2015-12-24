@@ -3,7 +3,7 @@
 require_once APPPATH . 'modules/default/controllers/parent.php';
 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-class Sitemap extends Parent_Controller {
+class Equipment extends Parent_Controller {
 	private $data;
 	 function __construct() {
         //if i remove this parent::__construct(); the error is gone
@@ -12,12 +12,12 @@ class Sitemap extends Parent_Controller {
 	}
 	
 	public function index() {
-		$rs = $this->post_default_model->get_page('sitemap', LANGUAGE);
+		$rs = $this->post_default_model->get_page('equipment', LANGUAGE);
 		$this->data['seo_title'] = $rs['post_seo_title'];
 		$this->data['seo_description'] = $rs['post_seo_description'];
 		$this->data['seo_keywords'] = $rs['post_seo_keywords'];
 	    //RUN VIEW
-        $this->template->build( 'sitemap/index', $this->data );
+        $this->template->build( 'equipment/index', $this->data );
 	}
 	
 	// public function test($lang) {

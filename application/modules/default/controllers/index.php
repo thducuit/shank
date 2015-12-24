@@ -17,6 +17,11 @@ class Index extends Parent_Controller {
 	public function index() {
         $this->load->Model("media_default_model");
         $this->data['slider'] = $this->media_default_model->get_gallery('slider', LANGUAGE);
+
+        $rs = $this->post_default_model->get_page('index', LANGUAGE);
+		$this->data['seo_title'] = $rs['post_seo_title'];
+		$this->data['seo_description'] = $rs['post_seo_description'];
+		$this->data['seo_keywords'] = $rs['post_seo_keywords'];
         
         //RUN VIEW
         $this->template->build( 'index/index', $this->data );
