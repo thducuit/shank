@@ -22,7 +22,10 @@ class Post extends Base_Admin_Controller {
     function __construct(){
         
         parent::__construct();
-        
+
+        //CHECK LOGGED IN
+        $this->check_logged_in();
+
         $this->data = $this->get_data();
         
         $this->module = array();
@@ -116,8 +119,6 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function add() {
-        $post = array();
-        
         //IF SUBMITED
         if ( isset($_POST['add']) ) {
             //ADD NEW LANG MAP
@@ -173,7 +174,6 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function edit() {
-        $post = array();
         $this->data['posts'] = array();
         $this->data['languages'] = $this->languages;
         
@@ -224,8 +224,7 @@ class Post extends Base_Admin_Controller {
     }
     
     
-    
-    
+
     /**
      * UPDATE STATUS
      * 
@@ -255,8 +254,6 @@ class Post extends Base_Admin_Controller {
      */
     public function update() {
         $type = $this->input->post('type');
-        $sorts = array();
-        $ids = array();
         if( $type == 'update' ) {
             $sorts = $this->input->post('sorts');
             if( count($sorts) > 0 ) {
@@ -320,7 +317,7 @@ class Post extends Base_Admin_Controller {
         //DELETE ALIAS
         foreach($posts as $post) {
             $alias_id = $post['alias_id'];
-            $this->alias_admin_model->delete_by_id($alias_id);
+            $this->alias_admin_model->delete($alias_id);
         }
     }
     

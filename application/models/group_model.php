@@ -50,6 +50,6 @@ class Group_Model extends CI_Model {
         if( empty($id) ) return array();
         $this->db->where('group_id', $id);
         $query = $this->db->get($this->table);
-        return $query->row();
+        return (array)$query->row();
     }
 }

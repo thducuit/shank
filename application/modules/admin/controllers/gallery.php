@@ -9,7 +9,6 @@ class Gallery extends Base_Admin_Controller {
     private $languages;
     private $class_view;
     private $url;
-    private $params;
     private $data;
     
     
@@ -54,8 +53,6 @@ class Gallery extends Base_Admin_Controller {
      * 
      */
     public function index () { 
-        $data = array();
-        $gallery = array();
         $g = $this->media_admin_model->list_all(array(), array('media_module' => $this->module_code()));
         if( isset($_POST['galleries']) )  {
             if( empty($g) ) {
@@ -65,7 +62,7 @@ class Gallery extends Base_Admin_Controller {
             }
         } 
         foreach($this->languages as $l) {
-            $this->data['list'][$l['language_id']] = get_list_by_language_id($l['language_id'], $g);
+            $this->data['list'][$l] = get_list_by_language_id($l, $g);
         }
         //RUN VIEW
         $this->template->build( $this->class_view, $this->data);
@@ -78,12 +75,12 @@ class Gallery extends Base_Admin_Controller {
         
         //GET DATA FROM POST
         $galleries = $this->input->post('galleries');
-        foreach($this->languages as $lang) {
-            $gallery = $galleries[$lang['language_id']];
+        foreach($this->languages as $l) {
+            $gallery = $galleries[$l];
             $data['media_module'] = $this->module_code();
             $data['media_title'] = 'Gallery ' . $data['media_module'];
             $data['langmap_id'] =  (int)$langmap_id;
-            $data['language_id'] = $lang['language_id'];
+            $data['language_id'] = $l;
             $data['media_file'] = addslashes( $gallery['photos'] );
             $this->media_admin_model->insert($data);
         }
@@ -98,12 +95,11 @@ class Gallery extends Base_Admin_Controller {
     private function update() {
         //GET DATA FROM POST
         $galleries = $this->input->post('galleries');
-        foreach($this->languages as $lang) {
-            $gallery = $galleries[$lang['language_id']];
+        foreach($this->languages as $l) {
+            $gallery = $galleries[$l];
             $module = $this->module_code();
-            $lang = $lang['language_id'];
             $data['media_file'] = addslashes( $gallery['photos'] );
-            $this->media_admin_model->update(array('language_id'=>$lang, 'media_module'=>$module), $data); 
+            $this->media_admin_model->update(array('language_id'=> $l, 'media_module' => $module), $data);
         }
         //NOTICE
         $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );

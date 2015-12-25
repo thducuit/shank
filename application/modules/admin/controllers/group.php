@@ -113,7 +113,7 @@ class Group extends Base_Admin_Controller {
             redirect ('/admin/group');
         }
         $group = array();
-        $this->data['list'] = (array)$this->group_admin_model->get_by_id($id);
+        $this->data['list'] = $this->group_admin_model->get_by_id($id);
         $this->data['list_module'] = $this->module_admin_model->get_list();
         //RUN VIEW
         $this->template->build( $this->class_view, $this->data);    

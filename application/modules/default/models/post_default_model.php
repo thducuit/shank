@@ -23,6 +23,7 @@ class Post_Default_Model extends Post_Model {
       if( !empty($language_id) )  {
         $this->db->where('language_id', $language_id);
       }
+      $this->db->order_by('post_order', 'asc');
       $query = $this->db->get();
       return $query->result_array();//$query->row()
     }

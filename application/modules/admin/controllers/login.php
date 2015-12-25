@@ -36,16 +36,27 @@ class Login extends Base_Admin_Controller {
                 //NOTICE
                 $this->session->set_flashdata( 'notice', array('status'=>'error', 'message'=>'Sai username hoac password') );
                 //RUN VIEW
-                redirect ('/admin/login');
+                redirect ('/admin/login', 'refresh');
             }else {
-                _pr($user);
+                $group_id = $user['group_id'];
+                $group = $this->group_admin_model->get_by_id($group_id);
+                $user['permission'] = json_decode($group['group_permission'], true);
+                $this->session->set_userdata('user_entity', $user);
+                //RUN VIEW
+                redirect ('/admin/index', 'refresh');
             }
         }
         $this->template->build('login/index');
     }
     
     
-    
+    public function logout() {
+        if( $this->session->userdata('user_entity') ) {
+            $this->session->unset_userdata('user_entity');
+        }
+        //RUN VIEW
+        redirect ('/admin/login', 'refresh');
+    }
     /**
      *  LOAD THEME 
      * 
@@ -65,6 +76,7 @@ class Login extends Base_Admin_Controller {
      */
     private function load_model() {
         $this->load->Model("user_admin_model");
+        $this->load->Model("group_admin_model");
     }
     
     

@@ -54,7 +54,8 @@ class Base_Admin_Controller extends MX_Controller {
     }
     
     protected function module_code() {
-        return ( !empty( $this->input->get('mod') ) ) ? $this->input->get('mod') : '';
+        $mod = $this->input->get('mod');
+        return ( !empty( $mod ) ) ? $mod : '';
     }
     
     protected function get_languages() {
@@ -89,10 +90,23 @@ class Base_Admin_Controller extends MX_Controller {
         }
         return $this->module_url;
     }
-    
+
+
     /**
-     *  LOAD THEME 
-     * 
+     * check if user logged in system
+     * @return bool
+     */
+    protected function check_logged_in() {
+        if( !$this->session->userdata('user_entity') ) {
+            redirect('admin/login', 'refresh');
+        }
+        return true;
+    }
+
+
+    /**
+     * LOAD MODEL
+     *
      */
     private function load_theme() {
         $this->template->set_theme('admin_theme');
@@ -100,11 +114,11 @@ class Base_Admin_Controller extends MX_Controller {
         $this->template->set_partial('header','header');
         $this->template->set_partial('footer','footer');
     }
-    
-    
+
+
     /**
-     *  LOAD HELPER 
-     * 
+     * LOAD HELPER
+     *
      */
     private function load_helper() {
         $this->load->helper('url');
@@ -118,8 +132,7 @@ class Base_Admin_Controller extends MX_Controller {
     
     
     /**
-     *  LOAD LIBRARY 
-     * 
+     *  LOAD LIBRARY
      *
      */
     private function load_library() {

@@ -22,7 +22,10 @@ class Category extends Base_Admin_Controller {
     function __construct(){
         
         parent::__construct();
-        
+
+        //CHECK LOGGED IN
+        $this->check_logged_in();
+
         $this->data = $this->get_data();
         
         $this->module = array();

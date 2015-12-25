@@ -78,7 +78,7 @@
                     <ul>
                         <li><a href="">Profile</a></li>
                         <li><a href="">Account Settings</a></li>
-                        <li><a href="index.html">Logout</a></li>
+                        <li><a href="/admin/login/logout">Logout</a></li>
                     </ul>
                 </div>
                 <!--userdrop-->

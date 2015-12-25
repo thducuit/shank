@@ -1,4 +1,4 @@
-<?php 
+<?php
 require_once APPPATH . 'models/user_model.php';
 class User_Admin_Model extends User_Model {
  
@@ -13,7 +13,7 @@ class User_Admin_Model extends User_Model {
     
     public function login($username, $password) {
         $query = $this->db->get_where($this->get_table(), array('username' => $username, 'password' => $password, 'active'=> 1, 'user_builtin'=>1));
-        $rs = $query->result_array();
+        $rs = (array)$query->row();
         return ( empty($rs) ) ? false : $rs;
     }
 

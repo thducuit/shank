@@ -17,7 +17,6 @@ class About extends Parent_Controller
 
     public function index($lang, $alias_name)
     {
-
         $this->data['about'] = $this->find_post_by_alias_name($this->data['about_list'], $alias_name);
         $this->data['seo_title'] = $this->data['about']['post_seo_title'];
         $this->data['seo_keywords'] = $this->data['about']['post_seo_keywords'];
