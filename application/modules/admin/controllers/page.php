@@ -6,13 +6,11 @@ require_once APPPATH . "modules/admin/controllers/inputs/post_inputs.php";
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Page extends Base_Admin_Controller {
     
-    private $module;
     private $languages;
     private $class_view;
     private $url;
     private $params;
     private $data;
-    private $category;
     
     
     /**
@@ -24,8 +22,6 @@ class Page extends Base_Admin_Controller {
         parent::__construct();
         
         $this->data = $this->get_data();
-        
-        $this->module = array();
         
         //GET VIEW
         $this->class_view = $this->router->fetch_class() . "/" . $this->router->fetch_method();
@@ -42,13 +38,12 @@ class Page extends Base_Admin_Controller {
         //ADD PARAMS TO VIEW
         $this->data['params'] = $this->params;
         
-        //GET MODULE
-        //$this->module = $this->module();
+        $this->load_model();
         
-        //$this->get_category();
+        $this->load_helper();
         
         //SET TITLE FOR VIEW
-        $this->template->title( ( !empty($this->module->module_name) ) ? $this->module->module_name : 'Page' );
+        $this->template->title( 'Page' );
     }
     
     
@@ -57,21 +52,13 @@ class Page extends Base_Admin_Controller {
      * 
      */
     public function index () {
-        $this->load->Model("post_admin_model");
-        $this->load->Model("category_admin_model");
-        $this->load->helper('select');
-        $this->load->helper('button');
-        $this->load->helper('sort_input');
-        $this->load->helper('pagination');
-        $this->load->helper('utility');
-        
         //SELECT
-        $select = array('post_id', 'post_title', 'post_order', 'post_status', 'language_id', );
+        $select = array('post_id', 'post_title', 'post_order', 'post_status', 'post.language_id', );
         //FILTER
         $filters = array( 'post_type'=>'page' );
-        $filters['language_id'] =  DEFAULT_LANGUAGE;
+        $filters['post.language_id'] =  DEFAULT_LANGUAGE;
         //ORDER
-        $orders = array();
+        $orders = array('post_order' => 'asc');
         
         //PAGINATION
         $page = (int)$this->params['page'];
@@ -92,14 +79,7 @@ class Page extends Base_Admin_Controller {
      * 
      */
     public function add() {
-        $this->load->Model("module_admin_model");
-        $this->load->Model("post_admin_model");
-        $this->load->Model("langmap_admin_model");
-        $this->load->Model("alias_admin_model");
-        $this->load->helper('alias');
-        $this->load->helper('utility');
-        $this->load->helper('select');
-        $category = array();
+        $post = array();
         
         //IF SUBMITED
         if ( isset($_POST['add']) ) {
@@ -110,19 +90,19 @@ class Page extends Base_Admin_Controller {
             $posts = $this->input->post('post');
             $status = 1;
             $highlight = 1;
+            $order = $this->input->post('order');
             $featured_image = $this->input->post('featured_image');
             $module = $this->input->post('module');
             
-            foreach($this->languages as $lang) {
-                $post = $posts[$lang['language_id']];
+            foreach($this->languages as $l) {
+                $post = $posts[$l];
                 $post['status'] = $status;
                 $post['order'] = $order;
                 $post['highlight'] = $highlight;
                 $post['featured_image'] = $featured_image;
-                $post['language_id'] = $lang['language_id'];
+                $post['language_id'] = $l;
                 $post['langmap_id'] = $langmap_id;
                 $post['module'] = $module;
-                $post['alias'] = ( !empty( $post['alias'] ) ) ? $post['alias'] : ( ( !empty( $post['title'] ) ) ? alias( $post['title'] ) : 'post-' . uniqid('shank_') );
                 $post['type'] = 'page';
                 
                 //INSERT POST
@@ -153,13 +133,6 @@ class Page extends Base_Admin_Controller {
      * 
      */
     public function edit() {
-        $this->load->Model("post_admin_model");
-        $this->load->Model("category_admin_model");
-        $this->load->Model("langmap_admin_model");
-        $this->load->Model("alias_admin_model");
-        $this->load->helper('alias');
-        $this->load->helper('utility');
-        $this->load->helper('select');
         
         $post = array();
         $this->data['posts'] = array();
@@ -167,7 +140,31 @@ class Page extends Base_Admin_Controller {
         
         //IF SUBMITED
         if ( isset($_POST['update']) ) {
+            //GET DATA FROM POST
+            $posts = $this->input->post('post');
+            $status = 1;
+            $highlight = 1;
+            $order = $this->input->post('order');
+            $featured_image = $this->input->post('featured_image');
+            $module = $this->input->post('module');
             
+            foreach($this->languages as $l) {
+                $post = $posts[$l];
+                $post['status'] = $status;
+                $post['order'] = $order;
+                $post['highlight'] = $highlight;
+                $post['featured_image'] = $featured_image;
+                $post['module'] = $module;
+                $post['type'] = 'page';
+                
+                //UPDATE POST
+                $this->post_admin_model->update( $post );
+            }
+            
+            //NOTICE
+            $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );
+            //BACK TO INDEX
+            redirect( url_add_params($this->params, '/admin/page') );
         }else{
             //GET POSTS TO SHOW
             $id = $this->input->get('id');
@@ -175,42 +172,15 @@ class Page extends Base_Admin_Controller {
             $langmap_id = $post->langmap_id;
             $rs = $this->post_admin_model->get_by_langmap_id($langmap_id);
             foreach($this->languages as $l) {
-                $this->data['posts'][$l['language_id']] = get_list_by_language_id($l['language_id'], $rs, true);
+                $this->data['posts'][$l] = get_list_by_language_id($l, $rs, true);
             }
             
             //GET LIST
-            $filters = array('module_menu'=>1);
-            $this->data['list'] = $this->module_admin_model->list_all(array(), $filters);
+            $this->data['list'] = $this->module_admin_model->list_all(array(), array('module_menu' => 1));
             
             //RUN VIEW
             $this->template->build( $this->class_view, $this->data);
         }
-    }
-    
-    
-    
-    
-    /**
-     * UPDATE STATUS
-     * 
-     */
-    public function status() {
-        $this->load->Model("category_admin_model");
-        
-        //GET DATA
-        $status = (int)$this->input->get('status');
-        $id = (int)$this->input->get('id');
-        
-        //GET LANGMAP ID
-        $category = $this->category_admin_model->get_by_id($id);
-        $langmap_id = $category->langmap_id;
-        
-        //UPDATE DATA
-        $args = array('category_status' => $status);
-        $result = $this->category_admin_model->update_by_langmap_id( $args, $langmap_id );
-        
-        //RESPONSE
-        echo json_encode( array('STATUS' => $result) );
     }
     
     
@@ -220,9 +190,6 @@ class Page extends Base_Admin_Controller {
      * 
      */
     public function update() {
-        $this->load->Model("category_admin_model");
-        $this->load->Model("alias_admin_model");
-        $this->load->helper('utility');
         $type = $this->input->post('type');
         $sorts = array();
         $ids = array();
@@ -231,38 +198,26 @@ class Page extends Base_Admin_Controller {
             if( count($sorts) > 0 ) {
                 foreach($sorts as $id => $value) {
                     //GET LANGMAP ID
-                    $category = $this->category_admin_model->get_by_id($id);
-                    $langmap_id = $category->langmap_id;
+                    $post = $this->post_admin_model->get_by_id($id);
+                    $langmap_id = $post->langmap_id;
                     
                     //UPDATE DATA
-                    $args = array('category_order' => $value);
-                    $this->category_admin_model->update_by_langmap_id( $args, $langmap_id );
+                    $args = array('post_order' => intval($value));
+                    $this->post_admin_model->update_by_langmap_id( $args, $langmap_id );
                 }
             }
         } elseif ( $type == 'delete' ) {
             $ids = $this->input->post('ids');
             if( count($ids) > 0 ) {
                 foreach($ids as $id) {
-                    //GET LANGMAP ID
-                    $category = $this->category_admin_model->get_by_id($id);
-                    $langmap_id = $category->langmap_id;
-                    
-                    $categories = $this->category_admin_model->get_by_langmap_id($langmap_id);
-                    
-                    //DELETE DATA
-                    $this->category_admin_model->delete_by_langmap_id( $langmap_id );
-                    
-                    //DELETE ALIAS
-                    foreach($categories as $cat) {
-                        $alias_id = $cat['alias_id'];
-                        $this->alias_admin_model->delete_by_id($alias_id);
-                    }
+                    $this->remove($id);
                 }
             }
         }
-        
+        //NOTICE
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );
         //BACK TO INDEX
-        redirect( url_add_params($this->params, '/admin/category') );
+        redirect( url_add_params($this->params, '/admin/page') );
     }
     
     
@@ -272,7 +227,49 @@ class Page extends Base_Admin_Controller {
      * 
      */
     public function delete() {
-        $id = $this->input->get('id');
-        _pr($id, true);
+        $id = (int)$this->input->get('id');
+        $this->remove($id);
+
+        //NOTICE
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Delete success') );
+        //BACK TO INDEX
+        redirect( url_add_params($this->params, '/admin/page') );
+    }
+    
+    
+    
+    /**
+     * REMOVE 
+     * 
+     */
+    private function remove($id) {
+        //GET LANGMAP ID
+        $post = $this->post_admin_model->get_by_id($id);
+        $langmap_id = $post->langmap_id;
+        
+        //DELETE DATA
+        $this->post_admin_model->delete_by_langmap_id( $langmap_id );
+    }
+    
+    
+    
+    /**
+     * LOAD MODEL
+     * 
+     */
+    private function load_model() {
+        $this->load->Model("module_admin_model");
+        $this->load->Model("post_admin_model");
+        $this->load->Model("langmap_admin_model");
+    }
+    
+    
+    
+    private function load_helper() {
+        $this->load->helper('utility');
+        $this->load->helper('select');
+        $this->load->helper('button');
+        $this->load->helper('sort_input');
+        $this->load->helper('pagination');
     }
 }

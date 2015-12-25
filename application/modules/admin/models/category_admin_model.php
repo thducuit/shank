@@ -10,8 +10,7 @@ class Category_Admin_Model extends Category_Model {
      * INSERT NEW CATEGORY
      * 
      */
-    public function insert( $data ) {
-        
+    public function insert( $data ) {    
         //GET DATA
         $title = stripslashes(strip_tags( $data['title'] ));
         $content = stripslashes( $data['content'] );
@@ -47,8 +46,10 @@ class Category_Admin_Model extends Category_Model {
             'category_link'  => $link
         );
         $this->db->insert( $this->get_table(), $agrs );
+        
         return $this->db->insert_id();
     }
+    
     
     
     /**
@@ -103,7 +104,8 @@ class Category_Admin_Model extends Category_Model {
     public function update_by_langmap_id( $data, $langmap_id ) {
         if( empty($data) || empty($langmap_id) ) return 0;
         $this->db->where('langmap_id', $langmap_id ); 
-        return $this->db->update( $this->get_table(), $data );
+        $r =  $this->db->update( $this->get_table(), $data );
+        return $r;
     }
     
     
@@ -125,7 +127,6 @@ class Category_Admin_Model extends Category_Model {
      * 
      */
     public function update( $data ) {
-        
         //GET DATA
         $title = stripslashes(strip_tags( $data['title'] ));
         $content = stripslashes( $data['content'] );
@@ -157,6 +158,12 @@ class Category_Admin_Model extends Category_Model {
             'category_lock'  => (empty( $title )) ? 1 : 0,
             'category_link'  => $link
         );
-        return $this->db->update( $this->get_table(), $agrs,  array('category_id' => $data['id']) );
+        $r = $this->db->update( $this->get_table(), $agrs,  array('category_id' => $data['id']) );
+        
+        
+        
+        return $r;
     }
+    
+    
 }

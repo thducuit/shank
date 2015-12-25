@@ -7,7 +7,7 @@ class Module_Admin_Model extends Module_Model {
     }
  
     public function get_list() {
-        $list = $this->list_all();
+        $list = $this->list_all(array(), array('module_status'=>1));
         return $this->map_list($list);
     }
     

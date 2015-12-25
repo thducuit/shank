@@ -29,7 +29,7 @@
                     <div class="block-left control">
                         <?php
                             my_select_range(
-                                array('name' => 'range', 'id' => 'ddlshowitem' , 'class' => 'combobox ddlFilter', 'data-filter' => url_add_params($params, '/index.php/admin/group')),
+                                array('name' => 'range', 'id' => 'ddlshowitem' , 'class' => 'combobox', 'data-filter' => url_add_params($params, '/index.php/admin/group')),
                                 $params['range']
                             );
                         ?>

@@ -58,8 +58,13 @@ class Base_Admin_Controller extends MX_Controller {
     }
     
     protected function get_languages() {
+        $langs = array();
         $this->load->Model("language_admin_model");
-        $this->languages = $this->language_admin_model->list_all();
+        $r = $this->language_admin_model->list_all();
+        foreach($r as $l) {
+            array_push($langs, $l['language_id']);
+        }
+        $this->languages = $langs;
     }
     
     protected function get_module_by_code($module_code) {

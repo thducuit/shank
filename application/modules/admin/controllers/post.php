@@ -130,13 +130,13 @@ class Post extends Base_Admin_Controller {
             $highlight = $this->input->post('highlight');
             $featured_image = $this->input->post('featured_image');
             
-            foreach($this->languages as $lang) {
-                $post = $posts[$lang['language_id']];
+            foreach($this->languages as $l) {
+                $post = $posts[$l];
                 $post['status'] = $status;
                 $post['order'] = $order;
                 $post['highlight'] = $highlight;
                 $post['featured_image'] = $featured_image;
-                $post['language_id'] = $lang['language_id'];
+                $post['language_id'] = $l;
                 $post['langmap_id'] = $langmap_id;
                 $post['module'] = $this->module_code();
                 $post['alias'] = ( !empty( $post['alias'] ) ) ? $post['alias'] : ( ( !empty( $post['title'] ) ) ? alias( $post['title'] ) : 'post-' . uniqid('shank_') );
@@ -186,8 +186,8 @@ class Post extends Base_Admin_Controller {
             $highlight = $this->input->post('highlight');
             $featured_image = $this->input->post('featured_image');
 
-            foreach($this->languages as $lang) {
-                $post = $posts[$lang['language_id']];
+            foreach($this->languages as $l) {
+                $post = $posts[$l];
                 $post['status'] = $status;
                 $post['order'] = $order;
                 $post['highlight'] = $highlight;
@@ -212,7 +212,7 @@ class Post extends Base_Admin_Controller {
             $langmap_id = $post->langmap_id;
             $rs = $this->post_admin_model->get_by_langmap_id($langmap_id);
             foreach($this->languages as $l) {
-                $this->data['posts'][$l['language_id']] = get_list_by_language_id($l['language_id'], $rs, true);
+                $this->data['posts'][$l] = get_list_by_language_id($l, $rs, true);
             }
             
             //GET LIST
@@ -266,7 +266,7 @@ class Post extends Base_Admin_Controller {
                     $langmap_id = $post->langmap_id;
                     
                     //UPDATE DATA
-                    $args = array('post_order' => $value);
+                    $args = array('post_order' => intval($value));
                     $this->post_admin_model->update_by_langmap_id( $args, $langmap_id );
                 }
             }
@@ -362,7 +362,7 @@ class Post extends Base_Admin_Controller {
                                                      $orders = array() 
                                                   );
         foreach($this->languages as $l) {
-            $this->data['list'][$l['language_id']] = get_list_by_language_id($l['language_id'], $rs);
+            $this->data['list'][$l] = get_list_by_language_id($l, $rs);
         }
     }
 }

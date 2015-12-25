@@ -83,7 +83,8 @@ class Module extends Base_Install_Controller {
                 'module_option' => $module_option,
                 'module_status' => $module_status,
                 'module_order' => $module_order,
-                'module_level' => $module_level
+                'module_level' => $module_level,
+                'module_menu' => $module_menu
             );
             $result = $this->module_install_model->upsert_with_custom_data($data);
             redirect('/install/module');

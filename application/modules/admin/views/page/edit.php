@@ -10,7 +10,7 @@
             </div>
             <div class="block-right">
                 <button type="submit" name="add" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_update');?></button>
-                <button type="submit" data-href='<?php echo url_add_params($params, '/index.php/admin/post')?>' name="cancel"  id="cmdCancel" class="button "><?php echo $this->lang->line('txt_cancel');?></button>
+                <button type="submit" data-href='<?php echo url_add_params($params, '/index.php/admin/page')?>' name="cancel"  id="cmdCancel" class="button "><?php echo $this->lang->line('txt_cancel');?></button>
             </div>
         </div>
         <div id="main-content">
@@ -19,37 +19,36 @@
                     <div class="content">
                         <div id="tabs" class="tabs">
                             <ul class='tabs-heading'>
-                                <?php foreach($languages as $lang) { ?>
+                                <?php foreach($languages as $l) { ?>
                                 <li>
-                                    <a href="#tabs-<?php echo $lang['language_id']?>"><img src="<?php echo FLAGS_PATH ?>/<?php echo $lang['language_id'] . '.png'; ?>" /></a>
+                                    <a href="#tabs-<?php echo $l?>"><img src="<?php echo FLAGS_PATH ?>/<?php echo $l . '.png'; ?>" /></a>
                                 </li>
                                 <?php } ?>
                             </ul><!--//TABS-HEADING-->
-                            <?php foreach($languages as $lang) { 
-                                 $l = $lang['language_id'];
+                            <?php foreach($languages as $l) { 
                             ?>
-                            <div id="tabs-<?php echo $lang['language_id']?>">
+                            <div id="tabs-<?php echo $l?>">
                                 <div class="form">
                                     <div class="block-left">
                                         
                                         <div class='form-field'>
-                                            <input name="post[<?php echo $lang['language_id']?>][id]" type="hidden" value="<?php echo $posts[$lang['language_id']]['post_id'];?>">
-                                            <input name="post[<?php echo $lang['language_id']?>][alias_id]" type="hidden" value="<?php echo $posts[$lang['language_id']]['alias_id'];?>">
+                                            <input name="post[<?php echo $l?>][id]" type="hidden" value="<?php echo $posts[$l]['post_id'];?>">
+                                            <input name="post[<?php echo $l?>][alias_id]" type="hidden" value="<?php echo $posts[$l]['alias_id'];?>">
                                         </div>
                                         
                                         <div class='form-field'>
                                             <label class="desc"><?php echo $this->lang->line('txt_title');?></label>
-                                            <input name="post[<?php echo $lang['language_id']?>][title]" type="text" value="<?php echo $posts[$lang['language_id']]['post_title'];?>" class="field text full">
+                                            <input name="post[<?php echo $l?>][title]" type="text" value="<?php echo $posts[$l]['post_title'];?>" class="field text full">
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc"><?php echo $this->lang->line('txt_description');?></label>
-                                            <textarea id='<?php echo sprintf("post_%s_description", $l); ?>' data-editor='<?php echo sprintf("post_%s_description", $l); ?>' name="post[<?php echo $lang['language_id']?>][description]" class="textarea small full"><?php echo $posts[$lang['language_id']]['post_description'];?></textarea>  
+                                            <textarea id='<?php echo sprintf("post_%s_description", $l); ?>' data-editor='<?php echo sprintf("post_%s_description", $l); ?>' name="post[<?php echo $l?>][description]" class="textarea small full"><?php echo $posts[$l]['post_description'];?></textarea>  
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc"><?php echo $this->lang->line('txt_content');?></label>
-                                            <textarea id='<?php echo sprintf("post_%s_content", $l); ?>' data-editor='<?php echo sprintf("post_%s_content", $l); ?>' name="post[<?php echo $lang['language_id']?>][content]" class="textarea small full"><?php echo $posts[$lang['language_id']]['post_content'];?></textarea>  
+                                            <textarea id='<?php echo sprintf("post_%s_content", $l); ?>' data-editor='<?php echo sprintf("post_%s_content", $l); ?>' name="post[<?php echo $l?>][content]" class="textarea small full"><?php echo $posts[$l]['post_content'];?></textarea>  
                                         </div>
                                         
                                         <!--SEO-->
@@ -60,17 +59,17 @@
                                             <div class="portlet-content">
                                                 <div class="form-field">
                                                     <label class="desc">SEO <?php echo $this->lang->line('txt_title');?></label>
-                                                    <input name="post[<?php echo $lang['language_id']?>][seo_title]" type="text" value="<?php echo $posts[$lang['language_id']]['post_seo_title'];?>" class="field text full">
+                                                    <input name="post[<?php echo $l?>][seo_title]" type="text" value="<?php echo $posts[$l]['post_seo_title'];?>" class="field text full">
                                                 </div>
                                                 
                                                 <div class="form-field">
                                                     <label class="desc">SEO <?php echo $this->lang->line('txt_description');?></label>
-                                                    <textarea name="post[<?php echo $lang['language_id']?>][seo_description]" class="textarea small full"><?php echo $posts[$lang['language_id']]['post_seo_description'];?></textarea>  
+                                                    <textarea name="post[<?php echo $l?>][seo_description]" class="textarea small full"><?php echo $posts[$l]['post_seo_description'];?></textarea>  
                                                 </div>
                                                 
                                                 <div class="form-field">
                                                     <label class="desc">SEO <?php echo $this->lang->line('txt_keyword');?></label>
-                                                    <textarea name="post[<?php echo $lang['language_id']?>][seo_keywords]" class="textarea small full"><?php echo $posts[$lang['language_id']]['post_seo_keywords'];?></textarea>  
+                                                    <textarea name="post[<?php echo $l?>][seo_keywords]" class="textarea small full"><?php echo $posts[$l]['post_seo_keywords'];?></textarea>  
                                                 </div>
                                             </div>
                                         </div><!--//SEO-->
@@ -84,7 +83,7 @@
                                 
                                 <div class="form-control">
                                     <button type="submit" name="add" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_update');?></button>
-                                    <button type="submit" name="cancel"  id="cmdCancel" class="button "><?php echo $this->lang->line('txt_cancel');?></button>
+                                    <button type="submit" data-href='<?php echo url_add_params($params, '/index.php/admin/page')?>' name="cancel"  id="cmdCancel" class="button "><?php echo $this->lang->line('txt_cancel');?></button>
                                 </div>
                         
                             </div><!--//TABS-CONTENT-->
@@ -113,6 +112,12 @@
                                         $selected = array($posts[DEFAULT_LANGUAGE]['post_module'])
                                     );
                                 ?>
+                            </li>
+                            <li>
+                                <label class="desc">
+                                    <?php echo $this->lang->line('txt_orders');?>
+                                </label>
+                                <input name="order" type="text" value="<?php echo $posts[DEFAULT_LANGUAGE]['post_order'];?>" class="field text small">
                             </li>
                         </ul>
                     </div>

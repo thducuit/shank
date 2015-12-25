@@ -29,7 +29,7 @@
                     <div class="block-left control">
                         <?php
                             my_select_range(
-                                array('name' => 'range', 'id' => 'ddlshowitem' , 'class' => 'combobox ddlFilter', 'data-filter' => url_add_params($params, '/index.php/admin/post')),
+                                array('name' => 'range', 'id' => 'ddlshowitem' , 'class' => 'combobox', 'data-filter' => url_add_params($params, '/index.php/admin/post')),
                                 $params['range']
                             );
                         ?>
@@ -64,7 +64,7 @@
                         ?>
                         
                         <button type="submit" name="type" value='update' id="cmdUpdate" class="button buttonUpdate buttonSubmit" ><?php echo $this->lang->line('txt_update');?></button>
-                        <button type="submit" name="type" value='delete' id="cmdDel" class="button buttonDelete deleteSelected" ><?php echo $this->lang->line('txt_del');?></button>
+                        <button type="submit" data-delete-confirm data-delete-selected name="type" value='delete' id="cmdDel" class="button buttonDelete deleteSelected" ><?php echo $this->lang->line('txt_del');?></button>
                         <button name='cmdAdd' data-href="<?php echo url_add_params($params, '/index.php/admin/post/add')?>" class='button buttonAdd buttonMedia'><?php echo $this->lang->line('txt_add');?></button>
                     </div>
                     <div class="clearfix"></div>
@@ -96,7 +96,7 @@
                                 <?php echo $this->lang->line('txt_highlight');?>
                             </th>
                             <th class="colum_sort">
-                                <?php echo $this->lang->line('txt_oders');?>
+                                <?php echo $this->lang->line('txt_orders');?>
                             </th>
                             <th>
                                 ID
@@ -112,7 +112,7 @@
                                 <input id="chkSelect" type="checkbox" name="ids[]" value='<?php echo $l['post_id']?>' />
                             </td>
                             <td class="cellwidth2">
-                                <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/post/delete')?>' class="tooltip btgrid delete" title="Xóa"  />
+                                <input type="button" data-delete-confirm data-href='<?php echo url_add_params($expand_params, '/index.php/admin/post/delete')?>' class="tooltip btgrid delete" title="Xóa"  />
                                 <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/post/edit')?>' class="tooltip btgrid edit" title="Sửa" />
                             </td>
                             <td class="textleft">

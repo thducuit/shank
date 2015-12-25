@@ -106,11 +106,11 @@ class Category extends Base_Admin_Controller {
             $status = $this->input->post('status');
             $order = $this->input->post('order');
             
-            foreach($this->languages as $lang) {
-                $category = $categories[$lang['language_id']];
+            foreach($this->languages as $l) {
+                $category = $categories[$l];
                 $category['status'] = $status;
                 $category['order'] = $order;
-                $category['language_id'] = $lang['language_id'];
+                $category['language_id'] = $l;
                 $category['langmap_id'] = $langmap_id;
                 $category['module'] = $this->module_code();
                 $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : ( ( !empty( $category['title'] ) ) ? alias( $category['title'] ) : 'cat-' . uniqid('shank_') );
@@ -156,12 +156,13 @@ class Category extends Base_Admin_Controller {
             $status = $this->input->post('status');
             $order = $this->input->post('order');
             
-            foreach($this->languages as $lang) {
-                $category = $categories[$lang['language_id']];
+            foreach($this->languages as $l) {
+                $category = $categories[$l];
                 $category['status'] = $status;
                 $category['order'] = $order;
                 $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : ( ( !empty( $category['title'] ) ) ? alias( $category['title'] ) : 'cat-' . uniqid('shank_') );
-                
+                $category['language_id'] = $l;
+                $category['module'] = $this->module_code();
                 //UPDATE CATEGORY
                 $this->category_admin_model->update( $category );
                 
@@ -180,7 +181,7 @@ class Category extends Base_Admin_Controller {
             $langmap_id = $category->langmap_id;
             $rs = $this->category_admin_model->get_by_langmap_id($langmap_id);
             foreach($this->languages as $l) {
-                $this->data['categories'][$l['language_id']] = get_list_by_language_id($l['language_id'], $rs, true);
+                $this->data['categories'][$l] = get_list_by_language_id($l, $rs, true);
             }
             
             //GET LIST
@@ -233,7 +234,7 @@ class Category extends Base_Admin_Controller {
                     $langmap_id = $category->langmap_id;
                     
                     //UPDATE DATA
-                    $args = array('category_order' => $value);
+                    $args = array('category_order' => intval($value));
                     $this->category_admin_model->update_by_langmap_id( $args, $langmap_id );
                 }
             }
@@ -316,7 +317,7 @@ class Category extends Base_Admin_Controller {
                                                     $orders = array() 
                                                     );
         foreach($this->languages as $l) {
-            $this->data['list'][$l['language_id']] = get_list_by_language_id($l['language_id'], $rs);
+            $this->data['list'][$l] = get_list_by_language_id($l, $rs);
         }
     }
     

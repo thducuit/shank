@@ -14,19 +14,29 @@
         </div>
         <form class='table-form' action='<?php echo url_add_params($params, '/index.php/admin/page/update'); ?>' method='post'><!--Content form-->
             <div id="main-content">
+                
+            <!--notice-->
+            <?php
+            $notice = $this->session->flashdata('notice');
+            if( isset( $notice ) && $notice ) {
+                notice( $notice ); 
+            }
+            ?>
+            <!--//notice-->
+            
             <div class="widget">
                 <div class="whead">
                     <div class="block-left control">
                         <?php
                             my_select_range(
-                                array('name' => 'range', 'id' => 'ddlshowitem' , 'class' => 'combobox ddlFilter', 'data-href' => url_add_params($params, '/index.php/admin/page')),
+                                array('name' => 'range', 'id' => 'ddlshowitem' , 'class' => 'combobox', 'data-filter' => url_add_params($params, '/index.php/admin/page')),
                                 $params['range']
                             );
                         ?>
                     </div>
                     <div class="block-right control block-right-control-button">
                         <button type="submit" name="type" value='update' id="cmdUpdate" class="button buttonUpdate buttonSubmit" ><?php echo $this->lang->line('txt_update');?></button>
-                        <button type="submit" name="type" value='delete' id="cmdDel" class="button buttonDelete deleteSelected" ><?php echo $this->lang->line('txt_del');?></button>
+                        <button type="submit" data-delete-confirm data-delete-selected name="type" value='delete' id="cmdDel" class="button buttonDelete deleteSelected" ><?php echo $this->lang->line('txt_del');?></button>
                         <button name='cmdAdd' data-href="<?php echo url_add_params($params, '/index.php/admin/page/add')?>" class='button buttonAdd buttonMedia'><?php echo $this->lang->line('txt_add');?></button>
                     </div>
                     <div class="clearfix"></div>
@@ -48,6 +58,11 @@
                             <th scope="col">
                                 <?php echo $this->lang->line('txt_name');?>
                             </th>
+                            
+                            <th class="colum_sort">
+                                <?php echo $this->lang->line('txt_orders');?>
+                            </th>
+                            
                             <th>
                                 ID
                             </th>
@@ -62,7 +77,7 @@
                                 <input id="chkSelect" type="checkbox" name="ids[]" value='<?php echo $l['post_id']?>' />
                             </td>
                             <td class="cellwidth2">
-                                <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/page/delete')?>' class="tooltip btgrid delete" title="Xóa"  />
+                                <input type="button" data-delete-confirm data-href='<?php echo url_add_params($expand_params, '/index.php/admin/page/delete')?>' class="tooltip btgrid delete" title="Xóa"  />
                                 <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/page/edit')?>' class="tooltip btgrid edit" title="Sửa" />
                             </td>
                             <td>
@@ -71,6 +86,11 @@
                             <td class="textleft">
                                 <a href="<?php echo url_add_params($expand_params, '/index.php/admin/page/edit')?>" id="lblName" class="lblname"><?php echo $l['post_title']?></a>
                             </td>
+                            
+                            <td class="">
+                                <?php my_sort_input('sorts', $l['post_order'], array('class' => 'txtSort'), true, $l['post_id']);?>
+                            </td>
+                            
                             <td class="cellwidth1">
                                 <span id="lblID"><?php echo $l['post_id']?></span>
                             </td>

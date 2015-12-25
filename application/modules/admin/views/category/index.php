@@ -29,7 +29,7 @@
                     <div class="block-left control">
                         <?php
                             my_select_range(
-                                array('name' => 'range', 'id' => 'ddlshowitem' , 'class' => 'combobox ddlFilter', 'data-filter' => url_add_params($params, '/index.php/admin/category')),
+                                array('name' => 'range', 'id' => 'ddlshowitem' , 'class' => 'combobox', 'data-filter' => url_add_params($params, '/index.php/admin/category')),
                                 $params['range']
                             );
                         ?>
@@ -78,7 +78,7 @@
                                 <?php echo $this->lang->line('txt_name');?>
                             </th>
                             <th class="colum_sort">
-                                <?php echo $this->lang->line('txt_oders');?>
+                                <?php echo $this->lang->line('txt_orders');?>
                             </th>
                             <th>
                                 ID

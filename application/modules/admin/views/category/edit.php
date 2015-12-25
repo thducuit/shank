@@ -30,35 +30,35 @@
                     <div class="content">
                         <div id="tabs" class="tabs">
                             <ul class='tabs-heading'>
-                                <?php foreach($languages as $lang) { ?>
+                                <?php foreach($languages as $l) { ?>
                                 <li>
-                                    <a href="#tabs-<?php echo $lang['language_id']?>"><img src="<?php echo FLAGS_PATH ?>/<?php echo $lang['language_id'] . '.png'; ?>" /></a>
+                                    <a href="#tabs-<?php echo $l?>"><img src="<?php echo FLAGS_PATH ?>/<?php echo $l . '.png'; ?>" /></a>
                                 </li>
                                 <?php } ?>
                             </ul><!--//TABS-HEADING-->
-                            <?php foreach($languages as $lang) { ?>
-                            <div id="tabs-<?php echo $lang['language_id']?>">
+                            <?php foreach($languages as $l) { ?>
+                            <div id="tabs-<?php echo $l?>">
                                 <div class="form">
                                     <div class="block-left">
                                         
                                         <div class='form-field'>
-                                            <input name="category[<?php echo $lang['language_id']?>][id]" type="hidden" value="<?php echo $categories[$lang['language_id']]['category_id'];?>">
-                                            <input name="category[<?php echo $lang['language_id']?>][alias_id]" type="hidden" value="<?php echo $categories[$lang['language_id']]['alias_id'];?>">
+                                            <input name="category[<?php echo $l?>][id]" type="hidden" value="<?php echo $categories[$l]['category_id'];?>">
+                                            <input name="category[<?php echo $l?>][alias_id]" type="hidden" value="<?php echo $categories[$l]['alias_id'];?>">
                                         </div>
                                         
                                         <div class='form-field'>
                                             <label class="desc"><?php echo $this->lang->line('txt_title');?></label>
-                                            <input name="category[<?php echo $lang['language_id']?>][title]" type="text" value="<?php echo $categories[$lang['language_id']]['category_title'];?>" class="field text full">
+                                            <input name="category[<?php echo $l?>][title]" type="text" value="<?php echo $categories[$l]['category_title'];?>" class="field text full">
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc">Alias</label>
-                                            <input name="category[<?php echo $lang['language_id']?>][alias]" type="text" value="<?php echo $categories[$lang['language_id']]['alias_name'];?>" class="field text full">
+                                            <input name="category[<?php echo $l?>][alias]" type="text" value="<?php echo $categories[$l]['alias_name'];?>" class="field text full">
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc"><?php echo $this->lang->line('txt_content');?></label>
-                                            <textarea name="category[<?php echo $lang['language_id']?>][content]" class="textarea small full"><?php echo $categories[$lang['language_id']]['category_content'];?></textarea>  
+                                            <textarea name="category[<?php echo $l?>][content]" class="textarea small full"><?php echo $categories[$l]['category_content'];?></textarea>  
                                         </div>
                                         
                                         <!--SEO-->
@@ -69,17 +69,17 @@
                                             <div class="portlet-content">
                                                 <div class="form-field">
                                                     <label class="desc">SEO <?php echo $this->lang->line('txt_title');?></label>
-                                                    <input name="category[<?php echo $lang['language_id']?>][seo_title]" type="text" value="<?php echo $categories[$lang['language_id']]['category_seo_title'];?>" class="field text full">
+                                                    <input name="category[<?php echo $l?>][seo_title]" type="text" value="<?php echo $categories[$l]['category_seo_title'];?>" class="field text full">
                                                 </div>
                                                 
                                                 <div class="form-field">
                                                     <label class="desc">SEO  <?php echo $this->lang->line('txt_description');?></label>
-                                                    <textarea name="category[<?php echo $lang['language_id']?>][seo_description]" class="textarea small full"><?php echo $categories[$lang['language_id']]['category_seo_description'];?></textarea>  
+                                                    <textarea name="category[<?php echo $l?>][seo_description]" class="textarea small full"><?php echo $categories[$l]['category_seo_description'];?></textarea>  
                                                 </div>
                                                 
                                                 <div class="form-field">
                                                     <label class="desc">SEO <?php echo $this->lang->line('txt_keyword');?></label>
-                                                    <textarea name="category[<?php echo $lang['language_id']?>][seo_keywords]" class="textarea small full"><?php echo $categories[$lang['language_id']]['category_seo_keywords'];?></textarea>  
+                                                    <textarea name="category[<?php echo $l?>][seo_keywords]" class="textarea small full"><?php echo $categories[$l]['category_seo_keywords'];?></textarea>  
                                                 </div>
                                             </div>
                                         </div><!--//SEO-->
@@ -91,12 +91,12 @@
                                             <label class="desc"> <?php echo $this->lang->line('txt_category_parent');?></label>
                                             <?php 
                                                 my_select(
-                                                    $list[$lang['language_id']], 
+                                                    $list[$l], 
                                                     $option = array('title' => 'category_title', 'value' => 'category_id', 'parent' => 'catparent_id', 'level' => 'category_level'),
-                                                    $attributes = array('name' => "category[" . $lang['language_id'] . "][parent_id]", 'id' => 'lstCate', 'class' => 'listbox lstCate', 'size' => 4),
-                                                    $selected = array($categories[$lang['language_id']]['catparent_id']), 
+                                                    $attributes = array('name' => "category[" . $l . "][parent_id]", 'id' => 'lstCate', 'class' => 'listbox lstCate', 'size' => 4),
+                                                    $selected = array($categories[$l]['catparent_id']), 
                                                     $no_choice = array('title' => $this->lang->line('txt_all'), 'value' => 0),
-                                                    $exception = array($categories[$lang['language_id']]['category_id'])
+                                                    $exception = array($categories[$l]['category_id'])
                                                 );
                                             ?>
                                         </div>
@@ -104,10 +104,10 @@
                                     <div class="clearfix"></div>
                                 </div><!--//form-->
                                 
-                                <!--<div class="form-control">
+                                <div class="form-control">
                                     <button type="submit" name="update" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_update');?></button>
                                     <button type="submit" name="cancel"  id="cmdCancel" class="button "><?php echo $this->lang->line('txt_cancel');?></button>
-                                </div>-->
+                                </div>
                         
                             </div><!--//TABS-CONTENT-->
                             <?php } ?>
@@ -142,7 +142,7 @@
                             </li>
                             <li>
                                 <label class="desc">
-                                    <?php echo $this->lang->line('txt_oders');?>
+                                    <?php echo $this->lang->line('txt_orders');?>
                                 </label>
                                 <input name="order" type="text" value="<?php echo $categories[DEFAULT_LANGUAGE]['category_order']?>" class="field text small">
                             </li>

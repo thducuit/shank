@@ -1,5 +1,5 @@
 <div id="page-wrapper">
-    <form action='' method='post'>
+    <form id='frm-post' action='' method='post'>
     <div id="main-wrapper">
         <div id="main-header">
             <div class="block-left">
@@ -19,37 +19,37 @@
                     <div class="content">
                         <div id="tabs" class="tabs">
                             <ul class='tabs-heading'>
-                                <?php foreach($languages as $lang) { ?>
+                                <?php foreach($languages as $l) { ?>
                                 <li>
-                                    <a href="#tabs-<?php echo $lang['language_id']?>"><img src="<?php echo FLAGS_PATH ?>/<?php echo $lang['language_id'] . '.png'; ?>" /></a>
+                                    <a href="#tabs-<?php echo $l?>"><img src="<?php echo FLAGS_PATH ?>/<?php echo $l . '.png'; ?>" /></a>
                                 </li>
                                 <?php } ?>
                             </ul><!--//TABS-HEADING-->
-                            <?php foreach($languages as $lang) { 
-                                $l = $lang['language_id'];
+                            <?php foreach($languages as $l) { 
+                                //$l = $l;
                             ?>
-                            <div id="tabs-<?php echo $lang['language_id']?>">
+                            <div id="tabs-<?php echo $l?>">
                                 <div class="form">
                                     <div class="block-left">
                                         
                                         <div class='form-field'>
                                             <label class="desc"><?php echo $this->lang->line('txt_title');?></label>
-                                            <input data-for='<?php echo sprintf("#post_%s_alias", $l); ?>' name="post[<?php echo $lang['language_id']?>][title]" type="text" value="" class="field text full">
+                                            <input data-for='<?php echo sprintf("#post_%s_alias", $l); ?>' name="post[<?php echo $l?>][title]" type="text" value="" class="field text full">
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc">Alias</label>
-                                            <input id='<?php echo sprintf("post_%s_alias", $l); ?>' name="post[<?php echo $lang['language_id']?>][alias]" type="text" value="" class="field text full">
+                                            <input id='<?php echo sprintf("post_%s_alias", $l); ?>' name="post[<?php echo $l?>][alias]" type="text" value="" class="field text full">
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc"><?php echo $this->lang->line('txt_description');?></label>
-                                            <textarea id='<?php echo sprintf("post_%s_description", $l); ?>' data-editor='<?php echo sprintf("post_%s_description", $l); ?>' name="post[<?php echo $lang['language_id']?>][description]" class="textarea small full"></textarea>  
+                                            <textarea id='<?php echo sprintf("post_%s_description", $l); ?>' data-editor='<?php echo sprintf("post_%s_description", $l); ?>' name="post[<?php echo $l?>][description]" class="textarea small full"></textarea>  
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc"><?php echo $this->lang->line('txt_content');?></label>
-                                            <textarea id='<?php echo sprintf("post_%s_content", $l); ?>' data-editor='<?php echo sprintf("post_%s_content", $l); ?>' name="post[<?php echo $lang['language_id']?>][content]" class="textarea small full"></textarea>  
+                                            <textarea id='<?php echo sprintf("post_%s_content", $l); ?>' data-editor='<?php echo sprintf("post_%s_content", $l); ?>' name="post[<?php echo $l?>][content]" class="textarea small full"></textarea>  
                                         </div>
                                         
                                         <!--SEO-->
@@ -60,17 +60,17 @@
                                             <div class="portlet-content">
                                                 <div class="form-field">
                                                     <label class="desc">SEO <?php echo $this->lang->line('txt_title');?></label>
-                                                    <input name="post[<?php echo $lang['language_id']?>][seo_title]" type="text" value="" class="field text full">
+                                                    <input name="post[<?php echo $l?>][seo_title]" type="text" value="" class="field text full">
                                                 </div>
                                                 
                                                 <div class="form-field">
                                                     <label class="desc">SEO <?php echo $this->lang->line('txt_description');?></label>
-                                                    <textarea  name="post[<?php echo $lang['language_id']?>][seo_description]" class="textarea small full"></textarea>  
+                                                    <textarea  name="post[<?php echo $l?>][seo_description]" class="textarea small full"></textarea>  
                                                 </div>
                                                 
                                                 <div class="form-field">
                                                     <label class="desc">SEO <?php echo $this->lang->line('txt_keyword');?></label>
-                                                    <textarea  name="post[<?php echo $lang['language_id']?>][seo_keywords]" class="textarea small full"></textarea>  
+                                                    <textarea  name="post[<?php echo $l?>][seo_keywords]" class="textarea small full"></textarea>  
                                                 </div>
                                             </div>
                                         </div><!--//SEO-->
@@ -82,9 +82,9 @@
                                             <label class="desc"><?php echo $this->lang->line('txt_category');?></label>
                                             <?php 
                                                 my_select(
-                                                    $list[$lang['language_id']], 
+                                                    $list[$l], 
                                                     $option = array('title' => 'category_title', 'value' => 'category_id', 'parent' => 'catparent_id', 'level' => 'category_level'),
-                                                    $attributes = array('name' => "post[" . $lang['language_id'] . "][category_id]", 'id' => 'lstCate', 'class' => 'listbox lstCate', 'size' => 4),
+                                                    $attributes = array('name' => "post[" . $l . "][category_id]", 'id' => 'lstCate', 'class' => 'listbox lstCate', 'size' => 4),
                                                     $selected = array(), 
                                                     $no_choice = array('title' =>  $this->lang->line('txt_all'), 'value' => 0)
                                                 );
@@ -145,7 +145,7 @@
                             </li>
                             <li>
                                 <label class="desc">
-                                    <?php echo $this->lang->line('txt_oders');?>
+                                    <?php echo $this->lang->line('txt_orders');?>
                                 </label>
                                 <input name="order" type="text" value="1" class="field text small">
                             </li>
@@ -178,3 +178,24 @@
     <div class="clearfix"></div>
     </form>
 </div>
+<input type="hidden" id="langmap" value='<?php echo json_encode($languages)?>'/>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var rules = {};
+        var messages = {};
+        var lang = JSON.parse( $('#langmap').val() );
+        for(var i = 0; i<lang.length; i++){
+            rules['post['+lang[i]+'][title]'] = {required: true};
+            rules['post['+lang[i]+'][alias]'] = {required: true};
+        }
+        for(var i = 0; i<lang.length; i++){
+            messages['post['+lang[i]+'][title]'] = {required: 'Nhap tieu de'};
+            messages['post['+lang[i]+'][alias]'] = {required: 'Nhap alias'};
+        }
+        //validate
+        $('#frm-post').validate({
+            rules: rules,
+            messages: messages
+        });
+    });
+</script>
