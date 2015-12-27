@@ -172,9 +172,9 @@
                             <?php }?>
                         </div>
                         <div>
-                            <a href='#'><?php echo $this->lang->line('txt_upload');?></a>
+                            <a href='#' class="upload-gallery"><?php echo $this->lang->line('txt_upload');?></a>
                             <a href='#'><?php echo $this->lang->line('txt_remove');?></a>
-                            <input type="hidden" name="featured_image" value = '<?php echo $posts[DEFAULT_LANGUAGE]['post_featured_image'];?>'/>
+                            <input type="hidden" id='featured_photo' name="featured_image" value = '<?php echo $posts[DEFAULT_LANGUAGE]['post_featured_image'];?>'/>
                         </div>
                     </div>
                 </div>

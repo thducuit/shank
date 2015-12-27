@@ -9,6 +9,7 @@ class Equipment extends Parent_Controller {
         //if i remove this parent::__construct(); the error is gone
         parent::__construct();
         $this->data = $this->get_data();
+        $this->data['breadcrumbs'] = $this->update_breadcrumbs('equipment');
 	}
 	
 	public function index() {
@@ -19,8 +20,4 @@ class Equipment extends Parent_Controller {
 	    //RUN VIEW
         $this->template->build( 'equipment/index', $this->data );
 	}
-	
-	// public function test($lang) {
-	//     _pr($lang, true);
-	// }
 }

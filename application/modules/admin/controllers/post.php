@@ -72,13 +72,16 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function index () {
+
+        $this->page_has_permission($this->module_code(), VIEW);
+
         //SELECT
         $select = array( 'post_id', 'post_title', 'post_order', 'post_status', 'post_highlight', 'post.language_id', 'post_featured_image', 'category_title' );
         
         //FILTER
         $filters = array();
         if( (int)$this->params['pid'] != 0 ) {
-            $filters['category_id'] = (int)$this->params['pid'];
+            $filters['post.category_id'] = (int)$this->params['pid'];
         }
         $filters['post_type'] = 'post';
         $filters['post.language_id'] =  DEFAULT_LANGUAGE;
@@ -100,9 +103,9 @@ class Post extends Base_Admin_Controller {
         
         //DATA TO VIEW
         $this->data['list'] = $this->post_admin_model->list_all_by_paging( $select, $filters, $orders, $from, $range, $keyword = $this->params['keyword'] );
-        //_pr($this->data['list'], true);
+
         //GET LIST SORT
-        $select = array('category_id', 'category_title', 'category_level', 'language_id');
+        $select = array('category_id', 'category_title', 'category_level', 'language_id', 'catparent_id');
         $filters = array( 'category_status' => 1,  'category_module' => $this->category );
         $orders = array('category_order' => 'asc');
         $rs = $this->category_admin_model->list_all( $select, $filters, $orders );
@@ -119,6 +122,9 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function add() {
+
+        $this->page_has_permission($this->module_code(), ADD);
+
         //IF SUBMITED
         if ( isset($_POST['add']) ) {
             //ADD NEW LANG MAP
@@ -174,6 +180,9 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function edit() {
+
+        $this->page_has_permission($this->module_code(), EDIT);
+
         $this->data['posts'] = array();
         $this->data['languages'] = $this->languages;
         
@@ -230,6 +239,9 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function status() {
+
+        $this->page_has_permission($this->module_code(), EDIT);
+
         //GET DATA
         $status = (int)$this->input->get('status');
         $id = (int)$this->input->get('id');
@@ -253,6 +265,9 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function update() {
+
+        $this->page_has_permission($this->module_code(), EDIT);
+
         $type = $this->input->post('type');
         if( $type == 'update' ) {
             $sorts = $this->input->post('sorts');
@@ -289,6 +304,9 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function delete() {
+
+        $this->page_has_permission($this->module_code(), DELETE);
+
         $id = (int)$this->input->get('id');
         $this->remove($id);
 

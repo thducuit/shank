@@ -53,7 +53,7 @@
                                 $no_choice = array('title' => $this->lang->line('txt_show_hide'), 'value' => -1) 
                             );
                         ?>
-                        <?php 
+                        <?php
                             my_select(
                                 $list_sort, 
                                 $keywords = array('title' => 'category_title', 'value' => 'category_id', 'parent'=> 'catparent_id', 'level' => 'category_level'),

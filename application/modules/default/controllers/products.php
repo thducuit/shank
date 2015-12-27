@@ -19,9 +19,11 @@ class Products extends Parent_Controller {
 		$category_id = $rs['fid'];
 		$this->load->Model("category_default_model");
 		$rs = (array)$this->category_default_model->get_by_id($category_id);
+        //_pr($rs, true);
 		$this->data['seo_title'] = $rs['category_seo_title'];
 		$this->data['seo_keywords'] = $rs['category_seo_keywords'];
 		$this->data['seo_description'] = $rs['category_seo_description'];
+
 
 		//RUN VIEW
 	    $this->template->build('products/category', $this->data);

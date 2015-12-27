@@ -10,6 +10,16 @@
 <div id="page-wrapper">
     <div id="main-wrapper">
         <div id="main-content">
+
+            <!--notice-->
+            <?php
+            $notice = $this->session->flashdata('notice');
+            if( isset( $notice ) && $notice ) {
+                notice( $notice );
+            }
+            ?>
+            <!--//notice-->
+
             <div class="welcome">
                 <?php echo $this->lang->line("msg_welcome"); ?>
             </div>

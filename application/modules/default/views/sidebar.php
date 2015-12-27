@@ -1,17 +1,20 @@
+<?php
+$class = $this->router->fetch_class();
+?>
 <!-- navi start -->
         <div id="navi" class="clearfix">
             <ul class="nav01">
-                <!-- <li class="sub atv"><a href="index.html">ホームページ<span>Home</span></a></li> -->
                 <?php
-                foreach ($menu_list['current'] as $key => $m) { 
+                foreach ($menu_list['current'] as $key => $m) {
+                    $c =  ($class == $m['post_module']) ? 'atv' : '';
                     if($m['post_module']!='about' && $m['post_module'] !='product')  {                 
                 ?>
-                    <li><a href="<?php short_url($m['post_module']); ?>"><?php echo $m['post_title']?><span><?php echo $menu_list['sub'][$key]['post_title']?></span></a></li>
+                    <li class='sub <?php echo $c; ?>'><a href="<?php short_url($m['post_module']); ?>"><?php echo $m['post_title']?><span><?php echo $menu_list['sub'][$key]['post_title']?></span></a></li>
                 <?php 
                     //menu about
                     }elseif($m['post_module'] == 'about'){
                 ?>   
-                    <li class="sub"><a href="javascript:;"><?php echo $m['post_title']?><span><?php echo $menu_list['sub'][$key]['post_title']?></span></a>
+                    <li class="sub <?php echo $c; ?>"><a href="javascript:;"><?php echo $m['post_title']?><span><?php echo $menu_list['sub'][$key]['post_title']?></span></a>
                     <ul class="sublink">
                         <?php
                         foreach($about_list as $al) {
@@ -25,13 +28,14 @@
                     //menu product
                     }elseif($m['post_module'] == 'product'){
                 ?>
-                    <li class="sub"><a href="javascript:;"><?php echo $m['post_title']?><span><?php echo $menu_list['sub'][$key]['post_title']?></span></a>
+                    <li class="sub <?php echo $c; ?>"><a href="javascript:;"><?php echo $m['post_title']?><span><?php echo $menu_list['sub'][$key]['post_title']?></span></a>
                         <ul class="sublink">
                             <?php
-                            foreach($products_list as $pl)
+                            foreach($products_list as $pl) {
                             ?>
                             <li><a href="<?php short_url('productcat', array($pl['alias_name'])); ?>"><?php echo $pl['category_title']?></a></li>
-                         </ul>
+                            <?php }?>
+                        </ul>
                     </li>
                 <?php        
                     }

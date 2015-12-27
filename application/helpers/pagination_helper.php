@@ -11,6 +11,11 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 if (!function_exists('my_select_range')) {
+    /**
+     * create range
+     * @param array $attributes
+     * @param int $val
+     */
     function my_select_range($attributes = array(), $val = 0) {
         $html = 'show<select ';
         foreach ($attributes as $a => $v) {
@@ -30,6 +35,14 @@ if (!function_exists('my_select_range')) {
 }
 
 if (!function_exists('my_pagination')) {
+    /**
+     * create pagination
+     * @param int $num_rows
+     * @param int $page
+     * @param int $range
+     * @param string $url
+     * @param array $keywords
+     */
     function my_pagination($num_rows = 0, $page = 1, $range = 10, $url = '', $keywords = array('unit' => 'pages')) {
         
         $pages = ceil( $num_rows / $range );

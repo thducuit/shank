@@ -50,18 +50,19 @@
                                         </tr>
                                         <?php
                                         $permission = json_decode($list['group_permission'], true);
+
                                         foreach( $list_module as $m ) {
                                         ?>
                                         <tr class='alt'>
                                             <td class='textleft'><?php echo $m['module_name']?></td>
                                             <td>
                                                 <select name='permission[<?php echo $m['module_code']?>]'>
-                                                    <option <?php echo ( $permission[$m['module_code']] == 0 ) ? 'selected':''; ?> value='0'></option>
-                                                    <option <?php echo ( $permission[$m['module_code']] == VIEW ) ? 'selected':''; ?> value='<?php echo VIEW;?>'>Xem</option>
-                                                    <option <?php echo ( $permission[$m['module_code']] == ADD ) ? 'selected':''; ?> value='<?php echo ADD;?>'>Thêm</option>
-                                                    <option <?php echo ( $permission[$m['module_code']] == EDIT ) ? 'selected':''; ?> value='<?php echo EDIT;?>'>Sửa</option>
-                                                    <option <?php echo ( $permission[$m['module_code']] == DELETE ) ? 'selected':''; ?> value='<?php echo DELETE;?>'>Xóa</option>
-                                                    <option <?php echo ( $permission[$m['module_code']] == FULL_PERMISSION ) ? 'selected':''; ?> value='<?php echo FULL_PERMISSION;?>'>Toàn quyền</option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == 0 ) ? 'selected':''; ?> value='0'></option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW ) ? 'selected':''; ?> value='<?php echo VIEW;?>'>Xem</option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD ) ? 'selected':''; ?> value='<?php echo VIEW_ADD;?>'>Thêm</option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD_EDIT ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT;?>'>Sửa</option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD_EDIT_DELETE ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT_DELETE;?>'>Xóa</option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == FULL_PERMISSION ) ? 'selected':''; ?> value='<?php echo FULL_PERMISSION;?>'>Toàn quyền</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -73,12 +74,12 @@
                                                         <td class='textleft'><?php echo $c['module_level']?> <?php echo $c['module_name']?></td>
                                                         <td>
                                                             <select name='permission[<?php echo $c['module_code']?>]'>
-                                                                <option <?php echo ( $permission[$c['module_code']] == 0 ) ? 'selected':''; ?> value='0'></option>
-                                                                <option <?php echo ( $permission[$c['module_code']] == VIEW ) ? 'selected':''; ?> value='<?php echo VIEW;?>'>Xem</option>
-                                                                <option <?php echo ( $permission[$c['module_code']] == ADD ) ? 'selected':''; ?> value='<?php echo ADD;?>'>Thêm</option>
-                                                                <option <?php echo ( $permission[$c['module_code']] == EDIT ) ? 'selected':''; ?> value='<?php echo EDIT;?>'>Sửa</option>
-                                                                <option <?php echo ( $permission[$c['module_code']] == DELETE ) ? 'selected':''; ?> value='<?php echo DELETE;?>'>Xóa</option>
-                                                                <option <?php echo ( $permission[$c['module_code']] == FULL_PERMISSION ) ? 'selected':''; ?> value='<?php echo FULL_PERMISSION;?>'>Toàn quyền</option>
+                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == 0 ) ? 'selected':''; ?> value='0'></option>
+                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == VIEW ) ? 'selected':''; ?> value='<?php echo VIEW;?>'>Xem</option>
+                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == VIEW_ADD ) ? 'selected':''; ?> value='<?php echo VIEW_ADD;?>'>Thêm</option>
+                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == VIEW_ADD_EDIT ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT;?>'>Sửa</option>
+                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == VIEW_ADD_EDIT_DELETE ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT_DELETE;?>'>Xóa</option>
+                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == FULL_PERMISSION ) ? 'selected':''; ?> value='<?php echo FULL_PERMISSION;?>'>Toàn quyền</option>
                                                             </select>
                                                         </td>
                                                     </tr>

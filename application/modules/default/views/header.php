@@ -1,6 +1,5 @@
 <?php
 $class = $this->router->fetch_class();
-//_pr($seo_title,true);
 ?>
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -49,7 +48,7 @@ if($class == 'index') {
     <div id="header" class="clearfix">
         <div id="headerInner">
             <div class="hSection clearfix">
-                <h1 id="logo"><a href="#"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/logo.png" alt="SANKO MOLD VIETNAM" class="hide-sp" /><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/logo_sp.png" alt="SANKO MOLD VIETNAM" class="hide-pc" /></a></h1>
+                <h1 id="logo"><a href="<?php short_url('index'); ?>"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/logo.png" alt="SANKO MOLD VIETNAM" class="hide-sp" /><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/logo_sp.png" alt="SANKO MOLD VIETNAM" class="hide-pc" /></a></h1>
                 <div class="headerR">
                     <ul class="langList">
                         <li class="jp"><a href="?l=jp"><img src="<?php echo DEFAULT_IMAGE_PATH; ?>/flag_jp.jpg" alt="Japanese" /></a></li>
@@ -81,11 +80,6 @@ if($class == 'index') {
             <h2 class="slidesText">SANKO MOLD VIETNAM</h2>
         </div>
         
-        <!-- <div id="slides_sp" class="hide-pc">
-            <p class="mainImg"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_main_01_sp.jpg" alt="SANKO MOLD VIETNAM" class="img-responsive" /> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_main_02_sp.jpg" alt="SANKO MOLD VIETNAM" class="img-responsive" /> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_main_03_sp.jpg" alt="SANKO MOLD VIETNAM" class="img-responsive" /> </p>
-            <h2 class="slides_sp_text"><span>SANKO MOLD VIETNAM</span></h2>
-        </div> -->
-        
         <?php 
         }
         else 
@@ -99,37 +93,52 @@ if($class == 'index') {
     </div>
     <div id="g-nav" class="hide-pc">
         <ul class="gNav clearfix">
-            <li><a href="index.html">ホームページ<span>Home</span></a></li>
-            <li class="sub"><a href="javascript:;">会社概要<span>About Us</span></a>
-                <ul class="sublink">
-                    <?php
-                    //_pr($about_list);
-                    foreach($about_list as $al) {
-                    ?>
-                    <li><a href="vision_mission.html"><?php echo $al['post_title']?></a></li>
-                    <?php
+
+            <?php
+                foreach ($menu_list['current'] as $key => $m) {
+                    $c =  ($class == $m['post_module']) ? 'atv' : '';
+                    if($m['post_module']!='about' && $m['post_module'] !='product')  {                 
+                ?>
+                    <li class='sub <?php echo $c; ?>'><a href="<?php short_url($m['post_module']); ?>"><?php echo $m['post_title']?><span><?php echo $menu_list['sub'][$key]['post_title']?></span></a></li>
+                <?php 
+                    //menu about
+                    }elseif($m['post_module'] == 'about'){
+                ?>   
+                    <li class="sub <?php echo $c; ?>"><a href="javascript:;"><?php echo $m['post_title']?><span><?php echo $menu_list['sub'][$key]['post_title']?></span></a>
+                    <ul class="sublink">
+                        <?php
+                        foreach($about_list as $al) {
+                        ?>
+                            <li><a href="<?php short_url('about', array($al['alias_name'])); ?>"><?php echo $al['post_title']?></a></li>
+                        <?php
+                        }
+                        ?>
+                    </ul>
+                <?php
+                    //menu product
+                    }elseif($m['post_module'] == 'product'){
+                ?>
+                    <li class="sub <?php echo $c; ?>"><a href="javascript:;"><?php echo $m['post_title']?><span><?php echo $menu_list['sub'][$key]['post_title']?></span></a>
+                        <ul class="sublink">
+                            <?php
+                            foreach($products_list as $pl) {
+                            ?>
+                            <li><a href="<?php short_url('productcat', array($pl['alias_name'])); ?>"><?php echo $pl['category_title']?></a></li>
+                            <?php }?>
+                        </ul>
+                    </li>
+                <?php        
                     }
-                    ?>
-                </ul>
-            </li>
-            <li class="sub"><a href="javascript:;">製品<span>Product</span></a>
-                <ul class="sublink">
-                    <li><a href="mold.html">金型の設計・制作</a></li>
-                    <li><a href="plastic.html">プラスチック部品の製造・組立</a></li>
-                    <li><a href="battery.html">電池式携帯電話充電器の組立</a></li>
-                </ul>
-            </li>
-            <li><a href="main_equipment.html">主な設備、機械<span>The main equipment, machinery</span></a></li>
-            <li><a href="news.html">ニュース<span>News</span></a></li>
-            <li><a href="career.html">採用情報<span>Careers</span></a></li>
-            <li><a href="contact.html">お問い合わせ<span>Contact Us</span></a></li>
-            <li><a href="sitemap.html">サイトマップ<span>Site Map</span></a></li>
+                }
+            ?>
+
         </ul>
         <!-- /#g-nav -->
     </div>
-    <ul class="topicPath">
-        <li><a href="index.html">ホームページ</a> &gt;</li>
-        <li>会社概要 &gt;</li>
-        <li>CEOからのメッセージ</li>
-    </ul>
+
+    <?php
+    if($class != 'index') {
+        breadcrumbs($breadcrumbs, 'topicPath');
+    }
+    ?>
     

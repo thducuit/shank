@@ -105,6 +105,20 @@ class Base_Admin_Controller extends MX_Controller {
 
 
     /**
+     * check permission
+     * @param $module
+     * @param $permission
+     * @return bool|int
+     */
+    protected function page_has_permission($module, $permission){
+        if( !check_permission($module, $permission) ) {
+            $this->session->set_flashdata( 'notice', array('status'=>'error', 'message'=>'You have no permission to access this link') );
+            redirect('admin/index', 'refresh');
+        }
+    }
+
+
+    /**
      * LOAD MODEL
      *
      */
@@ -128,6 +142,7 @@ class Base_Admin_Controller extends MX_Controller {
         $this->load->helper('pagination');
         $this->load->helper('utility');
         $this->load->helper('alias');
+        $this->load->helper('authentication');
     }
     
     

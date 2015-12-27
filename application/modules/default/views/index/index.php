@@ -18,32 +18,40 @@
             <div class="con">
                 <h3 class="h3Style">製品</h3>
                 <ul class="pageListTop">
-                    <li>1</li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">6</a></li>
+                    <?php
+                    for($i = 1; $i <= $pages; $i++)
+                    {
+                    ?>
+                    <li><a href="?p=<?php echo $i?>"><?php echo $i?></a></li>
+                    <?php
+                    }
+                    ?>
                     <li><a href="#">&gt;</a></li>
                 </ul>
                 <div class="section">
                     <ul class="list_products biggerlink">
-                        <li> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li class="hide-sp"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li class="hide-sp"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li class="hide-sp"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li class="hide-sp"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li class="hide-sp"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li class="hide-sp"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li class="hide-sp"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li class="hide-sp"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li class="hide-sp"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li class="hide-sp"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li class="hide-sp"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
-                        <li class="hide-sp"> <img src="<?php echo DEFAULT_IMAGE_PATH; ?>/index_img_02.jpg" alt="テキストテキスト" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="テキストテキスト" class="hide-pc" /> <a href="mold.html">テキストテキスト</a> </li>
+<!--                        <li> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
+                        <?php
+                        foreach($products as $ps) {
+                        ?>
+                            <li class="hide-sp"> <img src="<?php echo$ps['post_featured_image']?>" alt="<?php echo $ps['post_seo_title']?>" class="hide-sp" /> <img src="<?php echo$ps['post_featured_image']?>" alt="????????" class="hide-pc" /> <a href="#"><?php echo$ps['post_title']?></a> </li>
+                        <?php
+                        }
+                        ?>
                     </ul>
                 </div>
                 <ul class="pageListBtm hide-pc">

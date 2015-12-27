@@ -20,6 +20,9 @@ class Gallery extends Base_Admin_Controller {
     function __construct(){
         
         parent::__construct();
+
+        //CHECK LOGGED IN
+        $this->check_logged_in();
         
         $this->data = $this->get_data();
         
@@ -28,7 +31,7 @@ class Gallery extends Base_Admin_Controller {
         //GET VIEW
         $this->class_view = $this->router->fetch_class() . "/" . $this->router->fetch_method();
         
-        //GET CURENT URL
+        //GET CURRENT URL
         $this->url = $this->module_url();
         
         //GET LANGUAGES
@@ -52,7 +55,10 @@ class Gallery extends Base_Admin_Controller {
      * INDEX ACTION 
      * 
      */
-    public function index () { 
+    public function index () {
+
+        $this->page_has_permission($this->module_code(), VIEW);
+
         $g = $this->media_admin_model->list_all(array(), array('media_module' => $this->module_code()));
         if( isset($_POST['galleries']) )  {
             if( empty($g) ) {

@@ -12,6 +12,7 @@ class Career extends Parent_Controller
         //if i remove this parent::__construct(); the error is gone
         parent::__construct();
         $this->data = $this->get_data();
+        $this->data['breadcrumbs'] = $this->update_breadcrumbs('career');
     }
 
     public function index()

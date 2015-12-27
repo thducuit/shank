@@ -42,10 +42,10 @@
                                     <table class="aGrid" cellspacing="0" id="GridView1" style="border-collapse: collapse;">
                                         <tr>
                                             <th>
-                                                Tên module
+                                                Module
                                             </th>
                                             <th>
-                                                Phân quyền
+                                                Phân quyền (permission)
                                             </th>
                                         </tr>
                                         <?php
@@ -60,7 +60,7 @@
                                                     <option value='<?php echo ADD;?>'>Thêm</option>
                                                     <option value='<?php echo EDIT;?>'>Sửa</option>
                                                     <option value='<?php echo DELETE;?>'>Xóa</option>
-                                                    <option value='<?php echo FULL_PERMISSION;?>'>Toàn quyền</option>
+                                                    <option value='<?php echo FULL_PERMISSION;?>'>Toàn quyền(full permission)</option>
                                                 </select>
                                             </td>
                                         </tr>

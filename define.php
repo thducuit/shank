@@ -79,11 +79,17 @@ define('VIEW', 1);
 
 define('ADD', 2);
 
+define('VIEW_ADD', VIEW|ADD);
+
 define('EDIT', 4);
+
+define('VIEW_ADD_EDIT', VIEW|ADD|EDIT);
 
 define('DELETE', 8);
 
-define('FULL_PERMISSION', 16);
+define('VIEW_ADD_EDIT_DELETE', VIEW|ADD|EDIT|DELETE);
+
+define('FULL_PERMISSION', 15);
 
 /*
  * --------------------------------------------------------------------
@@ -103,4 +109,4 @@ define('FULL_PERMISSION', 16);
  * And away we go...
  *
  */
- define('PAGINATION', 16);
+ define('PAGINATION', 2);

@@ -11,6 +11,13 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 if (!function_exists('get_list_by_language_id')) {
+    /**
+     * sort data by language
+     * @param $language_id
+     * @param $data
+     * @param bool $is_get_a_row
+     * @return array
+     */
     function get_list_by_language_id($language_id, $data, $is_get_a_row = false) {
        $array = array();
        foreach($data as $o) {
@@ -24,7 +31,12 @@ if (!function_exists('get_list_by_language_id')) {
 }
 
 if (!function_exists('url_add_params')) {
-
+    /**
+     * append param to url
+     * @param array $params
+     * @param string $url
+     * @return string
+     */
     function url_add_params($params = array(), $url = '') {
         if(empty($params)) return $url;
     	$url .= '?';
@@ -37,6 +49,10 @@ if (!function_exists('url_add_params')) {
 
 
 if (!function_exists('notice')) {
+    /**
+     * create notice
+     * @param $obj
+     */
     function notice($obj) {
         $ci =& get_instance();
         $k = 'alert_' . $obj['status'];
@@ -51,6 +67,13 @@ if (!function_exists('notice')) {
 
 
 if (!function_exists('short_url')) {
+    /**
+     * create url
+     * @param string $key
+     * @param array $params
+     * @param bool $return
+     * @return string
+     */
     function short_url($key = '', $params = array(), $return = false) {
         global $route_params;
         if( empty($key) ) echo '#';
@@ -60,5 +83,3 @@ if (!function_exists('short_url')) {
         echo vsprintf($pattern, $params);
     }
 }
-
-?>

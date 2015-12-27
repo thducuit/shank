@@ -11,6 +11,11 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 if (!function_exists('alias')) {
+    /**
+     * create alias form string
+     * @param $str
+     * @return string
+     */
     function alias($str) {
 		$str = preg_replace('/(À|Á|Ạ|Ả|Ã|Â|Ầ|Ấ|Ậ|Ẩ|Ẫ|Ă|Ằ|Ắ|Ặ|Ẳ|Ẵ|à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/', 'a', $str);
 		$str = preg_replace('/(È|É|Ẹ|Ẻ|Ẽ|Ê|Ề|Ế|Ệ|Ể|Ễ|è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/', 'e', $str);
@@ -30,5 +35,3 @@ if (!function_exists('alias')) {
 		return strtolower($str);
     }
 }
-
-?>

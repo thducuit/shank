@@ -20,6 +20,7 @@ class Parent_Controller extends Core_Controller {
                 $this->get_about_list();
                 $this->get_products_list();
                 $this->get_menu();
+                $this->get_breadcrumbs();
 	}
 
         private function get_menu() {
@@ -36,6 +37,27 @@ class Parent_Controller extends Core_Controller {
                 }
         }
 
+        private function get_breadcrumbs() {
+                $title = $this->data['menu_list']['current'][0]['post_title'];
+                $module = $this->data['menu_list']['current'][0]['post_module'];
+                $url = short_url($module, array(), true);
+                $this->data['breadcrumbs'] = array();
+                array_push($this->data['breadcrumbs'], array('title'=>$title, 'url'=>$url ));
+        }
+
+        protected function update_breadcrumbs($module, $alias = '') {
+                $l =$this->data['menu_list']['current'];
+                for ($i=0; $i < count($l) ; $i++) { 
+                        if( $l[$i]['post_module'] == $module ) {
+                                $url = ( empty($alias) ) ? '' : short_url($module, array($alias), true);
+                                $title = $l[$i]['post_title'];
+                                array_push($this->data['breadcrumbs'], array('title'=>$title, 'url'=>$url ));
+                                return $this->data['breadcrumbs'];
+                        }
+                }
+                return $this->data['breadcrumbs'];
+        }
+
         private function get_ads() {
                 $this->load->Model("media_default_model");
                 $this->data['ads'] = $this->media_default_model->get_gallery('ads', LANGUAGE);
@@ -43,7 +65,7 @@ class Parent_Controller extends Core_Controller {
 
         private function get_products_list() {
                 $this->load->Model("category_default_model");
-                $this->data['products_list'] = $this->category_default_model->get_category('productcat', LANGUAGE); 
+                $this->data['products_list'] = $this->category_default_model->get_category('productcat', LANGUAGE);
         }
 
         private function get_about_list() {
@@ -62,6 +84,7 @@ class Parent_Controller extends Core_Controller {
         private function load_helper() {
                 $this->load->helper('url');
 		$this->load->helper('utility');	
+                $this->load->helper('breadcrumbs'); 
 	}
 
         

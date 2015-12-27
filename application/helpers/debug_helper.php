@@ -26,5 +26,3 @@ if (!function_exists('_last_query')) {
          _pr($CI->db->last_query(), $stop);
     }
 }
-
-?>

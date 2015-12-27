@@ -12,7 +12,12 @@ class Index extends Base_Admin_Controller {
     function __construct(){
         //if i remove this parent::__construct(); the error is gone
         parent::__construct();
+
+        //CHECK LOGGED IN
+        $this->check_logged_in();
+
         $this->data = $this->get_data();
+
         $this->params = array();
          
         //GET VIEW

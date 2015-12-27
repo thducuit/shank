@@ -13,6 +13,7 @@ class About extends Parent_Controller
         //if i remove this parent::__construct(); the error is gone
         parent::__construct();
         $this->data = $this->get_data();
+        $this->data['breadcrumbs'] = $this->update_breadcrumbs('about');
     }
 
     public function index($lang, $alias_name)
@@ -21,7 +22,9 @@ class About extends Parent_Controller
         $this->data['seo_title'] = $this->data['about']['post_seo_title'];
         $this->data['seo_keywords'] = $this->data['about']['post_seo_keywords'];
         $this->data['seo_description'] = $this->data['about']['post_seo_description'];
-        //_pr($this->data['about'],true);
+
+        //UPDATE BREADCRUMBS
+        array_push( $this->data['breadcrumbs'], array('url'=>'', 'title'=>$this->data['about']['post_title']) );
         //RUN VIEW
         $this->template->build('about/index', $this->data);
     }

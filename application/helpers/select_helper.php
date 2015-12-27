@@ -16,7 +16,15 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
 if (!function_exists('my_select')) {
-
+    /**
+     * create select
+     * @param array $data
+     * @param array $keywords
+     * @param array $attributes
+     * @param array $selected
+     * @param array $no_choice
+     * @param array $exception
+     */
     function my_select($data = array(), 
                         $keywords = array(), 
                         $attributes = array(),
@@ -86,5 +94,3 @@ if (!function_exists('my_select')) {
     }
 
 }
-
-?>

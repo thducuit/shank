@@ -61,7 +61,9 @@ class Category extends Base_Admin_Controller {
      * INDEX ACTION 
      * 
      */
-    public function index () { 
+    public function index () {
+        $this->page_has_permission($this->module_code(), VIEW);
+
         //SELECT
         $select = array('category_id', 'category_title', 'category_order', 'category_status', 'language_id', 'catparent_id', 'category_level');
         //FILTER
@@ -98,7 +100,7 @@ class Category extends Base_Admin_Controller {
      * 
      */
     public function add() {
-        $category = array();
+        $this->page_has_permission($this->module_code(), ADD);
         //IF SUBMITED
         if ( isset($_POST['add']) ) {
             //ADD NEW LANG MAP
@@ -148,7 +150,8 @@ class Category extends Base_Admin_Controller {
      * 
      */
     public function edit() {
-        $category = array();
+        $this->page_has_permission($this->module_code(), EDIT);
+
         $this->data['categories'] = array();
         $this->data['languages'] = $this->languages;
         
@@ -202,6 +205,9 @@ class Category extends Base_Admin_Controller {
      * 
      */
     public function status() {
+
+        $this->page_has_permission($this->module_code(), EDIT);
+
         //GET DATA
         $status = (int)$this->input->get('status');
         $id = (int)$this->input->get('id');
@@ -225,6 +231,9 @@ class Category extends Base_Admin_Controller {
      * 
      */
     public function update() {
+
+        $this->page_has_permission($this->module_code(), EDIT);
+
         $type = $this->input->post('type');
         $sorts = array();
         $ids = array();
@@ -263,6 +272,9 @@ class Category extends Base_Admin_Controller {
      * 
      */
     public function delete() {
+
+        $this->page_has_permission($this->module_code(), DELETE);
+
         $id = (int)$this->input->get('id');
         $this->remove($id);
 
