@@ -10,9 +10,9 @@ $class = $this->router->fetch_class();
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 
 <!--SEO-->
-<title><?php echo $seo_title?></title>
-<meta name="keywords" content="<?php echo $seo_keywords?>" />
-<meta name="description" content="<?php echo $seo_description?>" />
+<title><?php echo $seo_title;?></title>
+<meta name="keywords" content="<?php echo $seo_keywords; ?>" />
+<meta name="description" content="<?php echo $seo_description; ?>" />
 <!--//SEO-->
 
 <meta http-equiv="Content-Style-Type" content="text/css" />

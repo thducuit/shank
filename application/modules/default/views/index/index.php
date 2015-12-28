@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="con">
-                <h3 class="h3Style">製品</h3>
+                <h3 class="h3Style"><?php echo $this->lang->line('txt_product');?></h3>
                 <ul class="pageListTop">
                     <?php
                     for($i = 1; $i <= $pages; $i++)

@@ -59,7 +59,8 @@ class Post_Default_Model extends Post_Model
     {
         $this->db->select('*');
         $this->db->from($this->get_table());
-        $this->db->where(array('post_module' => $post_module, 'language_id' => $language_id, 'post_lock' => 0, 'post_status' => 1, 'post_type' => 'post'));
+        $this->db->join('alias', 'alias.fid = post.post_id', 'left');
+        $this->db->where(array('post_module' => $post_module, 'post.language_id' => $language_id, 'post_lock' => 0, 'post_status' => 1, 'post_type' => 'post'));
         if($category_id != 0) {
             $this->db->where('category_id', $category_id);
         }

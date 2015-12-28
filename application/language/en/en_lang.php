@@ -91,6 +91,12 @@ $lang['txt_new_password'] = 'New Password';
 
 $lang['txt_gallery'] = 'Gallery';
 
+$lang['txt_group'] = 'Group';
+$lang['txt_groupname'] = 'Group Name';
+$lang['txt_permission'] = 'Permission';
+$lang['txt_view'] = 'View';
+$lang['txt_fullpermission'] = 'Full Permission';
+
 
 
 

@@ -18,5 +18,10 @@ $lang['txt_contact'] = 'Contact';
 $lang['txt_note'] = 'Register Form';
 $lang['txt_required'] = 'Please enter fields.(*) is required';
 
+$lang['txt_detail'] = 'Detail';
+$lang['txt_related'] = 'Related Post';
+$lang['txt_sitemap'] = 'Site Map';
+$lang['txt_product'] = 'Products';
+
 
 
