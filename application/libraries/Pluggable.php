@@ -2,18 +2,16 @@
 
 class Pluggable {
 
-	public function __construct() {
-		include("./plugins/test.php");
-	}
+		public function __construct() {}
 
-    public function hook_action($event) {
+    public function hook_action($event, $args) {
     	global $action_events;
     	if( isset($action_events[$event]) ) {
     		foreach($action_events[$event] as $func) {
     			if(!function_exists($func)) {
 	                die('Unknown function: '.$func);
 	            } else {
-	                call_user_func($func, $args);
+	                call_user_func_array($func, $args);
 	            }
     		}
     	}
@@ -21,9 +19,9 @@ class Pluggable {
 
 
     public function register_action($event, $func) {
-	    global $action_events;
-	    $action_events[$event][] = $func;
-	}
+		    global $action_events;
+		    $action_events[$event][] = $func;
+		}
 
 
 }
