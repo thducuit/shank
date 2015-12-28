@@ -5,7 +5,7 @@
             <div class="block-left">
                 <img src="<?php echo ADMIN_IMAGE_PATH ?>/icons/icon_list.png" alt="" />
                 <h1 class='title'>
-                     Group :: Add
+                     <?php echo $this->lang->line('txt_group');?> :: <?php echo $this->lang->line('txt_edit');?>
                 </h1>
             </div>
             <div class="block-right">
@@ -28,24 +28,24 @@
                             <div class='content-form-field'>
                                 
                                 <div class='form-field'>
-                                    <label class="desc">Tên Nhóm</label>
+                                    <label class="desc"><?php echo $this->lang->line('txt_groupname');?></label>
                                     <input name="name" type="text" value="<?php echo $list['group_name']; ?>" class="field text full">
                                 </div>
                                 
                                 <div class='form-field'>
-                                    <label class="desc">Mô tả</label>
+                                    <label class="desc"><?php echo $this->lang->line('txt_description');?></label>
                                     <input name="description" type="text" value="<?php echo $list['group_description']; ?>" class="field text full">
                                 </div>
                                 
                                 <div class='form-field'>
-                                    <label class="desc">Phân quyền</label>
+                                    <label class="desc"><?php echo $this->lang->line('txt_permission');?></label>
                                     <table class="aGrid" cellspacing="0" id="GridView1" style="border-collapse: collapse;">
                                         <tr>
                                             <th>
-                                                Tên module
+                                                Module
                                             </th>
                                             <th>
-                                                Phân quyền
+                                                <?php echo $this->lang->line('txt_permission');?>
                                             </th>
                                         </tr>
                                         <?php
@@ -58,11 +58,11 @@
                                             <td>
                                                 <select name='permission[<?php echo $m['module_code']?>]'>
                                                     <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == 0 ) ? 'selected':''; ?> value='0'></option>
-                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW ) ? 'selected':''; ?> value='<?php echo VIEW;?>'>Xem</option>
-                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD ) ? 'selected':''; ?> value='<?php echo VIEW_ADD;?>'>Thêm</option>
-                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD_EDIT ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT;?>'>Sửa</option>
-                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD_EDIT_DELETE ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT_DELETE;?>'>Xóa</option>
-                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == FULL_PERMISSION ) ? 'selected':''; ?> value='<?php echo FULL_PERMISSION;?>'>Toàn quyền</option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW ) ? 'selected':''; ?> value='<?php echo VIEW;?>'><?php echo $this->lang->line('txt_view');?></option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD ) ? 'selected':''; ?> value='<?php echo VIEW_ADD;?>'><?php echo $this->lang->line('txt_add');?></option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD_EDIT ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT;?>'><?php echo $this->lang->line('txt_edit');?></option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD_EDIT_DELETE ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT_DELETE;?>'><?php echo $this->lang->line('txt_del');?></option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == FULL_PERMISSION ) ? 'selected':''; ?> value='<?php echo FULL_PERMISSION;?>'><?php echo $this->lang->line('txt_fullpermission');?></option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -74,12 +74,12 @@
                                                         <td class='textleft'><?php echo $c['module_level']?> <?php echo $c['module_name']?></td>
                                                         <td>
                                                             <select name='permission[<?php echo $c['module_code']?>]'>
-                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == 0 ) ? 'selected':''; ?> value='0'></option>
-                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == VIEW ) ? 'selected':''; ?> value='<?php echo VIEW;?>'>Xem</option>
-                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == VIEW_ADD ) ? 'selected':''; ?> value='<?php echo VIEW_ADD;?>'>Thêm</option>
-                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == VIEW_ADD_EDIT ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT;?>'>Sửa</option>
-                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == VIEW_ADD_EDIT_DELETE ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT_DELETE;?>'>Xóa</option>
-                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == FULL_PERMISSION ) ? 'selected':''; ?> value='<?php echo FULL_PERMISSION;?>'>Toàn quyền</option>
+                                                                <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == 0 ) ? 'selected':''; ?> value='0'></option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW ) ? 'selected':''; ?> value='<?php echo VIEW;?>'><?php echo $this->lang->line('txt_view');?></option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD ) ? 'selected':''; ?> value='<?php echo VIEW_ADD;?>'><?php echo $this->lang->line('txt_add');?></option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD_EDIT ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT;?>'><?php echo $this->lang->line('txt_edit');?></option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD_EDIT_DELETE ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT_DELETE;?>'><?php echo $this->lang->line('txt_del');?></option>
+                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == FULL_PERMISSION ) ? 'selected':''; ?> value='<?php echo FULL_PERMISSION;?>'><?php echo $this->lang->line('txt_fullpermission');?></option>
                                                             </select>
                                                         </td>
                                                     </tr>

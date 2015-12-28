@@ -2,7 +2,7 @@
     <div id="main" class="clearfix">
         <!-- content start -->
         <div id="content" class="con">
-            <h3>サイトマップ</h3>
+            <h3><?php echo $this->lang->line('txt_sitemap');?></h3>
             <div class="section">
                 <div class="phoneBox treeview" id="navigation">
                     <ul>

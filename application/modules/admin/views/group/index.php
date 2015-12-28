@@ -4,7 +4,7 @@
             <div class="block-left">
                 <img src="<?php echo ADMIN_IMAGE_PATH ?>/icons/icon_list.png" alt="" />
                 <h1 class='title'>
-                     Nhóm
+                     <?php echo $this->lang->line('txt_group');?>
                 </h1>
             </div>
             <div class="block-right">
@@ -53,13 +53,13 @@
                                 <?php echo $this->lang->line('txt_delete_edit');?>
                             </th>
                             <th>
-                                Tên nhóm
+                                <?php echo $this->lang->line('txt_groupname');?>
                             </th>
                             <th scope="col">
-                                Mô tả
+                                <?php echo $this->lang->line('txt_description');?>
                             </th>
                             <th class="colum_sort">
-                                Thành viên
+                                <?php echo $this->lang->line('txt_user');?>
                             </th>
                             <th>
                                 ID

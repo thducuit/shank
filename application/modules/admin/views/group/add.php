@@ -5,7 +5,7 @@
             <div class="block-left">
                 <img src="<?php echo ADMIN_IMAGE_PATH ?>/icons/icon_list.png" alt="" />
                 <h1 class='title'>
-                     Group :: Add
+                     <?php echo $this->lang->line('txt_group');?> :: <?php echo $this->lang->line('txt_add');?>
                 </h1>
             </div>
             <div class="block-right">
@@ -28,24 +28,24 @@
                             <div class='content-form-field'>
                                 
                                 <div class='form-field'>
-                                    <label class="desc">Tên Nhóm</label>
+                                    <label class="desc"><?php echo $this->lang->line('txt_groupname');?></label>
                                     <input name="name" type="text" value="" class="field text full">
                                 </div>
                                 
                                 <div class='form-field'>
-                                    <label class="desc">Mô tả</label>
+                                    <label class="desc"><?php echo $this->lang->line('txt_description');?></label>
                                     <input name="description" type="text" value="" class="field text full">
                                 </div>
                                 
                                 <div class='form-field'>
-                                    <label class="desc">Phân quyền</label>
+                                    <label class="desc"><?php echo $this->lang->line('txt_permission');?></label>
                                     <table class="aGrid" cellspacing="0" id="GridView1" style="border-collapse: collapse;">
                                         <tr>
                                             <th>
                                                 Module
                                             </th>
                                             <th>
-                                                Phân quyền (permission)
+                                                <?php echo $this->lang->line('txt_permission');?>
                                             </th>
                                         </tr>
                                         <?php
@@ -56,11 +56,11 @@
                                             <td>
                                                 <select name='permission[<?php echo $m['module_code']?>]'>
                                                     <option value='0'></option>
-                                                    <option value='<?php echo VIEW;?>'>Xem</option>
-                                                    <option value='<?php echo ADD;?>'>Thêm</option>
-                                                    <option value='<?php echo EDIT;?>'>Sửa</option>
-                                                    <option value='<?php echo DELETE;?>'>Xóa</option>
-                                                    <option value='<?php echo FULL_PERMISSION;?>'>Toàn quyền(full permission)</option>
+                                                    <option value='<?php echo VIEW;?>'><?php echo $this->lang->line('txt_view');?></option>
+                                                    <option value='<?php echo ADD;?>'><?php echo $this->lang->line('txt_add');?></option>
+                                                    <option value='<?php echo EDIT;?>'><?php echo $this->lang->line('txt_edit');?></option>
+                                                    <option value='<?php echo DELETE;?>'><?php echo $this->lang->line('txt_del');?></option>
+                                                    <option value='<?php echo FULL_PERMISSION;?>'><?php echo $this->lang->line('txt_fullpermission');?></option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -73,11 +73,11 @@
                                                         <td>
                                                             <select name='permission[<?php echo $c['module_code']?>]'>
                                                                 <option value='0'></option>
-                                                                <option value='<?php echo VIEW;?>'>Xem</option>
-                                                                <option value='<?php echo ADD;?>'>Thêm</option>
-                                                                <option value='<?php echo EDIT;?>'>Sửa</option>
-                                                                <option value='<?php echo DELETE;?>'>Xóa</option>
-                                                                <option value='<?php echo FULL_PERMISSION;?>'>Toàn quyền</option>
+                                                                <option value='<?php echo VIEW;?>'><?php echo $this->lang->line('txt_view');?></option>
+                                                    <option value='<?php echo ADD;?>'><?php echo $this->lang->line('txt_add');?></option>
+                                                    <option value='<?php echo EDIT;?>'><?php echo $this->lang->line('txt_edit');?></option>
+                                                    <option value='<?php echo DELETE;?>'><?php echo $this->lang->line('txt_del');?></option>
+                                                    <option value='<?php echo FULL_PERMISSION;?>'><?php echo $this->lang->line('txt_fullpermission');?></option>
                                                             </select>
                                                         </td>
                                                     </tr>

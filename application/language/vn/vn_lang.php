@@ -88,3 +88,9 @@ $lang['txt_old_password'] = 'Mật khẩu cũ';
 $lang['txt_new_password'] = 'Mật khẩu mới';
 
 $lang['txt_gallery'] = 'Bộ ảnh';
+
+$lang['txt_group'] = 'Nhóm';
+$lang['txt_groupname'] = 'Tên nhóm';
+$lang['txt_permission'] = 'Phân Quyền';
+$lang['txt_view'] = 'Xem';
+$lang['txt_fullpermission'] = 'Toàn Quyền';
