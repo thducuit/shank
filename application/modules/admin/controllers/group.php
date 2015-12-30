@@ -35,7 +35,6 @@ class Group extends Base_Admin_Controller
         //GET PARAMS
         $this->params = $this->request_params(new Group_inputs);
 
-
         //ADD PARAMS TO VIEW
         $this->data['params'] = $this->params;
 
@@ -52,9 +51,19 @@ class Group extends Base_Admin_Controller
     public function index()
     {
         $this->page_has_permission('group', VIEW);
-
-        $this->load->Model("group_admin_model");
-        $this->data['list'] = $this->group_admin_model->list_all();
+        
+        //SELECT
+        $select = array( );
+        //FILTER
+        $filters = array();
+        //ORDER
+        $orders = array('group_id' => 'asc');
+        //PAGINATION
+        $page = (int)$this->params['page'];
+        $range = (int)$this->params['range'];
+        $from = ($page - 1) * $range;
+        //DATA TO VIEW
+        $this->data['list'] = $this->group_admin_model->list_all_by_paging( $select, $filters, $orders, $from, $range, $keyword = $this->params['keyword'] );
 
         //RUN VIEW
         $this->template->build($this->class_view, $this->data);
@@ -132,6 +141,60 @@ class Group extends Base_Admin_Controller
     }
 
 
+    /**
+     * UPDATE
+     * 
+     */
+    public function update() {
+
+        $this->page_has_permission('group', EDIT);
+
+        $type = $this->input->post('type');
+        if ( $type == 'delete' ) {
+            $ids = $this->input->post('ids');
+            if( count($ids) > 0 ) {
+                foreach($ids as $id) {
+                    $this->remove($id);
+                }
+            }
+        }
+        
+        //NOTICE
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );
+        //BACK TO INDEX
+        redirect( url_add_params($this->params, '/admin/group') );
+    }
+    
+    
+    
+    /**
+     * DELETE
+     * 
+     */
+    public function delete() {
+
+        $this->page_has_permission('group', DELETE);
+
+        $id = (int)$this->input->get('id');
+        $this->remove($id);
+
+        //NOTICE
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Delete success') );
+        //BACK TO INDEX
+        redirect( url_add_params($this->params, '/admin/group') );
+    }
+    
+    
+    
+    /**
+     * REMOVE BY ID 
+     * 
+     */
+    private function remove($id) {
+        //DELETE DATA
+        $this->group_admin_model->delete( $id );
+    }
+    
     /**
      * LOAD MODEL
      *

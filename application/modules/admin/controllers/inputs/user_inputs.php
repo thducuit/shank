@@ -25,11 +25,21 @@ class User_Inputs extends Inputs {
                         ->get_params();
 	}
 	
-	public function get_params() {
-	    return $this->params;
-	}
-
-	public function get_request_params() {
-        return 	$this->get_params();
-	}
+	public function set_params($params) {
+      $this->params = $params;
+  }
+  
+  public function get_params() {
+      return $this->params;
+  }
+  
+  public function set_param($key, $value = '') {
+      if( !empty($key) && $value != null)
+          $this->params[$key] = $value;
+      return $this;
+  }
+  
+  public function get_request_params() {
+      return 	$this->get_params();
+  }
 }

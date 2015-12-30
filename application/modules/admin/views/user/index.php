@@ -1,8 +1,4 @@
-<?php
-//_pr($list, true);
-?>
 <div id="page-wrapper">
-        <form method='get'>
         <div id="main-wrapper">
             <div id="main-header">
                 <div class="block-left">
@@ -12,11 +8,11 @@
                     </h1>
                 </div>
                 <div class="block-right">
-                    <input name="txtSearch" placeholder=<?php echo $this->lang->line('txt_keyword');?> type="text" id="txtSearch" class="txtSearch textbox">
-                    <input type="submit"  name="cmdSearch" value=<?php echo $this->lang->line('txt_search');?> onclick="javascript:return RequiredEmptyField('.txtSearch','Chưa nhập chuỗi tìm kiếm!');"
-                        id="cmdSearch" class="cmdSearch button">
+                    <input name="keyword" href='<?php echo url_add_params($params, '/index.php/admin/user'); ?>' value='<?php echo $params['keyword'];?>' data-cha type="text" id="txtSearch" class="txtSearch textbox" placeholder='<?php echo $this->lang->line('txt_keyword');?>'>
+                    <input type="submit" data-search='#txtSearch' name="search" value="<?php echo $this->lang->line('txt_search');?>" id="cmdSearch" class="cmdSearch button">
                 </div>
             </div>
+            <form class='table-form' action='<?php echo url_add_params($params, '/index.php/admin/user/update'); ?>' method='post'><!--Content form-->
             <div id="main-content">
 
                 <!--notice-->
@@ -30,7 +26,7 @@
             
                 <div class="widget">
                     <div class="whead">
-                     <div class="block-left control">
+                    <div class="block-left control">
                         <?php
                             my_select_range(
                                 array('name' => 'range', 'id' => 'ddlshowitem' , 'class' => 'combobox', 'data-filter' => url_add_params($params, '/index.php/admin/user')),
@@ -38,10 +34,10 @@
                             );
                         ?>
                     </div>
-                     <div class="block-right control">
-                    <input data-href="/index.php/admin/user/add" type="submit" name="cmdAdd" value=<?php echo $this->lang->line('txt_add');?> id="cmdAdd" class="button buttonAdd" />
-                    <input type="submit" name="cmdDel" value=<?php echo $this->lang->line('txt_del');?> id="cmdDel" class="button buttonDel" />
-                   </div>
+                    <div class="block-right control block-right-control-button">
+                        <button type="submit" data-delete-confirm data-delete-selected name="type" value='delete' id="cmdDel" class="button buttonDelete deleteSelected" ><?php echo $this->lang->line('txt_del');?></button>
+                        <button name='cmdAdd' data-href="<?php echo url_add_params($params, '/index.php/admin/user/add')?>" class='button buttonAdd buttonMedia'><?php echo $this->lang->line('txt_add');?></button>
+                    </div>
                         <div class="clearfix">
                         </div>
                     </div>
@@ -80,17 +76,19 @@
                             </tr>
                             <?php
                             foreach($list as $l) {
+                                $expand_params = $params;
+                                $expand_params['userid'] = $l['user_id'];
                             ?>
                             <tr class="">
                                 <td class="cellwidth1">
                                     <input id="chkSelect" type="checkbox" name="ids[]" value='<?php echo $l['user_id']?>' />
                                 </td>
                                 <td class="cellwidth2">
-                                    <input type="button" data-href='/index.php/admin/user/delete?userid=<?php echo $l['user_id']?>' class="tooltip btgrid delete" title="Xóa"  />
-                                    <input type="button" data-href="/index.php/admin/user/edit?userid=<?php echo $l['user_id']?>" class="tooltip btgrid edit" title="Sửa" />
+                                    <input type="button" data-delete-confirm data-href='<?php echo url_add_params($expand_params, '/index.php/admin/user/delete')?>' class="tooltip btgrid delete" title="Xóa"  />
+                                    <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/user/edit')?>' class="tooltip btgrid edit" title="Sửa" />
                                 </td>
                                 <td class="textleft">
-                                    <a href="/index.php/admin/user/edit?userid=<?php echo $l['user_id']?>" id="lblName" class="lblname"><?php echo $l['username']?></a>
+                                    <a href="<?php echo url_add_params($expand_params, '/index.php/admin/user/edit')?>" id="lblName" class="lblname"><?php echo $l['username']?></a>
                                 </td>
                                 <td>
                                         <?php echo $l['fullname']?>
@@ -99,7 +97,7 @@
                                     <a href="#" id="lblCategory"><?php echo $l['email']?></a>
                                 </td>
                                 <td class="changepassword">
-                                    <a href="/index.php/admin/user/password?userid=<?php echo $l['user_id']?>">Change Password</a>
+                                    <a href="<?php echo url_add_params($expand_params, '/index.php/admin/user/password')?>">Change Password</a>
                                 </td>
                                 <td>
                                     <?php my_toggle_button($l['active'], $l['user_id'], url_add_params($params, '/index.php/admin/user/active'), array('name'=>'ImgRowStatus'));?>
@@ -117,34 +115,15 @@
                         </tbody>
                     </table>
                     <div class="fg-toolbar tableFooter">
-                        <div class="dataTables_info" id="dynamic_info">
-                            Showing 1 to 10 of 57 entries</div>
-                        <div class="dataTables_paginate paging_full_numbers" id="dynamic_paginate">
-                            <a tabindex="0" class="first paginate_button paginate_button_disabled" id="dynamic_first"><?php echo $this->lang->line('txt_first');?></a>
-							<a tabindex="0" class="previous paginate_button paginate_button_disabled" id="dynamic_previous"><?php echo $this->lang->line('txt_previous');?></a>
-							<span>
-							<a tabindex="0" class="paginate_active">1</a>
-							<a tabindex="0" class="paginate_button">2</a>
-							<a tabindex="0" class="paginate_button">3</a>
-							<a tabindex="0" class="paginate_button">4</a>
-							<a tabindex="0" class="paginate_button">5</a>
-							</span>
-							<a tabindex="0" class="next paginate_button" id="dynamic_next"><?php echo $this->lang->line('txt_next');?></a>
-							<a tabindex="0" class="last paginate_button" id="dynamic_last"><?php echo $this->lang->line('txt_last');?></a>
-                            <a id="gotopage" class="paginate_button">+</a>
-						</div>
-                        <div class="showgotopage">
-                            <input type="text" name="txtgotopage" class="txtgotopage" />
-                            <a class="paginate_button bt_gotopage" href="#" >Go</a>
-                        </div>
+                        <?php
+                            my_pagination( $num_rows = 100, $page = $params['page'], $range = $params['range'], url_add_params($params, '/index.php/admin/user') );
+                        ?>
                     </div>
                 </div>
             </div>
-            <div class="clearfix">
-            </div>
+            <div class="clearfix"></div>
+            </form>
         </div>
-         <div class="clearfix"></div>
+        <div class="clearfix"></div>
     </div>
-    <div class="clearfix">
-        </form>
-    </div>
+    <div class="clearfix"></div>

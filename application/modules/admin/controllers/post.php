@@ -77,7 +77,6 @@ class Post extends Base_Admin_Controller {
 
         //SELECT
         $select = array( 'post_id', 'post_title', 'post_order', 'post_status', 'post_highlight', 'post.language_id', 'post_featured_image', 'category_title' );
-        
         //FILTER
         $filters = array();
         if( (int)$this->params['pid'] != 0 ) {
@@ -95,12 +94,10 @@ class Post extends Base_Admin_Controller {
         $filters['post_module'] = $this->module_code();
         //ORDER
         $orders = array('post_order' => 'asc');
-        
         //PAGINATION
         $page = (int)$this->params['page'];
         $range = (int)$this->params['range'];
         $from = ($page - 1) * $range;
-        
         //DATA TO VIEW
         $this->data['list'] = $this->post_admin_model->list_all_by_paging( $select, $filters, $orders, $from, $range, $keyword = $this->params['keyword'] );
 

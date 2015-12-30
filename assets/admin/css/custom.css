@@ -41,9 +41,11 @@ button {
 }
 .content-form-field {
 	background: #fff;
-	/*padding: 10px;*/
     float: left;
     width: 100%;
+}
+.content-full-col {
+	padding: 10px;
 }
 .tabs{
     float: left;

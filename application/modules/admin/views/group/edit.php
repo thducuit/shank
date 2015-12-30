@@ -26,7 +26,7 @@
                 <div class="content-wrapper">
                     <div class="content full">
                             <div class='content-form-field'>
-                                
+                                <div class='content-full-col'>    
                                 <div class='form-field'>
                                     <label class="desc"><?php echo $this->lang->line('txt_groupname');?></label>
                                     <input name="name" type="text" value="<?php echo $list['group_name']; ?>" class="field text full">
@@ -92,6 +92,7 @@
                                         ?>
                                     </table>
                                 </div>
+                            </div>
                             </div>
                     </div>
                 </div>

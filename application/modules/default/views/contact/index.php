@@ -71,7 +71,9 @@
                             <textarea rows="3" cols="35" id="txtContent" name="txtContent"></textarea>
                             <span class="must">*</span></dd>
                             <dt>&nbsp;</dt>
-                            <dd class="center"><input type="submit" value=<?php echo $this->lang->line('txt_send');?> class="btnSubmit" name="send" /></dd>
+                            <dd class="center">
+                                <input type="submit" value=<?php echo $this->lang->line('txt_send');?> class="btnSubmit" name="send" />
+                            </dd>
                     </dl>
                     <p class="buttonC">
                         
@@ -108,6 +110,13 @@
                txtContent: {
                     required: VALIDATE_REQUIRED
                 } 
+            },
+            submitHandler: function(form) {
+                // some other code
+                // maybe disabling submit button
+                // then:
+                $('*[type=submit]').append('<div class=\'loading\'></div>').hide();
+                $(form).submit();
             }
         });
     });

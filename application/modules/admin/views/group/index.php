@@ -35,8 +35,7 @@
                         ?>
                     </div>
                     <div class="block-right control block-right-control-button">
-                        <button type="submit" name="type" value='update' id="cmdUpdate" class="button buttonUpdate buttonSubmit" ><?php echo $this->lang->line('txt_update');?></button>
-                        <button type="submit" name="type" value='delete' id="cmdDel" class="button buttonDelete deleteSelected" ><?php echo $this->lang->line('txt_del');?></button>
+                        <button type="submit" data-delete-confirm data-delete-selected name="type" value='delete' id="cmdDel" class="button buttonDelete deleteSelected" ><?php echo $this->lang->line('txt_del');?></button>
                         <button name='cmdAdd' data-href="<?php echo url_add_params($params, '/index.php/admin/group/add')?>" class='button buttonAdd buttonMedia'><?php echo $this->lang->line('txt_add');?></button>
                     </div>
                     <div class="clearfix"></div>
@@ -75,8 +74,8 @@
                                 <input id="chkSelect" type="checkbox" name="ids[]" value='<?php echo $l['group_id']?>' />
                             </td>
                             <td class="cellwidth2">
-                                <input type="button"  class="tooltip btgrid delete" title="Xóa"  />
-                                <input type="button"  class="tooltip btgrid edit" title="Sửa" />
+                                <input type="button" data-delete-confirm data-href='<?php echo url_add_params($expand_params, '/index.php/admin/group/delete')?>' class="tooltip btgrid delete" title="Xóa"  />
+                                <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/group/edit')?>' class="tooltip btgrid edit" title="Sửa" />
                             </td>
                             <td class="cellwidth1">
                                 <a href="<?php echo url_add_params($expand_params, '/index.php/admin/group/edit')?>"><?php echo $l['group_name']?></a>
@@ -85,7 +84,7 @@
                                 <?php echo $l['group_description']?>
                             </td>
                             <td class="">
-                                Xem
+                                <a href="/index.php/admin/user?pid=<?php echo $l['group_id']?>">Xem</a>
                             </td>
                             <td class="cellwidth1">
                                 <span id="lblID"><?php echo $l['group_id']?></span>
@@ -104,8 +103,7 @@
             </div>
         </div>
         </form><!--//Content form-->
-        <div class="clearfix">
-        </div>
+        <div class="clearfix"></div>
     </div>
-     <div class="clearfix"></div>
+    <div class="clearfix"></div>
 </div>

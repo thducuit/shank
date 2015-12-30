@@ -52,4 +52,10 @@ class Group_Model extends CI_Model {
         $query = $this->db->get($this->table);
         return (array)$query->row();
     }
+    
+    public function delete($id) {
+        if ( empty($id)) return false; 
+        return $this->db->delete($this->table, array('group_id' => $id)); 
+    } 
+    
 }

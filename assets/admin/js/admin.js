@@ -62,6 +62,12 @@ $(document).ready(function() {
 			url = url.replace(patt, new_patt);
 			window.location.href = url;
 		}
+		patt = new RegExp(name + "=[A-z0-9-]*$");
+		if( url && patt.test(url) ){
+			new_patt = name + "=" + value;
+			url = url.replace(patt, new_patt);
+			window.location.href = url;
+		}
 	});
 	
 	//SEARCH

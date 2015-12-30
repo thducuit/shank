@@ -26,20 +26,21 @@
                 <div class="content-wrapper">
                     <div class="content full">
                             <div class='content-form-field'>
-                                
-                                <div class='form-field'>
-                                    <label class="desc"><?php echo $this->lang->line('txt_old_password');?></label>
-                                    <input name="old_password" type="password" value="" class="field text full">
-                                </div>
-                                
-                                <div class='form-field'>
-                                    <label class="desc"><?php echo $this->lang->line('txt_new_password');?></label>
-                                    <input id="new_password" name="new_password" type="password" value="" class="field text full">
-                                </div>
-                                
-                                <div class='form-field'>
-                                    <label class="desc"><?php echo $this->lang->line('txt_confirm_password');?></label>
-                                    <input name="new_password_confirm" type="password" value="" class="field text full">
+                                <div class='content-full-col'>
+                                    <div class='form-field'>
+                                        <label class="desc"><?php echo $this->lang->line('txt_old_password');?></label>
+                                        <input name="old_password" type="password" value="" class="field text full">
+                                    </div>
+                                    
+                                    <div class='form-field'>
+                                        <label class="desc"><?php echo $this->lang->line('txt_new_password');?></label>
+                                        <input id="new_password" name="new_password" type="password" value="" class="field text full">
+                                    </div>
+                                    
+                                    <div class='form-field'>
+                                        <label class="desc"><?php echo $this->lang->line('txt_confirm_password');?></label>
+                                        <input name="new_password_confirm" type="password" value="" class="field text full">
+                                    </div>
                                 </div>
                             </div>
                     </div>
