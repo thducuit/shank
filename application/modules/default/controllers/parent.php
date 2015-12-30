@@ -37,12 +37,13 @@ class Parent_Controller extends Core_Controller {
                 }
         }
 
-        private function get_breadcrumbs() {
+        protected function get_breadcrumbs() {
                 $title = $this->data['menu_list']['current'][0]['post_title'];
                 $module = $this->data['menu_list']['current'][0]['post_module'];
                 $url = short_url($module, array(), true);
                 $this->data['breadcrumbs'] = array();
                 array_push($this->data['breadcrumbs'], array('title'=>$title, 'url'=>$url ));
+                return $this->data['breadcrumbs']; 
         }
 
         protected function update_breadcrumbs($module, $alias = '') {

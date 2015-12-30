@@ -144,6 +144,7 @@
     <div class="clearfix"></div>
     </form>
 </div>
+<!--VALIDATE-->
 <input type="hidden" id="langmap" value='<?php echo json_encode($languages)?>'/>
 <script type="text/javascript">
     $(document).ready(function(){

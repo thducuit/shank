@@ -35,9 +35,10 @@ class Base_Admin_Controller extends MX_Controller {
         $this->get_module_by_code( $this->module_code() );
         
         $this->data['module_list'] = $this->get_module_list();
-        
-            
-        $this->pluggable->hook_action('test_event', array(1,2));
+
+        $this->data['module'] = $this->module_code();
+
+        $this->data['pluggable'] = $this->pluggable;
     }
     
     protected function get_data() {
@@ -101,7 +102,7 @@ class Base_Admin_Controller extends MX_Controller {
      */
     protected function check_logged_in() {
         if( !$this->session->userdata('user_entity') ) {
-            //redirect('admin/login', 'refresh');
+            redirect('admin/login', 'refresh');
         }
         return true;
     }

@@ -50,7 +50,7 @@ class Post_Admin_Model extends Post_Model {
     
     
     /**
-     * GET ALL CATEGORY BY PAGINATION
+     * GET ALL POST BY PAGINATION
      * 
      */
     public function list_all_by_paging($select = array(), $filters = array(), $orders = array(), $from = 0, $to = 20, $keyword = '') {
@@ -81,15 +81,29 @@ class Post_Admin_Model extends Post_Model {
     
     
     /**
-     * GET CATEGORY BY LANGMAP ID
+     * GET POST BY LANGMAP ID
      * 
      */
     public function get_by_langmap_id( $langmap_id ) {
         if( empty($langmap_id) ) return array();
         $table  = $this->get_table();
-        $this->db->select('post.*, alias.alias_id, alias.alias_name, alias.alias_module, alias.fid');
+        $this->db->select('post.*, alias.*');
         $this->db->join('alias', "alias.fid = $table.post_id", 'left');
-        $this->db->where('post.langmap_id', $langmap_id);
+        $this->db->where(array('alias.langmap_id' => $langmap_id));
+        $query = $this->db->get($table);
+        return $query->result_array();
+    }
+
+
+    /**
+     * GET PAGE BY LANGMAP ID
+     * 
+     */
+    public function get_page_by_langmap_id( $langmap_id ) {
+        if( empty($langmap_id) ) return array();
+        $table  = $this->get_table();
+        $this->db->select('post.*');
+        $this->db->where(array('post.langmap_id' => $langmap_id));
         $query = $this->db->get($table);
         return $query->result_array();
     }

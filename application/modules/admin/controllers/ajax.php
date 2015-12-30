@@ -26,4 +26,17 @@ class Ajax extends Base_Admin_Controller {
         $title = $this->input->get('title');
         echo alias($title);
     }
+
+    public function checkalias() {
+        $this->load->Model('alias_admin_model');
+        $type = $this->input->get('type');
+        $language = $this->input->get('language');
+        $list = $this->input->get($type);
+        $alias_name = $list[$language]['alias'];
+        $alias = $this->alias_admin_model->get_by_name($alias_name);
+        if( count($alias) > 0) {
+            echo 'false'; die();
+        }
+        echo 'true'; die();
+    }
 }

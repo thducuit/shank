@@ -59,7 +59,7 @@ class Page extends Base_Admin_Controller
     public function index()
     {
 
-        $this->page_has_permission($this->module_code(), VIEW);
+        $this->page_has_permission('page', VIEW);
 
         //SELECT
         $select = array('post_id', 'post_title', 'post_order', 'post_status', 'post.language_id',);
@@ -88,7 +88,7 @@ class Page extends Base_Admin_Controller
      */
     public function add()
     {
-        $this->page_has_permission($this->module_code(), ADD);
+        $this->page_has_permission('page', ADD);
 
         //IF SUBMITED
         if (isset($_POST['add'])) {
@@ -143,7 +143,7 @@ class Page extends Base_Admin_Controller
     public function edit()
     {
 
-        $this->page_has_permission($this->module_code(), EDIT);
+        $this->page_has_permission('page', EDIT);
 
         $this->data['posts'] = array();
         $this->data['languages'] = $this->languages;
@@ -180,7 +180,8 @@ class Page extends Base_Admin_Controller
             $id = $this->input->get('id');
             $post = $this->post_admin_model->get_by_id($id);
             $langmap_id = $post->langmap_id;
-            $rs = $this->post_admin_model->get_by_langmap_id($langmap_id);
+            $rs = $this->post_admin_model->get_page_by_langmap_id($langmap_id);
+            //_pr($rs, true);
             foreach ($this->languages as $l) {
                 $this->data['posts'][$l] = get_list_by_language_id($l, $rs, true);
             }
@@ -201,7 +202,7 @@ class Page extends Base_Admin_Controller
     public function update()
     {
 
-        $this->page_has_permission($this->module_code(), EDIT);
+        $this->page_has_permission('page', EDIT);
 
         $type = $this->input->post('type');
         if ($type == 'update') {

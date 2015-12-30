@@ -101,6 +101,7 @@ class Category extends Base_Admin_Controller {
      */
     public function add() {
         $this->page_has_permission($this->module_code(), ADD);
+
         //IF SUBMITED
         if ( isset($_POST['add']) ) {
             //ADD NEW LANG MAP
@@ -118,7 +119,7 @@ class Category extends Base_Admin_Controller {
                 $category['language_id'] = $l;
                 $category['langmap_id'] = $langmap_id;
                 $category['module'] = $this->module_code();
-                $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : ( ( !empty( $category['title'] ) ) ? alias( $category['title'] ) : 'cat-' . uniqid('shank_') );
+                $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : ( ( !empty( $category['title'] ) ) ? alias( $category['title'] ) : 'cat-' . uniqid() );
                 
                 //INSERT CATEGORY
                 $category_id = $this->category_admin_model->insert( $category );
@@ -166,7 +167,7 @@ class Category extends Base_Admin_Controller {
                 $category = $categories[$l];
                 $category['status'] = $status;
                 $category['order'] = $order;
-                $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : ( ( !empty( $category['title'] ) ) ? alias( $category['title'] ) : 'cat-' . uniqid('shank_') );
+                $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : ( ( !empty( $category['title'] ) ) ? alias( $category['title'] ) : 'cat-' . uniqid() );
                 $category['language_id'] = $l;
                 $category['module'] = $this->module_code();
                 //UPDATE CATEGORY

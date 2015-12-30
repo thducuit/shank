@@ -11,21 +11,28 @@ class Products extends Parent_Controller {
         //if i remove this parent::__construct(); the error is gone
         parent::__construct();
         $this->data = $this->get_data();
+        $this->data['breadcrumbs'] = $this->get_breadcrumbs();
 	}
 	
 	public function category($lang, $alias_name) {
 		$this->load->Model("alias_default_model");
-		$rs = $this->alias_default_model->get_by_name($alias_name);
-		$category_id = $rs['fid'];
+		$this->load->Model("post_default_model");
 		$this->load->Model("category_default_model");
-		$rs = (array)$this->category_default_model->get_by_id($category_id);
-		$this->data['category'] = $rs;
-        //_pr($rs, true);
-		$this->data['seo_title'] = $rs['category_seo_title'];
-		$this->data['seo_keywords'] = $rs['category_seo_keywords'];
-		$this->data['seo_description'] = $rs['category_seo_description'];
 
-		$this->load->Model("post_default_model");	
+		//GET ALIAS
+		$alias = $this->alias_default_model->get_by_name($alias_name);
+		$category_id = $alias['fid'];
+
+		//GET CATEGORY
+		$category = (array)$this->category_default_model->get_by_id($category_id);
+		$this->data['category'] = $category;
+
+		//SEO
+		$this->data['seo_title'] = $category['category_seo_title'];
+		$this->data['seo_keywords'] = $category['category_seo_keywords'];
+		$this->data['seo_description'] = $category['category_seo_description'];
+
+		//PAGINATION	
 		$num_products = $this->post_default_model->count('product', LANGUAGE,$category_id);
 		$pages = ceil($num_products/PAGINATION);
 		$this->data['pages'] =  $pages;
@@ -33,8 +40,10 @@ class Products extends Parent_Controller {
         $current_page = ($current_page == 0) ? 1 : $current_page;
         $start = PAGINATION * ($current_page - 1) ;
         $this->data['products']=$this->post_default_model->get_post_by_pagination('product', LANGUAGE, $start, PAGINATION,$category_id);
-		//_pr($current_page,true);
+        $this->data['current_page'] = $current_page;
 
+        //UPDATE BREADCRUMBS
+        array_push( $this->data['breadcrumbs'], array('url'=>'', 'title'=>$category['category_title']) );
 		//RUN VIEW
 	    $this->template->build('products/category', $this->data);
 
@@ -42,20 +51,24 @@ class Products extends Parent_Controller {
 
 	public function product($lang, $alias_name) {
 		$this->load->Model("alias_default_model");
-		$rs = $this->alias_default_model->get_by_name($alias_name);
-		$post_id = $rs['fid'];
 		$this->load->Model("post_default_model");
-		$rs = (array)$this->post_default_model->get_by_id($post_id);
-		$this->data['product'] = $rs;
-		$this->data['seo_title'] = $rs['post_seo_title'];
-		$this->data['seo_keywords'] = $rs['post_seo_keywords'];
-		$this->data['seo_description'] = $rs['post_seo_description'];
-		//_pr($rs,true);
 
+
+		$alias = $this->alias_default_model->get_by_name($alias_name);
+		$post_id = $alias['fid'];
+		
+		$post = (array)$this->post_default_model->get_by_id($post_id);
+		$this->data['product'] = $post;
+
+		//SEO
+		$this->data['seo_title'] = $post['post_seo_title'];
+		$this->data['seo_keywords'] = $post['post_seo_keywords'];
+		$this->data['seo_description'] = $post['post_seo_description'];
+
+		//UPDATE BREADCRUMBS
+        array_push( $this->data['breadcrumbs'], array('url'=>'', 'title'=>$post['post_title']) );
 		//RUN VIEW
 	    $this->template->build('products/product', $this->data);
-
-
 	}
 	
 }

@@ -47,7 +47,7 @@ class User extends Base_Admin_Controller
     public function index()
     {
 
-        $this->page_has_permission($this->module_code(), VIEW);
+        $this->page_has_permission('user', VIEW);
 
         $this->load->Model("user_admin_model");
         if (isset($_GET['cmdDel'])) {
@@ -68,7 +68,7 @@ class User extends Base_Admin_Controller
      */
     public function add()
     {
-        $this->page_has_permission($this->module_code(), ADD);
+        $this->page_has_permission('user', ADD);
         $this->load->Model("user_admin_model");
         $this->load->Model("group_admin_model");
         if (isset($_POST['add'])) {
@@ -101,7 +101,7 @@ class User extends Base_Admin_Controller
 
     public function edit()
     {
-        $this->page_has_permission($this->module_code(), EDIT);
+        $this->page_has_permission('user', EDIT);
         $user_id = $this->input->get('userid');
         $this->load->Model("user_admin_model");
         $this->load->Model("group_admin_model");
@@ -131,7 +131,7 @@ class User extends Base_Admin_Controller
 
     public function delete()
     {
-        $this->page_has_permission($this->module_code(), DELETE);
+        $this->page_has_permission('user', DELETE);
         $user_id = $this->input->get('userid');
         $this->load->Model("user_admin_model");
         $this->user_admin_model->delete($user_id);
@@ -149,7 +149,7 @@ class User extends Base_Admin_Controller
      */
     public function password()
     {
-        $this->page_has_permission($this->module_code(), EDIT);
+        $this->page_has_permission('user', EDIT);
         $this->load->Model("user_admin_model");
         $user_id = $this->input->get('userid');
         if (isset($_POST['change'])) {
@@ -184,7 +184,7 @@ class User extends Base_Admin_Controller
      */
     public function active()
     {
-        $this->page_has_permission($this->module_code(), EDIT);
+        $this->page_has_permission('user', EDIT);
         $this->load->Model("user_admin_model");
         //GET DATA
         $status = (int)$this->input->get('status');

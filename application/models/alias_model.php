@@ -23,5 +23,13 @@ class Alias_Model extends CI_Model {
         $this->db->where('alias_id', $id ); 
         return $this->db->delete( $this->table );
     }
+
+
+    public function get_by_name($alias_name) {
+        $this->db->from($this->table);
+        $this->db->where( array('alias_name' => $alias_name) );
+        $query = $this->db->get();
+        return (array)$query->row();
+    }
     
 }

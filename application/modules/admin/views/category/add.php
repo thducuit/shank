@@ -156,6 +156,7 @@
     <div class="clearfix"></div>
     </form>
 </div>
+<!--VALIDATE-->
 <input type="hidden" id="langmap" value='<?php echo json_encode($languages)?>'/>
 <script type="text/javascript">
     $(document).ready(function(){
@@ -164,11 +165,15 @@
         var lang = JSON.parse( $('#langmap').val() );
         for(var i = 0; i<lang.length; i++){
             rules['category['+lang[i]+'][title]'] = {required: true};
-            rules['category['+lang[i]+'][alias]'] = {required: true};
+            rules['category['+lang[i]+'][alias]'] = {
+                required: true 
+            };
         }
         for(var i = 0; i<lang.length; i++){
             messages['category['+lang[i]+'][title]'] = {required: 'Nhap tieu de'};
-            messages['category['+lang[i]+'][alias]'] = {required: 'Nhap alias'};
+            messages['category['+lang[i]+'][alias]'] = {
+                required: 'Nhap alias'
+            };
         }
         //validate
         $('#frm-post').validate({

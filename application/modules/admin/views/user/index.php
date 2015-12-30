@@ -1,6 +1,3 @@
-<?php
-//_pr($list, true);
-?>
 <div id="page-wrapper">
         <form method='get'>
         <div id="main-wrapper">

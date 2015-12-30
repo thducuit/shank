@@ -1,5 +1,5 @@
 <div id="page-wrapper">
-    <form action='' method='post'>
+    <form id='frm-post' action='' method='post'>
     <div id="main-wrapper">
         <div id="main-header">
             <div class="block-left">
@@ -33,7 +33,6 @@
                                         
                                         <div class='form-field'>
                                             <input name="post[<?php echo $l?>][id]" type="hidden" value="<?php echo $posts[$l]['post_id'];?>">
-                                            <input name="post[<?php echo $l?>][alias_id]" type="hidden" value="<?php echo $posts[$l]['alias_id'];?>">
                                         </div>
                                         
                                         <div class='form-field'>
@@ -148,3 +147,25 @@
     <div class="clearfix"></div>
     </form>
 </div>
+<!--VALIDATE-->
+<input type="hidden" id="langmap" value='<?php echo json_encode($languages)?>'/>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var rules = {};
+        var messages = {};
+        var lang = JSON.parse( $('#langmap').val() );
+        for(var i = 0; i<lang.length; i++){
+            rules['post['+lang[i]+'][title]'] = {required: true};
+        }
+        for(var i = 0; i<lang.length; i++){
+            messages['post['+lang[i]+'][title]'] = {required: 'Nhap tieu de'};
+        }
+        rules['module'] = {required: true};
+        messages['module'] = {required: 'Chon module'};
+        //validate
+        $('#frm-post').validate({
+            rules: rules,
+            messages: messages
+        });
+    });
+</script>

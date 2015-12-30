@@ -16,13 +16,6 @@ class Alias_Default_Model extends Alias_Model {
         }else {
             return array();
         }
-    }  
-
-    public function get_by_name($alias_name) {
-        $this->db->from($this->get_table());
-        $this->db->where( array('alias_name' => $alias_name) );
-        $query = $this->db->get();
-        return (array)$query->row();
-    }
+    } 
     
 }

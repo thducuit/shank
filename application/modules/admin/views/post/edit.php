@@ -1,5 +1,5 @@
 <div id="page-wrapper">
-    <form action='' method='post'>
+    <form id='frm-post' action='' method='post'>
     <div id="main-wrapper">
         <div id="main-header">
             <div class="block-left">
@@ -34,6 +34,7 @@
                                         <div class='form-field'>
                                             <input name="post[<?php echo $l?>][id]" type="hidden" value="<?php echo $posts[$l]['post_id'];?>">
                                             <input name="post[<?php echo $l?>][alias_id]" type="hidden" value="<?php echo $posts[$l]['alias_id'];?>">
+                                            <input name="post[<?php echo $l?>][old_alias]" type="hidden" value="<?php echo $posts[$l]['alias_name'];?>">
                                         </div>
                                         
                                         <div class='form-field'>
@@ -179,6 +180,10 @@
                     </div>
                 </div>
                 
+                <?php 
+                $pluggable->hook_action('admin_html_post_edit_sidebar_' . $module, array($module, DEFAULT_LANGUAGE, $posts[DEFAULT_LANGUAGE]['post_id']));  
+                ?>
+
             </div><!--//SIDEBAR-->
             
             <div class="clearfix"></div>
@@ -190,3 +195,29 @@
     <div class="clearfix"></div>
     </form>
 </div>
+<!--VALIDATE-->
+<input type="hidden" id="langmap" value='<?php echo json_encode($languages)?>'/>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var rules = {};
+        var messages = {};
+        var lang = JSON.parse( $('#langmap').val() );
+        for(var i = 0; i<lang.length; i++){
+            rules['post['+lang[i]+'][title]'] = {required: true};
+            rules['post['+lang[i]+'][alias]'] = {
+                required: true 
+            };
+        }
+        for(var i = 0; i<lang.length; i++){
+            messages['post['+lang[i]+'][title]'] = {required: 'Nhap tieu de'};
+            messages['post['+lang[i]+'][alias]'] = {
+                required: 'Nhap alias'
+            };
+        }
+        //validate
+        $('#frm-post').validate({
+            rules: rules,
+            messages: messages
+        });
+    });
+</script>

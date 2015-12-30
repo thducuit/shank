@@ -15,8 +15,10 @@ class Contact extends Parent_Controller {
 	
 	public function index() {
 		
-
+		$this->load->Model("post_default_model");
 		$this->load->library('email');
+
+		//SEND MAIL
         if( isset($_POST['send']) ) {
         	$name = $this->input->post('txtFullname');
         	$email = $this->input->post('txtEmail');
@@ -51,14 +53,16 @@ class Contact extends Parent_Controller {
         }
 
 
-        $this->load->Model("post_default_model");
+        
 		//$this->data['contact'] = $this->post_default_model->get_post('contact', LANGUAGE);
 		
-		$rs = $this->post_default_model->get_page('contact', LANGUAGE);
-		$this->data['contact'] = $rs;
-		$this->data['seo_title'] = $rs['post_seo_title'];
-		$this->data['seo_description'] = $rs['post_seo_description'];
-		$this->data['seo_keywords'] = $rs['post_seo_keywords'];
+		$page = $this->post_default_model->get_page('contact', LANGUAGE);
+		$this->data['contact'] = $page;
+
+		//SEO
+		$this->data['seo_title'] = $page['post_seo_title'];
+		$this->data['seo_description'] = $page['post_seo_description'];
+		$this->data['seo_keywords'] = $page['post_seo_keywords'];
 
         //RUN VIEW
         $this->template->build( 'contact/index', $this->data);

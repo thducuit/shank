@@ -8,11 +8,15 @@ class Post_Default_Model extends Post_Model
         parent::__construct();
     }
 
-    public function get_post($post_module, $language_id)
+    public function get_post($post_module, $language_id, $meta = array())
     {
-        $this->db->select('*');
+        $this->db->select('post.*, alias.alias_name');
+        foreach ($meta as $m) {
+            $this->db->select('MAX(CASE WHEN meta_key = \'' . $m . '\' THEN meta_value END) AS \'' . $m . '\'');
+        }
         $this->db->from($this->get_table());
         $this->db->join('alias', 'alias.fid = post.post_id');
+        $this->db->join('meta', 'meta.fid = post.post_id', 'left');
         $this->db->where(array('alias.alias_module' => $post_module, 'post_module' => $post_module, 'post.language_id' => $language_id, 'post_status' => 1, 'post_type' => 'post', 'post_lock' => 0));
         $query = $this->db->get();
         return $query->result_array();
@@ -23,7 +27,7 @@ class Post_Default_Model extends Post_Model
     {
         $this->db->select('*');
         $this->db->from($this->get_table());
-        $this->db->where(array('post_type' => 'page', 'post_lock' => 0));
+        $this->db->where(array('post_type' => 'page'));
         if (!empty($language_id)) {
             $this->db->where('language_id', $language_id);
         }
@@ -36,7 +40,7 @@ class Post_Default_Model extends Post_Model
     {
         $this->db->select('*');
         $this->db->from($this->get_table());
-        $this->db->where(array('post_module' => $post_module, 'language_id' => $language_id, 'post_lock' => 0, 'post_type' => 'page'));
+        $this->db->where(array('post_module' => $post_module, 'language_id' => $language_id, 'post_type' => 'page'));
         $query = $this->db->get();
         return (array)$query->row();
 
@@ -59,7 +63,7 @@ class Post_Default_Model extends Post_Model
     {
         $this->db->select('*');
         $this->db->from($this->get_table());
-        $this->db->join('alias', 'alias.fid = post.post_id', 'left');
+        $this->db->join('alias', 'alias.fid = post.post_id');
         $this->db->where(array('post_module' => $post_module, 'post.language_id' => $language_id, 'post_lock' => 0, 'post_status' => 1, 'post_type' => 'post'));
         if($category_id != 0) {
             $this->db->where('category_id', $category_id);

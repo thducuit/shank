@@ -116,7 +116,7 @@
                     <div class="portlet-content">
                         <ul>
                             <li>
-                                <label class="desc">
+                                <label class="desc"> 
                                     <?php echo $this->lang->line('txt_status');?>
                                 </label>
                                 <div>
@@ -167,6 +167,10 @@
                     </div>
                 </div>
 
+                <?php 
+                $pluggable->hook_action('admin_html_post_add_sidebar_' . $module, array());  
+                ?>
+
             </div><!--//SIDEBAR-->
             
             <div class="clearfix"></div>
@@ -178,6 +182,7 @@
     <div class="clearfix"></div>
     </form>
 </div>
+<!--VALIDATE-->
 <input type="hidden" id="langmap" value='<?php echo json_encode($languages)?>'/>
 <script type="text/javascript">
     $(document).ready(function(){

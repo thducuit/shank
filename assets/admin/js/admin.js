@@ -37,10 +37,10 @@ $(document).ready(function() {
 		});
 	});
 	
-	//BUTTON SUBMIT
-	/*$('.table-form .buttonSubmit').click(function(e) {
-		$('.table-form').submit();
-	});*/
+	//DATA DATEPICKER
+	$('*[data-datepicker]').datepicker({
+		dateFormat: "dd-mm-yy"
+	});
 	
 	//BUTTON HREF
 	$('*[data-href]').click(function(e) {

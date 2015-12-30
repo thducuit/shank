@@ -23,5 +23,14 @@ $lang['txt_related'] = 'Related Post';
 $lang['txt_sitemap'] = 'Site Map';
 $lang['txt_product'] = 'Products';
 
+$lang['txt_position'] = 'Position';
+$lang['txt_quantity'] = 'Quantity';
+$lang['txt_deadline'] = 'Deadline';
+
+$lang['txt_next'] = 'Next';
+$lang['txt_prev'] = 'Prev';
+
+
+
 
 

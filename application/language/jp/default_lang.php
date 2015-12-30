@@ -23,3 +23,13 @@ $lang['txt_detail'] = '製品の詳細';
 $lang['txt_related'] = 'その他関連製品';
 $lang['txt_sitemap'] = 'サイトマップ';
 $lang['txt_product'] = '製品';
+
+$lang['txt_position'] = '採用ポジション';
+$lang['txt_quantity'] = '採用人数';
+$lang['txt_deadline'] = '応募締切';
+
+$lang['txt_next'] = 'Trang Kế';
+$lang['txt_prev'] = 'Trang Trước';
+
+
+

@@ -7,8 +7,13 @@ class Alias_Admin_Model extends Alias_Model {
     }
     
     public function insert( $fid, $data ) {
+        $alias = $data['alias'];
+        $row = $this->get_by_name($alias);
+        if( count($row) > 0 && strcmp($alias, $old_alias) != 0 ) {
+            $alias .= '-' . $fid . '-' . $data['langmap_id'];
+        }
         $agrs = array(  
-            'alias_name' => ( !empty($data['alias']) ) ? $data['alias'] : $data['module'] . $fid,
+            'alias_name' => $alias,
             'alias_module' => $data['module'],
             'fid' => $fid,
             'language_id' => $data['language_id'],
@@ -20,8 +25,14 @@ class Alias_Admin_Model extends Alias_Model {
     
     public function update( $data ) {
         if( empty($data['alias']) ) return;
+        $alias = $data['alias'];
+        $old_alias = $data['old_alias'];
+        $row = $this->get_by_name($alias);
+        if( count($row) > 0 && strcmp($alias, $old_alias) != 0 ) {
+            $alias .= '-' . $data['alias_id'];
+        }
         $agrs = array(  
-            'alias_name' =>  $data['alias']
+            'alias_name' =>  $alias
         );
         return $this->db->update( $this->get_table(), $agrs, array('alias_id' => $data['alias_id']) );
     }

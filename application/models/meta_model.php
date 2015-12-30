@@ -11,6 +11,4 @@ class Meta_Model extends CI_Model {
     public function get_table() {
         return $this->table;
     }
-
-    
 }

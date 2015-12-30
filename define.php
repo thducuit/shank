@@ -7,7 +7,7 @@
  * Language in Administrator 
  *
  */
-define('ADMIN_LANGUAGE', 'en');//vn,en
+define('ADMIN_LANGUAGE', 'vn');//vn,en
 
 /*
  * --------------------------------------------------------------------
