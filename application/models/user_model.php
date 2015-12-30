@@ -22,7 +22,7 @@ class User_Model extends CI_Model {
         if( empty($id) ) return array();
         $this->db->where('user_id', $id);
         $query = $this->db->get($this->table);
-        return $query->row();
+        return (array)$query->row();
     }
     
     public function update($id, $data) {

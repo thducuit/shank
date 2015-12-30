@@ -34,7 +34,8 @@ class User extends Base_Admin_Controller
         //GET PARAMS
         $this->params = $this->request_params(new User_inputs);
 
-
+        $this->load_model();
+        
         //ADD PARAMS TO VIEW
         $this->data['params'] = $this->params;
     }
@@ -46,20 +47,22 @@ class User extends Base_Admin_Controller
      */
     public function index()
     {
-
         $this->page_has_permission('user', VIEW);
-
-        $this->load->Model("user_admin_model");
-        if (isset($_GET['cmdDel'])) {
-            $ids = $this->input->get('ids');
-            foreach ($ids as $id) {
-                $this->user_admin_model->delete($id);
-            }
-            redirect('/admin/user');
-        } else {
-            $this->data['list'] = $this->user_admin_model->list_all();
-            $this->template->build('user/index', $this->data);
-        }
+        
+        //SELECT
+        $select = array( );
+        //FILTER
+        $filters = array();
+        //ORDER
+        $orders = array('user_id' => 'asc');
+        //PAGINATION
+        $page = (int)$this->params['page'];
+        $range = (int)$this->params['range'];
+        $from = ($page - 1) * $range;
+        //DATA TO VIEW
+        $this->data['list'] = $this->user_admin_model->list_all_by_paging( $select, $filters, $orders, $from, $range, $keyword = $this->params['keyword'] );
+        
+        $this->template->build('user/index', $this->data);
     }
 
     /**
@@ -69,8 +72,6 @@ class User extends Base_Admin_Controller
     public function add()
     {
         $this->page_has_permission('user', ADD);
-        $this->load->Model("user_admin_model");
-        $this->load->Model("group_admin_model");
         if (isset($_POST['add'])) {
             $data = array();
             $data['username'] = $this->input->post('username');
@@ -87,7 +88,7 @@ class User extends Base_Admin_Controller
             $this->user_admin_model->insert($data);
             //NOTICE
             $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_insertsuccess')));
-            redirect('/admin/user');
+            redirect( url_add_params($this->params, '/admin/user') );
         } else {
             $this->data['list_group'] = $this->group_admin_model->list_all(array('group_id', 'group_name'));
             $this->template->build('user/add', $this->data);
@@ -98,13 +99,10 @@ class User extends Base_Admin_Controller
      * EDIT ACTION
      *
      */
-
     public function edit()
     {
         $this->page_has_permission('user', EDIT);
         $user_id = $this->input->get('userid');
-        $this->load->Model("user_admin_model");
-        $this->load->Model("group_admin_model");
 
         if (isset($_POST['update'])) {
             $data = array();
@@ -120,22 +118,61 @@ class User extends Base_Admin_Controller
             $this->user_admin_model->update($user_id, $data);
             //NOTICE
             $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_updateinfor')));
-            redirect('/admin/user');
+            redirect( url_add_params($this->params, '/admin/user') );
         } else {
-            $this->data['list'] = (array)$this->user_admin_model->get_by_id($user_id);
+            $this->data['list'] = $this->user_admin_model->get_by_id($user_id);
             $this->data['list_group'] = $this->group_admin_model->list_all(array('group_id', 'group_name'));
             $this->template->build('user/edit', $this->data);
         }
     }
 
-
-    public function delete()
-    {
+    
+    /**
+     * UPDATE
+     * 
+     */
+    public function update() {
+        $this->page_has_permission('user', EDIT);
+        $type = $this->input->post('type');
+        if ( $type == 'delete' ) {
+            $ids = $this->input->post('ids');
+            if( count($ids) > 0 ) {
+                foreach($ids as $id) {
+                    $this->remove($id);
+                }
+            }
+        }
+        //NOTICE
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );
+        //BACK TO INDEX
+        redirect( url_add_params($this->params, '/admin/user') );
+    }
+    
+    
+    
+    /**
+     * DELETE
+     * 
+     */
+    public function delete() {
         $this->page_has_permission('user', DELETE);
-        $user_id = $this->input->get('userid');
-        $this->load->Model("user_admin_model");
-        $this->user_admin_model->delete($user_id);
-        redirect('/admin/user');
+        $id = (int)$this->input->get('userid');
+        $this->remove($id);
+        //NOTICE
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Delete success') );
+        //BACK TO INDEX
+        redirect( url_add_params($this->params, '/admin/user') );
+    }
+    
+    
+    
+    /**
+     * REMOVE BY ID 
+     * 
+     */
+    private function remove($id) {
+        //DELETE DATA
+        $this->user_admin_model->delete( $id );
     }
 
 
@@ -150,7 +187,6 @@ class User extends Base_Admin_Controller
     public function password()
     {
         $this->page_has_permission('user', EDIT);
-        $this->load->Model("user_admin_model");
         $user_id = $this->input->get('userid');
         if (isset($_POST['change'])) {
             $old_password = $this->input->post('old_password');
@@ -169,8 +205,7 @@ class User extends Base_Admin_Controller
                 $this->user_admin_model->update($user_id, $data);
                 //NOTICE
                 $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_updatepasssucces')));
-                redirect('/admin/user');
-
+                redirect( url_add_params($this->params, '/admin/user') );
             }
         } else {
             $this->template->build('user/password', $this->data);
@@ -196,5 +231,11 @@ class User extends Base_Admin_Controller
 
         //RESPONSE
         echo json_encode(array('STATUS' => $result));
+    }
+    
+    
+    private function load_model() {
+        $this->load->Model("user_admin_model");
+        $this->load->Model("group_admin_model");
     }
 }

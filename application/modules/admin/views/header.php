@@ -60,7 +60,7 @@
        <div id="top-menu">
             <div class="block-left logo"><img src="<?= ADMIN_IMAGE_PATH ?>/logo.png" /></div>
              <div class="float-right">
-              <dl id="sample" class="dropdown right-item ">
+                <!--<dl id="sample" class="dropdown right-item ">
                     <dt><a class="radius2" href="#"><span>Việt Nam</span></a></dt>
                     <dd>
                         <ul>
@@ -68,7 +68,7 @@
                             <li><a href="#">English<span class="value">EN</span></a></li>
                         </ul>
                     </dd>
-                </dl>
+                </dl>-->
                 <a id="viewwebsite" class="radius2 right-item" href ="#" title="Website">Website</a>
                  <div id="userPanel" class="headercolumn block-right">
                 <a href="" class="userinfo radius2">
