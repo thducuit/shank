@@ -3,7 +3,7 @@
 class Pluggins {
 
 	public function __construct() {
-		//include(APPPATH . "plugins/test.php");
+		include(APPPATH . "plugins/admin_index_page.php");
 		include(APPPATH . "plugins/admin_career.php");
 	}
 

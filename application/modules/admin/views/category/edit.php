@@ -45,6 +45,7 @@
                                             <input name="category[<?php echo $l?>][id]" type="hidden" value="<?php echo $categories[$l]['category_id'];?>">
                                             <input name="category[<?php echo $l?>][alias_id]" type="hidden" value="<?php echo $categories[$l]['alias_id'];?>">
                                             <input name="category[<?php echo $l?>][old_alias]" type="hidden" value="<?php echo $categories[$l]['alias_name'];?>">
+                                            <input name="category[<?php echo $l?>][langmap_id]" type="hidden" value="<?php echo $categories[$l]['langmap_id'];?>">
                                         </div>
                                         
                                         <div class='form-field'>

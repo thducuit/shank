@@ -9,7 +9,7 @@
                 </h1>
             </div>
             <div class="block-right">
-                <button type="submit" name="add" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_update');?></button>
+                <button type="submit" name="update" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_update');?></button>
                 <button type="submit" data-href='<?php echo url_add_params($params, '/index.php/admin/page')?>' name="cancel"  id="cmdCancel" class="button "><?php echo $this->lang->line('txt_cancel');?></button>
             </div>
         </div>
@@ -33,6 +33,7 @@
                                         
                                         <div class='form-field'>
                                             <input name="post[<?php echo $l?>][id]" type="hidden" value="<?php echo $posts[$l]['post_id'];?>">
+                                            <input name="post[<?php echo $l?>][langmap_id]" type="hidden" value="<?php echo $posts[$l]['langmap_id'];?>">
                                         </div>
                                         
                                         <div class='form-field'>
@@ -49,6 +50,10 @@
                                             <label class="desc"><?php echo $this->lang->line('txt_content');?></label>
                                             <textarea id='<?php echo sprintf("post_%s_content", $l); ?>' data-editor='<?php echo sprintf("post_%s_content", $l); ?>' name="post[<?php echo $l?>][content]" class="textarea small full"><?php echo $posts[$l]['post_content'];?></textarea>  
                                         </div>
+                                        
+                                        <?php 
+                                        $pluggable->hook_action('admin_html_page_edit_before_seo', array($module, $l, $posts[$l]['post_id'] ));  
+                                        ?>
                                         
                                         <!--SEO-->
                                         <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
@@ -81,7 +86,7 @@
                                 </div><!--//form-->
                                 
                                 <div class="form-control">
-                                    <button type="submit" name="add" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_update');?></button>
+                                    <button type="submit" name="update" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_update');?></button>
                                     <button type="submit" data-href='<?php echo url_add_params($params, '/index.php/admin/page')?>' name="cancel"  id="cmdCancel" class="button "><?php echo $this->lang->line('txt_cancel');?></button>
                                 </div>
                         
@@ -103,6 +108,7 @@
                         <ul>
                             <li>
                                 <label class="desc">Trang</label>
+                                <div class="form-field">
                                 <?php 
                                     my_select(
                                         $list, 
@@ -111,6 +117,7 @@
                                         $selected = array($posts[DEFAULT_LANGUAGE]['post_module'])
                                     );
                                 ?>
+                                </div>
                             </li>
                             <li>
                                 <label class="desc">

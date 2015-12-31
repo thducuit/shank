@@ -112,10 +112,15 @@ class Page extends Base_Admin_Controller
                 $post['language_id'] = $l;
                 $post['langmap_id'] = $langmap_id;
                 $post['module'] = $module;
+                $post['category_id'] = 0;
+                $post['alias'] = $module;
                 $post['type'] = 'page';
 
                 //INSERT POST
                 $post_id = $this->post_admin_model->insert($post);
+                
+                //AFTER POST UPDATE CALLBACK
+                $this->pluggable->hook_action('admin_callback_page_after_added', array($this->module_code(), $l, $post_id, $langmap_id));  
             }
 
             //NOTICE
@@ -165,10 +170,15 @@ class Page extends Base_Admin_Controller
                 $post['highlight'] = $highlight;
                 $post['featured_image'] = $featured_image;
                 $post['module'] = $module;
+                $post['category_id'] = 0;
+                $post['alias'] = $module;
                 $post['type'] = 'page';
 
                 //UPDATE POST
                 $this->post_admin_model->update($post);
+                
+                //AFTER POST UPDATE CALLBACK
+                $this->pluggable->hook_action( 'admin_callback_page_after_updated', array($this->module_code(), $l, $post['id'], $post['langmap_id']));
             }
 
             //NOTICE
@@ -240,7 +250,7 @@ class Page extends Base_Admin_Controller
     public function delete()
     {
 
-        $this->page_has_permission($this->module_code(), DELETE);
+        $this->page_has_permission('page', DELETE);
 
         $id = (int)$this->input->get('id');
         $this->remove($id);
@@ -264,6 +274,11 @@ class Page extends Base_Admin_Controller
 
         //DELETE DATA
         $this->post_admin_model->delete_by_langmap_id($langmap_id);
+        //DELETE META
+        $this->meta_admin_model->delete_by_langmap_id($langmap_id);
+        //DELETE LANGMAP
+        $this->langmap_admin_model->delete($langmap_id);
+        
     }
 
 
@@ -276,6 +291,7 @@ class Page extends Base_Admin_Controller
         $this->load->Model("module_admin_model");
         $this->load->Model("post_admin_model");
         $this->load->Model("langmap_admin_model");
+        $this->load->Model("meta_admin_model");
     }
 
 

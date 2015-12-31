@@ -35,6 +35,7 @@
                                             <input name="post[<?php echo $l?>][id]" type="hidden" value="<?php echo $posts[$l]['post_id'];?>">
                                             <input name="post[<?php echo $l?>][alias_id]" type="hidden" value="<?php echo $posts[$l]['alias_id'];?>">
                                             <input name="post[<?php echo $l?>][old_alias]" type="hidden" value="<?php echo $posts[$l]['alias_name'];?>">
+                                            <input name="post[<?php echo $l?>][langmap_id]" type="hidden" value="<?php echo $posts[$l]['langmap_id'];?>">
                                         </div>
                                         
                                         <div class='form-field'>
@@ -100,7 +101,7 @@
                                 </div><!--//form-->
                                 
                                 <div class="form-control">
-                                    <button type="submit" name="add" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_update');?></button>
+                                    <button type="submit" name="update" id="cmdAdd" class="button "><?php echo $this->lang->line('txt_update');?></button>
                                     <button type="submit" name="cancel"  id="cmdCancel" class="button "><?php echo $this->lang->line('txt_cancel');?></button>
                                 </div>
                         

@@ -151,7 +151,7 @@ class Post extends Base_Admin_Controller {
                 $post_id = $this->post_admin_model->insert( $post );
 
                 //AFTER POST ADD CALLBACK
-                $this->pluggable->hook_action('admin_callback_after_post_added_' . $this->module_code(), array($this->module_code(), $l, $post_id));  
+                $this->pluggable->hook_action('admin_callback_after_post_added_' . $this->module_code(), array($this->module_code(), $l, $post_id, $langmap_id));  
                 
                 //INSERT ALIAS
                 $this->alias_admin_model->insert($post_id, $post);
@@ -207,7 +207,7 @@ class Post extends Base_Admin_Controller {
                 $this->post_admin_model->update( $post );
 
                 //AFTER POST UPDATE CALLBACK
-                $this->pluggable->hook_action('admin_callback_after_post_updated_' . $this->module_code(), array($this->module_code(), $l, $post['id']));  
+                $this->pluggable->hook_action( 'admin_callback_after_post_updated_' . $this->module_code(), array($this->module_code(), $l, $post['id'], $post['langmap_id']) );  
                 
                 
                 //UPDATE ALIAS
@@ -331,16 +331,20 @@ class Post extends Base_Admin_Controller {
         $post = $this->post_admin_model->get_by_id($id);
         $langmap_id = $post->langmap_id;
         
-        $posts = $this->post_admin_model->get_by_langmap_id($langmap_id);
+        //$posts = $this->post_admin_model->get_by_langmap_id($langmap_id);
         
         //DELETE DATA
-        $this->post_admin_model->delete_by_langmap_id( $langmap_id );
-        
+        $this->post_admin_model->delete_by_langmap_id($langmap_id);
         //DELETE ALIAS
-        foreach($posts as $post) {
+        $this->alias_admin_model->delete_by_langmap_id($langmap_id);
+        //DELETE META
+        $this->meta_admin_model->delete_by_langmap_id($langmap_id);
+        //DELETE LANGMAP
+        $this->langmap_admin_model->delete($langmap_id);
+        /*foreach($posts as $post) {
             $alias_id = $post['alias_id'];
             $this->alias_admin_model->delete($alias_id);
-        }
+        }*/
     }
     
     
@@ -354,6 +358,7 @@ class Post extends Base_Admin_Controller {
         $this->load->Model("category_admin_model");
         $this->load->Model("langmap_admin_model");
         $this->load->Model("alias_admin_model");
+        $this->load->Model("meta_admin_model");
     }
     
     

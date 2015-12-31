@@ -1,17 +1,37 @@
+<?php
+$feature_title = $page['_feature_title'];
+$features = json_decode($page['_feature'], true);
+
+$count_feature = count($features);
+?>
 <!-- main start -->
     <div id="main" class="clearfix">
         <!-- content start -->
         <div id="content">
             <div class="top01">
                 <div class="inner">
-                    <h3 class="title"><span class="ttl fontB">5</span><span class="ttl">つの理由</span> <span class="txt">サンコーモールドベトナムが選ばれる</span></h3>
+                    <h3 class="title">
+                        <span class="ttl fontB"><?php echo $count_feature; ?></span>
+                        <?php echo $feature_title; ?>
+                        <!--<span class="ttl">つの理由</span> <span class="txt">サンコーモールドベトナムが選ばれる</span>-->
+                    </h3>
                     <ol>
-                        <li><span class="num">1</span><span class="norTxt">創業４３年、ベトナム設立１５年の信頼と実績</span></li>
+                        <?php 
+                            $stt = 0;
+                            foreach($features as $k => $f) {
+                                $stt = $k + 1;
+                        ?>
+                            <li>
+                                <span class="num"><?php echo $stt; ?></span>
+                                <span class="norTxt"><?php echo $f; ?></span>
+                            </li>
+                        <?php }?>
+                        <!--<li><span class="num">1</span><span class="norTxt">創業４３年、ベトナム設立１５年の信頼と実績</span></li>
                         <li><span class="num">2</span><span class="norTxt">日系企業としての教育による、品質、納期の遵守</span></li>
                         <li class="li01"><span class="num">3</span><span class="norTxt">金型部門、成形部門があり、</span></li>
                         <li><span class="num"></span><span class="norTxt">チューニングや修理修繕のすばやい対応</span></li>
                         <li><span class="num">4</span><span class="norTxt">洗練された製品、マイクロ製品の生産が可能</span></li>
-                        <li><span class="num">5</span><span class="norTxt">高品質・低コストでの対応</span></li>
+                        <li><span class="num">5</span><span class="norTxt">高品質・低コストでの対応</span></li>-->
                     </ol>
                 </div>
             </div>

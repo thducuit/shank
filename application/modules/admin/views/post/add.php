@@ -168,7 +168,7 @@
                 </div>
 
                 <?php 
-                $pluggable->hook_action('admin_html_post_add_sidebar_' . $module, array());  
+                $pluggable->hook_action('admin_html_post_add_sidebar_' . $module, array($module, DEFAULT_LANGUAGE));  
                 ?>
 
             </div><!--//SIDEBAR-->

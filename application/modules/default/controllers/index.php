@@ -17,8 +17,8 @@ class Index extends Parent_Controller {
 	public function index() {
         $this->data['slider'] = $this->media_default_model->get_gallery('slider', LANGUAGE);
 
-        $page = $this->post_default_model->get_page('index', LANGUAGE);
-
+        $page = $this->post_default_model->get_page('index', LANGUAGE, array('_feature_title', '_feature'));
+        $this->data['page'] = $page;
         //SEO
 	$this->data['seo_title'] = $page['post_seo_title'];
 	$this->data['seo_description'] = $page['post_seo_description'];

@@ -16,12 +16,15 @@
     <script type="text/javascript" src="<?= ADMIN_JS_PATH ?>/tooltip.js"></script>
     <script type="text/javascript" src="<?= ADMIN_JS_PATH ?>/custom.js"></script>
     
+    
     <script type="text/javascript" src="<?= ADMIN_JS_PATH ?>/jquery.validate.js"></script>
     <script type="text/javascript" src="<?= ADMIN_JS_PATH ?>/jquery.easy-confirm-dialog.js"></script>
 
     <script type="text/javascript" src="<?= ADMIN_JS_PATH ?>/ckeditor/ckeditor.js"></script>
 
     <script type="text/javascript" src="<?= ADMIN_JS_PATH ?>/admin.js"></script>
+    
+    <script type="text/javascript" src="<?= ADMIN_JS_PATH ?>/plugins.js"></script>
     <!--[if IE 6]>
 	<link href="css/ie6.css" rel="stylesheet" media="all" />
 	<script src="js/pngfix.js"></script>

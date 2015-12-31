@@ -35,7 +35,7 @@ function admin_html_post_add_sidebar_career_func() {
 	<?php
 }
 
-function admin_callback_after_post_added_career_func($module, $lang, $post_id) {
+function admin_callback_after_post_added_career_func($module, $lang, $post_id, $langmap_id) {
     $CI =& get_instance();
     $CI->load->Model('meta_admin_model');
     $quantity = $CI->input->post('quantity');
@@ -46,13 +46,15 @@ function admin_callback_after_post_added_career_func($module, $lang, $post_id) {
           'meta_module' => $module ,
           'fid' => $post_id ,
           'meta_key' => '_quantity',
-          'meta_value' => $quantity
+          'meta_value' => $quantity,
+          'langmap_id' => $langmap_id
        ),
        array(
           'meta_module' => $module ,
           'fid' => $post_id ,
           'meta_key' => '_deadline',
-          'meta_value' => $deadline
+          'meta_value' => $deadline,
+          'langmap_id' => $langmap_id
        )
     );
 
@@ -99,7 +101,7 @@ function admin_html_post_edit_sidebar_career_func($module = '', $lang = '', $pos
   <?php
 }
 
-function admin_callback_after_post_updated_career_func($module, $lang, $post_id) {
+function admin_callback_after_post_updated_career_func($module, $lang, $post_id, $langmap_id) {
   $CI =& get_instance();
   $CI->load->Model('meta_admin_model');
   $quantity = $CI->input->post('quantity');
@@ -112,13 +114,15 @@ function admin_callback_after_post_updated_career_func($module, $lang, $post_id)
           'meta_module' => $module ,
           'fid' => $post_id ,
           'meta_key' => '_quantity',
-          'meta_value' => $quantity
+          'meta_value' => $quantity,
+          'langmap_id' => $langmap_id
        ),
        array(
           'meta_module' => $module ,
           'fid' => $post_id ,
           'meta_key' => '_deadline',
-          'meta_value' => $deadline
+          'meta_value' => $deadline,
+          'langmap_id' => $langmap_id
        )
     );
     $CI->meta_admin_model->insert_batch($data);

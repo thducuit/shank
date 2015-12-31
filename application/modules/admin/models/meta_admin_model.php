@@ -25,4 +25,14 @@ class Meta_Admin_Model extends Meta_Model {
         if( empty($data) ) return 0;
         return $this->db->insert_batch( $this->get_table(), $data );
     }
+    
+    /**
+     * DELETE BY LANGMAP_ID
+     * 
+     */
+    public function delete_by_langmap_id( $langmap_id ) {
+        if( empty($langmap_id) ) return 0;
+        $this->db->where('langmap_id', $langmap_id ); 
+        return $this->db->delete( $this->get_table() );
+    }
 }
