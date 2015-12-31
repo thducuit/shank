@@ -76,8 +76,8 @@
                     <span><strong>Administrator</strong></span> </a>
                 <div class="userdrop" style="width: 151px;">
                     <ul>
-                        <li><a href="">Profile</a></li>
-                        <li><a href="">Account Settings</a></li>
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Account Settings</a></li>
                         <li><a href="/admin/login/logout">Logout</a></li>
                     </ul>
                 </div>
@@ -90,6 +90,7 @@
                 <?php
                 foreach($module_list as $m) {
                     $pid = $m['module_parent'];
+                    if( ( check_permission($m['module_code'], VIEW) ) ) {
                 ?>
                     <li>
                         <a href="<?php echo $m['module_link']; ?>"><?php echo $m['module_name']; ?></a>
@@ -99,11 +100,13 @@
                         <ul>
                             <?php 
                             foreach($m['children'] as $c) {
+                                if( ( check_permission($c['module_code'], VIEW) ) ) {
                             ?>
                             <li>
                                 <a href="<?php echo $c['module_link']; ?>"><?php echo $c['module_name']; ?></a>
                             </li>
                             <?php 
+                                }
                             }
                             ?>
                         </ul>
@@ -112,6 +115,7 @@
                         ?>
                     </li>
                 <?php 
+                    }
                 }
                 ?>
             </ul>
