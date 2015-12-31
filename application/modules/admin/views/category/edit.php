@@ -5,7 +5,7 @@
             <div class="block-left">
                 <img src="<?php echo ADMIN_IMAGE_PATH ?>/icons/icon_list.png" alt="" />
                 <h1 class='title'>
-                     <?php echo $this->lang->line('txt_category');?> :: <?php echo $this->lang->line('txt_add');?>
+                     <?php echo $this->lang->line('txt_category');?> :: <?php echo $this->lang->line('txt_edit');?>
                 </h1>
             </div>
             <div class="block-right">

@@ -100,7 +100,7 @@
             <div class="block-left sidebar">
                 <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
                     <div class="portlet-header ui-widget-header">
-                        <span class="ui-icon ui-icon-circle-arrow-s"></span>Nhóm</div>
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span><?php echo $this->lang->line('txt_group');?></div>
                     <div class="portlet-content">
                         <?php 
                             my_select(

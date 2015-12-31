@@ -28,6 +28,9 @@ class Career extends Parent_Controller
         $this->data['seo_keywords'] = $rs['post_seo_keywords'];
         //RUN VIEW
         $this->template->build('career/index', $this->data);
+
+        //CACHING
+       $this->output->cache(5);
     }
 
 }

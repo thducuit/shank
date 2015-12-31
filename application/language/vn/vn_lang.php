@@ -94,3 +94,10 @@ $lang['txt_groupname'] = 'Tên nhóm';
 $lang['txt_permission'] = 'Phân Quyền';
 $lang['txt_view'] = 'Xem';
 $lang['txt_fullpermission'] = 'Toàn Quyền';
+
+$lang['txt_active'] = 'Kích hoạt';
+$lang['txt_deactive'] = 'Không kích hoạt';
+
+$lang['txt_input_title'] = 'Nhập tiêu đề';
+$lang['txt_input_alias'] = 'Nhập Alias';
+

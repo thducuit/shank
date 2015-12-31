@@ -28,6 +28,9 @@ class About extends Parent_Controller
         array_push( $this->data['breadcrumbs'], array('url'=>'', 'title'=>$this->data['about']['post_title']) );
         //RUN VIEW
         $this->template->build('about/index', $this->data);
+
+        //CACHING
+        $this->output->cache(5);
     }
 
     private function find_post_by_alias_name($about_list, $alias_name)

@@ -62,10 +62,10 @@
                                     Email
                                 </th>
                                 <th scope="col">
-                                    Change Password
+                                    <?php echo $this->lang->line('txt_change_password');?>
                                 </th>
                                 <th scope="col">
-                                    Kích hoạt
+                                    <?php echo $this->lang->line('txt_active');?>
                                 </th>
                                 <th>
                                     <?php echo $this->lang->line('txt_gender');?>
@@ -84,8 +84,8 @@
                                     <input id="chkSelect" type="checkbox" name="ids[]" value='<?php echo $l['user_id']?>' />
                                 </td>
                                 <td class="cellwidth2">
-                                    <input type="button" data-delete-confirm data-href='<?php echo url_add_params($expand_params, '/index.php/admin/user/delete')?>' class="tooltip btgrid delete" title="Xóa"  />
-                                    <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/user/edit')?>' class="tooltip btgrid edit" title="Sửa" />
+                                    <input type="button" data-delete-confirm data-href='<?php echo url_add_params($expand_params, '/index.php/admin/user/delete')?>' class="tooltip btgrid delete" title="<?php echo $this->lang->line('txt_del');?>"  />
+                                    <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/user/edit')?>' class="tooltip btgrid edit" title="<?php echo $this->lang->line('txt_edit');?>" />
                                 </td>
                                 <td class="textleft">
                                     <a href="<?php echo url_add_params($expand_params, '/index.php/admin/user/edit')?>" id="lblName" class="lblname"><?php echo $l['username']?></a>
@@ -97,7 +97,7 @@
                                     <a href="#" id="lblCategory"><?php echo $l['email']?></a>
                                 </td>
                                 <td class="changepassword">
-                                    <a href="<?php echo url_add_params($expand_params, '/index.php/admin/user/password')?>">Change Password</a>
+                                    <a href="<?php echo url_add_params($expand_params, '/index.php/admin/user/password')?>"><?php echo $this->lang->line('txt_change_password');?></a>
                                 </td>
                                 <td>
                                     <?php my_toggle_button($l['active'], $l['user_id'], url_add_params($params, '/index.php/admin/user/active'), array('name'=>'ImgRowStatus'));?>

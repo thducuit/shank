@@ -170,9 +170,9 @@
             };
         }
         for(var i = 0; i<lang.length; i++){
-            messages['category['+lang[i]+'][title]'] = {required: 'Nhap tieu de'};
+            messages['category['+lang[i]+'][title]'] = {required: VALIDATE_TITLE};
             messages['category['+lang[i]+'][alias]'] = {
-                required: 'Nhap alias'
+                required: VALIDATE_ALIAS
             };
         }
         //validate

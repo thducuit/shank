@@ -54,6 +54,9 @@
         var VALIDATE_EMAIL = '<?php echo $this->lang->line('error_email');?>';
         var VALIDATE_EQUALTO = '<?php echo $this->lang->line('error_equalto');?>';
 
+        var VALIDATE_TITLE = '<?php echo $this->lang->line('txt_input_title');?>';
+        var VALIDATE_ALIAS = '<?php echo $this->lang->line('txt_input_alias');?>';
+
 	</script>
 </head>
 <div id="header">

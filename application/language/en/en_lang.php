@@ -97,8 +97,11 @@ $lang['txt_permission'] = 'Permission';
 $lang['txt_view'] = 'View';
 $lang['txt_fullpermission'] = 'Full Permission';
 
+$lang['txt_active'] = 'Active';
+$lang['txt_deactive'] = 'Deactive';
 
-
+$lang['txt_input_title'] = 'Input title';
+$lang['txt_input_alias'] = 'Input Alias';
 
 
 

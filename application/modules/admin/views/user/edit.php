@@ -100,7 +100,7 @@
             <div class="block-left sidebar">
                 <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
                     <div class="portlet-header ui-widget-header">
-                        <span class="ui-icon ui-icon-circle-arrow-s"></span>Nhóm</div>
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span><?php echo $this->lang->line('txt_group');?></div>
                     <div class="portlet-content">
                         <?php 
                             my_select(
@@ -116,11 +116,11 @@
                 
                 <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
                     <div class="portlet-header ui-widget-header">
-                        <span class="ui-icon ui-icon-circle-arrow-s"></span>Kích hoạt</div>
+                        <span class="ui-icon ui-icon-circle-arrow-s"></span><?php echo $this->lang->line('txt_active');?></div>
                     <div class="portlet-content">
                         <?php 
                             my_select(
-                                array(array('title' => 'Kích hoạt', 'value' => 1), array('title' => 'Ko kích hoạt', 'value' => 0)), 
+                                array(array('title' => $this->lang->line('txt_active'), 'value' => 1), array('title' => $this->lang->line('txt_deactive'), 'value' => 0)), 
                                 $option = array('title' => 'title', 'value' => 'value'),
                                 $attributes = array('name' => "active", 'id' => 'lstActive', 'class' => 'listbox lstActive'),
                                 $selected = array($list['active'])
