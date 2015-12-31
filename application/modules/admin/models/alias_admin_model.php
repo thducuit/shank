@@ -37,5 +37,13 @@ class Alias_Admin_Model extends Alias_Model {
         return $this->db->update( $this->get_table(), $agrs, array('alias_id' => $data['alias_id']) );
     }
     
-    
+    /**
+     * DELETE BY LANGMAP_ID
+     * 
+     */
+    public function delete_by_langmap_id( $langmap_id ) {
+        if( empty($langmap_id) ) return 0;
+        $this->db->where('langmap_id', $langmap_id ); 
+        return $this->db->delete( $this->get_table() );
+    }
 }

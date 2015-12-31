@@ -300,12 +300,17 @@ class Category extends Base_Admin_Controller {
         
         //DELETE DATA
         $this->category_admin_model->delete_by_langmap_id( $langmap_id );
-        
         //DELETE ALIAS
-        foreach($categories as $cat) {
-            $alias_id = $cat['alias_id'];
-            $this->alias_admin_model->delete($alias_id);
-        }
+        $this->alias_admin_model->delete_by_langmap_id($langmap_id);
+        //DELETE META
+        $this->meta_admin_model->delete_by_langmap_id($langmap_id);
+        //DELETE LANGMAP
+        $this->langmap_admin_model->delete($langmap_id);
+        //DELETE ALIAS
+        // foreach($categories as $cat) {
+        //     $alias_id = $cat['alias_id'];
+        //     $this->alias_admin_model->delete($alias_id);
+        // }
     }
     
     
@@ -318,6 +323,7 @@ class Category extends Base_Admin_Controller {
         $this->load->Model("category_admin_model");
         $this->load->Model("langmap_admin_model");
         $this->load->Model("alias_admin_model");
+        $this->load->Model("meta_admin_model");
     }
     
     

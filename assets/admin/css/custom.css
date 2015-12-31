@@ -76,6 +76,7 @@ button {
 	float: left;
 	margin: 3px;
     cursor: move;
+    position:relative;
 }
 .gallery_list li .image {
 	float: left
@@ -83,4 +84,9 @@ button {
 .gallery_list li .config {
 	margin-top: 10px;
 	float: left
+}
+.gallery_list li .remove {
+	position: absolute;
+	right:10px;
+	top:10px;
 }

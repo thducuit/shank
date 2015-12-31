@@ -18,4 +18,10 @@ class Langmap_Model extends CI_Model {
         return $this->db->insert_id();
     }
     
+    
+    public function delete( $id ) {
+        if( empty($id) ) return 0;
+        $this->db->where('langmap_id', $id ); 
+        return $this->db->delete( $this->get_table() );
+    }
 }

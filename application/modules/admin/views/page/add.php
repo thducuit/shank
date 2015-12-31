@@ -46,6 +46,10 @@
                                             <textarea id='<?php echo sprintf("post_%s_content", $l); ?>' data-editor='<?php echo sprintf("post_%s_content", $l); ?>' name="post[<?php echo $l?>][content]" class="textarea small full"></textarea>  
                                         </div>
                                         
+                                        <?php 
+                                        $pluggable->hook_action('admin_html_page_add_before_seo', array($module, $l));  
+                                        ?>
+                                        
                                         <!--SEO-->
                                         <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
                                             <div class="portlet-header ui-widget-header">

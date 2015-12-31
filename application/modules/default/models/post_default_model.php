@@ -36,10 +36,14 @@ class Post_Default_Model extends Post_Model
         return $query->result_array(); //$query->row()
     }
 
-    public function get_page($post_module, $language_id)
+    public function get_page($post_module, $language_id, $meta = array())
     {
-        $this->db->select('*');
+        $this->db->select('post.*');
+        foreach ($meta as $m) {
+            $this->db->select('MAX(CASE WHEN meta_key = \'' . $m . '\' THEN meta_value END) AS \'' . $m . '\'');
+        }
         $this->db->from($this->get_table());
+        $this->db->join('meta', 'meta.fid = post.post_id', 'left');
         $this->db->where(array('post_module' => $post_module, 'language_id' => $language_id, 'post_type' => 'page'));
         $query = $this->db->get();
         return (array)$query->row();
