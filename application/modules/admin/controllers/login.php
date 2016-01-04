@@ -34,7 +34,7 @@ class Login extends Base_Admin_Controller {
             $user = $this->user_admin_model->login( $username, $password );
             if( $user == false ) {
                 //NOTICE
-                $this->session->set_flashdata( 'notice', array('status'=>'error', 'message'=>'Sai username hoac password') );
+                $this->session->set_flashdata( 'notice', array('status'=>'error', 'message'=> $this->lang->line('login_error') ) );
                 //RUN VIEW
                 redirect ('/admin/login', 'refresh');
             }else {

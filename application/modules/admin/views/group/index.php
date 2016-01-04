@@ -35,8 +35,12 @@
                         ?>
                     </div>
                     <div class="block-right control block-right-control-button">
+                        <?php if( check_permission('group', DELETE) ) { ?>
                         <button type="submit" data-delete-confirm data-delete-selected name="type" value='delete' id="cmdDel" class="button buttonDelete deleteSelected" ><?php echo $this->lang->line('txt_del');?></button>
+                        <?php } ?>
+                        <?php if( check_permission('group', ADD) ) { ?>
                         <button name='cmdAdd' data-href="<?php echo url_add_params($params, '/index.php/admin/group/add')?>" class='button buttonAdd buttonMedia'><?php echo $this->lang->line('txt_add');?></button>
+                        <?php } ?>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -74,8 +78,13 @@
                                 <input id="chkSelect" type="checkbox" name="ids[]" value='<?php echo $l['group_id']?>' />
                             </td>
                             <td class="cellwidth2">
-                                <input type="button" data-delete-confirm data-href='<?php echo url_add_params($expand_params, '/index.php/admin/group/delete')?>' class="tooltip btgrid delete" title="Xóa"  />
-                                <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/group/edit')?>' class="tooltip btgrid edit" title="Sửa" />
+                                <?php if( check_permission('group', DELETE) ) { ?>
+                                <input type="button" data-delete-confirm data-href='<?php echo url_add_params($expand_params, '/index.php/admin/group/delete')?>' class="tooltip btgrid delete" title="<?php echo $this->lang->line('confirm_delete_msg');?>"  />
+                                <?php } ?>
+                                
+                                <?php if( check_permission('group', EDIT) ) { ?>
+                                <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/group/edit')?>' class="tooltip btgrid edit" title="<?php echo $this->lang->line('txt_update');?>" />
+                                <?php } ?>
                             </td>
                             <td class="cellwidth1">
                                 <a href="<?php echo url_add_params($expand_params, '/index.php/admin/group/edit')?>"><?php echo $l['group_name']?></a>

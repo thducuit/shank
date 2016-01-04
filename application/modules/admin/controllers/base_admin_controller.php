@@ -116,7 +116,7 @@ class Base_Admin_Controller extends MX_Controller {
      */
     protected function page_has_permission($module, $permission){
         if( !check_permission($module, $permission) ) {
-            $this->session->set_flashdata( 'notice', array('status'=>'error', 'message'=>'You have no permission to access this link') );
+            $this->session->set_flashdata( 'notice', array('status'=>'error', 'message'=>$this->lang->line('no_permission')) );
             redirect('admin/index', 'refresh');
         }
     }

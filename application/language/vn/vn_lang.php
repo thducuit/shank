@@ -54,20 +54,21 @@ $lang['txt_male'] = 'Nam';
 $lang['txt_female'] = 'Nữ';
 $lang['txt_address'] = 'Địa chỉ';
 $lang['txt_phone'] = 'Số điện thoại';
+$lang['txt_click_here_get_alias'] = 'Nhấp vào để tạo alias';
+$lang['get_alias_notice'] = 'Nhập tiêu đề trước khi nhập alias. Alias cách nhau bởi dấu - vd: abc-xyz';
+$lang['txt_page'] = 'Trang';
 
 /**
  * ALERT
  */
-$lang['alert_success'] = 'Success message';
-$lang['alert_error'] = 'Error message';
-$lang['alert_inf'] = 'Information message message';
-$lang['alert_notice'] = 'Notice message';
-
+$lang['alert_success'] = 'Thông báo thành công';
+$lang['alert_error'] = 'Thông báo lỗi';
+$lang['alert_inf'] = 'Thông báo cập nhật thông tin';
+$lang['alert_notice'] = 'Cảnh báo';
 
 /**
  * VALIDATE
  */
-
 $lang['error_required'] = 'Bạn không được để trống chỗ này !';
 $lang['error_minlength'] = 'Vui lòng nhập nhiều hơn 6 kí tự !';
 $lang['error_email'] = 'Email không đúng !';
@@ -76,12 +77,11 @@ $lang['error_equalto'] = 'Mật khẩu không đúng !';
 /**
  * NOTICE
  */
-
 $lang['txt_invalidoldpass'] = 'Nhập mật khẩu cũ sai !';
 $lang['txt_updatepasssucces'] = 'Cập nhật mật khẩu thành công!';
 $lang['txt_insertsuccess'] = 'Thêm vào thành công !';
 $lang['txt_updateinfor'] = 'Cập nhật thông tin thành công !';
-
+$lang['txt_deletesuccess'] = 'Xoá thành công !';
 
 $lang['txt_change_password'] = 'Đổi mật khẩu';
 $lang['txt_old_password'] = 'Mật khẩu cũ';
@@ -100,4 +100,25 @@ $lang['txt_deactive'] = 'Không kích hoạt';
 
 $lang['txt_input_title'] = 'Nhập tiêu đề';
 $lang['txt_input_alias'] = 'Nhập Alias';
+$lang['txt_input_page'] = 'Chọn trang';
 
+/**
+ * LOGIN
+ */
+$lang['login_error'] = 'Vui lòng kiểm tra lại tài khoản hoặc mật khẩu';
+$lang['no_permission'] = 'Bạn không có quyền truy cập';
+
+$lang['txt_profile'] = 'Thông tin cá nhân';
+$lang['txt_account_settings'] = 'Cấu hình tài khoản';
+$lang['txt_logout'] = 'Đăng xuất';
+
+/**
+ * DIALOG
+ */
+$lang['confirm_delete_msg'] = 'Bạn có muốn tiếp tục xoá ?';
+$lang['confirm_title_dialog'] = 'Xác nhận';
+$lang['confirm_delete_all_msg'] = 'Bạn có muốn xoá hết?';
+$lang['dialog_title'] = 'Thông báo';
+$lang['dialog_close'] = 'Đóng lại';
+$lang['dialog_ok'] = 'Tiếp tục';
+$lang['dialog_cancel'] = 'Bỏ qua';

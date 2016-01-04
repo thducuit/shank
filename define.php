@@ -7,7 +7,7 @@
  * Language in Administrator 
  *
  */
-define('ADMIN_LANGUAGE', 'en');//vn,en
+define('ADMIN_LANGUAGE', 'vn');//vn,en
 
 /*
  * --------------------------------------------------------------------
@@ -110,3 +110,13 @@ define('FULL_PERMISSION', 15);
  *
  */
  define('PAGINATION', 2);
+
+ /*
+ * --------------------------------------------------------------------
+ * CACHE TIME
+ * --------------------------------------------------------------------
+ *
+ * And away we go...
+ *
+ */
+ define('CACHE_TIME', 0);

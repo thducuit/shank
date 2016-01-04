@@ -94,7 +94,7 @@ class Group extends Base_Admin_Controller
             $this->group_admin_model->insert($data);
 
             //NOTICE
-            $this->session->set_flashdata('notice', array('status' => 'success', 'message' => 'Insert success'));
+            $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_insertsuccess') ));
             //RUN VIEW
             redirect('/admin/group');
         }
@@ -129,7 +129,7 @@ class Group extends Base_Admin_Controller
             $this->group_admin_model->update($id, $data);
 
             //NOTICE
-            $this->session->set_flashdata('notice', array('status' => 'success', 'message' => 'Update success'));
+            $this->session->set_flashdata('notice', array('status' => 'success', 'message' =>  $this->lang->line('txt_updateinfor') ));
             //RUN VIEW
             redirect('/admin/group');
         }
@@ -160,7 +160,7 @@ class Group extends Base_Admin_Controller
         }
         
         //NOTICE
-        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>$this->lang->line('txt_updateinfor') ) );
         //BACK TO INDEX
         redirect( url_add_params($this->params, '/admin/group') );
     }
@@ -179,7 +179,7 @@ class Group extends Base_Admin_Controller
         $this->remove($id);
 
         //NOTICE
-        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Delete success') );
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=> $this->lang->line('txt_deletesuccess') ) );
         //BACK TO INDEX
         redirect( url_add_params($this->params, '/admin/group') );
     }

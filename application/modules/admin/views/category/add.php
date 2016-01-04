@@ -49,8 +49,8 @@
                                         
                                         <div class="form-field">
                                             <label class="desc">Alias</label>
-                                            <input id='<?php echo sprintf("category_%s_alias", $l); ?>' placeholder='click here to get alias' name="category[<?php echo $l?>][alias]" type="text" value="" class="field text full">
-                                            
+                                            <small><?php echo $this->lang->line('get_alias_notice');?></small>
+                                            <input id='<?php echo sprintf("category_%s_alias", $l); ?>' placeholder='<?php echo $this->lang->line('txt_click_here_get_alias');?>' name="category[<?php echo $l?>][alias]" type="text" value="" class="field text full">
                                         </div>
                                         
                                         <div class="form-field">

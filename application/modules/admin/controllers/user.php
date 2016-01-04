@@ -117,7 +117,7 @@ class User extends Base_Admin_Controller
             $data['active'] = (int)$this->input->post('active');
             $this->user_admin_model->update($user_id, $data);
             //NOTICE
-            $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_updateinfor')));
+            $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_updateinfor') ));
             redirect( url_add_params($this->params, '/admin/user') );
         } else {
             $this->data['list'] = $this->user_admin_model->get_by_id($user_id);
@@ -143,7 +143,7 @@ class User extends Base_Admin_Controller
             }
         }
         //NOTICE
-        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message' => $this->lang->line('txt_updateinfor') ) );
         //BACK TO INDEX
         redirect( url_add_params($this->params, '/admin/user') );
     }
@@ -159,7 +159,7 @@ class User extends Base_Admin_Controller
         $id = (int)$this->input->get('userid');
         $this->remove($id);
         //NOTICE
-        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Delete success') );
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message' => $this->lang->line('txt_deletesuccess') ) );
         //BACK TO INDEX
         redirect( url_add_params($this->params, '/admin/user') );
     }

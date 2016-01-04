@@ -55,7 +55,8 @@
                                         
                                         <div class="form-field">
                                             <label class="desc">Alias</label>
-                                            <input name="category[<?php echo $l?>][alias]" type="text" value="<?php echo $categories[$l]['alias_name'];?>" class="field text full">
+                                            <small><?php echo $this->lang->line('get_alias_notice');?></small>
+                                            <input name="category[<?php echo $l?>][alias]" type="text" value="<?php echo $categories[$l]['alias_name'];?>" class="field text full" placeholder='<?php echo $this->lang->line('txt_click_here_get_alias');?>'>    
                                         </div>
                                         
                                         <div class="form-field">
@@ -177,9 +178,9 @@
             };
         }
         for(var i = 0; i<lang.length; i++){
-            messages['category['+lang[i]+'][title]'] = {required: 'Nhap tieu de'};
+            messages['category['+lang[i]+'][title]'] = {required: VALIDATE_TITLE};
             messages['category['+lang[i]+'][alias]'] = {
-                required: 'Nhap alias'
+                required: VALIDATE_ALIAS
             };
         }
         //validate

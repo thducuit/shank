@@ -68,18 +68,19 @@
                                         </tr>
                                         <?php
                                             if( count($m['children']) > 0 ) {
-                                                foreach($m['children'] as $c) {
+                                                foreach($m['children'] as $c) {  
                                                     ?>
+
                                                     <tr>
                                                         <td class='textleft'><?php echo $c['module_level']?> <?php echo $c['module_name']?></td>
                                                         <td>
-                                                            <select name='permission[<?php echo $c['module_code']?>]'>
-                                                                <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == 0 ) ? 'selected':''; ?> value='0'></option>
-                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW ) ? 'selected':''; ?> value='<?php echo VIEW;?>'><?php echo $this->lang->line('txt_view');?></option>
-                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD ) ? 'selected':''; ?> value='<?php echo VIEW_ADD;?>'><?php echo $this->lang->line('txt_add');?></option>
-                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD_EDIT ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT;?>'><?php echo $this->lang->line('txt_edit');?></option>
-                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == VIEW_ADD_EDIT_DELETE ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT_DELETE;?>'><?php echo $this->lang->line('txt_del');?></option>
-                                                    <option <?php echo ( isset($permission[$m['module_code']]) && $permission[$m['module_code']] == FULL_PERMISSION ) ? 'selected':''; ?> value='<?php echo FULL_PERMISSION;?>'><?php echo $this->lang->line('txt_fullpermission');?></option>
+                                                            <select  name='permission[<?php echo $c['module_code']?>]'>
+                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == 0 ) ? 'selected':''; ?> value='0'></option>
+                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == VIEW ) ? 'selected':''; ?> value='<?php echo VIEW;?>'><?php echo $this->lang->line('txt_view');?></option>
+                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == VIEW_ADD ) ? 'selected':''; ?> value='<?php echo VIEW_ADD;?>'><?php echo $this->lang->line('txt_add');?></option>
+                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == VIEW_ADD_EDIT ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT;?>'><?php echo $this->lang->line('txt_edit');?></option>
+                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == VIEW_ADD_EDIT_DELETE ) ? 'selected':''; ?> value='<?php echo VIEW_ADD_EDIT_DELETE;?>'><?php echo $this->lang->line('txt_del');?></option>
+                                                                <option <?php echo ( isset($permission[$c['module_code']]) && $permission[$c['module_code']] == FULL_PERMISSION ) ? 'selected':''; ?> value='<?php echo FULL_PERMISSION;?>'><?php echo $this->lang->line('txt_fullpermission');?></option>
                                                             </select>
                                                         </td>
                                                     </tr>

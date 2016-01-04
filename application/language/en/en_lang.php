@@ -55,7 +55,9 @@ $lang['txt_male'] = 'Male';
 $lang['txt_female'] = 'Female';
 $lang['txt_address'] = 'Address';
 $lang['txt_phone'] = 'Phone';
-
+$lang['txt_click_here_get_alias'] = 'click here to get alias';
+$lang['get_alias_notice'] = ' Please input title first then input alias. Alias devide by - .Ex: abc-xyz';
+$lang['txt_page'] = 'Page';
 
 /**
  * ALERT
@@ -69,7 +71,6 @@ $lang['alert_notice'] = 'Notice message';
 /**
  * VALIDATE
  */
-
 $lang['error_required'] = 'You cannot leave this empty !';
 $lang['error_minlength'] = 'Please enter more than 6 characters !';
 $lang['error_email'] = 'Email is invalid !';
@@ -78,16 +79,15 @@ $lang['error_equalto'] = 'Password is not correct !';
 /**
  * NOTICE
  */
-
 $lang['txt_invalidoldpass'] = 'Invalid old password !';
 $lang['txt_updatepasssucces'] = 'Update password successfully !';
 $lang['txt_insertsuccess'] = 'Insert Successfully !';
 $lang['txt_updateinfor'] = 'Update information successfully !';
+$lang['txt_deletesuccess'] = 'Delete successfully !';
 
 $lang['txt_change_password'] = 'Change Password';
 $lang['txt_old_password'] = 'Old Password';
 $lang['txt_new_password'] = 'New Password';
-
 
 $lang['txt_gallery'] = 'Gallery';
 
@@ -100,9 +100,25 @@ $lang['txt_fullpermission'] = 'Full Permission';
 $lang['txt_active'] = 'Active';
 $lang['txt_deactive'] = 'Deactive';
 
-$lang['txt_input_title'] = 'Input title';
-$lang['txt_input_alias'] = 'Input Alias';
+$lang['txt_input_title'] = 'Title is required';
+$lang['txt_input_alias'] = 'Alias is required';
+$lang['txt_input_page'] = 'Choose page';
+/**
+ * LOGIN
+ */
+$lang['login_error'] = 'Username or password is invalid';
+$lang['no_permission'] = 'You have no permission to access this link';
 
-
-
-
+$lang['txt_profile'] = 'Profile';
+$lang['txt_account_settings'] = 'Account Settings';
+$lang['txt_logout'] = 'Logout';
+/**
+ * DIALOG
+ */
+$lang['confirm_delete_msg'] = 'Do you want to continue delete?';
+$lang['confirm_title_dialog'] = 'Confirm';
+$lang['confirm_delete_all_msg'] = 'Do you want to continue delete all?';
+$lang['dialog_title'] = 'Notice';
+$lang['dialog_close'] = 'Close';
+$lang['dialog_ok'] = 'OK';
+$lang['dialog_cancel'] = 'Cancel';

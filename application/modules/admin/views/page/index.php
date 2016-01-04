@@ -35,9 +35,17 @@
                         ?>
                     </div>
                     <div class="block-right control block-right-control-button">
+                        <?php if( check_permission('page', EDIT) ) { ?>
                         <button type="submit" name="type" value='update' id="cmdUpdate" class="button buttonUpdate buttonSubmit" ><?php echo $this->lang->line('txt_update');?></button>
+                        <?php }?>
+
+                        <?php if( check_permission('page', DELETE) ) { ?>
                         <button type="submit" data-delete-confirm data-delete-selected name="type" value='delete' id="cmdDel" class="button buttonDelete deleteSelected" ><?php echo $this->lang->line('txt_del');?></button>
+                        <?php }?>
+
+                        <?php if( check_permission('page', ADD) ) { ?>
                         <button name='cmdAdd' data-href="<?php echo url_add_params($params, '/index.php/admin/page/add')?>" class='button buttonAdd buttonMedia'><?php echo $this->lang->line('txt_add');?></button>
+                        <?php }?>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -53,7 +61,7 @@
                                 <?php echo $this->lang->line('txt_delete_edit');?>
                             </th>
                             <th>
-                                Ảnh đại diện
+                                <?php echo $this->lang->line('txt_featured_photo');?>
                             </th>
                             <th scope="col">
                                 <?php echo $this->lang->line('txt_name');?>
@@ -77,18 +85,27 @@
                                 <input id="chkSelect" type="checkbox" name="ids[]" value='<?php echo $l['post_id']?>' />
                             </td>
                             <td class="cellwidth2">
-                                <input type="button" data-delete-confirm data-href='<?php echo url_add_params($expand_params, '/index.php/admin/page/delete')?>' class="tooltip btgrid delete" title="Xóa"  />
-                                <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/page/edit')?>' class="tooltip btgrid edit" title="Sửa" />
+                                <?php if( check_permission('page', DELETE) ) { ?>
+                                <input type="button" data-delete-confirm data-href='<?php echo url_add_params($expand_params, '/index.php/admin/page/delete')?>' class="tooltip btgrid delete" title="<?php echo $this->lang->line('confirm_delete_msg');?>"  />
+                                <?php } ?>
+
+                                <?php if( check_permission('page', EDIT) ) { ?>
+                                <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/page/edit')?>' class="tooltip btgrid edit" title="<?php echo $this->lang->line('txt_update');?>" />
+                                <?php } ?>
                             </td>
                             <td>
-                                No image
+                                <?php if( strlen($l['post_featured_image']) ) {?>
+                                    <img src="<?php echo $l['post_featured_image']; ?>" />
+                                <?php }?>
                             </td>
                             <td class="textleft">
                                 <a href="<?php echo url_add_params($expand_params, '/index.php/admin/page/edit')?>" id="lblName" class="lblname"><?php echo $l['post_title']?></a>
                             </td>
                             
                             <td class="">
+                                <?php if( check_permission('page', EDIT) ) { ?>
                                 <?php my_sort_input('sorts', $l['post_order'], array('class' => 'txtSort'), true, $l['post_id']);?>
+                                <?php } ?>
                             </td>
                             
                             <td class="cellwidth1">

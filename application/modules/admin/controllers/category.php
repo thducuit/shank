@@ -129,7 +129,7 @@ class Category extends Base_Admin_Controller {
             }
             
             //NOTICE
-            $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Insert success') );
+            $this->session->set_flashdata( 'notice', array('status'=>'success', 'message' => $this->lang->line('txt_insertsuccess') ) );
             //BACK TO INDEX
             redirect( url_add_params($this->params, '/admin/category') );
         } else {
@@ -178,7 +178,7 @@ class Category extends Base_Admin_Controller {
             }
             
             //NOTICE
-            $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );
+            $this->session->set_flashdata( 'notice', array('status'=>'success', 'message' => $this->lang->line('txt_updateinfor') ) );
             //BACK TO INDEX
             redirect( url_add_params($this->params, '/admin/category') );
         }else{
@@ -261,7 +261,7 @@ class Category extends Base_Admin_Controller {
         }
         
         //NOTICE
-        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message' => $this->lang->line('txt_updateinfor') ) );
         //BACK TO INDEX
         redirect( url_add_params($this->params, '/admin/category') );
     }
@@ -280,7 +280,7 @@ class Category extends Base_Admin_Controller {
         $this->remove($id);
 
         //NOTICE
-        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Delete success') );
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>$this->lang->line('txt_deletesuccess') ) );
         //BACK TO INDEX
         redirect( url_add_params($this->params, '/admin/category') );
     }

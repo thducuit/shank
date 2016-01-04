@@ -62,7 +62,7 @@ class Page extends Base_Admin_Controller
         $this->page_has_permission('page', VIEW);
 
         //SELECT
-        $select = array('post_id', 'post_title', 'post_order', 'post_status', 'post.language_id',);
+        $select = array('post_id', 'post_title', 'post_order', 'post_status', 'post.language_id', 'post_featured_image');
         //FILTER
         $filters = array('post_type' => 'page');
         $filters['post.language_id'] = DEFAULT_LANGUAGE;
@@ -124,7 +124,7 @@ class Page extends Base_Admin_Controller
             }
 
             //NOTICE
-            $this->session->set_flashdata('notice', array('status' => 'success', 'message' => 'Insert success'));
+            $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_insertsuccess') ));
             //BACK TO INDEX
             redirect(url_add_params($this->params, '/admin/page'));
         } else {
@@ -182,7 +182,7 @@ class Page extends Base_Admin_Controller
             }
 
             //NOTICE
-            $this->session->set_flashdata('notice', array('status' => 'success', 'message' => 'Update success'));
+            $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_updateinfor') ));
             //BACK TO INDEX
             redirect(url_add_params($this->params, '/admin/page'));
         } else {
@@ -237,7 +237,7 @@ class Page extends Base_Admin_Controller
             }
         }
         //NOTICE
-        $this->session->set_flashdata('notice', array('status' => 'success', 'message' => 'Update success'));
+        $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_updateinfor') ));
         //BACK TO INDEX
         redirect(url_add_params($this->params, '/admin/page'));
     }
@@ -256,7 +256,7 @@ class Page extends Base_Admin_Controller
         $this->remove($id);
 
         //NOTICE
-        $this->session->set_flashdata('notice', array('status' => 'success', 'message' => 'Delete success'));
+        $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_deletesuccess') ));
         //BACK TO INDEX
         redirect(url_add_params($this->params, '/admin/page'));
     }

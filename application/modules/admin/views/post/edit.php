@@ -45,7 +45,8 @@
                                         
                                         <div class="form-field">
                                             <label class="desc">Alias</label>
-                                            <input id='<?php echo sprintf("post_%s_alias", $l); ?>' name="post[<?php echo $l?>][alias]" type="text" value="<?php echo $posts[$l]['alias_name'];?>" class="field text full">
+                                            <small><?php echo $this->lang->line('get_alias_notice');?></small>
+                                            <input id='<?php echo sprintf("post_%s_alias", $l); ?>' name="post[<?php echo $l?>][alias]" type="text" value="<?php echo $posts[$l]['alias_name'];?>" class="field text full" placeholder='<?php echo $this->lang->line('txt_click_here_get_alias');?>'>   
                                         </div>
                                         
                                         <div class="form-field">
@@ -210,9 +211,9 @@
             };
         }
         for(var i = 0; i<lang.length; i++){
-            messages['post['+lang[i]+'][title]'] = {required: 'Nhap tieu de'};
+            messages['post['+lang[i]+'][title]'] = {required: VALIDATE_TITLE};
             messages['post['+lang[i]+'][alias]'] = {
-                required: 'Nhap alias'
+                required: VALIDATE_ALIAS
             };
         }
         //validate

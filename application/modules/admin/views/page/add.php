@@ -102,7 +102,7 @@
                     <div class="portlet-content">
                         <ul>
                             <li>
-                                <label class="desc">Trang</label>
+                                <label class="desc"><?php echo $this->lang->line('txt_page');?></label>
                                 <div class="form-field">
                                 <?php 
                                     my_select(
@@ -159,10 +159,10 @@
             rules['post['+lang[i]+'][title]'] = {required: true};
         }
         for(var i = 0; i<lang.length; i++){
-            messages['post['+lang[i]+'][title]'] = {required: 'Nhap tieu de'};
+            messages['post['+lang[i]+'][title]'] = {required: VALIDATE_TITLE};
         }
         rules['module'] = {required: true};
-        messages['module'] = {required: 'Chon module'};
+        messages['module'] = {required: VALIDATE_PAGE};
         //validate
         $('#frm-post').validate({
             rules: rules,

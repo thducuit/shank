@@ -24,7 +24,7 @@
                 <div class="clearfix"></div>
 			</div>
             <div class="widget_footer">
-				 Copyright © 2012 - TQDesign
+				 <?php echo $this->lang->line('msg_footer');?>
 			</div>
 		</div>
 </body>

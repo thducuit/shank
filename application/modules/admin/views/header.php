@@ -39,16 +39,13 @@
 
     <script type="text/javascript">
 		var WEBROOT = '';
-		var CONFIRM_DELETE_MSG = 'Ban co muon xoa';
-        var CONFIRM_TITLE_DIALOG= 'Xác nhận';
-		/*CONFIRM_EXTEND = '';
-		CONFIRM_MAILINFO = '';
-		CONFIRM_MAILEXTEND = '';*/
-		var CONFIRM_DELETE_ALL = '';
-		var DIALOG_TITLE = 'Thông báo';
-		var DIALOG_TITLE_CLOSE = 'Dong lai';
-		var BTN_DIALOG_OK = 'Tiep tuc';
-		var BTN_DIALOG_CANCEL = 'thoi';
+		var CONFIRM_DELETE_MSG = '<?php echo $this->lang->line('confirm_delete_msg');?>';
+        var CONFIRM_TITLE_DIALOG= '<?php echo $this->lang->line('confirm_title_dialog');?>';
+		var CONFIRM_DELETE_ALL = '<?php echo $this->lang->line('confirm_delete_all_msg');?>';
+		var DIALOG_TITLE = '<?php echo $this->lang->line('dialog_title');?>';
+		var DIALOG_TITLE_CLOSE = '<?php echo $this->lang->line('dialog_close');?>';
+		var BTN_DIALOG_OK = '<?php echo $this->lang->line('dialog_ok');?>';
+		var BTN_DIALOG_CANCEL = '<?php echo $this->lang->line('dialog_cancel');?>';
 		var TTL_GOTOTOP = '';
 		var MENUNAME = '';
 
@@ -59,6 +56,7 @@
 
         var VALIDATE_TITLE = '<?php echo $this->lang->line('txt_input_title');?>';
         var VALIDATE_ALIAS = '<?php echo $this->lang->line('txt_input_alias');?>';
+        var VALIDATE_PAGE = '<?php echo $this->lang->line('txt_input_page');?>';
 
 	</script>
 </head>
@@ -75,16 +73,16 @@
                         </ul>
                     </dd>
                 </dl>-->
-                <a id="viewwebsite" class="radius2 right-item" href ="#" title="Website">Website</a>
+                <a id="viewwebsite" class="radius2 right-item" href ="/#" target='_blank' title="Website">Website</a>
                  <div id="userPanel" class="headercolumn block-right">
                 <a href="" class="userinfo radius2">
                     <img src="<?= ADMIN_IMAGE_PATH ?>/avatar.png" alt="" class="radius2">
                     <span><strong>Administrator</strong></span> </a>
                 <div class="userdrop" style="width: 151px;">
                     <ul>
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Account Settings</a></li>
-                        <li><a href="/admin/login/logout">Logout</a></li>
+                        <li><a href="#"><?php echo $this->lang->line("txt_profile"); ?></a></li>
+                        <li><a href="#"><?php echo $this->lang->line("txt_account_settings"); ?></a></li>
+                        <li><a href="/admin/login/logout"><?php echo $this->lang->line("txt_logout"); ?></a></li>
                     </ul>
                 </div>
                 <!--userdrop-->
@@ -99,7 +97,7 @@
                     if( ( check_permission($m['module_code'], VIEW) ) ) {
                 ?>
                     <li>
-                        <a href="<?php echo $m['module_link']; ?>"><?php echo $m['module_name']; ?></a>
+                        <a href="<?php echo ($m['module_link'] =='/#')?'javascript:;':$m['module_link'] ; ?>"><?php echo $m['module_name']; ?></a>
                         <?php 
                         if( count($m['children']) > 0) {
                         ?>

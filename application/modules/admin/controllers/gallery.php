@@ -91,7 +91,7 @@ class Gallery extends Base_Admin_Controller {
             $this->media_admin_model->insert($data);
         }
         //NOTICE
-        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Insert success') );
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=> $this->lang->line('txt_insertsuccess') ) );
         //BACK TO INDEX
         redirect( '/admin/gallery?mod=' . $this->module_code() );
     }
@@ -108,7 +108,7 @@ class Gallery extends Base_Admin_Controller {
             $this->media_admin_model->update(array('language_id'=> $l, 'media_module' => $module), $data);
         }
         //NOTICE
-        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>'Update success') );
+        $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=> $this->lang->line('txt_updateinfor') ) );
         //BACK TO INDEX
         redirect( '/admin/gallery?mod=' . $this->module_code() );
     }

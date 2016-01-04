@@ -1,6 +1,6 @@
 <?php
 $feature_title = $page['_feature_title'];
-$features = json_decode($page['_feature'], true);
+$features = (!empty($page['_feature'])) ? json_decode($page['_feature'], true) : array();
 
 $count_feature = count($features);
 ?>

@@ -35,8 +35,13 @@
                         ?>
                     </div>
                     <div class="block-right control block-right-control-button">
+                        <?php if( check_permission('user', DELETE) ) { ?>
                         <button type="submit" data-delete-confirm data-delete-selected name="type" value='delete' id="cmdDel" class="button buttonDelete deleteSelected" ><?php echo $this->lang->line('txt_del');?></button>
+                        <?php } ?>
+
+                        <?php if( check_permission('user', EDIT) ) { ?>
                         <button name='cmdAdd' data-href="<?php echo url_add_params($params, '/index.php/admin/user/add')?>" class='button buttonAdd buttonMedia'><?php echo $this->lang->line('txt_add');?></button>
+                        <?php } ?>
                     </div>
                         <div class="clearfix">
                         </div>
@@ -84,8 +89,13 @@
                                     <input id="chkSelect" type="checkbox" name="ids[]" value='<?php echo $l['user_id']?>' />
                                 </td>
                                 <td class="cellwidth2">
-                                    <input type="button" data-delete-confirm data-href='<?php echo url_add_params($expand_params, '/index.php/admin/user/delete')?>' class="tooltip btgrid delete" title="<?php echo $this->lang->line('txt_del');?>"  />
+                                    <?php if( check_permission('user', DELETE) ) { ?>
+                                    <input type="button" data-delete-confirm data-href='<?php echo url_add_params($expand_params, '/index.php/admin/user/delete')?>' class="tooltip btgrid delete" title="<?php echo $this->lang->line('confirm_delete_msg');?>"  />
+                                    <?php } ?>
+
+                                    <?php if( check_permission('user', EDIT) ) { ?>
                                     <input type="button" data-href='<?php echo url_add_params($expand_params, '/index.php/admin/user/edit')?>' class="tooltip btgrid edit" title="<?php echo $this->lang->line('txt_edit');?>" />
+                                    <?php } ?>
                                 </td>
                                 <td class="textleft">
                                     <a href="<?php echo url_add_params($expand_params, '/index.php/admin/user/edit')?>" id="lblName" class="lblname"><?php echo $l['username']?></a>
@@ -97,10 +107,14 @@
                                     <a href="#" id="lblCategory"><?php echo $l['email']?></a>
                                 </td>
                                 <td class="changepassword">
+                                    <?php if( check_permission('user', EDIT) ) { ?>
                                     <a href="<?php echo url_add_params($expand_params, '/index.php/admin/user/password')?>"><?php echo $this->lang->line('txt_change_password');?></a>
+                                    <?php } ?>
                                 </td>
                                 <td>
+                                    <?php if( check_permission('user', EDIT) ) { ?>
                                     <?php my_toggle_button($l['active'], $l['user_id'], url_add_params($params, '/index.php/admin/user/active'), array('name'=>'ImgRowStatus'));?>
+                                    <?php } ?>
                                 </td>
                                 <td class="cellwidth7">
                                    <?php echo ($l['gender'] == 0) ? $this->lang->line('txt_male') : $this->lang->line('txt_female') ?>

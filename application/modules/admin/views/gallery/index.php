@@ -43,7 +43,9 @@
                                     }
                                 ?>
                                 <div id="tabs-<?php echo $l?>">
+                                    <?php if( check_permission($module, ADD) ) { ?>
                                     <p><a class='upload-gallery' href="#" rel='<?php echo $l; ?>'><?php echo $this->lang->line('txt_upload');?></a></p>
+                                    <?php } ?>
                                     <ul lang='<?php echo $l; ?>' class='gallery_list' id='<?php echo sprintf("gallery_%s_list", $l); ?>' >
                                         <?php
                                         foreach ($g as $v) {

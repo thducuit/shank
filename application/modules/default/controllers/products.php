@@ -46,8 +46,8 @@ class Products extends Parent_Controller {
         array_push( $this->data['breadcrumbs'], array('url'=>'', 'title'=>$category['category_title']) );
 		//RUN VIEW
 	    $this->template->build('products/category', $this->data);
-	            //CACHING
-        $this->output->cache(5);
+	    //CACHING
+        $this->output->cache(CACHE_TIME);
 
 	}
 
@@ -71,8 +71,8 @@ class Products extends Parent_Controller {
         array_push( $this->data['breadcrumbs'], array('url'=>'', 'title'=>$post['post_title']) );
 		//RUN VIEW
 	    $this->template->build('products/product', $this->data);
-	            //CACHING
-        $this->output->cache(5);
+	    //CACHING
+        $this->output->cache(CACHE_TIME);
 	}
 	
 }
