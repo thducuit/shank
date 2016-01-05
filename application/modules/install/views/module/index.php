@@ -123,7 +123,7 @@
                             </td>
                             <td class="cellwidth1">
                                 <!--<input type="button" name="ImgRowStatus"  class="tooltip btgrid publish" title="Đăng" id="ImgRowStatus" />-->
-                                <?php echo my_toggle_button($l['module_status'], $l['module_id'], '/index.php/install/module/status', array('name'=>'ImgRowStatus'));?>
+                                <?php echo my_toggle_button($l['module_menu'], $l['module_id'], '/index.php/install/module/menu', array('name'=>'ImgRowMenu'));?>
                             </td>
                             <td class="textleft">
                                 <a href="add.html" id="lblName" class="lblname"><?php echo $l['module_name']?></a>

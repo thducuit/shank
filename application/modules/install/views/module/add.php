@@ -115,9 +115,11 @@
                         <select size="4" name="module_option[]" multiple  id="lstCate" class="listbox lstCate">
                             <option value="0">-- Reset all --</option>
                             <option value="0">Title</option>
-                            <option selected="selected" value="27">Content</option>
-                            <option selected="selected" value="26">Description</option>
-                            <option value="25">Seo</option>
+                            <option selected="selected" value="content">Content</option>
+                            <option selected="selected" value="description">Description</option>
+                            <option selected="selected" value="category">Category</option>
+                            <option selected="selected" value="photo">Feature photo</option>
+                            <option selected="selected" value="seo">SEO</option>
                         </select>
                     </div>
                 </div>

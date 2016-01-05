@@ -32,7 +32,7 @@ class Module extends Base_Install_Controller {
         //GET PARAMS
         $this->params = $this->create_input_params( new Module_inputs );
         
-        $select = array('module_id', 'module_name', 'module_code', 'module_link', 'module_order', 'module_status');
+        $select = array('module_id', 'module_name', 'module_code', 'module_link', 'module_order', 'module_status', 'module_menu');
 
         $filters = array('module_parent' => (int)$this->params['pid']);
         if((int)$this->params['show'] != -1) {
