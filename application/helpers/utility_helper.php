@@ -83,3 +83,20 @@ if (!function_exists('short_url')) {
         echo vsprintf($pattern, $params);
     }
 }
+
+
+if (!function_exists('config')) {
+    /**
+     * config
+     * @param string $key
+     * @param array $params
+     * @param bool $return
+     * @return string
+     */
+    function config($key = '') {
+        $ci =& get_instance();
+        $ci->load->Model('config_admin_model');
+        $c = $ci->config_admin_model->get_by_key($key);
+        return (count($c) > 0) ? $c['field_value'] : '';
+    }
+}

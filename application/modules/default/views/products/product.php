@@ -1,3 +1,8 @@
+<!-- js carousel responsive BEGIN -->
+<link  href="<?php echo DEFAULT_CSS_PATH ?>/slick.css" rel="stylesheet" type="text/css" />
+<script charset="UTF-8" src="<?php echo DEFAULT_JS_PATH ?>/slick.min.js" type="text/javascript"></script>
+<script charset="UTF-8" src="<?php echo DEFAULT_JS_PATH ?>/slick_fn.js" type="text/javascript"></script>
+<!-- js carousel responsive END -->
 <!-- main start -->
     <div id="main" class="clearfix">
         <!-- content start -->

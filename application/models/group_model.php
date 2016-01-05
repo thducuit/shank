@@ -57,5 +57,4 @@ class Group_Model extends CI_Model {
         if ( empty($id)) return false; 
         return $this->db->delete($this->table, array('group_id' => $id)); 
     } 
-    
 }

@@ -35,15 +35,15 @@ class Config extends Base_Admin_Controller {
         $this->url = $this->module_url();
         
         //GET LANGUAGES
-        $this->languages = $this->languages();
+        //$this->languages = $this->languages();
         
         //GET MODULE
-        $this->module = $this->module();
+        //$this->module = $this->module();
 
-        $this->data['languages'] = $this->languages;
+        //$this->data['languages'] = $this->languages;
         
         //LOAD MODEL
-        $this->load_model();
+        //$this->load_model();
         
         //SET TITLE FOR VIEW
         $this->template->title( ( !empty($this->module->module_name) ) ? $this->module->module_name : 'Config' );
@@ -56,36 +56,24 @@ class Config extends Base_Admin_Controller {
      * 
      */
     public function index () {
-
         $this->page_has_permission('config', VIEW);
-
+        $this->load->Model('config_admin_model');
        
         if( isset($_POST['add']) )  {
             $config = $this->input->post('config');
-            _pr($config, true);
+            foreach($config as $key => $value) {
+                $agrs = array(
+                    'field_name' => $key,
+                    'field_value' => $value
+                );
+                $this->config_admin_model->upsert($agrs);
+            }
+            //BACK TO INDEX
+            redirect( '/admin/config' );
         } 
         
         //RUN VIEW
         $this->template->build( $this->class_view, $this->data);
-    }
-    
-    
-    private function insert() {
-    }
-    
-    
-    
-    private function update() {
-    }
-    
-    
-    /** 
-     * LOAD ALL MODEL
-     * 
-     */
-    private function load_model() {
-        $this->load->Model("langmap_admin_model");
-        $this->load->Model("media_admin_model");
     }
     
 }

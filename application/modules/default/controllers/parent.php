@@ -21,6 +21,8 @@ class Parent_Controller extends Core_Controller {
                 $this->get_products_list();
                 $this->get_menu();
                 $this->get_breadcrumbs();
+                
+                $this->data['config'] = $this->load_config();
 	}
 
         private function get_menu() {

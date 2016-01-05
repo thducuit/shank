@@ -43,16 +43,25 @@ $class = $this->router->fetch_class();
                 ?>
             </ul>
             <div class="navMap">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3917.3532310267246!2d106.88847!3d10.9366675!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174de6cbff5bf79%3A0x21c412885fbc1a4b!2sC%C3%B4ng+Ty+TNHH+Sanko+Mold+Vi%E1%BB%87t+Nam!5e0!3m2!1svi!2s!4v1449462005687" width="234" height="219" frameborder="0" style="border:0"></iframe>
+                <?php 
+                echo ( isset( $config['_google_map_'])  ? $config['_google_map_'] : '');
+                //echo $config['_google_map_'];
+                ?>
+                <!--<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3917.3532310267246!2d106.88847!3d10.9366675!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3174de6cbff5bf79%3A0x21c412885fbc1a4b!2sC%C3%B4ng+Ty+TNHH+Sanko+Mold+Vi%E1%BB%87t+Nam!5e0!3m2!1svi!2s!4v1449462005687" width="234" height="219" frameborder="0" style="border:0"></iframe>-->
             </div>
-            <p class="navText01"><span class="bold">VIETNAM: SMV</span><br />
+            
+            <!--<p class="navText01"><span class="bold">VIETNAM: SMV</span><br />
                 Sanko Mold Vietnam Co., Ltd.</p>
             <p class="navText01">Amata Industrial Park<br />
                 116/1 Amata Rd., Bien Hoa City,<br />
                 Dong Nai Province, Viet Nam<br />
                 Tel : (+84)61 393 6635 / 393 6636<br />
                 Fax: (+84)61 393 6637<br />
-                E-mail: <a href="mailto:sale@sankomold.com">sale@sankomold.com</a></p>
+                E-mail: <a href="mailto:sale@sankomold.com">sale@sankomold.com</a>
+            </p>-->
+            <?php 
+                echo ( isset( $config['_address_'] )  ? $config['_address_'] : '');
+            ?>
             <ul class="nav02">
                 <?php
                 foreach($ads as $r) {

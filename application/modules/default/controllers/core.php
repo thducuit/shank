@@ -1,8 +1,6 @@
 <?php 
 if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 class Core_Controller extends MX_Controller {
-	
-        private $data;
 
       	function __construct() {
                 //if i remove this parent::__construct(); the error is gone
@@ -10,10 +8,25 @@ class Core_Controller extends MX_Controller {
                 $this->load_helper();
       	}
       	
+      	protected function load_config() {
+      	        $this->load->Model("config_default_model");
+      	        $configs = $this->config_default_model->list_all();
+      	        return $this->map_config($configs);
+      	}
+      	
+      	private function map_config($data) {
+      	        $configs = array();
+      	        if( count($data) > 0 ) {
+      	             foreach($data as $c) {
+      	                $configs[$c['field_name']] = $c['field_value'];
+      	             }   
+      	        }
+      	        return $configs;
+      	}
       	
       	private function load_helper() {
                 $this->load->helper('url');
-            		$this->load->helper('utility');	
+            	$this->load->helper('utility');	
         }
         /**
          * MULTI LANGUAGE

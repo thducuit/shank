@@ -122,3 +122,14 @@ $lang['dialog_title'] = 'Thông báo';
 $lang['dialog_close'] = 'Đóng lại';
 $lang['dialog_ok'] = 'Tiếp tục';
 $lang['dialog_cancel'] = 'Bỏ qua';
+
+/**
+ * CONFIG
+ */
+$lang['txt_config_website'] = 'Cấu hình';
+$lang['txt_port'] = 'Cổng';
+$lang['txt_auth'] = 'Chứng thực';
+$lang['txt_smtp_account'] = 'Tài khoản smtp';
+$lang['txt_smtp_password'] = 'Mật khẩu smtp';
+$lang['txt_smtp_email_sender'] = 'Email gửi';
+$lang['txt_smtp_email_receiver'] = 'Email nhận';

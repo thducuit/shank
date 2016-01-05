@@ -122,3 +122,15 @@ $lang['dialog_title'] = 'Notice';
 $lang['dialog_close'] = 'Close';
 $lang['dialog_ok'] = 'OK';
 $lang['dialog_cancel'] = 'Cancel';
+
+
+/**
+ * CONFIG
+ */
+$lang['txt_config_website'] = 'Configuration';
+$lang['txt_port'] = 'Port';
+$lang['txt_auth'] = 'Auth';
+$lang['txt_smtp_account'] = 'SMTP Account';
+$lang['txt_smtp_password'] = 'SMTP Password';
+$lang['txt_smtp_email_sender'] = 'Email sender';
+$lang['txt_smtp_email_receiver'] = 'Email receiver';
