@@ -94,7 +94,7 @@
                                 <?php } ?>
                             </td>
                             <td>
-                                <?php if( strlen($l['post_featured_image']) ) {?>
+                                <?php if( !empty($l['post_featured_image'] ) ) {?>
                                     <img src="<?php echo $l['post_featured_image']; ?>" />
                                 <?php }?>
                             </td>

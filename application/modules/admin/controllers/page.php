@@ -62,7 +62,7 @@ class Page extends Base_Admin_Controller
         $this->page_has_permission('page', VIEW);
 
         //SELECT
-        $select = array('post_id', 'post_title', 'post_order', 'post_status', 'post.language_id', 'post_featured_image');
+        $select = array('post_id', 'post_title', 'post_order', 'post_status', 'post.language_id', 'post.post_featured_image');
         //FILTER
         $filters = array('post_type' => 'page');
         $filters['post.language_id'] = DEFAULT_LANGUAGE;
