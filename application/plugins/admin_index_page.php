@@ -20,7 +20,7 @@ function admin_html_page_add_before_seo_func($module, $language) {
           <label class="desc"><?php echo $CI->lang->line('txt_title')?></label>
           <textarea name="features_title[<?php echo $language?>]" class="textarea small full"></textarea>
           <label class="desc"><?php echo $CI->lang->line('txt_list')?></label>
-          <a onclick="addField('<?php echo $language?>')" class='add-field'>Them</a>
+          <a onclick="addField('<?php echo $language?>')" class='add-field'><?php echo $CI->lang->line('txt_add_more')?></a>
           <ul class='feature-list' id='feature-list-<?php echo $language?>'>
               <li><textarea name="features[<?php echo $language?>][]" class="textarea small full"></textarea></li>
           </ul>
@@ -40,7 +40,7 @@ function admin_callback_page_after_added_func($module, $lang, $post_id, $langmap
         'meta_module' => 'page' ,
         'fid' => $post_id ,
         'meta_key' => '_feature_title',
-        'meta_value' => addslashes($features_title[$lang]),
+        'meta_value' => ($features_title[$lang]),
         'langmap_id' => $langmap_id
      ),
      array(
@@ -61,11 +61,11 @@ function admin_html_page_edit_before_seo_func($module, $language, $post_id) {
   $CI->load->Model('meta_admin_model');
   $meta = $CI->meta_admin_model->get_by_fid($post_id);
   $feature_title = (array)get_meta_value_by_meta_key($meta, '_feature_title');
-  $feature = (array)get_meta_value_by_meta_key($meta, '_feature');
-  
-  $features = ( count($feature) > 0 ) ? json_decode($feature['meta_value'], true) : array();
+  $feature = get_meta_value_by_meta_key($meta, '_feature');
+  $features = json_decode($feature['meta_value'], true);
+  $features = empty($features) ? array(): $features;
   $feature_title = ( count($feature_title) > 0 ) ? $feature_title['meta_value'] : '';
-  //_pr($feature, true);
+  
   ?>
   <!--FEATURE-->
   <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
@@ -76,7 +76,7 @@ function admin_html_page_edit_before_seo_func($module, $language, $post_id) {
           <label class="desc"><?php echo $CI->lang->line('txt_title')?></label>
           <textarea name="features_title[<?php echo $language?>]" class="textarea small full"><?php echo $feature_title;?></textarea>
           <label class="desc"><?php echo $CI->lang->line('txt_list')?></label>
-          <a onclick="addField('<?php echo $language?>')" class='add-field'>Them</a>
+          <a onclick="addField('<?php echo $language?>')" class='add-field'><?php echo $CI->lang->line('txt_add_more')?></a>
           <ul class='feature-list' id='feature-list-<?php echo $language?>'>
               <?php
               foreach($features as $f) {
@@ -102,7 +102,7 @@ function admin_callback_page_after_updated_func($module, $lang, $post_id, $langm
           'meta_module' => $module ,
           'fid' => $post_id ,
           'meta_key' => '_feature_title',
-          'meta_value' => addslashes($features_title[$lang]),
+          'meta_value' => ($features_title[$lang]),
           'langmap_id' => $langmap_id
        ),
        array(
@@ -116,7 +116,7 @@ function admin_callback_page_after_updated_func($module, $lang, $post_id, $langm
     $CI->meta_admin_model->insert_batch($data);
   }else {
     $data = array(
-       'meta_value' => addslashes($features_title[$lang])
+       'meta_value' => ($features_title[$lang])
     );
     $CI->meta_admin_model->update($data, array('fid'=>$post_id, 'meta_key'=> '_feature_title'));
     

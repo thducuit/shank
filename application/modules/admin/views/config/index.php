@@ -2,7 +2,7 @@
         <div id="main-wrapper">
             <div id="main-header">
                 <div class="block-left">
-                    <img src="images/icons/icon_list.png" alt="" />
+                    <img src="<?php echo ADMIN_IMAGE_PATH ?>/icons/icon_list.png" alt="" />
                     <h1 class='title'>
                         Cấu hình website
                     </h1>
