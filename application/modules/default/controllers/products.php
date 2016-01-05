@@ -33,7 +33,7 @@ class Products extends Parent_Controller {
 		$this->data['seo_description'] = $category['category_seo_description'];
 
 		//PAGINATION	
-		$num_products = $this->post_default_model->count('product', LANGUAGE,$category_id);
+		$num_products = $this->post_default_model->count('product', LANGUAGE, $category_id);
 		$pages = ceil($num_products/PAGINATION);
 		$this->data['pages'] =  $pages;
 		$current_page = (int)$this->input->get('p');
@@ -55,24 +55,27 @@ class Products extends Parent_Controller {
 		$this->load->Model("alias_default_model");
 		$this->load->Model("post_default_model");
 
-
 		$alias = $this->alias_default_model->get_by_name($alias_name);
 		$post_id = $alias['fid'];
 		
 		$post = (array)$this->post_default_model->get_by_id($post_id);
 		$this->data['product'] = $post;
 
+		//GET RELATED POST
+		$category_id = $post['category_id'];
+		$this->data['related_products'] = $this->post_default_model->get_post_by_category('product', LANGUAGE, $category_id);
+		
 		//SEO
 		$this->data['seo_title'] = $post['post_seo_title'];
 		$this->data['seo_keywords'] = $post['post_seo_keywords'];
 		$this->data['seo_description'] = $post['post_seo_description'];
 
 		//UPDATE BREADCRUMBS
-        array_push( $this->data['breadcrumbs'], array('url'=>'', 'title'=>$post['post_title']) );
+    array_push( $this->data['breadcrumbs'], array('url'=>'', 'title'=>$post['post_title']) );
 		//RUN VIEW
-	    $this->template->build('products/product', $this->data);
-	    //CACHING
-        $this->output->cache(CACHE_TIME);
+	  $this->template->build('products/product', $this->data);
+	  //CACHING
+    $this->output->cache(CACHE_TIME);
 	}
 	
 }

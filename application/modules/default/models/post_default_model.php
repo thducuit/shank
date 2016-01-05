@@ -21,6 +21,19 @@ class Post_Default_Model extends Post_Model
         $query = $this->db->get();
         return $query->result_array();
     }
+    
+    public function get_post_by_category($post_module, $language_id, $category_id, $meta = array()) {
+        $this->db->select('post.*, alias.alias_name');
+        foreach ($meta as $m) {
+            $this->db->select('MAX(CASE WHEN meta_key = \'' . $m . '\' THEN meta_value END) AS \'' . $m . '\'');
+        }
+        $this->db->from($this->get_table());
+        $this->db->join('alias', 'alias.fid = post.post_id');
+        $this->db->join('meta', 'meta.fid = post.post_id', 'left');
+        $this->db->where(array('alias.alias_module' => $post_module, 'post_module' => $post_module, 'post.language_id' => $language_id, 'post.category_id' => $category_id, 'post_status' => 1, 'post_type' => 'post', 'post_lock' => 0));
+        $query = $this->db->get();
+        return $query->result_array();
+    }
 
 
     public function get_pages($language_id = '')

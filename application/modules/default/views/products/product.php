@@ -4,7 +4,7 @@
         <div id="content" class="con">
             <h3><?php echo $product['post_title']?></h3>
             <div class="section">
-                <p class="img_visual"><img src="<?php echo $product['post_featured_image']?>" alt="製品名" /></p>
+                <p class="img_visual"><img src="<?php echo $product['post_featured_image']?>" alt="<?php echo $product['post_seo_title']?>" /></p>
             </div>
             <h4><?php echo $this->lang->line('txt_detail');?></h4>
             <div class="section">
@@ -13,18 +13,20 @@
             <h4><?php echo $this->lang->line('txt_related');?></h4>
             <div class="section">
                 <ul class="slick list_detail">
-                    <li><a href="products_detail.html"><img src="images/product_detail_img_01.jpg" alt="テキストテキスト" /><span>テキストテキスト</span></a></li>
-                    <li><a href="products_detail.html"><img src="images/product_detail_img_01.jpg" alt="テキストテキスト" /><span>テキストテキスト</span></a></li>
-                    <li><a href="products_detail.html"><img src="images/product_detail_img_01.jpg" alt="テキストテキスト" /><span>テキストテキスト</span></a></li>
-                    <li><a href="products_detail.html"><img src="images/product_detail_img_01.jpg" alt="テキストテキスト" /><span>テキストテキスト</span></a></li>
-                    <li><a href="products_detail.html"><img src="images/product_detail_img_01.jpg" alt="テキストテキスト" /><span>テキストテキスト</span></a></li>
-                    <li><a href="products_detail.html"><img src="images/product_detail_img_01.jpg" alt="テキストテキスト" /><span>テキストテキスト</span></a></li>
-                    <li><a href="products_detail.html"><img src="images/product_detail_img_01.jpg" alt="テキストテキスト" /><span>テキストテキスト</span></a></li>
-                    <li><a href="products_detail.html"><img src="images/product_detail_img_01.jpg" alt="テキストテキスト" /><span>テキストテキスト</span></a></li>
-                    <li><a href="products_detail.html"><img src="images/product_detail_img_01.jpg" alt="テキストテキスト" /><span>テキストテキスト</span></a></li>
-                    <li><a href="products_detail.html"><img src="images/product_detail_img_01.jpg" alt="テキストテキスト" /><span>テキストテキスト</span></a></li>
-                    <li><a href="products_detail.html"><img src="images/product_detail_img_01.jpg" alt="テキストテキスト" /><span>テキストテキスト</span></a></li>
-                    <li><a href="products_detail.html"><img src="images/product_detail_img_01.jpg" alt="テキストテキスト" /><span>テキストテキスト</span></a></li>
+                    <?php 
+                    $LENGTH = count($related_products);
+                    for( $i = 0; $i<$LENGTH; $i++ ) {
+                        if($related_products[$i]['post_id'] != $product['post_id']) {
+                    ?>
+                    <li><a href="<?php short_url('product', array($related_products[$i]['alias_name']) );?>">
+                            <img src="<?php echo $related_products[$i]['post_featured_image']?>" alt="<?php echo $related_products[$i]['post_seo_title']?>" />
+                            <span><?php echo $related_products[$i]['post_title']?></span>
+                        </a>
+                    </li>
+                    <?php 
+                        }
+                    }
+                    ?>
                 </ul>
             </div>
         </div>

@@ -59,17 +59,11 @@ class Config extends Base_Admin_Controller {
 
         $this->page_has_permission('config', VIEW);
 
-        /*$g = $this->media_admin_model->list_all(array(), array('media_module' => $this->module_code()));
-        if( isset($_POST['galleries']) )  {
-            if( empty($g) ) {
-                $this->insert();
-            }else {
-                $this->update();
-            }
+       
+        if( isset($_POST['add']) )  {
+            $config = $this->input->post('config');
+            _pr($config, true);
         } 
-        foreach($this->languages as $l) {
-            $this->data['list'][$l] = get_list_by_language_id($l, $g);
-        }*/
         
         //RUN VIEW
         $this->template->build( $this->class_view, $this->data);
