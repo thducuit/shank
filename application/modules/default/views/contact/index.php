@@ -110,14 +110,16 @@
                txtContent: {
                     required: VALIDATE_REQUIRED
                 } 
-            },
+            }
+            /*,
             submitHandler: function(form) {
                 // some other code
                 // maybe disabling submit button
                 // then:
-                $('*[type=submit]').append('<div class=\'loading\'></div>').hide();
+                //.append('<div class=\'loading\'></div>')
+                $('*[type=submit]').hide();
                 $(form).submit();
-            }
+            }*/
         });
     });
 </script>

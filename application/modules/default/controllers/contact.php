@@ -29,8 +29,8 @@ class Contact extends Parent_Controller {
         	$this->email->initialize(array(
 			  'protocol' => 'smtp',
 			  'smtp_host' => 'ssl://smtp.googlemail.com',//ssl:465 , tsl:587,25
-			  'smtp_user' => 'thducuit@gmail.com',
-			  'smtp_pass' => 'choancut321',
+			  'smtp_user' => 'ng.tuananh1907@gmail.com',
+			  'smtp_pass' => 'choancut123',
 			  'smtp_port' => 465,
 			  'crlf' => "\r\n",
 			  'newline' => "\r\n",

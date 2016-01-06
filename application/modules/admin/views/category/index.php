@@ -133,7 +133,7 @@
                 </table>
                 <div class="fg-toolbar tableFooter">
                     <?php
-                        my_pagination( $num_rows = 100, $page = $params['page'], $range = $params['range'], url_add_params($params, '/index.php/admin/category') );
+                        my_pagination( $num_rows = $list_length, $page = $params['page'], $range = $params['range'], url_add_params($params, '/index.php/admin/category') );
                     ?>
                 </div>
             </div>

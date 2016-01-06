@@ -54,6 +54,7 @@ class Products extends Parent_Controller {
 	public function product($lang, $alias_name) {
 		$this->load->Model("alias_default_model");
 		$this->load->Model("post_default_model");
+		$this->load->Model("category_default_model");
 
 		$alias = $this->alias_default_model->get_by_name($alias_name);
 		$post_id = $alias['fid'];
