@@ -48,6 +48,14 @@ class Post_Admin_Model extends Post_Model {
         return $this->db->insert_id();
     }
     
+    public function get_length( $filters = array() ) {
+        foreach ($filters as $f => $fvalue) {
+    		$this->db->where($f, $fvalue);
+    	}
+    	$this->db->from( $this->get_table() );
+    	
+    	return $this->db->count_all_results();
+    }
     
     /**
      * GET ALL POST BY PAGINATION

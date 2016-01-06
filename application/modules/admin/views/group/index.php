@@ -8,7 +8,7 @@
                 </h1>
             </div>
             <div class="block-right">
-                <input name="keyword" href='<?php echo url_add_params($params, '/index.php/admin/group'); ?>' value='<?php echo $params['keyword'];?>' data-cha type="text" id="txtSearch" class="txtSearch textbox" placeholder='<?php echo $this->lang->line('txt_keyword');?>'>
+                <input name="keyword" href='<?php echo url_add_params($params, '/index.php/admin/group'); ?>' value='<?php echo $params['keyword'];?>' type="text" id="txtSearch" class="txtSearch textbox" placeholder='<?php echo $this->lang->line('txt_keyword');?>'>
                 <input type="submit" data-search='#txtSearch' name="search" value="<?php echo $this->lang->line('txt_search');?>" id="cmdSearch" class="cmdSearch button">
             </div>
         </div>
@@ -106,7 +106,7 @@
                 </table>
                 <div class="fg-toolbar tableFooter">
                     <?php
-                        my_pagination( $num_rows = 100, $page = $params['page'], $range = $params['range'], url_add_params($params, '/index.php/admin/group') );
+                        my_pagination( $num_rows = $list_length, $page = $params['page'], $range = $params['range'], url_add_params($params, '/index.php/admin/group') );
                     ?>
                 </div>
             </div>

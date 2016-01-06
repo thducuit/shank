@@ -56,9 +56,8 @@ class Page extends Base_Admin_Controller
      * INDEX ACTION
      *
      */
-    public function index()
-    {
-
+    public function index() {
+        //PERMISSION
         $this->page_has_permission('page', VIEW);
 
         //SELECT
@@ -76,7 +75,8 @@ class Page extends Base_Admin_Controller
 
         //DATA TO VIEW
         $this->data['list'] = $this->post_admin_model->list_all_by_paging($select, $filters, $orders, $from, $range, $keyword = $this->params['keyword']);
-
+        $this->data['list_length'] = $this->post_admin_model->get_length( $filters );
+        
         //RUN VIEW
         $this->template->build($this->class_view, $this->data);
     }
@@ -86,8 +86,8 @@ class Page extends Base_Admin_Controller
      * ADD ACTION
      *
      */
-    public function add()
-    {
+    public function add() {
+        //PERMISSION
         $this->page_has_permission('page', ADD);
 
         //IF SUBMITED
@@ -125,6 +125,7 @@ class Page extends Base_Admin_Controller
 
             //NOTICE
             $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_insertsuccess') ));
+            
             //BACK TO INDEX
             redirect(url_add_params($this->params, '/admin/page'));
         } else {
@@ -145,9 +146,8 @@ class Page extends Base_Admin_Controller
      * EDIT ACTION
      *
      */
-    public function edit()
-    {
-
+    public function edit() {
+        //PERMISSION
         $this->page_has_permission('page', EDIT);
 
         $this->data['posts'] = array();
@@ -183,6 +183,7 @@ class Page extends Base_Admin_Controller
 
             //NOTICE
             $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_updateinfor') ));
+            
             //BACK TO INDEX
             redirect(url_add_params($this->params, '/admin/page'));
         } else {
@@ -191,7 +192,7 @@ class Page extends Base_Admin_Controller
             $post = $this->post_admin_model->get_by_id($id);
             $langmap_id = $post->langmap_id;
             $rs = $this->post_admin_model->get_page_by_langmap_id($langmap_id);
-            //_pr($rs, true);
+            
             foreach ($this->languages as $l) {
                 $this->data['posts'][$l] = get_list_by_language_id($l, $rs, true);
             }
@@ -209,9 +210,8 @@ class Page extends Base_Admin_Controller
      * UPDATE
      *
      */
-    public function update()
-    {
-
+    public function update() {
+        //PERMISSION
         $this->page_has_permission('page', EDIT);
 
         $type = $this->input->post('type');
@@ -238,6 +238,7 @@ class Page extends Base_Admin_Controller
         }
         //NOTICE
         $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_updateinfor') ));
+        
         //BACK TO INDEX
         redirect(url_add_params($this->params, '/admin/page'));
     }
@@ -247,9 +248,8 @@ class Page extends Base_Admin_Controller
      * DELETE
      *
      */
-    public function delete()
-    {
-
+    public function delete() {
+        //PERMISSION
         $this->page_has_permission('page', DELETE);
 
         $id = (int)$this->input->get('id');
@@ -257,6 +257,7 @@ class Page extends Base_Admin_Controller
 
         //NOTICE
         $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_deletesuccess') ));
+        
         //BACK TO INDEX
         redirect(url_add_params($this->params, '/admin/page'));
     }
@@ -266,16 +267,17 @@ class Page extends Base_Admin_Controller
      * REMOVE
      *
      */
-    private function remove($id)
-    {
+    private function remove($id) {
         //GET LANGMAP ID
         $post = $this->post_admin_model->get_by_id($id);
         $langmap_id = $post->langmap_id;
 
         //DELETE DATA
         $this->post_admin_model->delete_by_langmap_id($langmap_id);
+        
         //DELETE META
         $this->meta_admin_model->delete_by_langmap_id($langmap_id);
+        
         //DELETE LANGMAP
         $this->langmap_admin_model->delete($langmap_id);
         
@@ -286,8 +288,7 @@ class Page extends Base_Admin_Controller
      * LOAD MODEL
      *
      */
-    private function load_model()
-    {
+    private function load_model() {
         $this->load->Model("module_admin_model");
         $this->load->Model("post_admin_model");
         $this->load->Model("langmap_admin_model");
@@ -295,8 +296,7 @@ class Page extends Base_Admin_Controller
     }
 
 
-    private function load_helper()
-    {
+    private function load_helper() {
         $this->load->helper('utility');
         $this->load->helper('select');
         $this->load->helper('button');

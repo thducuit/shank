@@ -51,6 +51,13 @@ class Category_Admin_Model extends Category_Model {
     }
     
     
+    public function get_length( $filters = array() ) {
+        foreach ($filters as $f => $fvalue) {
+    		$this->db->where($f, $fvalue);
+    	}
+    	$this->db->from( $this->get_table() );
+    	return $this->db->count_all_results();
+    }
     
     /**
      * GET ALL CATEGORY BY PAGINATION

@@ -15,8 +15,7 @@ class User extends Base_Admin_Controller
      * CONSTRUCT
      *
      */
-    function __construct()
-    {
+    function __construct() {
 
         parent::__construct();
 
@@ -29,7 +28,6 @@ class User extends Base_Admin_Controller
 
         //GET VIEW
         $this->class_view = $this->router->fetch_class() . "/" . $this->router->fetch_method();
-
 
         //GET PARAMS
         $this->params = $this->request_params(new User_inputs);
@@ -45,8 +43,8 @@ class User extends Base_Admin_Controller
      * INDEX ACTION
      *
      */
-    public function index()
-    {
+    public function index() {
+        //PERMISSION
         $this->page_has_permission('user', VIEW);
         
         //SELECT
@@ -59,8 +57,10 @@ class User extends Base_Admin_Controller
         $page = (int)$this->params['page'];
         $range = (int)$this->params['range'];
         $from = ($page - 1) * $range;
+        
         //DATA TO VIEW
         $this->data['list'] = $this->user_admin_model->list_all_by_paging( $select, $filters, $orders, $from, $range, $keyword = $this->params['keyword'] );
+        $this->data['list_length'] = $this->user_admin_model->get_length( $filters );
         
         $this->template->build('user/index', $this->data);
     }
@@ -69,9 +69,10 @@ class User extends Base_Admin_Controller
      * ADD ACTION
      *
      */
-    public function add()
-    {
+    public function add() {
+        //PERMISSION
         $this->page_has_permission('user', ADD);
+        
         if (isset($_POST['add'])) {
             $data = array();
             $data['username'] = $this->input->post('username');
@@ -86,8 +87,11 @@ class User extends Base_Admin_Controller
             $data['user_builtin'] = 1;
             $data['active'] = 0;
             $this->user_admin_model->insert($data);
+            
             //NOTICE
             $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_insertsuccess')));
+            
+            //BACK TO INDEX
             redirect( url_add_params($this->params, '/admin/user') );
         } else {
             $this->data['list_group'] = $this->group_admin_model->list_all(array('group_id', 'group_name'));
@@ -99,9 +103,10 @@ class User extends Base_Admin_Controller
      * EDIT ACTION
      *
      */
-    public function edit()
-    {
+    public function edit() {
+        //PERMISSION
         $this->page_has_permission('user', EDIT);
+    
         $user_id = $this->input->get('userid');
 
         if (isset($_POST['update'])) {
@@ -116,8 +121,11 @@ class User extends Base_Admin_Controller
             $data['user_builtin'] = 1;
             $data['active'] = (int)$this->input->post('active');
             $this->user_admin_model->update($user_id, $data);
+            
             //NOTICE
             $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_updateinfor') ));
+            
+            //BACK TO INDEX    
             redirect( url_add_params($this->params, '/admin/user') );
         } else {
             $this->data['list'] = $this->user_admin_model->get_by_id($user_id);
@@ -132,7 +140,9 @@ class User extends Base_Admin_Controller
      * 
      */
     public function update() {
+        //PERMISSION
         $this->page_has_permission('user', EDIT);
+        
         $type = $this->input->post('type');
         if ( $type == 'delete' ) {
             $ids = $this->input->post('ids');
@@ -142,8 +152,10 @@ class User extends Base_Admin_Controller
                 }
             }
         }
+        
         //NOTICE
         $this->session->set_flashdata( 'notice', array('status'=>'success', 'message' => $this->lang->line('txt_updateinfor') ) );
+        
         //BACK TO INDEX
         redirect( url_add_params($this->params, '/admin/user') );
     }
@@ -155,11 +167,15 @@ class User extends Base_Admin_Controller
      * 
      */
     public function delete() {
+        //PERMISSION
         $this->page_has_permission('user', DELETE);
+        
         $id = (int)$this->input->get('userid');
         $this->remove($id);
+        
         //NOTICE
         $this->session->set_flashdata( 'notice', array('status'=>'success', 'message' => $this->lang->line('txt_deletesuccess') ) );
+        
         //BACK TO INDEX
         redirect( url_add_params($this->params, '/admin/user') );
     }
@@ -184,10 +200,12 @@ class User extends Base_Admin_Controller
      *  + sai-> trở về trang password , bật lỗi lên ( thông báo password cũ nhập chưa đúng)
      *
      */
-    public function password()
-    {
+    public function password() {
+        //PERMISSION
         $this->page_has_permission('user', EDIT);
+        
         $user_id = $this->input->get('userid');
+        
         if (isset($_POST['change'])) {
             $old_password = $this->input->post('old_password');
             $old_password = md5($old_password . ENCRYPTION_KEY);
@@ -196,15 +214,21 @@ class User extends Base_Admin_Controller
             $rs = $this->user_admin_model->validate($old_password, $user_id);
 
             if (empty($rs)) {
+                
                 //NOTICE
                 $this->session->set_flashdata('notice', array('status' => 'error', 'message' => $this->lang->line('txt_invalidoldpass')));
+                
+                //BACK TO INDEX
                 redirect('/admin/user/password?userid=' . $user_id);
             } else {
                 $data = array();
                 $data['password'] = $new_password;
                 $this->user_admin_model->update($user_id, $data);
+                
                 //NOTICE
                 $this->session->set_flashdata('notice', array('status' => 'success', 'message' => $this->lang->line('txt_updatepasssucces')));
+                
+                //BACK TO INDEX
                 redirect( url_add_params($this->params, '/admin/user') );
             }
         } else {
@@ -217,10 +241,10 @@ class User extends Base_Admin_Controller
      * UPDATE ACTIVE
      *
      */
-    public function active()
-    {
+    public function active() {
+        //PERMISSION
         $this->page_has_permission('user', EDIT);
-        $this->load->Model("user_admin_model");
+        
         //GET DATA
         $status = (int)$this->input->get('status');
         $id = (int)$this->input->get('id');

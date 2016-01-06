@@ -8,8 +8,8 @@
                 </h1>
             </div>
             <div class="block-right">
-                <input name="keyword" data-href='<?php echo url_add_params($params, '/index.php/admin/page'); ?>' value='<?php echo $params['keyword'];?>' data-cha type="text" id="txtSearch" class="txtSearch textbox" placeholder='<?php echo $this->lang->line('txt_keyword');?>'>
-                <input type="submit" name="search" value="<?php echo $this->lang->line('txt_search');?>" id="cmdSearch" class="cmdSearch button">
+                <input name="keyword" href='<?php echo url_add_params($params, '/index.php/admin/page'); ?>' value='<?php echo $params['keyword'];?>' type="text" id="txtSearch" class="txtSearch textbox" placeholder='<?php echo $this->lang->line('txt_keyword');?>'>
+                <input type="submit"data-search='#txtSearch' name="search" value="<?php echo $this->lang->line('txt_search');?>" id="cmdSearch" class="cmdSearch button">
             </div>
         </div>
         <form class='table-form' action='<?php echo url_add_params($params, '/index.php/admin/page/update'); ?>' method='post'><!--Content form-->
@@ -119,7 +119,7 @@
                 </table>
                 <div class="fg-toolbar tableFooter">
                     <?php
-                        my_pagination( $num_rows = 100, $page = $params['page'], $range = $params['range'], url_add_params($params, '/index.php/admin/page') );
+                        my_pagination( $num_rows = $list_length, $page = $params['page'], $range = $params['range'], url_add_params($params, '/index.php/admin/page') );
                     ?>
                 </div>
             </div>

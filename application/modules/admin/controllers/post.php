@@ -72,7 +72,7 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function index () {
-
+        //PERMISSION
         $this->page_has_permission($this->module_code(), VIEW);
 
         //SELECT
@@ -98,9 +98,11 @@ class Post extends Base_Admin_Controller {
         $page = (int)$this->params['page'];
         $range = (int)$this->params['range'];
         $from = ($page - 1) * $range;
+        
         //DATA TO VIEW
         $this->data['list'] = $this->post_admin_model->list_all_by_paging( $select, $filters, $orders, $from, $range, $keyword = $this->params['keyword'] );
-
+        $this->data['list_length'] = $this->post_admin_model->get_length( $filters );
+        
         //GET LIST SORT
         $select = array('category_id', 'category_title', 'category_level', 'language_id', 'catparent_id');
         $filters = array( 'category_status' => 1,  'category_module' => $this->category );
@@ -119,7 +121,7 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function add() {
-
+        //PERMISSION
         $this->page_has_permission($this->module_code(), ADD);
 
         //IF SUBMITED
@@ -159,6 +161,7 @@ class Post extends Base_Admin_Controller {
             
             //NOTICE
             $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>$this->lang->line('txt_insertsuccess') ) );
+            
             //BACK TO INDEX
             redirect( url_add_params($this->params, '/admin/post') );
         } else {
@@ -180,7 +183,7 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function edit() {
-
+        //PERMISSION
         $this->page_has_permission($this->module_code(), EDIT);
 
         $this->data['posts'] = array();
@@ -216,6 +219,7 @@ class Post extends Base_Admin_Controller {
             
             //NOTICE
             $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>$this->lang->line('txt_updateinfor') ) );
+            
             //BACK TO INDEX
             redirect( url_add_params($this->params, '/admin/post') );
         }else{
@@ -243,7 +247,7 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function status() {
-
+        //PERMISSION
         $this->page_has_permission($this->module_code(), EDIT);
 
         //GET DATA
@@ -269,7 +273,7 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function update() {
-
+        //PERMISSION
         $this->page_has_permission($this->module_code(), EDIT);
 
         $type = $this->input->post('type');
@@ -297,6 +301,7 @@ class Post extends Base_Admin_Controller {
         
         //NOTICE
         $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>$this->lang->line('txt_updateinfor') ) );
+        
         //BACK TO INDEX
         redirect( url_add_params($this->params, '/admin/post') );
     }
@@ -308,7 +313,7 @@ class Post extends Base_Admin_Controller {
      * 
      */
     public function delete() {
-
+        //PERMISSION
         $this->page_has_permission($this->module_code(), DELETE);
 
         $id = (int)$this->input->get('id');
@@ -316,6 +321,7 @@ class Post extends Base_Admin_Controller {
 
         //NOTICE
         $this->session->set_flashdata( 'notice', array('status'=>'success', 'message'=>$this->lang->line('txt_deletesuccess') ) );
+        
         //BACK TO INDEX
         redirect( url_add_params($this->params, '/admin/post') );
     }
@@ -331,20 +337,17 @@ class Post extends Base_Admin_Controller {
         $post = $this->post_admin_model->get_by_id($id);
         $langmap_id = $post->langmap_id;
         
-        //$posts = $this->post_admin_model->get_by_langmap_id($langmap_id);
-        
         //DELETE DATA
         $this->post_admin_model->delete_by_langmap_id($langmap_id);
+        
         //DELETE ALIAS
         $this->alias_admin_model->delete_by_langmap_id($langmap_id);
+        
         //DELETE META
         $this->meta_admin_model->delete_by_langmap_id($langmap_id);
+        
         //DELETE LANGMAP
         $this->langmap_admin_model->delete($langmap_id);
-        /*foreach($posts as $post) {
-            $alias_id = $post['alias_id'];
-            $this->alias_admin_model->delete($alias_id);
-        }*/
     }
     
     

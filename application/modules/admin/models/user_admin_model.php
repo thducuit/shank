@@ -45,4 +45,12 @@ class User_Admin_Model extends User_Model {
 
         return $query->result_array();
     }
+    
+    public function get_length( $filters = array() ) {
+        foreach ($filters as $f => $fvalue) {
+    		$this->db->where($f, $fvalue);
+    	}
+    	$this->db->from( $this->get_table() );
+    	return $this->db->count_all_results();
+    }
 }
