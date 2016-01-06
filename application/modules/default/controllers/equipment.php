@@ -20,6 +20,6 @@ class Equipment extends Parent_Controller {
 	    //RUN VIEW
         $this->template->build( 'equipment/index', $this->data );
                 //CACHING
-        $this->output->cache(CACHE_TIME);
+        //$this->output->cache(CACHE_TIME);
 	}
 }

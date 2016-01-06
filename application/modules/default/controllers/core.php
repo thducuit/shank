@@ -35,6 +35,7 @@ class Core_Controller extends MX_Controller {
         protected function load_lang() {
                 $lang = strip_tags( $this->input->get('l') );
                 if($lang) {
+                        //clear_all_cache();
                         define('LANGUAGE', $lang);
                         $alias_name = $this->detect_alias_from_uri();
                         $alias = $this->get_alias($lang, $alias_name);

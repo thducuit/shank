@@ -30,7 +30,7 @@ class About extends Parent_Controller
         $this->template->build('about/index', $this->data);
 
         //CACHING
-        $this->output->cache(CACHE_TIME);
+        //$this->output->cache(CACHE_TIME);
     }
 
     private function find_post_by_alias_name($about_list, $alias_name)

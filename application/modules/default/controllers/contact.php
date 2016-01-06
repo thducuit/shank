@@ -68,6 +68,6 @@ class Contact extends Parent_Controller {
         $this->template->build( 'contact/index', $this->data);
 
                 //CACHING
-        $this->output->cache(CACHE_TIME);
+        //$this->output->cache(CACHE_TIME);
 	}
 }

@@ -22,6 +22,6 @@ class Sitemap extends Parent_Controller {
 	    //RUN VIEW
         $this->template->build( 'sitemap/index', $this->data );
         //CACHING
-        $this->output->cache(CACHE_TIME);
+        //$this->output->cache(CACHE_TIME);
 	}
 }

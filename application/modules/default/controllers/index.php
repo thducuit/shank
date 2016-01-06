@@ -37,7 +37,7 @@ class Index extends Parent_Controller {
         $this->template->build( 'index/index', $this->data );
 
         //CACHING
-        $this->output->cache(5);
+        //$this->output->cache(5);
 	}
 	
 	

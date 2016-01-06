@@ -26,7 +26,7 @@ class News extends Parent_Controller {
 	    //RUN VIEW
         $this->template->build( 'news/index', $this->data );
                 //CACHING
-        $this->output->cache(CACHE_TIME);
+        //$this->output->cache(CACHE_TIME);
 	}
 	
 }
