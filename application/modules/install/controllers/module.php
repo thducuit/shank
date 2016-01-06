@@ -32,9 +32,10 @@ class Module extends Base_Install_Controller {
         //GET PARAMS
         $this->params = $this->create_input_params( new Module_inputs );
         
-        $select = array('module_id', 'module_name', 'module_code', 'module_link', 'module_order', 'module_status', 'module_menu');
+        $select = array('module_id', 'module_name', 'module_code', 'module_link', 'module_order', 'module_status', 'module_menu', 'module_level');
 
-        $filters = array('module_parent' => (int)$this->params['pid']);
+        //$filters = array('module_parent' => (int)$this->params['pid']);
+        $filters = array();
         if((int)$this->params['show'] != -1) {
             $filters['module_status'] = (int)$this->params['show'];
         }
@@ -104,7 +105,46 @@ class Module extends Base_Install_Controller {
     }
 
     public function edit() {
-        
+        $this->load->Model("module_install_model");
+        $id = $this->input->get('id');
+        if ( isset($_POST['edit']) ) {
+            $module_code = $this->input->post('module_code');
+            $module_name = $this->input->post('module_name');
+            $module_link = $this->input->post('module_link');
+            $module_parent  = (int)$this->input->post('module_parent'); 
+            $module_option  = json_encode($this->input->post('module_option')); 
+            $module_status  = (int)$this->input->post('module_status');
+            $module_order  = (int)$this->input->post('module_order'); 
+            $module_menu  = (int)$this->input->post('module_menu'); 
+            $module_level = '';
+            
+            $data = array(
+                'module_id' => $id,
+                'module_code' => $module_code,
+                'module_name' => $module_name,
+                'module_link' => $module_link,
+                'module_parent' => $module_parent,
+                'module_option' => $module_option,
+                'module_status' => $module_status,
+                'module_order' => $module_order,
+                'module_level' => $module_level,
+                'module_menu' => $module_menu
+            );
+            $result = $this->module_install_model->upsert_with_custom_data($data);
+            redirect('/install/module');
+        }else {
+            $this->load->helper('select');
+            $data['module'] = (array)$this->module_install_model->get_by_id($id);
+            $data['list_parent'] = $this->module_install_model->list_all(array('module_id', 'module_name', 'module_level', 'module_parent'));
+            $data['list_children'] = array();
+            foreach($data['list_parent'] as $c) {
+                if( $c['module_parent'] != 0 ) {
+                    array_push($data['list_children'], $c['module_id']);
+                }
+            }
+            $this->template->title('Module');
+            $this->template->build('module/edit', $data);
+        }
     }
 
     public function delete() {

@@ -90,3 +90,10 @@ button {
 	right:10px;
 	top:10px;
 }
+
+.featured_photo img{
+	max-width: 100%
+}
+td img {
+	max-width: 200px
+}

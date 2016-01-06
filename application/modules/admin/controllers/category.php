@@ -122,7 +122,7 @@ class Category extends Base_Admin_Controller {
                 $category['language_id'] = $l;
                 $category['langmap_id'] = $langmap_id;
                 $category['module'] = $this->module_code();
-                $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : ( ( !empty( $category['title'] ) ) ? alias( $category['title'] ) : 'cat-' . uniqid() );
+                $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : 'cat-' . uniqid();
                 
                 //INSERT CATEGORY
                 $category_id = $this->category_admin_model->insert( $category );
@@ -172,7 +172,7 @@ class Category extends Base_Admin_Controller {
                 $category = $categories[$l];
                 $category['status'] = $status;
                 $category['order'] = $order;
-                $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : ( ( !empty( $category['title'] ) ) ? alias( $category['title'] ) : 'cat-' . uniqid() );
+                $category['alias'] = ( !empty( $category['alias'] ) ) ? $category['alias'] : 'cat-' . uniqid();
                 $category['language_id'] = $l;
                 $category['module'] = $this->module_code();
                 //UPDATE CATEGORY

@@ -43,18 +43,18 @@
                                             <input id='<?php echo sprintf("post_%s_alias", $l); ?>' name="post[<?php echo $l?>][alias]" type="text" value="" class="field text full" placeholder='<?php echo $this->lang->line('txt_click_here_get_alias');?>'>
                                         </div>
                                         
-                                        <div class="form-field">
+                                        <div class="form-field <?php echo (!in_array('description', $module_option)) ? 'none':''; ?>">
                                             <label class="desc"><?php echo $this->lang->line('txt_description');?></label>
                                             <textarea id='<?php echo sprintf("post_%s_description", $l); ?>' data-editor='<?php echo sprintf("post_%s_description", $l); ?>' name="post[<?php echo $l?>][description]" class="textarea small full"></textarea>  
                                         </div>
                                         
-                                        <div class="form-field">
+                                        <div class="form-field <?php echo (!in_array('content', $module_option)) ? 'none':''; ?>">
                                             <label class="desc"><?php echo $this->lang->line('txt_content');?></label>
                                             <textarea id='<?php echo sprintf("post_%s_content", $l); ?>' data-editor='<?php echo sprintf("post_%s_content", $l); ?>' name="post[<?php echo $l?>][content]" class="textarea small full"></textarea>  
                                         </div>
                                         
                                         <!--SEO-->
-                                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+                                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all <?php echo (!in_array('seo', $module_option)) ? 'none':''; ?>">
                                             <div class="portlet-header ui-widget-header">
                                                 <span class="ui-icon ui-icon-circle-arrow-s"></span>SEO
                                             </div>
@@ -79,7 +79,7 @@
                                     </div><!--//Block left-->
                                     
                                     <div class="block-right">
-                                        <div class='form-field'>
+                                        <div class='form-field <?php echo (!in_array('category', $module_option)) ? 'none':''; ?>'>
                                             <label class="desc"><?php echo $this->lang->line('txt_category');?></label>
                                             <?php 
                                                 my_select(
@@ -154,7 +154,7 @@
                     </div>
                 </div>
                 
-                <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+                <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all <?php echo (!in_array('photo', $module_option)) ? 'none':''; ?>">
                     <div class="portlet-header ui-widget-header">
                         <span class="ui-icon ui-icon-circle-arrow-s"></span><?php echo $this->lang->line('txt_featured_photo');?>
                     </div>

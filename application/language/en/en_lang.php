@@ -112,6 +112,9 @@ $lang['no_permission'] = 'You have no permission to access this link';
 $lang['txt_profile'] = 'Profile';
 $lang['txt_account_settings'] = 'Account Settings';
 $lang['txt_logout'] = 'Logout';
+$lang['txt_username'] = 'Username';
+$lang['txt_password'] = 'Password';
+$lang['txt_login'] = 'Login';
 /**
  * DIALOG
  */

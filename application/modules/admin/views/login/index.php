@@ -14,12 +14,12 @@
                 
                 
 				<form action="" method="post" id="wl-form" name="wl-form">
-                        <label for="wl-username">Username</label>
+                        <label for="wl-username"><?php echo $this->lang->line('txt_username'); ?></label>
                         <input type="text" id="wl-username" name="wl-username" value="admin">
-                        <label for="wl-password">Password</label>
+                        <label for="wl-password"><?php echo $this->lang->line('txt_password'); ?></label>
                         <input type="password" id="wl-password" name="wl-password" value="demo">
                         <br />
-                        <input type="submit" value="Đăng nhập" id="wl-btn" name="login" class="fright">
+                        <input type="submit" value="<?php echo $this->lang->line('txt_login'); ?>" id="wl-btn" name="login" class="fright">
                 </form>
                 <div class="clearfix"></div>
 			</div>

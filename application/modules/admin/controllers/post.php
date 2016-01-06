@@ -145,7 +145,7 @@ class Post extends Base_Admin_Controller {
                 $post['language_id'] = $l;
                 $post['langmap_id'] = $langmap_id;
                 $post['module'] = $this->module_code();
-                $post['alias'] = ( !empty( $post['alias'] ) ) ? $post['alias'] : ( ( !empty( $post['title'] ) ) ? alias( $post['title'] ) : 'post-' . uniqid() );
+                $post['alias'] = ( !empty( $post['alias'] ) ) ? $post['alias'] : 'post-' . uniqid();
                 $post['type'] = 'post';
                 
                 
@@ -204,7 +204,7 @@ class Post extends Base_Admin_Controller {
                 $post['order'] = $order;
                 $post['highlight'] = $highlight;
                 $post['featured_image'] = $featured_image;
-                $post['alias'] = ( !empty( $post['alias'] ) ) ? $post['alias'] : ( ( !empty( $post['title'] ) ) ? alias( $post['title'] ) : 'post-' . uniqid() );
+                $post['alias'] = ( !empty( $post['alias'] ) ) ? $post['alias'] : 'post-' . uniqid();
                 
                 //UPDATE POST
                 $this->post_admin_model->update( $post );

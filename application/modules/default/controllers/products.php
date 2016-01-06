@@ -68,13 +68,16 @@ class Products extends Parent_Controller {
 		
 		//GET CATEGORY
 		$category = (array)$this->category_default_model->get_by_id($category_id);
+
 		//SEO
 		$this->data['seo_title'] = $post['post_seo_title'];
 		$this->data['seo_keywords'] = $post['post_seo_keywords'];
 		$this->data['seo_description'] = $post['post_seo_description'];
 
 		//UPDATE BREADCRUMBS
-		array_push( $this->data['breadcrumbs'], array('url'=>'', 'title'=>$category['category_title']) );
+		if( count($category) > 0 ) {
+			array_push( $this->data['breadcrumbs'], array('url'=>'', 'title'=>$category['category_title']) );
+		}
     	array_push( $this->data['breadcrumbs'], array('url'=>'', 'title'=>$post['post_title']) );
 		//RUN VIEW
 	  $this->template->build('products/product', $this->data);

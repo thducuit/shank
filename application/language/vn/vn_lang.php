@@ -111,6 +111,9 @@ $lang['no_permission'] = 'Bạn không có quyền truy cập';
 $lang['txt_profile'] = 'Thông tin cá nhân';
 $lang['txt_account_settings'] = 'Cấu hình tài khoản';
 $lang['txt_logout'] = 'Đăng xuất';
+$lang['txt_username'] = 'Tài khoản';
+$lang['txt_password'] = 'Mật khẩu';
+$lang['txt_login'] = 'Đăng nhập';
 
 /**
  * DIALOG

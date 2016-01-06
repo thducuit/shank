@@ -11,7 +11,7 @@
                     
                 ?>
                 <div class="news">
-                    <p class="newsDate">2015年05月05日  <?php echo $img; ?> </p>
+                    <p class="newsDate"><?php echo my_date_format($n['post_datecreated']) ?>  <?php echo $img; ?> </p>
                     
                     <div class="newsRight">
                         <div class="newsInner">

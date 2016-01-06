@@ -33,6 +33,8 @@ class Base_Admin_Controller extends MX_Controller {
         
         //GET CURRENT MODULE
         $this->get_module_by_code( $this->module_code() );
+
+        $this->get_module_option();
         
         $this->data['module_list'] = $this->get_module_list();
 
@@ -121,6 +123,14 @@ class Base_Admin_Controller extends MX_Controller {
         }
     }
 
+    private function get_module_option() {
+        if(empty($this->module)) {
+            $this->data['module_option'] = array();
+            return;
+        }
+        $this->data['module_option'] = json_decode($this->module->module_option, true);
+        $this->data['module_option'] = ( !empty($this->data['module_option']) ) ? $this->data['module_option']: array();
+    }                                       
 
     /**
      * LOAD MODEL

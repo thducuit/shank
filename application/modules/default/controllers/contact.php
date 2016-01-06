@@ -20,17 +20,17 @@ class Contact extends Parent_Controller {
 
 		//SEND MAIL
         if( isset($_POST['send']) ) {
-        	$name = $this->input->post('txtFullname');
-        	$email = $this->input->post('txtEmail');
-        	$tel  = $this->input->post('txtTel');
-        	$company  = $this->input->post('txtCompany');
-        	$content  = $this->input->post('txtContent');
+        	$name = stripslashes( $this->input->post('txtFullname') );
+        	$email = stripslashes( $this->input->post('txtEmail') );
+        	$tel  = stripslashes( $this->input->post('txtTel') );
+        	$company  = stripslashes( $this->input->post('txtCompany') );
+        	$content  = stripslashes( $this->input->post('txtContent') );
 
         	$this->email->initialize(array(
 			  'protocol' => 'smtp',
 			  'smtp_host' => 'ssl://smtp.googlemail.com',//ssl:465 , tsl:587,25
-			  'smtp_user' => 'ng.tuananh1907@gmail.com',
-			  'smtp_pass' => 'choancut123',
+			  'smtp_user' => 'thducuit@gmail.com',
+			  'smtp_pass' => 'choancut!@#',
 			  'smtp_port' => 465,
 			  'crlf' => "\r\n",
 			  'newline' => "\r\n",
@@ -39,17 +39,27 @@ class Contact extends Parent_Controller {
 		      'wordwrap' => TRUE
 			));
 
-			$this->email->from('ng.tuananh1907@gmail.com', 'Your Name');
-			$this->email->to('thducuit@gmail.com');
+			$this->email->from('ng.tuananh1907@gmail.com', $name);
+			$this->email->to($email);
+
 			//$this->email->cc('another@another-example.com');
 			//$this->email->bcc('them@their-example.com');
-			$this->email->subject('Email Test 122');
-			$this->email->message('Testing the email class.');
+
+			$this->email->subject('Notification from Sankomold');
+			$this->email->message($content);
+
 			if($this->email->send()) {
-		       redirect('/contact.html');
+		       	//redirect( short_url('') );
+		    }else {
+		    	//echo $this->email->print_debugger(); die();
 		    }
 
-			echo $this->email->print_debugger(); die();
+		    $url = short_url('contact', array(), true );
+            $url = substr($url, 1, strlen($url));
+            $url = base_url() . $url;
+            redirect( $url );
+
+			
         }
 
 

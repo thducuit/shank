@@ -50,22 +50,22 @@
                                         
                                         <div class='form-field'>
                                             <label class="desc"><?php echo $this->lang->line('txt_title');?></label>
-                                            <input name="category[<?php echo $l?>][title]" type="text" value="<?php echo $categories[$l]['category_title'];?>" class="field text full">
+                                            <input data-for='<?php echo sprintf("#category_%s_alias", $l); ?>' name="category[<?php echo $l?>][title]" type="text" value="<?php echo $categories[$l]['category_title'];?>" class="field text full">
                                         </div>
                                         
                                         <div class="form-field">
                                             <label class="desc">Alias</label>
                                             <small><?php echo $this->lang->line('get_alias_notice');?></small>
-                                            <input name="category[<?php echo $l?>][alias]" type="text" value="<?php echo $categories[$l]['alias_name'];?>" class="field text full" placeholder='<?php echo $this->lang->line('txt_click_here_get_alias');?>'>    
+                                            <input id='<?php echo sprintf("category_%s_alias", $l); ?>' name="category[<?php echo $l?>][alias]" type="text" value="<?php echo $categories[$l]['alias_name'];?>" class="field text full" placeholder='<?php echo $this->lang->line('txt_click_here_get_alias');?>'>    
                                         </div>
                                         
-                                        <div class="form-field">
+                                        <div class="form-field <?php echo (!in_array('content', $module_option)) ? 'none':''; ?>">
                                             <label class="desc"><?php echo $this->lang->line('txt_content');?></label>
                                             <textarea name="category[<?php echo $l?>][content]" class="textarea small full"><?php echo $categories[$l]['category_content'];?></textarea>  
                                         </div>
                                         
                                         <!--SEO-->
-                                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all">
+                                        <div class="portlet ui-widget ui-widget-content ui-helper-clearfix ui-corner-all <?php echo (!in_array('seo', $module_option)) ? 'none':''; ?>">
                                             <div class="portlet-header ui-widget-header">
                                                 <span class="ui-icon ui-icon-circle-arrow-s"></span>SEO
                                             </div>
@@ -90,7 +90,7 @@
                                     </div><!--//Block left-->
                                     
                                     <div class="block-right">
-                                        <div class='form-field'>
+                                        <div class='form-field <?php echo (!in_array('category', $module_option)) ? 'none':''; ?>'>
                                             <label class="desc"> <?php echo $this->lang->line('txt_category_parent');?></label>
                                             <?php 
                                                 my_select(

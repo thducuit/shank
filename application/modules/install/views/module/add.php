@@ -113,8 +113,7 @@
                     </div>
                     <div class="portlet-content">
                         <select size="4" name="module_option[]" multiple  id="lstCate" class="listbox lstCate">
-                            <option value="0">-- Reset all --</option>
-                            <option value="0">Title</option>
+                            <option value="all">-- Reset all --</option>
                             <option selected="selected" value="content">Content</option>
                             <option selected="selected" value="description">Description</option>
                             <option selected="selected" value="category">Category</option>

@@ -125,3 +125,16 @@ if (!function_exists('clear_all_cache')) {
         closedir($handle);
     }
 }
+
+
+/**
+ * date format
+ */
+if (!function_exists('my_date_format')) {
+    function my_date_format($date) {
+        $CI =& get_instance();
+        $format = $CI->lang->line('date_format');
+        $t = strtotime($date);
+        echo date($format, $t);
+    }
+}

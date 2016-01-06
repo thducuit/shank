@@ -90,7 +90,7 @@
                                 Xóa/Sửa
                             </th>
                             <th>
-                                Hiện
+                                Menu
                             </th>
                             <th scope="col">
                                 Tên bài viết
@@ -99,7 +99,7 @@
                                 Danh mục
                             </th>
                             <th>
-                                Nổi bật
+                                Hiện/Ẩn
                             </th>
                             <th class="colum_sort">
                                 Thứ tự
@@ -126,7 +126,8 @@
                                 <?php echo my_toggle_button($l['module_menu'], $l['module_id'], '/index.php/install/module/menu', array('name'=>'ImgRowMenu'));?>
                             </td>
                             <td class="textleft">
-                                <a href="add.html" id="lblName" class="lblname"><?php echo $l['module_name']?></a>
+                                <?php echo $l['module_level']?>
+                                <a href="/index.php/install/module/edit?id=<?php echo $l['module_id']?>" id="lblName" class="lblname"><?php echo $l['module_name']?></a>
                             </td>
                             <td class="textleft">
                                 <a id="lblCategory">Không có danh mục</a>

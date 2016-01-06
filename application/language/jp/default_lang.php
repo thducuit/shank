@@ -31,5 +31,7 @@ $lang['txt_deadline'] = '応募締切';
 $lang['txt_next'] = 'Trang Kế';
 $lang['txt_prev'] = 'Trang Trước';
 
+$lang['date_format'] = 'Y年m月d日';
+
 
 

@@ -30,6 +30,8 @@ $lang['txt_deadline'] = 'Deadline';
 $lang['txt_next'] = 'Next';
 $lang['txt_prev'] = 'Prev';
 
+$lang['date_format'] = 'd-m-Y';
+
 
 
 

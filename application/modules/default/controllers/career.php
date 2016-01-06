@@ -20,7 +20,7 @@ class Career extends Parent_Controller
         $this->load->Model("post_default_model");
         $this->load->Model("meta_default_model");
         $this->data['career'] = $this->post_default_model->get_post('career', LANGUAGE, array('_quantity', '_deadline') );
-        //_pr($this->data['career'], true);
+        
         $rs = $this->post_default_model->get_page('career', LANGUAGE);
         //SEO
         $this->data['seo_title'] = $rs['post_seo_title'];
