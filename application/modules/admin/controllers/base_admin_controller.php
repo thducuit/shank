@@ -106,6 +106,7 @@ class Base_Admin_Controller extends MX_Controller {
         if( !$this->session->userdata('user_entity') ) {
             redirect('admin/login', 'refresh');
         }
+        $this->data['user_entity'] = $this->session->userdata('user_entity');
         return true;
     }
 
@@ -116,7 +117,7 @@ class Base_Admin_Controller extends MX_Controller {
      * @param $permission
      * @return bool|int
      */
-    protected function page_has_permission($module, $permission){
+    protected function page_has_permission($module, $permission) {
         if( !check_permission($module, $permission) ) {
             $this->session->set_flashdata( 'notice', array('status'=>'error', 'message'=>$this->lang->line('no_permission')) );
             redirect('admin/index', 'refresh');

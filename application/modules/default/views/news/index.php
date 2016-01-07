@@ -2,7 +2,7 @@
     <div id="main" class="clearfix">
 <!-- content start -->
         <div id="content" class="con">
-            <h3><?php echo $this->lang->line('txt_news');?></h3>
+            <h3><?php echo $page['post_title']?></h3>
             <div class="section">
                 <?php
                 foreach($news as $n) {
@@ -23,7 +23,6 @@
                             <p class="newsbtn prevContent"><a class="btnRutgon imgover" href="javascript:;"><?php echo $this->lang->line('txt_close');?></a> <a class="btnChitiet imgover" href="javascript:;">...<?php echo $this->lang->line('txt_more');?></a></p>
                         </div>
                         <div class="newsContent clear">
-                            <!-- <p><span class="bold">ニュース詳細表示</span> -->
                             <br />
                             <div><?php echo $n['post_content']?></div>
                         </div>

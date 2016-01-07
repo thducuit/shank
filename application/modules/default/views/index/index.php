@@ -13,7 +13,6 @@ $count_feature = count($features);
                     <h3 class="title">
                         <span class="ttl fontB"><?php echo $count_feature; ?></span>
                         <?php echo $feature_title; ?>
-                        <!--<span class="ttl">つの理由</span> <span class="txt">サンコーモールドベトナムが選ばれる</span>-->
                     </h3>
                     <ol>
                         <?php 
@@ -25,13 +24,9 @@ $count_feature = count($features);
                                 <span class="num"><?php echo $stt; ?></span>
                                 <span class="norTxt"><?php echo $f; ?></span>
                             </li>
-                        <?php }?>
-                        <!--<li><span class="num">1</span><span class="norTxt">創業４３年、ベトナム設立１５年の信頼と実績</span></li>
-                        <li><span class="num">2</span><span class="norTxt">日系企業としての教育による、品質、納期の遵守</span></li>
-                        <li class="li01"><span class="num">3</span><span class="norTxt">金型部門、成形部門があり、</span></li>
-                        <li><span class="num"></span><span class="norTxt">チューニングや修理修繕のすばやい対応</span></li>
-                        <li><span class="num">4</span><span class="norTxt">洗練された製品、マイクロ製品の生産が可能</span></li>
-                        <li><span class="num">5</span><span class="norTxt">高品質・低コストでの対応</span></li>-->
+                        <?php 
+                            }
+                        ?>
                     </ol>
                 </div>
             </div>
@@ -57,21 +52,6 @@ $count_feature = count($features);
                 </ul>
                 <div class="section">
                     <ul class="list_products biggerlink">
-<!--                        <li> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
-<!--                        <li class="hide-sp"> <img src="--><?php //echo DEFAULT_IMAGE_PATH; ?><!--/index_img_02.jpg" alt="????????" class="hide-sp" /> <img src="images/index_img_02_sp.jpg" alt="????????" class="hide-pc" /> <a href="mold.html">????????</a> </li>-->
                         <?php
                         foreach($products as $ps) {
                         ?>

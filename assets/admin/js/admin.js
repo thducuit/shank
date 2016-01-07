@@ -46,8 +46,11 @@ $(document).ready(function() {
 	$('*[data-href]').click(function(e) {
 	    e.preventDefault();
 	    var url = $(this).attr('data-href');
-	    if(url)
+	    if(url) {
 	    	window.location.href = url;
+	    	return false;
+	    }
+	    	
 	});
 	
 	//FILTER ONCHANGE
@@ -61,12 +64,14 @@ $(document).ready(function() {
 		if( url && patt.test(url) ) {
 			url = url.replace(patt, new_patt);
 			window.location.href = url;
+			return false;
 		}
 		patt = new RegExp(name + "=[A-z0-9-]*$");
 		if( url && patt.test(url) ){
 			new_patt = name + "=" + value;
 			url = url.replace(patt, new_patt);
 			window.location.href = url;
+			return false;
 		}
 	});
 	
@@ -82,6 +87,7 @@ $(document).ready(function() {
 		if( url && patt.test(url) ) {
 			url = url.replace(patt, new_patt);
 			window.location.href = url;
+			return false;
 		}
 	});
 	
@@ -95,6 +101,7 @@ $(document).ready(function() {
 		if( url && patt.test(url) ) {
 			url = url.replace(patt, new_patt);
 			window.location.href = url;
+			return false;
 		}
 	});
 	

@@ -9,7 +9,7 @@ class Index extends Base_Admin_Controller {
     private $class_view;
     private $params;
     
-    function __construct(){
+    function __construct() {
         //if i remove this parent::__construct(); the error is gone
         parent::__construct();
 

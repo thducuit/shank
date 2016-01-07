@@ -1,4 +1,6 @@
 <?php
+define('WEBSITE', 'SankoMold');//vn,en
+define('BASE_URL', 'SankoMold');//vn,en
 /*
  * --------------------------------------------------------------------
  * ADMIN LANGUAGE

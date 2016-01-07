@@ -56,7 +56,7 @@ class Gallery extends Base_Admin_Controller {
      * 
      */
     public function index () {
-
+        //PERMISSION
         $this->page_has_permission($this->module_code(), VIEW);
 
         $g = $this->media_admin_model->list_all(array(), array('media_module' => $this->module_code()));

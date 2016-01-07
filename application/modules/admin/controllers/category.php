@@ -19,7 +19,7 @@ class Category extends Base_Admin_Controller {
      * CONSTRUCT 
      * 
      */
-    function __construct(){
+    function __construct() {
         
         parent::__construct();
 

@@ -34,17 +34,6 @@ class Config extends Base_Admin_Controller {
         //GET CURRENT URL
         $this->url = $this->module_url();
         
-        //GET LANGUAGES
-        //$this->languages = $this->languages();
-        
-        //GET MODULE
-        //$this->module = $this->module();
-
-        //$this->data['languages'] = $this->languages;
-        
-        //LOAD MODEL
-        //$this->load_model();
-        
         //SET TITLE FOR VIEW
         $this->template->title( ( !empty($this->module->module_name) ) ? $this->module->module_name : 'Config' );
     }

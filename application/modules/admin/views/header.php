@@ -4,7 +4,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title><?= $template['title']?></title>
+    <link rel="shortcut icon" type="image/x-icon" href="<?= ADMIN_IMAGE_PATH ?>/favicon.ico">
+    <title><?= WEBSITE ?> | <?= $template['title']?></title>
 
     <link href="<?= ADMIN_CSS_PATH ?>/style.css" rel="stylesheet" media="all" />
     <link href="<?= ADMIN_CSS_PATH ?>/smoothness/jquery-ui-1.8.23.custom.css" rel="stylesheet" media="all" />
@@ -64,24 +65,15 @@
        <div id="top-menu">
             <div class="block-left logo"><img src="<?= ADMIN_IMAGE_PATH ?>/logo.png" /></div>
              <div class="float-right">
-                <!--<dl id="sample" class="dropdown right-item ">
-                    <dt><a class="radius2" href="#"><span>Việt Nam</span></a></dt>
-                    <dd>
-                        <ul>
-                            <li><a href="#">Việt Nam<span class="value">VN</span></a></li>
-                            <li><a href="#">English<span class="value">EN</span></a></li>
-                        </ul>
-                    </dd>
-                </dl>-->
                 <a id="viewwebsite" class="radius2 right-item" href ="/#" target='_blank' title="Website">Website</a>
                  <div id="userPanel" class="headercolumn block-right">
                 <a href="" class="userinfo radius2">
                     <img src="<?= ADMIN_IMAGE_PATH ?>/avatar.png" alt="" class="radius2">
-                    <span><strong>Administrator</strong></span> </a>
+                    <span><strong><?php echo $user_entity['fullname'];?></strong></span> </a>
                 <div class="userdrop" style="width: 151px;">
                     <ul>
-                        <li><a href="#"><?php echo $this->lang->line("txt_profile"); ?></a></li>
-                        <li><a href="#"><?php echo $this->lang->line("txt_account_settings"); ?></a></li>
+                        <li><a href="/admin/user/edit?userid=<?php echo $user_entity['user_id'];?>"><?php echo $this->lang->line("txt_profile"); ?></a></li>
+                        <li><a href="/admin/user/password?userid=<?php echo $user_entity['user_id'];?>"><?php echo $this->lang->line("txt_change_password"); ?></a></li>
                         <li><a href="/admin/login/logout"><?php echo $this->lang->line("txt_logout"); ?></a></li>
                     </ul>
                 </div>

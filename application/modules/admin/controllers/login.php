@@ -11,6 +11,7 @@ class Login extends Base_Admin_Controller {
      * 
      */
     function __construct(){
+        
         parent::__construct();
         
         //LOAD THEME

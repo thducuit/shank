@@ -16,8 +16,10 @@ class News extends Parent_Controller {
 	public function index() {
 		$this->load->Model("post_default_model");
 		$this->data['news'] = $this->post_default_model->get_post('news', LANGUAGE);
+		
 		$page = $this->post_default_model->get_page('news', LANGUAGE);
-
+		$this->data['page'] = $page;
+		
 		//SEO
 		$this->data['seo_title'] = $page['post_seo_title'];
 		$this->data['seo_description'] = $page['post_seo_description'];

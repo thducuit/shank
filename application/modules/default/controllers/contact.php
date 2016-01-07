@@ -58,16 +58,10 @@ class Contact extends Parent_Controller {
             $url = substr($url, 1, strlen($url));
             $url = base_url() . $url;
             redirect( $url );
-
-			
         }
-
-
-        
-		//$this->data['contact'] = $this->post_default_model->get_post('contact', LANGUAGE);
 		
 		$page = $this->post_default_model->get_page('contact', LANGUAGE);
-		$this->data['contact'] = $page;
+		$this->data['page'] = $page;
 
 		//SEO
 		$this->data['seo_title'] = $page['post_seo_title'];

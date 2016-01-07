@@ -2,9 +2,10 @@
     <div id="main" class="clearfix">
         <!-- content start -->
         <div id="content" class="con">
-            <h3>主な設備、機械 (Main equipment &amp; machines)</h3>
+            <h3><?php echo $page['post_title']?></h3>
             <div class="section">
-               <table summary="主な設備、機械 (Main equipment &amp; machines)" class="td_middle tbl_equipment">
+              <?php echo $page['post_content']?>
+               <!--<table summary="主な設備、機械 (Main equipment &amp; machines)" class="td_middle tbl_equipment">
                <tr>
                    <th class="col1">機械の種類 <br />(Type of machine)</th>
                    <th class="col2">メーカー <br />(Manufacturer)</th>
@@ -242,7 +243,7 @@
                    <td>QS250Z</td>
                    <td class="center">1</td>
                </tr>
-               </table>
+               </table>-->
             </div>
         </div>
         <!-- content end -->

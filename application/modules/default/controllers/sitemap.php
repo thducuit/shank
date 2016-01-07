@@ -14,13 +14,16 @@ class Sitemap extends Parent_Controller {
 	
 	public function index() {
 		$page = $this->post_default_model->get_page('sitemap', LANGUAGE);
-
+		$this->data['page'] = $page;
+		
 		//SEO
 		$this->data['seo_title'] = $page['post_seo_title'];
 		$this->data['seo_description'] = $page['post_seo_description'];
 		$this->data['seo_keywords'] = $page['post_seo_keywords'];
+	    
 	    //RUN VIEW
         $this->template->build( 'sitemap/index', $this->data );
+       
         //CACHING
         //$this->output->cache(CACHE_TIME);
 	}
